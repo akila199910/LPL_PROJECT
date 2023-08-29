@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <title></title>
+</head>
+<body>
+    <form action="Allrounder.php" method="POST">
+        <table border ="0">
+            <tr>
+                <td>Batting Style</td>
+                <td><select name="bat" id="">
+                <option value="rhb">Right Hand</option>
+                <option value="lhb">Left Hand</opion></td>
+            </tr>
+
+            <tr>
+            <td>Number of matches (LPL)</td>
+            <td><input type="text"name="lplnom" placeholder="optional"></td>
+           </tr>
+           <td>Number of matches (T20)</td>
+            <td><input type="text"name="t20nom" placeholder="optional"></td>
+           </tr>
+
+            <tr>
+                <td>Runs</td>
+                <td><input type="text" name="run" placeholder="optional"></td>
+             </tr>
+
+             <tr>
+                <td>Batting Average</td>
+                <td><input type="text" name="average" placeholder="optional"></td>
+                </tr>
+
+                <tr>
+                <td>Strike Rate</td>
+                <td><input type="text" name="strikerate" placeholder="optional"></td>
+                </tr>
+
+                <tr>
+                <td>High Score</td>
+                <td><input type="text" name="highscore"placeholder="optional"></td>
+                </tr>
+
+                <tr>
+                <td>Number of 50</td>
+                <td><input type="text" name="fifty" placeholder="optional"></td>
+                </tr>
+                <tr>
+                <td>Number of 100</td>
+                <td><input type="text" name="hundred" placeholder="optional"></td>
+                </tr>
+                <tr>
+                    <td>Bowling Style</td>
+                    <td><select name="Style" id="">
+                    <option value="rafb">Right Arm Fast Bowler</option>
+                    <option value="lafb">Left Arm Fast Bowler</option>
+                    <option value="ramfb">Right Arm Medium Fast Bowler</option>
+                    <option value="lamfb">Left Arm Medium Fast Bowler</option>
+                    <option value="raob">Right Arm Off Break</option>
+                    <option value="ralb">Right Arm Leg Break</option>
+                    <option value="ralbg">Rigth Arm Leg Break Googly</option>
+                    <option value="laos">Left Arm Orthodox Sprinner</option>
+                    <option value="lals">Left Arm Leg Sprinner</option>
+                    </select><td>
+                </tr>
+                    
+                    <tr>
+                    <td>Wickets</td>
+                    <td><input type="text" name="wicket" placeholder="optional"></td>
+                    </tr>
+                    <td>Bowling Average</td>
+                    <td><input type="text" name="baverage" placeholder="optional"></td>
+                    </tr>
+                    <td>Economy</td>
+                    <td><input type="text" name="economy"placeholder="optional"></td>
+                    </tr>
+                    <td>Best Bowled</td>
+                    <td><input type="text" name="bestbowld" placeholder="optional"></td>
+                    </tr>
+            </table>
+            <input type="submit" name="submit" value="Submit">
+            </form>
+</body>
+</html>

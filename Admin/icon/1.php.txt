@@ -1,0 +1,10 @@
+<html>
+<head>
+<title>My first PHP program</title>
+</head>
+<body>
+	<?php
+		echo "Hello! How are you ?";
+	?>
+</body>
+</html>
