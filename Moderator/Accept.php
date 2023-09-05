@@ -33,16 +33,9 @@ $result=mysqli_query($conn,$sql);
         <tr>
         <th>#ID</th>
           <th>Profile Photo</th>
-          <th>First Name</th>
-          <th>Last Name</th>
+          <th>Name</th>
           <th>Catogary</th>
-          <th>Capped</th>
           <th>Country</th>
-          <th>Identity</th>
-          <th>Identity Number</th>
-          <th>Identity Photo</th>
-          <th>Additional Details</th>
-          <th>Certificate Photo</th>
         </tr>
       </thead>
       <tbody class="table table-hover text-center">
@@ -51,16 +44,9 @@ $result=mysqli_query($conn,$sql);
       ?>
       <td> <?php echo $row['player_id'];?></td>
       <td> <?php echo $row['profile_photo'];?></td>
-       <td> <?php echo $row['first_name'];?></td>
-       <td> <?php echo $row['last_name'];?></td>
+       <td> <?php echo $row['first_name']." ".$row['last_name'];?></td>
        <td> <?php echo $row['catogary'];?></td>
-       <td> <?php echo $row['capped'];?></td>
        <td> <?php echo $row['country'];?></td>
-       <td> <?php echo $row['identity'];?></td>
-       <td> <?php echo $row['identity_number'];?></td>
-       <td> <?php echo $row['identity_photo'];?></td>
-       <td> <?php echo $row['additional_details'];?></td>
-       <td> <?php echo $row['certificate_photo'];?></td>
  </tr>
       <?php
        }?>
