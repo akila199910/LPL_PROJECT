@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
     $bowl_average = $_POST['bowl_average'];
     $economy = $_POST['economy'];
     $best_bowl = $_POST['best_bowl'];
-    $w5 = $_POST['5w'];
+    $w5 = $_POST['w5'];
     $sold = $_POST['sold'];
     $base_price = $_POST['base_price'];
 
