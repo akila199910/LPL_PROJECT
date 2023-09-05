@@ -35,48 +35,42 @@ if (isset($_POST['view'])) {
 
 //Approve reject list
 if (isset($_POST['approve'])) {
-    $player_id = $_POST['player_id'];
-    $sql = "UPDATE register SET approved = 'Yes' WHERE player_id = $player_id";
-    mysqli_query($conn, $sql);
+  $player_id = $_POST['player_id'];
+  $sql = "UPDATE register SET approved = 'Yes' WHERE player_id = $player_id";
+  mysqli_query($conn, $sql);
 
-    $catogary = "SELECT catogary FROM register WHERE player_id = $player_id";
-    $catogaryResult = mysqli_query($conn, $catogary);
+  $catogary = "SELECT catogary FROM register WHERE player_id = $player_id";
+  $catogaryResult = mysqli_query($conn, $catogary);
 
-    if ($catogaryResult && mysqli_num_rows($catogaryResult) > 0) {
-        $row = mysqli_fetch_assoc($catogaryResult);
-        $catogaryValue = $row['catogary'];
+  if ($catogaryResult && mysqli_num_rows($catogaryResult) > 0) {
+      $row = mysqli_fetch_assoc($catogaryResult);
+      $catogaryValue = $row['catogary'];
 
-        switch ($catogaryValue) {
-            case 'bat':
-                $sql4 = "INSERT INTO batsman (player_batting_id) VALUES ($player_id)";
-                mysqli_query($conn, $sql4);
-                header("Location: /Players/Batsman/Batsman.php");
-                exit;
-                break;
+      switch ($catogaryValue) {
+          case 'bat':
+              header("Location: /Players/Batsman/Batsman.php?player_id=$player_id"); // Include player_id as a query parameter
+              exit;
+              break;
 
-            case 'bol':
-                $sql5 = "INSERT INTO bowler (player_bowlling_id) VALUES ($player_id)";
-                mysqli_query($conn, $sql5);
-                header("Location: /Players/Bowler/Bowler.php");
-                exit;
-                break;
+          case 'bol':
+              header("Location: /Players/Bowler/Bowler.php?player_id=$player_id"); // Include player_id as a query parameter
+              exit;
+              break;
 
-            case 'wk':
-                $sql6 = "INSERT INTO wicketkeeper (player_keeping_id) VALUES ($player_id)";
-                mysqli_query($conn, $sql6);
-                header("Location: /Players/Wicketkeeper/Wicketkeeper.php");
-                exit;
-                break;
+          case 'wk':
+              header("Location: /Players/Wicketkeeper/Wicketkeeper.php?player_id=$player_id"); // Include player_id as a query parameter
+              exit;
+              break;
 
-            case 'alr':
-                $sql7 = "INSERT INTO allrounder (player_al_id) VALUES ($player_id)";
-                mysqli_query($conn, $sql7);
-                header("Location: /Players/Allrounder/Allrounder.php");
-                exit;
-                break;
-        }
-    }
+          case 'alr':
+              header("Location: /Players/Allrounder/Allrounder.php?player_id=$player_id"); // Include player_id as a query parameter
+              exit;
+              break;
+      }
+  }
 }
+
+    
 
 if (isset($_POST['reject'])) {
   $player_id = $_POST['player_id'];
@@ -212,6 +206,7 @@ if (isset($_POST['reject'])) {
                 <input type="hidden" name="player_id" value="<?php echo $row['player_id']; ?>">
                 <button type="submit" name="reject">Reject</button>
               </form>
+
               </div>
 
 
