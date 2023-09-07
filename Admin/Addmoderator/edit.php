@@ -18,7 +18,7 @@ if (isset($_POST["submit"])) {
   $result = mysqli_query($conn, $sql);
 
   if ($result) {
-    header("Location: index.php?msg=Moderator updated successfully");
+    header("Location: indexmodertor.php?msg=Moderator updated successfully");
   } else {
     echo "Failed: " . mysqli_error($conn);
   }
@@ -94,7 +94,7 @@ if (isset($_POST["submit"])) {
 
         <div>
           <button type="submit" class="btn btn-success" name="submit">Update</button>
-          <a href="index.php" class="btn btn-danger">Cancel</a>
+          <a href="indexmodertor.php" class="btn btn-danger">Cancel</a>
         </div>
       </form>
     </div>
