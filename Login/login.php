@@ -38,7 +38,7 @@ if (isset($_POST['login'])) {
             $_SESSION['user_email'] = $user['email'];
             // ... other user data
 
-            header("Location: dashboard.php"); // Redirect to the player dashboard page
+            header("Location: /Players/Player_dashboard/player_dashboard.php"); // Redirect to the player dashboard page
             exit();
         } else {
             echo "Invalid password";
@@ -51,11 +51,11 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $hashed_password)) {
             // Password is correct, admin is authenticated
             session_start();
-            $_SESSION['admin_id'] = $admin['admin_id'];
+            $_SESSION['admin_id'] = $admin['id'];
             $_SESSION['admin_email'] = $admin['email'];
             // ... other admin data
 
-            header("Location: admin_dashboard.php"); // Redirect to the admin dashboard page
+            header("Location: /Admin/Admin_dashboard/admin_dashboard.php"); // Redirect to the admin dashboard page
             exit();
         } else {
             echo "Invalid password";
@@ -68,11 +68,11 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $hashed_password)) {
             // Password is correct, admin is authenticated
             session_start();
-            $_SESSION['moderators_id'] = $moderators['moderators_id'];
+            $_SESSION['moderators_id'] = $moderators['id'];
             $_SESSION['moderators_email'] = $moderators['email'];
             // ... other moderators data
 
-            header("Location: dashboard.php"); // Redirect to the moderators dashboard page
+            header("Location: /Moderator/Moderator_dashboard/moderator_dashboard.php"); // Redirect to the moderators dashboard page
             exit();
         } else {
             echo "Invalid password";
@@ -85,11 +85,11 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $hashed_password)) {
             // Password is correct, admin is authenticated
             session_start();
-            $_SESSION['team_id'] = $team['team_id'];
+            $_SESSION['team_id'] = $team['id'];
             $_SESSION['team_email'] = $team['email'];
             // ... other team data
 
-            header("Location: dashboard.php"); // Redirect to the team dashboard page
+            header("Location: /Team/Team_dashboard/team_dashboard.php"); // Redirect to the team dashboard page
             exit();
         } else {
             echo "Invalid password";
@@ -102,7 +102,7 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $hashed_password)) {
             // Password is correct, guest is authenticated
             session_start();
-            $_SESSION['guest_id'] = $guest['guest_id'];
+            $_SESSION['guest_id'] = $guest['id'];
             $_SESSION['guest_email'] = $guest['email'];
             // ... other guest data
 
