@@ -28,6 +28,7 @@ if(isset($_POST['view'])){
  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+
   <title>Review Page2</title>
   <style>
   body,h1 {font-family: "Raleway", sans-serif}
@@ -45,6 +46,9 @@ if(isset($_POST['view'])){
     @media only screen and (max-width: 600px) {#main {margin-left: 0}}
     }
     </style>
+
+
+
 
 </head>
 <body>
