@@ -66,17 +66,15 @@ if (isset($_POST['submit'])) {
         mysqli_close($conn);
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
+     <!DOCTYPE html>
+     <html lang="en">
+     <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <title>Allrounder</title>
-    <style>
-    body,h1 {font-family: "Raleway", sans-serif}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Allrounder</title>
+        <style>
+        body,h1 {font-family: "Raleway", sans-serif}
     body, html {height: 100%}
     .bgimg {
     background-color: #0a50a1;
@@ -91,7 +89,21 @@ if (isset($_POST['submit'])) {
     @media only screen and (max-width: 600px) {#main {margin-left: 0}}
     }
     </style>
+     </head>
+     <body>
+     <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <title>Allrounder</title>
+   
 </head>
+
 <body>
     <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
     <div class="w3-display-topleft w3-padding-large w3-xlarge">
@@ -104,7 +116,7 @@ if (isset($_POST['submit'])) {
 
     <div class="container mt-4">
         <div class="container mt-4">
-            <h2 align="center">Add all rounder information</h2>
+            <h2 align="center">Add Allrounder Information</h2>
             <form method="POST" action="">
                 <div class="mb-3">
                     <label for="b_style" class="form-label">Batting Style</label>

@@ -13,6 +13,23 @@ $result=mysqli_query($conn,$sql);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <style>
+    body,h1 {font-family: "Raleway", sans-serif}
+    body, html {height: 100%}
+    .bgimg {
+    background-color: #57aede;
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+
+    .w3-sidebar {width: 120px;background: #222;}
+    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+    #main {margin-left: 300px; margin-right:300px}
+    /* Remove margins from "page content" on small screens */
+    @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    }
+    </style>
+
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
@@ -23,6 +40,12 @@ $result=mysqli_query($conn,$sql);
 </head>
 
 <body class="wrapper">
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+    <div class="w3-display-topleft w3-padding-large w3-xlarge">
+    <img src="5.png" width=300px; height=140px;>
+    </div>
+
   <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:115%;">
     LPL - LANKA PREMIER LEAGUE
   </nav>
