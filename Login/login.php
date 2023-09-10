@@ -23,8 +23,8 @@ if (isset($_POST['login'])) {
     $result_team = mysqli_query($conn, $sql_team);
 
     // Check if the user exists in the "guest" table
-    //$sql_guest = "SELECT * FROM guest WHERE email = '$email'";
-    //$result_guest = mysqli_query($conn, $sql_guest);
+    $sql_guest = "SELECT * FROM guest WHERE email = '$email'";
+    $result_guest = mysqli_query($conn, $sql_guest);
 
     if ($result_register && mysqli_num_rows($result_register) > 0) {
         $user = mysqli_fetch_assoc($result_register);
@@ -43,7 +43,7 @@ if (isset($_POST['login'])) {
         } else {
             echo "Invalid password";
         }
-    } /*elseif ($result_admin && mysqli_num_rows($result_admin) > 0) {
+    } elseif ($result_admin && mysqli_num_rows($result_admin) > 0) {
         $admin = mysqli_fetch_assoc($result_admin);
         $hashed_password = $admin['password'];
 
@@ -60,7 +60,7 @@ if (isset($_POST['login'])) {
         } else {
             echo "Invalid password";
         }
-    }*/ elseif ($result_moderators && mysqli_num_rows($result_moderators) > 0) {
+    } elseif ($result_moderators && mysqli_num_rows($result_moderators) > 0) {
         $moderators = mysqli_fetch_assoc($result_moderators);
         $hashed_password = $moderators['password'];
 
@@ -94,7 +94,7 @@ if (isset($_POST['login'])) {
         } else {
             echo "Invalid password";
         }
-    } /*elseif ($result_guest && mysqli_num_rows($result_guest) > 0) {
+    } elseif ($result_guest && mysqli_num_rows($result_guest) > 0) {
         $guest = mysqli_fetch_assoc($result_guest);
         $hashed_password = $guest['password'];
 
@@ -102,16 +102,16 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $hashed_password)) {
             // Password is correct, guest is authenticated
             session_start();
-            $_SESSION['guest_id'] = $guest['id'];
+            $_SESSION['guest_id'] = $guest['guest_id'];
             $_SESSION['guest_email'] = $guest['email'];
             // ... other guest data
 
-            header("Location: dashboard.php"); // Redirect to the guest dashboard page
+            header("Location: /Guest/Guest_dashboard/guest_dashboard.php"); // Redirect to the guest dashboard page
             exit();
         }  else {
             echo "Invalid password";
         }
-    }*/ else {
+    } else {
         echo "Invalid email";
     }
 }

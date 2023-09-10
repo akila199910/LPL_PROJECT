@@ -19,10 +19,12 @@ $sql2 = "CREATE TABLE IF NOT EXISTS guest (
     $email = $_POST['email'];
     $password = $_POST['password'];
     //$profile_picture = $_POST['profile_picture'];
+    // Encrypt the password using password_hash() function
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
   
 
    $sql = "INSERT INTO guest (first_name, last_name, email, password) 
-   VALUES ('$first_name', '$last_name', '$email', '$password')";
+   VALUES ('$first_name', '$last_name', '$email', '$hashed_password')";
    $result = mysqli_query($conn, $sql);
 }
     ?>
