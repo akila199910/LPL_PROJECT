@@ -11,8 +11,8 @@ if (isset($_POST['login'])) {
     $result_register = mysqli_query($conn, $sql_register);
 
     // Check if the user exists in the "admin" table
-    //$sql_admin = "SELECT * FROM admin WHERE email = '$email'";
-    //$result_admin = mysqli_query($conn, $sql_admin);
+    $sql_admin = "SELECT * FROM admin WHERE email = '$email'";
+    $result_admin = mysqli_query($conn, $sql_admin);
 
     // Check if the user exists in the "moderators" table
     $sql_moderators = "SELECT * FROM moderators WHERE email = '$email'";
@@ -51,7 +51,7 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $hashed_password)) {
             // Password is correct, admin is authenticated
             session_start();
-            $_SESSION['admin_id'] = $admin['id'];
+            $_SESSION['admin_id'] = $admin['admin_id'];
             $_SESSION['admin_email'] = $admin['email'];
             // ... other admin data
 
