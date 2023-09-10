@@ -20,7 +20,10 @@ $sql = "CREATE TABLE IF NOT EXISTS register (
         capped VARCHAR (255),
         additional_details TEXT,
         certificate_photo VARCHAR(255),
+        verification VARCHAR(255),
+        verification_code VARCHAR(255),
         approved VARCHAR (255) NULL
+
     )";
 
 mysqli_query($conn, $sql);
@@ -68,13 +71,26 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     //$identity_photo = $_POST['identity_photo'];
     //$certificate_photo = $_POST['certificate_photo'];
     //$profile_photo = $_POST['profile_photo'];
+    
+  // Generate a verification code (you can use a stronger method if needed)
+  $verif_code = bin2hex(random_bytes(16));
+
+  // Insert the user data into the database with the verification code
+  $sql3 = "INSERT INTO register (first_name, last_name, email, password, country, dob, identity, identity_number, catogary, capped, additional_details, profile_photo, identity_photo, certificate_photo,verification, verification_code)
+  VALUES ('$first_name','$last_name','$email','$hashed_password','$country','$dob','$identity','$identity_number','$catogary','$capped','$additional_details','$file_name3','$file_name1','$file_name2', 0, '$verif_code')";
+
+  if (mysqli_query($conn, $sql3)) {
+      // Send a verification email
+      $subject = "Verify Your Email Address";
+      $message = "Click the following link to verify your email address: http://localhost/LPL_PROJECT/LPL_PROJECT/Register/verify.php?code=$verif_code";
+      $headers = "From: premierleaguesrilanka@gmail.com";
+      
+      mail($email, $subject, $message, $headers);
+    }
 
 
-
-    $sql3 = "INSERT INTO register(first_name, last_name, email, password, country, dob, identity, identity_number, catogary, capped, additional_details,profile_photo,identity_photo,certificate_photo) 
-    VALUES ('$first_name','$last_name','$email','$hashed_password','$country','$dob','$identity','$identity_number','$catogary','$capped','$additional_details','$file_name3','$file_name1','$file_name2')";
-
-    mysqli_query($conn, $sql3);
+   
+    
 }
 
 mysqli_close($conn);
