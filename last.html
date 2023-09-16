@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanindu Hasaranga</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/17d9527542.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div id="header">
+    <div class="container">
+        <nav>
+            
+            <img src="images/moon.png" id="icon">
+           
+        </nav>
+
+        
+        <div class="header-text">
+
+            <h1 class="anim">Hi, I'm</h2>
+            
+            <h2>Wanindu Hasaranga</h2>
+            
+            <h1>I'm <span class="auto-input">Hasaranga</span></h1>
+            
+        </div>
+        <div class="img-box anim">
+       
+            <img src="images/wani1.png" class="main-img">
+           </div>
+
+       
+
+       <br><br><br><br>
+
+    
+       
+   
+
+    
+</div>
+
+<br><br><br>
+<!-------------------about---------------->
+
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img src="images/wani2.png">
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-title">About Me</h1>
+                
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>A Talented Player</span><br></li>
+                            <li><span>Active Member</span><br>
+                                </li>
+                            <li><span>A Leader</span><br></li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li><span>A Leader</span><br></li>
+                            <li><span>A Active Member</span><br></li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                       
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-------------------services-------------->
+
+<div id="services">
+    <div class="container">
+        <h1 class="sub-title">My Services</h1>
+        <div class="services-list">
+            <div>
+                <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                <h2>Legbreak</h2>
+                
+                <a href="">Learn more</a>
+            </div>
+            <div>
+                <i class="fa-solid fa-baseball-bat-ball"></i>
+                <h2>Right hand Bat</h2>
+                
+                <a href="">Learn more</a>
+            </div>
+            <div>
+                <i class="fa-solid fa-person"></i>
+                <h2>Bowling Allrounder</h2>
+                
+                <a href="">Learn more</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Dowload Our App</h3>
+                <p>Dowload App for Android and ios mobile phone.</p>
+                <div class="app-logo">
+                    <img src="images/play-store.png">
+                    <img src="images/app-store.png">
+                </div>
+            </div>
+            <div class="footer-col-2">
+                <img src="images/white lpl.png">
+                <p>Our Purpose is to Sustainably make the pleaseure and benifits of sports accessible to many.</p>
+            </div>
+            <div class="footer-col-3">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li>Cupons</li>
+                    <li>Blog Post</li>
+                    <li>Return Policy</li>
+                    <li>Join Affiliate</li>
+                </ul>
+            </div>
+            <div class="footer-col-4">
+                <h3>Follow us</h3>
+                <ul>
+                    <li>Facebook</li>
+                    <li>Linked In</li>
+                    <li>Instagram</li>
+                    <li>Youtube</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <p class="copyright">Copyright -OM</p>
+    </div>
+</div>
+
+
+<script>
+
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+</script>
+
+<script>
+
+    var icon = document.getElementById("icon");
+
+    icon.onclick = function(){
+        document.body.classList.toggle("dark-theme");
+        if(document.body.classList.contains("dark-theme")) {
+            icon.src = "images/sun.png";
+        }
+        else{
+            icon.src = "images/moon.png";
+        }
+    }
+</script>
+
+<script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+<script>
+    var typed = new Typed(".auto-input", {
+        strings: ["Hasaranga", "26 Years Old", "Right hand Bat","Legbreak", "Bowling Allrounder", "ICC Ranking NO:2"],
+        typeSpeed: 100,
+        backSpeed: 100,
+        loop: true
+    })
+</script>
+
+
+    
+</body>
+</html>
