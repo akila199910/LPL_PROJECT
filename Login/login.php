@@ -30,16 +30,30 @@ if (isset($_POST['login'])) {
         $user = mysqli_fetch_assoc($result_register);
         $hashed_password = $user['password'];
 
+        
+
         // Verify the provided password against the hashed password
         if (password_verify($password, $hashed_password)) {
             // Password is correct, user is authenticated
-            session_start();
+            
+            if ($user['verification'] == 1) {
+
+           session_start();
             $_SESSION['user_id'] = $user['player_id'];
             $_SESSION['user_email'] = $user['email'];
+
             // ... other user data
 
             header("Location: /Players/Player_dashboard/player_dashboard.php"); // Redirect to the player dashboard page
             exit();
+            }
+
+            else{
+                echo "Please Verify your Account"; 
+
+            }
+
+
         } else {
             echo "Invalid password";
         }
@@ -101,17 +115,30 @@ if (isset($_POST['login'])) {
         // Verify the provided password against the hashed password
         if (password_verify($password, $hashed_password)) {
             // Password is correct, guest is authenticated
-            session_start();
-            $_SESSION['guest_id'] = $guest['guest_id'];
-            $_SESSION['guest_email'] = $guest['email'];
-            // ... other guest data
 
-            header("Location: /Guest/Guest_dashboard/guest_dashboard.php"); // Redirect to the guest dashboard page
-            exit();
-        }  else {
+            if ($guest['verification'] == 1) {
+
+                session_start();
+                $_SESSION['guest_id'] = $guest['guest_id'];
+                $_SESSION['guest_email'] = $guest['email'];
+                // ... other guest data
+
+                header("Location: /Guest/Guest_dashboard/guest_dashboard.php"); // Redirect to the guest dashboard page
+                exit();
+            }
+            else{
+                echo "Please Verify your Account"; 
+            }
+
+        }
+
+        else {
             echo "Invalid password";
         }
-    } else {
+
+    } 
+    
+    else {
         echo "Invalid email";
     }
 }
