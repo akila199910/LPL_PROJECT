@@ -35,9 +35,14 @@ if (isset($_POST['view'])) {
 
 //Approve reject list
 if (isset($_POST['approve'])) {
+  session_start();
+  $modaretor_id=$_SESSION['moderators_id'];
+
   $player_id = $_POST['player_id'];
   $sql = "UPDATE register SET approved = 'Yes' WHERE player_id = $player_id";
   mysqli_query($conn, $sql);
+  $sql2 = "UPDATE register SET moderators_id = '$modaretor_id' WHERE player_id = $player_id";
+  mysqli_query($conn, $sql2);
 
   $catogary = "SELECT catogary FROM register WHERE player_id = $player_id";
   $catogaryResult = mysqli_query($conn, $catogary);
@@ -73,9 +78,11 @@ if (isset($_POST['approve'])) {
     
 
 if (isset($_POST['reject'])) {
-  $player_id = $_POST['player_id'];
+    $player_id = $_POST['player_id'];
     $sq2 = "UPDATE register SET approved = 'No' WHERE player_id = $player_id";
     mysqli_query($conn, $sq2);
+    $sql3 = "UPDATE register SET moderators_id = '$modaretor_id' WHERE player_id = $player_id";
+    mysqli_query($conn, $sql3);
     header("Location: /Moderator/ReviewPage.php");
 
 }
@@ -208,6 +215,7 @@ if (isset($_POST['reject'])) {
               </form>
 
               </div>
+            
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

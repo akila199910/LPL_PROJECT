@@ -20,7 +20,7 @@ move_uploaded_file($tempname1,$folder1);
   $result = mysqli_query($conn, $sql);
 
   if ($result) {
-    header("Location: index.php?msg=Team updated successfully");
+    header("Location: indexteam.php?msg=Team updated successfully");
   } else {
     echo "Failed: " . mysqli_error($conn);
   }

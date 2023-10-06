@@ -6,7 +6,7 @@ $sql = "DELETE FROM team WHERE id = $id";
 $result = mysqli_query($conn, $sql);
 
 if ($result) {
-  header("Location: index.php?msg=Team deleted successfully");
+  header("Location: indexteam.php?msg=Team deleted successfully");
 } else {
   echo "Failed: " . mysqli_error($conn);
 }

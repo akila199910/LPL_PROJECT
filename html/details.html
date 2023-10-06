@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Online Market Web Site</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Poppins:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+    <script src="https://kit.fontawesome.com/17d9527542.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+    <div class="container">
+
+
+        <div class="navbar">
+            <div class="logo">
+                <img src="images/online market.png" width="125px">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="market.html">Home</a></li>
+                    <li><a href="product1.html">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="account.html">Account</a></li>
+                </ul>
+            </nav>
+            <img src="images/cart.png" width="30px" height="30px">
+        </div>
+
+    </div>
+    </div>
+    </div>
+
+
+    <div class="small-container single-product">
+        <div class="row">
+            <div class="col-2">
+                <img src="images/gallery-1.jpg" width="100%" id="ProductImg">
+
+                <div class="small-img-row">
+                    <div class="small-img-col">
+                        <img src="images/gallery-1.jpg" width="100%" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="images/gallery-2.jpg" width="100%" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="images/gallery-3.jpg" width="100%" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="images/gallery-4.jpg" width="100%" class="small-img">
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="col-2">
+                <p>Home /T-shirt</p>
+                <h1>Red Printed T-shirt by HRX</h1>
+                <h4>Rs.2250.00</h4>
+                <select>
+                    <option>Select Size</option>
+                    <option>XXL</option>
+                    <option>X</option>
+                    <option>L</option>
+                    <option>M</option>
+                    <option>S</option>
+
+                    
+
+
+                    <input type="number" value="1">
+
+                    <a href="buynow.html" class="btn">Buy Now</a>
+                    <a href="" class="btn">Add TO Cart</a>
+
+                    <h3>Product Details <i class="fa fa-indent"></i></h3>
+                    <br>
+                    <p>It should not only describe the t-shirt. Rather, it should tell a compelling story about why the
+                        t-shirt is worth buying.
+                        As with stories, your t-shirt product description must have an attention hook, a climax, and an
+                        impact.
+                        Besides, it should not only amuse but also empower the customers to make informed decisions.</p>
+                </select>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-------------------footer------->
+
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Dowload Our App</h3>
+                    <p>Dowload App for Android and ios mobile phone.</p>
+                    <div class="app-logo">
+                        <img src="images/play-store.png">
+                        <img src="images/app-store.png">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="images/white.png">
+                    <p>Our Purpose is to Sustainably make the pleaseure and benifits of sports accessible to many.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>Cupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Linked In</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright -OM</p>
+        </div>
+    </div>
+
+
+    <script>
+        var ProductImg = document.getElementById("ProductImg");
+        var SmallImg = documnet.getElementByClassName("small-img");
+
+        SmallImg[0].onclick = function () {
+            ProductImg.src = SmallImg[0].src;
+        }
+
+        SmallImg[1].onclick = function () {
+            ProductImg.src = SmallImg[1].src;
+        }
+
+        SmallImg[2].onclick = function () {
+            ProductImg.src = SmallImg[2].src;
+        }
+
+        SmallImg[3].onclick = function () {
+            ProductImg.src = SmallImg[3].src;
+        }
+    </script>
+
+
+
+</body>
+
+</html>

@@ -22,7 +22,8 @@ $sql = "CREATE TABLE IF NOT EXISTS register (
         certificate_photo VARCHAR(255),
         verification VARCHAR(255),
         verification_code VARCHAR(255),
-        approved VARCHAR (255) NULL
+        approved VARCHAR (255) NULL,
+        moderators_id INT
 
     )";
 

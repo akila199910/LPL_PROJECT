@@ -6,8 +6,6 @@ if (isset($_SESSION['guest_id'])) {
 
 } else {
     header("Location: logout.php");
-
-
 }
 
 ?>
@@ -20,7 +18,8 @@ if (isset($_SESSION['guest_id'])) {
 <body>
     <h1> Guest dashboard </h1>
 
-    <input type="button" name="auction" value="Live Auction">
+    <a href="auctionpage.php"><button>Live Auction</button></a>
+
     <a href="logout.php"><input type="button" name="logout" value="logout"></a>
 
     

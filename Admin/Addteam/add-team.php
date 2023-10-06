@@ -38,7 +38,7 @@ $result = mysqli_query($conn, $sql);
 move_uploaded_file($tempname1,$folder1);
 
 if ($result) {
-   header("Location: index.php?msg=New team added successfully");
+   header("Location: indexteam.php?msg=New team added successfully");
 } else {
    echo "Failed: " . mysqli_error($conn);
 }
