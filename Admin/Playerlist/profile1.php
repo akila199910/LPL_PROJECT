@@ -68,9 +68,14 @@ $current_time_formatted = date("Y-m-d H:i:s", $current_time);
 echo $current_time_formatted;
 $timeDifference = strtotime($auctionEndTime) - strtotime($current_time_formatted);
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Player Details</title>
@@ -82,7 +87,7 @@ $timeDifference = strtotime($auctionEndTime) - strtotime($current_time_formatted
 
     <script>
 // Countdown timer
-// Countdown timer
+
 let countdown = <?php echo $timeDifference; ?>;
 function updateCountdown() {
     const countdownElement = document.getElementById("countdown");

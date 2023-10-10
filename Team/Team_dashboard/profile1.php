@@ -111,6 +111,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Player Details</title>
@@ -138,14 +140,26 @@ while ($row = mysqli_fetch_assoc($result)) {
         }
         ?>
     </ul>
-    <script>
-       // Countdown timer
+    <!-- Include jQuery library -->
+<script>
+// Countdown timer
 let countdown = <?php echo $timeDifference; ?>;
 function updateCountdown() {
     const countdownElement = document.getElementById("countdown");
     countdownElement.textContent = `Time Left: ${countdown} seconds`;
+    
     if (countdown <= 0) {
         countdownElement.textContent = "Auction Ended";
+
+        // AJAX request to update the highest bid price
+        $.ajax({
+            type: "POST",
+            url: "update_highest_bid.php", // Update this with the actual PHP file
+            data: { player_id: <?php echo $player_id; ?> },
+            success: function(response) {
+                // You can handle the response if needed
+            }
+        });
     } else {
         countdown--;
         setTimeout(updateCountdown, 1000); // Update the countdown every 1 second
@@ -156,9 +170,25 @@ function updateCountdown() {
 const startAuctionButton = document.getElementById("startAuction");
 startAuctionButton.addEventListener("click", () => {
     startAuctionButton.disabled = true; // Disable the button once the auction starts
-    updateCountdown();});
+    updateCountdown();
+});
 
+// Periodically update the highest bid price using AJAX
+function updateHighestBid() {
+    $.ajax({
+        type: "POST",
+        url: "get_highest_bid.php", // Update this with the actual PHP file
+        data: { player_id: <?php echo $player_id; ?> },
+        success: function(response) {
+            // Update the UI with the latest highest bid price
+            $("#highestBid").html("Highest Bid: " + response);
+            setTimeout(updateHighestBid, 5000); // Update every 5 seconds (adjust as needed)
+        }
+    });
+}
 
-    </script>
+// Start updating the highest bid price
+updateHighestBid();
+</script>
 </body>
 </html>

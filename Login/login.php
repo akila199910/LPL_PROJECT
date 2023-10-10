@@ -55,7 +55,7 @@ if (isset($_POST['login'])) {
             $_SESSION['admin_email'] = $admin['email'];
             // ... other admin data
 
-            header("Location: /Admin/Admin_dashboard/admin_dashboard.php"); // Redirect to the admin dashboard page
+            header("Location: /Admin/index.php"); // Redirect to the admin dashboard page
             exit();
         } else {
             echo "Invalid password";

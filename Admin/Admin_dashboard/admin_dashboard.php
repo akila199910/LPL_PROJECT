@@ -9,14 +9,6 @@ if (isset($_SESSION['admin_id'])) {
 
 
 }
-/*$sql2 = "CREATE TABLE IF NOT EXISTS auction (
-    auction_id INT PRIMARY KEY AUTO_INCREMENT,
-    player_id INT NOT NULL,
-    auction_start_time TIMESTAMP NULL,
-    auction_end_time TIMESTAMP NULL,
-    active INT NULL)";
-
-    mysqli_query($conn,$sql2);*/
 ?>
 
 <!DOCTYPE html>
