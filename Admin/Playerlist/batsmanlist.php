@@ -2,7 +2,7 @@
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
-$sql5 = "SELECT * from batsman";
+$sql5 = "SELECT * from batsman WHERE sold is NULL";
 $result = mysqli_query($conn, $sql5);
 
 
@@ -11,7 +11,9 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
   player_id INT NOT NULL,
   auction_start_time TIMESTAMP,
   auction_end_time TIMESTAMP NULL,
-  active INT NULL)";
+  active INT NULL,
+  FOREIGN KEY (player_id) REFERENCES register(player_id)
+  )";
   mysqli_query($conn,$sql2);
 
 
@@ -20,7 +22,7 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
       
     // Calculate the end time (5 minutes from the auction start time)
     $current_time = time();
-    $auction_end_time = $current_time + (3 * 60); // 5 minutes in seconds
+    $auction_end_time = $current_time + (1.5 * 60); // 5 minutes in seconds
   
     // Convert the timestamps to formatted time strings
     $current_time_formatted = date("Y-m-d H:i:s", $current_time);

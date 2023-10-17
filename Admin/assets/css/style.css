@@ -17,11 +17,11 @@
 
 /*********** admin dashboard styling **********/
   .card{
-      background-color: #c9e4ff;
+      background-color: #ffff;
       padding:20px;
       margin: 10px;
       border-radius: 10px;
-      box-shadow: 8px 5px 5px rgb(48, 139, 169);
+      box-shadow: 8px 5px 5px rgb(5, 241, 194);
   }
 
 /************************** for sidebar ***********************************/
@@ -34,7 +34,7 @@
       z-index: 1; /* Stay on top */
       top: 0;
       left: 0;
-      background-color: #b0d8ef; /* Black*/
+      background-color: #fff; /* Black*/
       overflow-x: hidden; /* Disable horizontal scroll */
       padding-top: 60px; /* Place content 60px from the top */
       transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
@@ -58,7 +58,7 @@
 
     /* When you mouse over the navigation links, change their color */
     .sidebar a:hover {
-      background-color: #33d1ac;
+      background-color: #fff;
     }
     
     /* Position and style the close button (top right corner) */
@@ -77,11 +77,11 @@
       padding: 10px 15px;
       border: none;
       color: #fff;
-      background-color:lightblue;
+      background-color:#0cb7f5;
     }
     
     .openbtn:hover {
-      color: #239199;
+      color: #ECDAC9;
     }
     
     /* Style page content - use this if you want to push the page content to the right when you open the side navigation */

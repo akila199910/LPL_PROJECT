@@ -5,6 +5,20 @@ mysqli_select_db($conn, "lplsystem");
 if (isset($_GET['player_id'])) {
     $player_id = $_GET['player_id'];
 } 
+$sqlMaxBid = "SELECT MAX(bid_price) AS max_bid FROM bid WHERE player_id = $player_id";
+$resultMaxBid = mysqli_query($conn, $sqlMaxBid);
+
+if (!$resultMaxBid) {
+    die("Error in SQLMaxBid: " . mysqli_error($conn));
+}
+
+// Check if any rows were returned
+if (mysqli_num_rows($resultMaxBid) > 0) {
+    $rowMaxBid = mysqli_fetch_assoc($resultMaxBid);
+    $maxBid = $rowMaxBid["max_bid"];
+} else {
+    echo "No maximum bid found for player ID: $player_id<br>";
+}
 
 // Now, you can fetch additional information from the 'register' and 'batsman' tables
 $sql2 = "SELECT register.player_id, register.first_name,
@@ -89,9 +103,12 @@ $timeDifference = strtotime($auctionEndTime) - strtotime($current_time_formatted
 // Countdown timer
 
 let countdown = <?php echo $timeDifference; ?>;
+let maxBid = <?php echo isset($maxBid) ? $maxBid : 0; ?>;
+
 function updateCountdown() {
     const countdownElement = document.getElementById("countdown");
     countdownElement.textContent = `Time Left: ${countdown} seconds`;
+
     if (countdown <= 0) {
         countdownElement.textContent = "Auction Ended";
         
@@ -102,14 +119,26 @@ function updateCountdown() {
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 // You can handle the response if needed
+
+                // AJAX request to update the batsman's sold column
+                const xhrSold = new XMLHttpRequest();
+                xhrSold.open("POST", "update_sold.php", true);
+                xhrSold.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhrSold.onreadystatechange = function () {
+                    if (xhrSold.readyState == 4 && xhrSold.status == 200) {
+                        // You can handle the response if needed
+                    }
+                };
+                xhrSold.send(`player_id=<?php echo $player_id; ?>&max_bid=${maxBid}`);
             }
-        };
+        }; 
         xhr.send(`player_id=<?php echo $player_id; ?>`);
     } else {
         countdown--;
         setTimeout(updateCountdown, 1000); // Update the countdown every 1 second
     }
 }
+
 
 // Add an event listener to the Start Auction button
 const startAuctionButton = document.getElementById("startAuction");
