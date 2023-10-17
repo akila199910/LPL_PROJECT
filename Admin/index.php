@@ -22,10 +22,10 @@
     <div id="main-content" class="container allContent-section py-4">
         <div class="row">
             <div class="col-sm-4">
-                <div class="card"  style="background-color:rgb(5, 241, 194)">
+                <div class="card"  >
                     <i class="fa fa-users  mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Moderators</h4>
-                    <h5 style="color:white;">
+                    <h4 style="color:black;">Moderators</h4>
+                    <h5 style="color:black;">
                     <?php
                     
                         $sql="SELECT * from moderators ";
@@ -42,10 +42,10 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="card" style="background-color:rgb(5, 241, 194)" >
+                <div class="card"  >
                     <i class="fa fa-th-large mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Registered Players</h4>
-                    <h5 style="color:white;">
+                    <h4 style="color:black;">Registered Players</h4>
+                    <h5 style="color:black;">
                     <?php
                        
                        $sql="SELECT * from register";
@@ -64,10 +64,10 @@
             </div>
 
             <div class="col-sm-4">
-                <div class="card"style="background-color:rgb(5, 241, 194)">
+                <div class="card">
                     <i class="fa fa-th-large mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Guests</h4>
-                    <h5 style="color:white;">
+                    <h4 style="color:black;">Guests</h4>
+                    <h5 style="color:black;">
                     <?php
                        
                        $sql="SELECT * from guest";
@@ -86,10 +86,10 @@
             </div>
 
             <div class="col-sm-3">
-                <div class="card" style="background-color:rgb(5, 241, 194)">
+                <div class="card" >
                     <i class="fa fa-th mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Batsmen</h4>
-                    <h5 style="color:white;">
+                    <h4 style="color:black;">Batsmen</h4>
+                    <h5 style="color:black;">
                     <?php
                        
                        $sql="SELECT * from batsman";
@@ -108,10 +108,10 @@
             </div>
 
             <div class="col-sm-3">
-            <div class="card" style="background-color:rgb(5, 241, 194)">
+            <div class="card" >
                     <i class="fa fa-th mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Bowlers</h4>
-                    <h5 style="color:white;">
+                    <h4 style="color:black;">Bowlers</h4>
+                    <h5 style="color:black;">
                     <?php
                        
                        $sql="SELECT * from bowler";
@@ -130,10 +130,10 @@
             </div>
 
             <div class="col-sm-3">
-            <div class="card" style="background-color:rgb(5, 241, 194)">
+            <div class="card" >
                     <i class="fa fa-th mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Allrounder</h4>
-                    <h5 style="color:white;">
+                    <h4 style="color:black;">Allrounder</h4>
+                    <h5 style="color:black;">
                     <?php
                        
                        $sql="SELECT * from allrounder";
@@ -152,10 +152,10 @@
             </div>
 
             <div class="col-sm-3">
-                <div class="card"style="background-color:rgb(5, 241, 194)">
+                <div class="card">
                     <i class="fa fa-th mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">WicketKeeper</h4>
-                    <h5 style="color:white;">
+                    <h4 style="color:black;">WicketKeeper</h4>
+                    <h5 style="color:black;">
                     <?php
                        
                        $sql="SELECT * from wicketkeeper";
