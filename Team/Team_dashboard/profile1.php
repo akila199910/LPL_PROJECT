@@ -2,7 +2,6 @@
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
-//playerge id eka ganna auction table eken
 $playersql="SELECT player_id FROM auction WHERE active=0";
 $idResult=mysqli_query($conn, $playersql);
 
@@ -98,97 +97,80 @@ mysqli_query($conn, $sql2);
    $result = mysqli_query($conn, $sql2);
    }
 
-   
-$sql = "SELECT team_id, MAX(bid_price)  FROM bid GROUP BY team_id desc";
-$result = mysqli_query($conn, $sql);
-
-if (mysqli_num_rows($result) > 0) {
-while ($row = mysqli_fetch_assoc($result)) {
-    echo "<br>Team ID: " . $row["team_id"] . " ";
-    echo "Maximum Bid Price: " . $row["MAX(bid_price)"] . "<br>";}
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Player Details</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Player Details</title>
 </head>
 <body>
-    
-       <br> <button id="startAuction" name="start">Start Auction</button>
-        <p id="countdown"></p><br>
 
-    
-        <form action="" method="POST">
-        <p>Place Bid Price</p>
-        <input type="text" name="bid_price">
-        <input type="submit" name="submit" value="Submit Bid">
-    </form>
+<br>
+<button id="JoinAuction" name="JoinAuction">Join Auction</button>
+<p id="countdown"></p><br>
 
-    <h2>Maximum Bid Prices by Team:</h2>
+<div id="bidding"></div>
 
-    <ul>
-        <?php
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<li>Team ID: " . $row["team_id"] . ", Maximum Bid Price: " . $row["max_bid_price"] . "</li>";
-            }
-        }
-        ?>
-    </ul>
-    <!-- Include jQuery library -->
+<form id="bidForm" action="" method="POST">
+    <p>Place Bid Price</p>
+    <input type="text" name="bid_price" id="bid_price" <?php echo ($timeDifference <= 0) ? 'disabled' : ''; ?>>
+    <input type="submit" name="submit" value="Submit Bid" <?php echo ($timeDifference <= 0) ? 'disabled' : ''; ?>>
+</form>
+
+</body>
+</html>
 <script>
-// Countdown timer
+
 let countdown = <?php echo $timeDifference; ?>;
 function updateCountdown() {
     const countdownElement = document.getElementById("countdown");
     countdownElement.textContent = `Time Left: ${countdown} seconds`;
-    
+
     if (countdown <= 0) {
         countdownElement.textContent = "Auction Ended";
-
-        // AJAX request to update the highest bid price
-        $.ajax({
-            type: "POST",
-            url: "update_highest_bid.php", // Update this with the actual PHP file
-            data: { player_id: <?php echo $player_id; ?> },
-            success: function(response) {
-                // You can handle the response if needed
-            }
-        });
+        document.getElementById("JoinAuction").disabled = true;
+        document.getElementById("bidForm").style.display = "none";
     } else {
         countdown--;
         setTimeout(updateCountdown, 1000); // Update the countdown every 1 second
     }
 }
 
-// Add an event listener to the Start Auction button
-const startAuctionButton = document.getElementById("startAuction");
-startAuctionButton.addEventListener("click", () => {
-    startAuctionButton.disabled = true; // Disable the button once the auction starts
+// Add an event listener to the Join Auction button
+const joinAuctionButton = document.getElementById("JoinAuction");
+joinAuctionButton.addEventListener("click", () => {
+    joinAuctionButton.disabled = true; // Disable the button once the auction starts
     updateCountdown();
 });
 
-// Periodically update the highest bid price using AJAX
-function updateHighestBid() {
-    $.ajax({
-        type: "POST",
-        url: "get_highest_bid.php", // Update this with the actual PHP file
-        data: { player_id: <?php echo $player_id; ?> },
-        success: function(response) {
-            // Update the UI with the latest highest bid price
-            $("#highestBid").html("Highest Bid: " + response);
-            setTimeout(updateHighestBid, 5000); // Update every 5 seconds (adjust as needed)
+function loadBid() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("bidding").innerHTML =
+                this.responseText;
         }
-    });
+    };
+    xhttp.open("POST", "bidding.php?player_id=<?php echo $player_id; ?>", true);
+    xhttp.send();
+
 }
 
-// Start updating the highest bid price
-updateHighestBid();
+setInterval(function () {
+    loadBid();
+    // 1sec
+}, 100);
+
+window.onload = loadBid;
 </script>
-</body>
-</html>
+
+
+
+
+
