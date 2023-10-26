@@ -11,9 +11,9 @@
     <a href="/Admin/Addmoderator/indexmodertor.php"  onclick="showModerators()" ><i class="fa fa-users"></i> Moderators</a>
     <a href="/Admin/Addteam/indexteam.php"  onclick="showTeam()" ><i class="fa fa-users"></i> Teams</a>
     <a href="/Admin/Playerlist/batsmanlist.php"   onclick="showBatsman()" ><i class="fa fa-th-large"></i>Batsman List</a>
-    <a href="/Admin/Playerlist/batsmanlist.php"   onclick="showBaller()" ><i class="fa fa-th-large"></i> Bowler List</a>
-    <a href="/Admin/Playerlist/batsmanlist.php"   onclick="showWicketkeeper()" ><i class="fa fa-th-large"></i> Wicket Keeper List</a>    
-    <a href="/Admin/Playerlist/batsmanlist.php"   onclick="showAllrounder()" ><i class="fa fa-th-large"></i> Allrounder List</a>
+    <a href="/Admin/Playerlist/bowlerlist.php"   onclick="showBaller()" ><i class="fa fa-th-large"></i> Bowler List</a>
+    <a href="/Admin/Playerlist/wicketkeeperlist.php"   onclick="showWicketkeeper()" ><i class="fa fa-th-large"></i> Wicket Keeper List</a>    
+    <a href="/Admin/Playerlist/allrounderlist.php"   onclick="showAllrounder()" ><i class="fa fa-th-large"></i> Allrounder List</a>
     <a href="/Admin/Admin_dashboard/logout.php" onclick="logout()"><i class="fa fa-user"></i> Log Out</a>
   
   <!---->

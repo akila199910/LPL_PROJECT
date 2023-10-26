@@ -12,7 +12,16 @@ if (mysqli_num_rows($idResult) > 0) {
 } else {
     echo "No matching data found for player ID:<br>";
 }
+$Catogary= "SELECT catogary FROM register WHERE player_id=$player_id";
+$CatogaryRsult=mysqli_query($conn, $Catogary);
 
+
+if (mysqli_num_rows($CatogaryRsult) > 0) {
+    while ($row4 = mysqli_fetch_assoc($CatogaryRsult)) {
+        $PlayerCatogary= $row4["catogary"];
+    }
+}
+if($PlayerCatogary=='bat'){
 // Now, you can fetch additional information from the 'register' and 'batsman' tables
 $sql2 = "SELECT register.player_id, register.first_name,
 register.last_name,register.country,register.dob,register.profile_photo,
@@ -53,6 +62,141 @@ if (mysqli_num_rows($result2) > 0) {
 } else {
     echo "No matching data found for player ID: $player_id<br>";
 }
+}
+//එල්ස් එක මෙතනින් පටං ගන්න කැටගරි එක තෝරන එකේ.....
+elseif($PlayerCatogary=='bol'){
+    $sql2 = "SELECT register.player_id, register.first_name,
+register.last_name,register.country,register.dob,register.profile_photo,
+register.catogary,bowler.bowl_style,bowler.lpl_nom,bowler.t20_nom,bowler.wickets,
+bowler.bowl_average,bowler.economy,bowler.best_bowl,bowler.w5,
+bowler.besed_price
+         FROM register
+         INNER JOIN bowler ON register.player_id = bowler.player_bowlling_id
+         WHERE register.player_id = $player_id";
+
+$result2 = mysqli_query($conn, $sql2);
+
+if (!$result2) {
+    die("Error in SQL2: " . mysqli_error($conn));
+}
+
+// Check if any rows were returned
+if (mysqli_num_rows($result2) > 0) {
+    while ($row2 = mysqli_fetch_assoc($result2)) {
+        echo $row2["profile_photo"] . "<br>";
+        echo "First Name: " . $row2["first_name"] . "<br>";
+        echo "Last Name: " . $row2["last_name"] . "<br>";
+        echo "Country: " . $row2["country"] . "<br>";
+        echo "Age: " . $row2["dob"] . "<br>";
+        echo "Catogary: " . $row2["catogary"] . "<br>";
+        echo "Bowling Style: " . $row2["bowl_style"] . "<br>";
+        echo "LPL Matches: " . $row2["lpl_nom"] . "<br>";
+        echo "T20 Matches: " . $row2["t20_nom"] . "<br>";
+        echo "Wickets: " . $row2["wickets"] . "<br>";
+        echo "Bowling Average: " . $row2["bowl_average"] . "<br>";
+        echo "Economy: " . $row2["economy"] . "<br>";
+        echo "Best Bowling: " . $row2["best_bowl"] . "<br>";
+        echo "5 - Wicket: " . $row2["w5"] . "<br>";
+        echo "Based Price: " . $row2["besed_price"] . "<br>";
+    }
+} else {
+    echo "No matching data found for player ID: $player_id<br>";
+}
+}
+
+
+elseif($PlayerCatogary=='wk'){
+    $sql2 = "SELECT register.player_id, register.first_name,
+register.last_name,register.country,register.dob,register.profile_photo,
+register.catogary,wicketkeeper.b_style,wicketkeeper.lpl_nom,wicketkeeper.t20_nom,wicketkeeper.runs,
+wicketkeeper.b_average,wicketkeeper.strike_rate,wicketkeeper.high_score,wicketkeeper.not_out,
+wicketkeeper.stumps,wicketkeeper.catch,wicketkeeper.based_price
+         FROM register
+         INNER JOIN wicketkeeper ON register.player_id = wicketkeeper.player_keeping_id
+         WHERE register.player_id = $player_id";
+
+$result2 = mysqli_query($conn, $sql2);
+
+if (!$result2) {
+    die("Error in SQL2: " . mysqli_error($conn));
+}
+
+// Check if any rows were returned
+if (mysqli_num_rows($result2) > 0) {
+    while ($row2 = mysqli_fetch_assoc($result2)) {
+        echo $row2["profile_photo"] . "<br>";
+        echo "First Name: " . $row2["first_name"] . "<br>";
+        echo "Last Name: " . $row2["last_name"] . "<br>";
+        echo "Country: " . $row2["country"] . "<br>";
+        echo "Age: " . $row2["dob"] . "<br>";
+        echo "Catogary: " . $row2["catogary"] . "<br>";
+        echo "Batting Style: " . $row2["b_style"] . "<br>";
+        echo "LPL Matches: " . $row2["lpl_nom"] . "<br>";
+        echo "T20 Matches: " . $row2["t20_nom"] . "<br>";
+        echo "Runs: " . $row2["runs"] . "<br>";
+        echo "Batting Average: " . $row2["b_average"] . "<br>";
+        echo "Strike Rate: " . $row2["strike_rate"] . "<br>";
+        echo "High Score: " . $row2["high_score"] . "<br>";
+        echo "Not Out: " . $row2["not_out"] . "<br>";
+        echo "Stumps: " . $row2["stumps"] . "<br>";
+        echo "Catch: " . $row2["catch"] . "<br>";
+        echo "Based Price: " . $row2["based_price"] . "<br>";
+    }
+} else {
+    echo "No matching data found for player ID: $player_id<br>";
+}
+
+}
+elseif($PlayerCatogary=='alr'){
+    $sql2 = "SELECT register.player_id, register.first_name,
+    register.last_name,register.country,register.dob,register.profile_photo,
+    register.catogary,allrounder.b_style,allrounder.lpl_nom,allrounder.t20_nom,allrounder.runs,
+    allrounder.b_average,allrounder.strike_rate,allrounder.high_score,allrounder.not_out,
+    allrounder.fifty,allrounder.hundred,allrounder.bowl_style,allrounder.wickets
+    ,allrounder.bowl_average,allrounder.economy,allrounder.best_bowl,allrounder.w5,allrounder.base_price
+             FROM register
+             INNER JOIN allrounder ON register.player_id = allrounder.player_al_id
+             WHERE register.player_id = $player_id";
+
+$result2 = mysqli_query($conn, $sql2);
+
+if (!$result2) {
+    die("Error in SQL2: " . mysqli_error($conn));
+}
+
+// Check if any rows were returned
+if (mysqli_num_rows($result2) > 0) {
+    while ($row2 = mysqli_fetch_assoc($result2)) {
+        echo $row2["profile_photo"] . "<br>";
+        echo "First Name: " . $row2["first_name"] . "<br>";
+        echo "Last Name: " . $row2["last_name"] . "<br>";
+        echo "Country: " . $row2["country"] . "<br>";
+        echo "Age: " . $row2["dob"] . "<br>";
+        echo "Catogary: " . $row2["catogary"] . "<br>";
+        echo "Batting Style: " . $row2["b_style"] . "<br>";
+        echo "LPL Matches: " . $row2["lpl_nom"] . "<br>";
+        echo "T20 Matches: " . $row2["t20_nom"] . "<br>";
+        echo "Runs: " . $row2["runs"] . "<br>";
+        echo "Batting Average: " . $row2["b_average"] . "<br>";
+        echo "Strike Rate: " . $row2["strike_rate"] . "<br>";
+        echo "High Score: " . $row2["high_score"] . "<br>";
+        echo "Not Out: " . $row2["not_out"] . "<br>";
+        echo "Fifty: " . $row2["fifty"] . "<br>";
+        echo "Hundred: " . $row2["hundred"] . "<br>";
+        echo "Bowling Style: " . $row2["bowl_style"] . "<br>";
+        echo "Wickets: " . $row2["wickets"] . "<br>";
+        echo "Bowling Average: " . $row2["bowl_average"] . "<br>";
+        echo "Economy: " . $row2["economy"] . "<br>";
+        echo "Best Bowling: " . $row2["best_bowl"] . "<br>";
+        echo "5 - Wicket: " . $row2["w5"] . "<br>";
+        echo "Based Price: " . $row2["based_price"] . "<br>";
+    }
+} else {
+    echo "No matching data found for player ID: $player_id<br>";
+}
+
+}
+
 
 $sql = "SELECT auction_start_time, auction_end_time FROM auction WHERE player_id = $player_id";
 $result = mysqli_query($conn, $sql);

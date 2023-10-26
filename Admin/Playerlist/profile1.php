@@ -5,20 +5,46 @@ mysqli_select_db($conn, "lplsystem");
 if (isset($_GET['player_id'])) {
     $player_id = $_GET['player_id'];
 } 
-$sqlMaxBid = "SELECT MAX(bid_price) AS max_bid FROM bid WHERE player_id = $player_id";
-$resultMaxBid = mysqli_query($conn, $sqlMaxBid);
+//$sqlMaxBidID = "SELECT MAX(bid_price) AS max_bid,team_id FROM bid WHERE player_id = $player_id";
+$sqlMaxBidID = "SELECT MAX(bid_price) AS max_bid FROM bid WHERE player_id = $player_id";
 
-if (!$resultMaxBid) {
+// මෙතන කේස් එකක් තියේ මැක්ස් බිඩ් එකට අදාල ටීම් අයි ඩී එක සිලෙක්ට් කර ගෙන ඉන්න ඕන.
+//ඒක ඒම කරල නැති නිසා තමා හැම වෙලේම එකම ටීම් අයි ඩී එකක් සෙට් වෙන්නෙ
+$resultMaxBidID = mysqli_query($conn, $sqlMaxBidID);
+
+if (!$resultMaxBidID) {
     die("Error in SQLMaxBid: " . mysqli_error($conn));
 }
 
 // Check if any rows were returned
-if (mysqli_num_rows($resultMaxBid) > 0) {
-    $rowMaxBid = mysqli_fetch_assoc($resultMaxBid);
-    $maxBid = $rowMaxBid["max_bid"];
+if (mysqli_num_rows($resultMaxBidID) > 0) {
+    $rowMaxBidID = mysqli_fetch_assoc($resultMaxBidID);
+    $maxBid = $rowMaxBidID["max_bid"];
+//$team_id = $rowMaxBidID["team_id"];
 } else {
     echo "No maximum bid found for player ID: $player_id<br>";
 }
+
+/*//මැක්ස් බිඩ් එකට අදාල ටීම් එකේ අයි ඩී එක සිලෙක්ට් කර ගන්න
+$sqlMaxTeamID = "SELECT team_id FROM bid WHERE player_id = $player_id and bid_price=$maxBid";
+
+// මෙතන කේස් එකක් තියේ මැක්ස් බිඩ් එකට අදාල ටීම් අයි ඩී එක සිලෙක්ට් කර ගෙන ඉන්න ඕන.
+//ඒක ඒම කරල නැති නිසා තමා හැම වෙලේම එකම ටීම් අයි ඩී එකක් සෙට් වෙන්නෙ
+$resultMaxTeamID = mysqli_query($conn, $sqlMaxTeamID);
+
+if (!$resultMaxTeamID) {
+    die("Error in SQLMaxBid: " . mysqli_error($conn));
+}
+
+// Check if any rows were returned
+if (mysqli_num_rows($resultMaxTeamID) > 0) {
+    $rowMaxTeamID = mysqli_fetch_assoc($resultMaxTeamID);
+    $team_id = $rowMaxTeamID["team_id"];
+//$team_id = $rowMaxBidID["team_id"];
+} else {
+    echo "No maximum team found for player ID: $player_id<br>";
+}*/
+
 
 // Now, you can fetch additional information from the 'register' and 'batsman' tables
 $sql2 = "SELECT register.player_id, register.first_name,
@@ -104,6 +130,8 @@ $timeDifference = strtotime($auctionEndTime) - strtotime($current_time_formatted
 
 let countdown = <?php echo $timeDifference; ?>;
 let maxBid = <?php echo isset($maxBid) ? $maxBid : 0; ?>;
+/*let team_id = <?php echo isset($team_id) ? $team_id : 0; ?>;*/
+
 
 function updateCountdown() {
     const countdownElement = document.getElementById("countdown");

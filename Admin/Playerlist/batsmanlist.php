@@ -22,7 +22,7 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
       
     // Calculate the end time (5 minutes from the auction start time)
     $current_time = time();
-    $auction_end_time = $current_time + (1.5 * 60); // 5 minutes in seconds
+    $auction_end_time = $current_time + (1 * 60); // 5 minutes in seconds
   
     // Convert the timestamps to formatted time strings
     $current_time_formatted = date("Y-m-d H:i:s", $current_time);
