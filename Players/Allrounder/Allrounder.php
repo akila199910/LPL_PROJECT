@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
      '$fifty','$bowl_style','$wickets','$bowl_average',' $economy',' $best_bowl','$w5','$base_price')";
 
     mysqli_query($conn, $sql5);
-    header("Location: /Moderator/ReviewPage.php");
+    header("Location: /LPL_PROJECT/LPL_PROJECT/Moderator/ReviewPage.php");
 
     }
         mysqli_close($conn);

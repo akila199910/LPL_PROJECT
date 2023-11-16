@@ -20,11 +20,11 @@ if (isset($_SESSION['moderators_id'])) {
 <body>
     <h1> Moderator dashboard </h1>
 
-    <a href="/Moderator/ReviewPage.php"><button>Pending List</button></a>
+    <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/ReviewPage.php"><button>Pending List</button></a>
     <br>
-    <a href="/Moderator/Accept.php"><button>Accept List</button></a>
+    <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Accept.php"><button>Accept List</button></a>
     <br>
-    <a href="/Moderator/Reject.php"><button>Reject List</button></a>
+    <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Reject.php"><button>Reject List</button></a>
     <br>
 
 

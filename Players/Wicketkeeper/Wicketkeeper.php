@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
      ('$player_keeping_id','$b_style','$lpl_nom','$t20_nom','$runs','$b_average','$strike_rate','$high_score','$not_out','$stumps','$catch','$based_price')";
 
     mysqli_query($conn, $sql5);  
-    header("Location: /Moderator/ReviewPage.php");
+    header("Location: /LPL_PROJECT/LPL_PROJECT/Moderator/ReviewPage.php");
 } 
 mysqli_close($conn);
 

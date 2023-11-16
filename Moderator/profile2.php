@@ -53,22 +53,22 @@ if (isset($_POST['approve'])) {
 
       switch ($catogaryValue) {
           case 'bat':
-              header("Location: /Players/Batsman/Batsman.php?player_id=$player_id"); // Include player_id as a query parameter
+              header("Location: /LPL_PROJECT/LPL_PROJECT/Players/Batsman/Batsman.php?player_id=$player_id"); // Include player_id as a query parameter
               exit;
               break;
 
           case 'bol':
-              header("Location: /Players/Bowler/Bowler.php?player_id=$player_id"); // Include player_id as a query parameter
+              header("Location: /LPL_PROJECT/LPL_PROJECT/Players/Bowler/Bowler.php?player_id=$player_id"); // Include player_id as a query parameter
               exit;
               break;
 
           case 'wk':
-              header("Location: /Players/Wicketkeeper/Wicketkeeper.php?player_id=$player_id"); // Include player_id as a query parameter
+              header("Location: /LPL_PROJECT/LPL_PROJECT/Players/Wicketkeeper/Wicketkeeper.php?player_id=$player_id"); // Include player_id as a query parameter
               exit;
               break;
 
           case 'alr':
-              header("Location: /Players/Allrounder/Allrounder.php?player_id=$player_id"); // Include player_id as a query parameter
+              header("Location: /LPL_PROJECT/LPL_PROJECT/Players/Allrounder/Allrounder.php?player_id=$player_id"); // Include player_id as a query parameter
               exit;
               break;
       }
@@ -83,7 +83,7 @@ if (isset($_POST['reject'])) {
     mysqli_query($conn, $sq2);
     $sql3 = "UPDATE register SET moderators_id = '$modaretor_id' WHERE player_id = $player_id";
     mysqli_query($conn, $sql3);
-    header("Location: /Moderator/ReviewPage.php");
+    header("Location: /LPL_PROJECT/LPL_PROJECT/Moderator/ReviewPage.php");
 
 }
 
