@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <title>Log In</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/LPL_PROJECT/LPL_PROJECT/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
     <script src="https://kit.fontawesome.com/17d9527542.js" crossorigin="anonymous"></script>
@@ -15,7 +15,7 @@
     <div class="container">
     <div class="navbar">
         <div class="logo">
-            <img src="/images/lpllogo.png" width="125px">
+            <img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="125px">
         </div>
         <nav>
             <ul>
@@ -38,7 +38,7 @@
     <div class="container">
         <div class="row">
             <div class="col-2">
-                <img src="/images/acc.png" width="100%">
+                <img src="images/acc.png" width="100%">
             </div>
             <div class="col-2">
                 <div class="form-container">
