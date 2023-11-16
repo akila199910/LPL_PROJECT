@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
     $sql7="INSERT INTO bowler(`player_bowlling_id`,`bowl_style`, `lpl_nom`, `t20_nom`, `wickets`, `bowl_average`, `economy`, `best_bowl`, `w5`, `besed_price`) VALUES
      ('$player_bowlling_id','$bowl_style','$lpl_nom','$t20_nom','$wickets','$bowl_average','$economy','$best_bowl','$w5','$besed_price')";
     mysqli_query($conn, $sql7);
-    header("Location: /Moderator/ReviewPage.php");
+    header("Location: /LPL_PROJECT/LPL_PROJECT/Moderator/ReviewPage.php");
 
 }
 mysqli_close($conn);
