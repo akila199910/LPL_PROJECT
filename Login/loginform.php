@@ -19,10 +19,10 @@
         </div>
         <nav>
             <ul>
-                <li><i class="fa-solid fa-house"></i><a href="/home.html">Home</a></li>
-                <li><i class="fa-brands fa-unity"></i><a href="/about.html">About</a></li>
-                <li><i class="fa-solid fa-briefcase"></i><a href="/contact us page/index.php">Contact</a></li>
-                <li><i class="fa-solid fa-comment"></i><a href="/Login/loginform.php">Account</a></li>
+                <li><i class="fa-solid fa-house"></i><a href="/LPL_PROJECT/LPL_PROJECT/home.html">Home</a></li>
+                <li><i class="fa-brands fa-unity"></i><a href="/LPL_PROJECT/LPL_PROJECT/about.html">About</a></li>
+                <li><i class="fa-solid fa-briefcase"></i><a href="/LPL_PROJECT/LPL_PROJECT/contact us page/index.php">Contact</a></li>
+                <li><i class="fa-solid fa-comment"></i><a href="/LPL_PROJECT/LPL_PROJECT/Login/loginform.php">Account</a></li>
             </ul>
         </nav>
         
@@ -38,7 +38,7 @@
     <div class="container">
         <div class="row">
             <div class="col-2">
-                <img src="images/acc.png" width="100%">
+                <img src="/LPL_PROJECT/LPL_PROJECT/images/acc.png" width="100%">
             </div>
             <div class="col-2">
                 <div class="form-container">
@@ -58,7 +58,7 @@
                     <form id="RegForm">
                         <P>If you don't have a account press Next</P>
                         <br>
-                        <a href="/Register/indexregister.php" class="btn">Next &#8594;</a>
+                        <a href="/LPL_PROJECT/LPL_PROJECT/Register/indexregister.php" class="btn">Next &#8594;</a>
                         
                         
                     </form>
@@ -81,12 +81,12 @@
                 <h3>Dowload Our App</h3>
                 <p>Dowload App for Android and ios mobile phone.</p>
                 <div class="app-logo">
-                    <img src="images/play-store.png">
-                    <img src="images/app-store.png">
+                    <img src="/LPL_PROJECT/LPL_PROJECT/images/play-store.png">
+                    <img src="/LPL_PROJECT/LPL_PROJECT/images/app-store.png">
                 </div>
             </div>
             <div class="footer-col-2">
-                <img src="images/white lpl.png">
+                <img src="/LPL_PROJECT/LPL_PROJECT/images/white lpl.png">
                 <p>Our Purpose is to Sustainably make the pleaseure and benifits of sports accessible to many.</p>
             </div>
             <div class="footer-col-3">
