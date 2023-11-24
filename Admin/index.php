@@ -22,6 +22,7 @@
     <div id="main-content" class="container allContent-section py-4">
         <div class="row">
             <div class="col-sm-4">
+                <a href="Addmoderator/indexmodertor.php">
                 <div class="card"  >
                     <i class="fa fa-users  mb-2" style="font-size: 70px;"></i>
                     <h4 style="color:white;">Moderators</h4>
@@ -40,9 +41,11 @@
                         echo $count;
                     ?></h5>
                 </div>
+                </a>
             </div>
             <div class="col-sm-4">
-                <div class="card" " >
+                <a href="Playerlist/registered.php">
+                <div class="card">
                     <i class="fa fa-th-large mb-2" style="font-size: 70px;"></i>
                     <h4 style="color:white;">Registered Players</h4>
                     <h5 style="color:white;">
@@ -61,16 +64,18 @@
                    ?>
                    </h5>
                 </div>
+                </a>
             </div>
 
             <div class="col-sm-4">
-                <div class="card"">
+                <a href="Rule/rule.php">
+                    <div class="card">
                     <i class="fa fa-th-large mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Guests</h4>
+                    <h4 style="color:white;">Rules</h4>
                     <h5 style="color:white;">
                     <?php
                        
-                       $sql="SELECT * from guest";
+                       /*$sql="SELECT * from rule";
                        $result=$conn-> query($sql);
                        $count=0;
                        if ($result-> num_rows > 0){
@@ -80,19 +85,21 @@
                            }
                        }
                        echo $count;
-                   ?>
+                  */ ?>
                    </h5>
                 </div>
+                    </a>
             </div>
 
             <div class="col-sm-3">
-                <div class="card" ">
+            <a href="Playerlist/batsmanlist.php">
+                <div class="card">
                     <i class="fa fa-th mb-2" style="font-size: 70px;"></i>
                     <h4 style="color:white;">Batsmen</h4>
                     <h5 style="color:white;">
                     <?php
                        
-                       $sql="SELECT * from batsman";
+                       $sql="SELECT * from batsman where Sold IS NULL";
                        $result=$conn-> query($sql);
                        $count=0;
                        if ($result-> num_rows > 0){
@@ -105,16 +112,19 @@
                    ?>
                    </h5>
                 </div>
+                    </a>
             </div>
 
             <div class="col-sm-3">
-            <div class="card" ">
+            <a href="Playerlist/bowlerlist.php">
+
+            <div class="card" >
                     <i class="fa fa-th mb-2" style="font-size: 70px;"></i>
                     <h4 style="color:white;">Bowlers</h4>
                     <h5 style="color:white;">
                     <?php
                        
-                       $sql="SELECT * from bowler";
+                       $sql="SELECT * from bowler where Sold IS NULL";
                        $result=$conn-> query($sql);
                        $count=0;
                        if ($result-> num_rows > 0){
@@ -127,16 +137,19 @@
                    ?>
                    </h5>
                 </div>
+                    </a>
             </div>
 
             <div class="col-sm-3">
-            <div class="card" ">
+            <a href="Playerlist/allrounderlist.php">
+
+            <div class="card" >
                     <i class="fa fa-th mb-2" style="font-size: 70px;"></i>
                     <h4 style="color:white;">Allrounder</h4>
                     <h5 style="color:white;">
                     <?php
                        
-                       $sql="SELECT * from allrounder";
+                       $sql="SELECT * from allrounder where Sold IS NULL";
                        $result=$conn-> query($sql);
                        $count=0;
                        if ($result-> num_rows > 0){
@@ -149,16 +162,19 @@
                    ?>
                    </h5>
                 </div>
+                    </a>
             </div>
 
             <div class="col-sm-3">
-                <div class="card"">
+            <a href="Playerlist/wicketkeeperlist.php">
+
+                <div class="card">
                     <i class="fa fa-th mb-2" style="font-size: 70px;"></i>
                     <h4 style="color:white;">WicketKeeper</h4>
                     <h5 style="color:white;">
                     <?php
                        
-                       $sql="SELECT * from wicketkeeper";
+                       $sql="SELECT * from wicketkeeper where Sold IS NULL";
                        $result=$conn-> query($sql);
                        $count=0;
                        if ($result-> num_rows > 0){
@@ -172,6 +188,7 @@
                    ?>
                    </h5>
                 </div>
+                    </a>
             </div>
         </div>
         
