@@ -43,7 +43,12 @@ $result=mysqli_query($conn,$sql);
       while($row=mysqli_fetch_assoc($result)){
       ?>
       <td> <?php echo $row['player_id'];?></td>
-      <td> <?php echo $row['profile_photo'];?></td>
+      <td>  <td>
+                            <?php
+                            $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/" . $row['profile_photo'];
+                            echo "<img src='$photoPath' alt='Profile Photo' style='width: 70px; height: 70px;'>";
+                            ?>
+                        </td></td>
        <td> <?php echo $row['first_name']." ".$row['last_name'];?></td>
        <td> <?php echo $row['catogary'];?></td>
        <td> <?php echo $row['country'];?></td>       

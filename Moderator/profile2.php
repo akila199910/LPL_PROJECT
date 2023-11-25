@@ -120,7 +120,10 @@ if (isset($_POST['reject'])) {
     <div class="container mt-4">
 
     <div class="profile mb-4 col-12">
-      <img src="../Img/proimg/<?php echo $file_name3; ?>" alt="Profile Photo" class="profile ">
+    <?php
+            $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/" . $row['profile_photo'];
+              echo "<img src='$photoPath' alt='Profile Photo' style='width: 300px; height: 300px;'>";
+      ?>
       
     </div> 
 
@@ -193,12 +196,18 @@ if (isset($_POST['reject'])) {
     <div class="row">
       <div class="form-group col-12 col-xl-6">
         <label for=" NIC Photo"><h3>NIC Photo</h3></label>
-        <img src="../Img/idimg/<?php echo $file_name1; ?>" alt="NIC Photo" width="185px" height="275px">
+        <?php
+            $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/idimg/" . $row['identity_photo'];
+              echo "<img src='$photoPath' alt='identity_photo' style='width: 400px; height: 300px;'>";
+      ?>
       </div>
 
       <div class="form-group col-12 col-xl-6">
         <label for=" Certificate photos"><h3>Certificate photos</h3></label>
-        <img src="../Img/cetiimg/<?php echo $file_name2; ?>" alt="Certificate Photo" width="240px" height="320px">
+        <?php
+            $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/cetiimg/" . $row['certificate_photo'];
+              echo "<img src='$photoPath' alt='certificate_photo' style='width: 400px; height: 300px;'>";
+      ?>
       </div>
     </div>
         
