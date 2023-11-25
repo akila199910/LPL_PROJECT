@@ -44,6 +44,32 @@
                 </a>
             </div>
             <div class="col-sm-4">
+                <a href="Addteam/indexteam.php">
+                <div class="card">
+                    <i class="fa fa-th-large mb-2" style="font-size: 70px;"></i>
+                    <h4 style="color:white;">Teams</h4>
+                    <h5 style="color:white;">
+                    <?php
+                       
+                       $sql="SELECT * from team";
+                       $result=$conn-> query($sql);
+                       $count=0;
+                       if ($result-> num_rows > 0){
+                           while ($row=$result-> fetch_assoc()) {
+                   
+                               $count=$count+1;
+                           }
+                       }
+                       echo $count;
+                   ?>
+                   </h5>
+                </div>
+                </a>
+            </div>
+
+
+
+            <div class="col-sm-4">
                 <a href="Playerlist/registered.php">
                 <div class="card">
                     <i class="fa fa-th-large mb-2" style="font-size: 70px;"></i>
@@ -66,6 +92,8 @@
                 </div>
                 </a>
             </div>
+
+
 
             <div class="col-sm-4">
                 <a href="Rule/rule.php">
