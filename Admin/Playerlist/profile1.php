@@ -5,11 +5,9 @@ mysqli_select_db($conn, "lplsystem");
 if (isset($_GET['player_id'])) {
     $player_id = $_GET['player_id'];
 } 
-//$sqlMaxBidID = "SELECT MAX(bid_price) AS max_bid,team_id FROM bid WHERE player_id = $player_id";
 $sqlMaxBidID = "SELECT MAX(bid_price) AS max_bid FROM bid WHERE player_id = $player_id";
 
-// මෙතන කේස් එකක් තියේ මැක්ස් බිඩ් එකට අදාල ටීම් අයි ඩී එක සිලෙක්ට් කර ගෙන ඉන්න ඕන.
-//ඒක ඒම කරල නැති නිසා තමා හැම වෙලේම එකම ටීම් අයි ඩී එකක් සෙට් වෙන්නෙ
+
 $resultMaxBidID = mysqli_query($conn, $sqlMaxBidID);
 
 if (!$resultMaxBidID) {
@@ -22,31 +20,10 @@ if (mysqli_num_rows($resultMaxBidID) > 0) {
     $maxBid = $rowMaxBidID["max_bid"];
 //$team_id = $rowMaxBidID["team_id"];
 } else {
+   
     echo "No maximum bid found for player ID: $player_id<br>";
 }
 
-/*//මැක්ස් බිඩ් එකට අදාල ටීම් එකේ අයි ඩී එක සිලෙක්ට් කර ගන්න
-$sqlMaxTeamID = "SELECT team_id FROM bid WHERE player_id = $player_id and bid_price=$maxBid";
-
-// මෙතන කේස් එකක් තියේ මැක්ස් බිඩ් එකට අදාල ටීම් අයි ඩී එක සිලෙක්ට් කර ගෙන ඉන්න ඕන.
-//ඒක ඒම කරල නැති නිසා තමා හැම වෙලේම එකම ටීම් අයි ඩී එකක් සෙට් වෙන්නෙ
-$resultMaxTeamID = mysqli_query($conn, $sqlMaxTeamID);
-
-if (!$resultMaxTeamID) {
-    die("Error in SQLMaxBid: " . mysqli_error($conn));
-}
-
-// Check if any rows were returned
-if (mysqli_num_rows($resultMaxTeamID) > 0) {
-    $rowMaxTeamID = mysqli_fetch_assoc($resultMaxTeamID);
-    $team_id = $rowMaxTeamID["team_id"];
-//$team_id = $rowMaxBidID["team_id"];
-} else {
-    echo "No maximum team found for player ID: $player_id<br>";
-}*/
-
-
-// Now, you can fetch additional information from the 'register' and 'batsman' tables
 $sql2 = "SELECT register.player_id, register.first_name,
 register.last_name,register.country,register.dob,register.profile_photo,
 register.catogary,batsman.b_style,batsman.lpl_nom,batsman.t20_nom,batsman.runs,
@@ -99,10 +76,6 @@ if ($result && mysqli_num_rows($result) > 0) {
       echo "No auction data found for player ID: $player_id";
 }
 
-//$timeDifference = strtotime($auctionEndTime) - strtotime($auctionStartTime);
-echo $auctionEndTime."<br>";
-
-// time 1 button eka ebuwama ganna balana tena patan gatta code eka
 $current_time = time();
 $current_time_formatted = date("Y-m-d H:i:s", $current_time);
 echo $current_time_formatted;
@@ -130,7 +103,6 @@ $timeDifference = strtotime($auctionEndTime) - strtotime($current_time_formatted
 
 let countdown = <?php echo $timeDifference; ?>;
 let maxBid = <?php echo isset($maxBid) ? $maxBid : 0; ?>;
-/*let team_id = <?php echo isset($team_id) ? $team_id : 0; ?>;*/
 
 
 function updateCountdown() {
@@ -157,6 +129,9 @@ function updateCountdown() {
                         // You can handle the response if needed
                     }
                 };
+
+                //const maxBidValue = maxBid !== undefined ? maxBid : 0;
+
                 xhrSold.send(`player_id=<?php echo $player_id; ?>&max_bid=${maxBid}`);
             }
         }; 
