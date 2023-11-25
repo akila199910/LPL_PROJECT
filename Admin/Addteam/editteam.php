@@ -11,11 +11,11 @@ if (isset($_POST["submit"])) {
   $password=$_POST['password'];
   $filename1 = $_FILES['icon']['name'];
 $tempname1 = $_FILES['icon']['tmp_name'];
-$folder1 = "./icon/" . $filename1;
+$folder1 = "teamicon/" . $filename1;
 move_uploaded_file($tempname1,$folder1);
  
 
-  $sql = "UPDATE team SET team_name='$team_name',owner_name='$owner_name',email='$email',password='$password',icon='$icon' WHERE id = $id";
+  $sql = "UPDATE team SET team_name='$team_name',owner_name='$owner_name',email='$email',password='$password',icon='$filename1' WHERE id = $id";
 
   $result = mysqli_query($conn, $sql);
 
@@ -66,7 +66,7 @@ move_uploaded_file($tempname1,$folder1);
     ?>
 
     <div class="container d-flex justify-content-center">
-      <form action="" method="post" style="width:50vw; min-width:300px;" enctype="multipart/form-data>
+      <form action="" method="post" style="width:50vw; min-width:300px;" enctype="multipart/form-data">
         <div class="row mb-3">
           <div class="col">
             <label class="form-label">Team Name:</label>
@@ -86,7 +86,7 @@ move_uploaded_file($tempname1,$folder1);
 
         <div class="mb-3">
           <label class="form-label">Icon Photo:</label>
-          <input type="file" class="form-control" name="icon" value="<?php echo $row['icon'] ?>">
+          <input type="file" class="form-control" name="icon">
         </div>
         <div>
           <button type="submit" class="btn btn-success" name="submit">Update</button>
