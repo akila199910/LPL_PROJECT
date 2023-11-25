@@ -17,8 +17,6 @@ if (isset($_POST['player_id']) && isset($_POST['max_bid'])) {
 }
 
 
-//මෙතෙන්ට එන අයි ඩී එකට අදාලව උගෙ කැටගරි එක මොකද්ද බලල ස්විච් කේස් එකෙං හරි අදාල කැටගරි එකට අදාලව අප්ඩේට්
-//කරන්න ඕන. දැනට බැට්ස්මන් ටේබල් එක විතරයි අප්ඩේට් වෙන්නෙ
 $catogary = "SELECT catogary FROM register WHERE player_id = $player_id";
 $catogaryResult = mysqli_query($conn, $catogary);
 
@@ -51,7 +49,7 @@ if ($catogaryResult && mysqli_num_rows($catogaryResult) > 0){
             break;
 
         default:
-            // Handle other cases if needed
+          
             break;
     }
 }
