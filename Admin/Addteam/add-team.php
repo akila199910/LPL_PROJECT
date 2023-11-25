@@ -22,7 +22,7 @@ $password = $_POST['password'];
 
 $filename1 = $_FILES['icon']['name'];
 $tempname1 = $_FILES['icon']['tmp_name'];
-$folder1 = "/Img/teamimg" . $filename1;
+$folder1 = "teamicon/" . $filename1;
 move_uploaded_file($tempname1,$folder1);
 
 
@@ -30,8 +30,8 @@ move_uploaded_file($tempname1,$folder1);
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 
+$sql = "INSERT INTO team (team_name, owner_name, email, password, icon) VALUES ('$team_name', '$owner_name', '$email', '$hashed_password', '$filename1')";
 
-$sql = "INSERT INTO team (team_name,owner_name, email, password,icon) VALUES ('$team_name', '$owner_name', '$email', '$hashed_password', '$icon')";
 
 
 $result = mysqli_query($conn, $sql);
@@ -67,7 +67,7 @@ if ($result) {
 </head>
 
 <body>
-<nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">
+<nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;">
 LPL - LANKA PREMIER LEAGUE  
 </nav>
 
@@ -78,7 +78,7 @@ LPL - LANKA PREMIER LEAGUE
    </div>
 
    <div class="container d-flex justify-content-center">
-      <form action="" method="post" style="width:50vw; min-width:300px;" enctype="multipart/form-data>
+      <form action="" method="post" style="width:50vw; min-width:300px;" enctype="multipart/form-data">
          <div class="row mb-3">
             <div class="col">
                <label class="form-label">Team Name:</label>
@@ -101,7 +101,7 @@ LPL - LANKA PREMIER LEAGUE
          </div>
          <div class="mb-3">
             <label class="form-label">Icon Photo:</label>
-            <input type="file" class="form-control" name="ican">
+            <input type="file" class="form-control" name="icon">
          </div>
 
 

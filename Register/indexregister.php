@@ -51,14 +51,14 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $file_type1=$_FILES['identity_photo']['type'];
     $file_size1=$_FILES['identity_photo']['size'];
     $temp_name1=$_FILES['identity_photo']['tmp_name'];
-    $upload_to="../Img/idimg/";
+    $upload_to="Img/idimg/";
     move_uploaded_file($temp_name1,$upload_to.$file_name1);
 
     $file_name2=$_FILES['certificatephoto']['name'];
     $file_type2=$_FILES['certificatephoto']['type'];
     $file_size2=$_FILES['certificatephoto']['size'];
     $temp_name2=$_FILES['certificatephoto']['tmp_name'];
-    $upload_to="../Img/cetiimg/";
+    $upload_to="Img/cetiimg/";
     move_uploaded_file($temp_name2,$upload_to.$file_name2);  
     //$certificate_photo=$_POST['certificate_photo'];
 
@@ -67,7 +67,7 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $file_type3=$_FILES['profile_photo']['type'];
     $file_size3=$_FILES['profile_photo']['size'];
     $temp_name3=$_FILES['profile_photo']['tmp_name'];
-    $upload_to="../Img/proimg/";
+    $upload_to="Img/proimg/";
     move_uploaded_file($temp_name3,$upload_to.$file_name3); 
     //$identity_photo = $_POST['identity_photo'];
     //$certificate_photo = $_POST['certificate_photo'];
