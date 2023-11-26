@@ -60,7 +60,12 @@ mysqli_select_db($conn,"lplsystem");
             <td><?php echo $row["team_name"] ?></td>
             <td><?php echo $row["owner_name"] ?></td>
             <td><?php echo $row["email"] ?></td>
-            <td><?php echo $row["icon"] ?></td>
+            <td>
+                            <?php
+                            $photoPath = "teamicon/" . $row['icon'];
+                            echo "<img src='$photoPath' alt='icon' style='width: 70px; height: 70px;'>";
+                            ?>
+                        </td>
             <td>
               <a href="editteam.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
               <a href="deleteteam.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
