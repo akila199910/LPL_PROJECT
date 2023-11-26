@@ -1,4 +1,6 @@
 <?php
+
+
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
@@ -15,11 +17,16 @@ if (isset($_GET['code'])) {
         $update_sql = "UPDATE register SET verification = 1 WHERE player_id = $player_id";
         mysqli_query($conn, $update_sql);
         
-        echo "Email address verified successfully!";
+        echo "<script>alert('Email address verified successfully!');</script>";
     } else {
-        echo "Invalid verification code.";
+        // JavaScript to show alert
+        echo "<script>alert('Invalid verification code.');</script>";
     }
 } 
 
 mysqli_close($conn);
+
 ?>
+
+<?php 
+include('file:///C:/xampp/htdocs/LPL_PROJECT/LPL_PROJECT/home.html'); ?>
