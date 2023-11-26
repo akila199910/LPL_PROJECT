@@ -218,6 +218,62 @@
                 </div>
                     </a>
             </div>
+
+
+            <div class="col-sm-3">
+            <a href="Playerlist/rejectplayers.php">
+
+                <div class="card">
+                    <i class="fa fa-th mb-2" style="font-size: 70px;"></i>
+                    <h4 style="color:white;">Reject Players</h4>
+                    <h5 style="color:white;">
+                    <?php
+                       
+                       $sql="SELECT * from register WHERE approved='No'";
+                       $result=$conn-> query($sql);
+                       $count=0;
+                       if ($result-> num_rows > 0){
+                           while ($row=$result-> fetch_assoc()) {
+                   
+                               $count=$count+1;
+                           }
+                       }
+                       echo $count;
+                       
+                   ?>
+                   </h5>
+                </div>
+                    </a>
+            </div>
+
+            <div class="col-sm-3">
+            <a href="Playerlist/acceptplayers.php">
+
+                <div class="card">
+                    <i class="fa fa-th mb-2" style="font-size: 70px;"></i>
+                    <h4 style="color:white;">Accept Players</h4>
+                    <h5 style="color:white;">
+                    <?php
+                       
+                       $sql="SELECT * from register WHERE approved='Yes'";
+                       $result=$conn-> query($sql);
+                       $count=0;
+                       if ($result-> num_rows > 0){
+                           while ($row=$result-> fetch_assoc()) {
+                   
+                               $count=$count+1;
+                           }
+                       }
+                       echo $count;
+                       
+                   ?>
+                   </h5>
+                </div>
+                    </a>
+            </div>
+
+
+
         </div>
         
     </div>
