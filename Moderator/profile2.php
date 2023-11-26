@@ -78,6 +78,9 @@ if (isset($_POST['approve'])) {
     
 
 if (isset($_POST['reject'])) {
+  session_start();
+  $modaretor_id=$_SESSION['moderators_id'];
+
     $player_id = $_POST['player_id'];
     $sq2 = "UPDATE register SET approved = 'No' WHERE player_id = $player_id";
     mysqli_query($conn, $sq2);
