@@ -22,11 +22,11 @@ if (isset($_GET['code'])) {
         // JavaScript to show alert
         echo "<script>alert('Invalid verification code.');</script>";
     }
+
+    echo '<script> window.location.href = "http://localhost/LPL_PROJECT/LPL_PROJECT/home.html"</script>';
 } 
 
 mysqli_close($conn);
 
 ?>
 
-<?php 
-include('file:///C:/xampp/htdocs/LPL_PROJECT/LPL_PROJECT/home.html'); ?>
