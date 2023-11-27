@@ -38,7 +38,7 @@
      <div class="row">
         <div class="col-lg-3">
 
-      <a href="Addmoderator/indexmodertor.php"><button type="button" class="btn btn-primary size btn-margin">Moderator<br>
+      <a href="Addmoderator/indexmodertor.php"><button type="button" class="btn btn-dark size btn-margin">Moderator<br>
         <?php
                     
         $sql="SELECT * from moderators ";
@@ -55,7 +55,7 @@
      </div>
 
      <div class="col-lg-3">
-    <a href="Addteam/indexteam.php"><button type="button" class="btn btn-primary size btn-margin">Teams<br>
+    <a href="Addteam/indexteam.php"><button type="button" class="btn btn-info size btn-margin">Teams<br>
     <?php
                        
                        $sql="SELECT * from team";
@@ -71,7 +71,7 @@
                    ?></button></a>
                    </div>
     <div class="col-lg-3">
-    <a href="Playerlist/registered.php"><button type="button" class="btn btn-primary size btn-margin">Registered Players<br>
+    <a href="Playerlist/registered.php"><button type="button" class="btn btn-success size btn-margin">Registered Players<br>
     <?php
                        
                        $sql="SELECT * from register";
@@ -111,12 +111,13 @@
 
 <div class="row">
         <div class="col-lg-3">
-    <a href="Playerlist/batsmanlist.php"><button type="button" class="btn btn-primary size btn-margin">Batsmen<br>
+    <a href="Playerlist/batsmanlist.php"><button type="button" class="btn btn-secondary size btn-margin">Batsman<br>
 
     <?php
                        
-                       $sql="SELECT * from batsman where Sold IS NULL";
-                       $result=$conn-> query($sql);
+                       $sql5 = "SELECT * FROM batsman 
+                                WHERE sold IS NULL AND gotoauction IS NULL";
+                       $result=$conn-> query($sql5);
                        $count=0;
                        if ($result-> num_rows > 0){
                            while ($row=$result-> fetch_assoc()) {
@@ -130,11 +131,11 @@
 
 
 <div class="col-lg-3">
-    <a href="Playerlist/bowlerlist.php"><button type="button" class="btn btn-primary size btn-margin">Bowlers<br>
+    <a href="Playerlist/bowlerlist.php"><button type="button" class="btn btn-secondary size btn-margin">Bowlers<br>
     <?php
-                       
-                       $sql="SELECT * from bowler where Sold IS NULL";
-                       $result=$conn-> query($sql);
+                       $sql5 = "SELECT * FROM bowler 
+                       WHERE sold IS NULL AND gotoauction IS NULL";
+                       $result=$conn-> query($sql5);
                        $count=0;
                        if ($result-> num_rows > 0){
                            while ($row=$result-> fetch_assoc()) {
@@ -148,11 +149,12 @@
 
 
 <div class="col-lg-3">
-    <a href="Playerlist/allrounderlist.php"><button type="button" class="btn btn-primary size btn-margin">Allrounder<br>
+    <a href="Playerlist/allrounderlist.php"><button type="button" class="btn btn-secondary size btn-margin">Allrounder<br>
     <?php
+                       $sql5 = "SELECT * FROM allrounder 
+                       WHERE sold IS NULL AND gotoauction IS NULL";
                        
-                       $sql="SELECT * from allrounder where Sold IS NULL";
-                       $result=$conn-> query($sql);
+                       $result=$conn-> query($sql5);
                        $count=0;
                        if ($result-> num_rows > 0){
                            while ($row=$result-> fetch_assoc()) {
@@ -164,11 +166,13 @@
                    ?></button></a>
                    </div>
 <div class="col-lg-3">
-      <a href="Playerlist/wicketkeeperlist.php"><button type="button" class="btn btn-primary size btn-margin">WicketKeeper<br>
+      <a href="Playerlist/wicketkeeperlist.php"><button type="button" class="btn btn-secondary size btn-margin">WicketKeeper<br>
       <?php
 
-                       $sql="SELECT * from wicketkeeper where Sold IS NULL";
-                       $result=$conn-> query($sql);
+$sql5 = "SELECT * FROM wicketkeeper 
+WHERE sold IS NULL AND gotoauction IS NULL";
+
+                       $result=$conn-> query($sql5);
                        $count=0;
                        if ($result-> num_rows > 0){
                            while ($row=$result-> fetch_assoc()) {
@@ -185,11 +189,23 @@
 
                    <div class="row">
         <div class="col-lg-3">
-    <a href="Playerlist/acceptplayers.php"><button type="button" class="btn btn-primary size btn-margin">Accept Players<br>
+    <a href="Playerlist/sold.php"><button type="button" class="btn btn-success size btn-margin">Sold Players<br>
     <?php
 
                        
-                        $sql="SELECT * from register WHERE approved='Yes'";
+            $sql = "SELECT r.*, b.sold AS batsman_sold, b.gotoauction AS batsman_gotoauction,
+            bo.sold AS bowler_sold, bo.gotoauction AS bowler_gotoauction,
+            wk.sold AS wicketkeeper_sold, wk.gotoauction AS wicketkeeper_gotoauction,
+            alr.sold AS allrounder_sold, alr.gotoauction AS allrounder_gotoauction
+            FROM register r
+            LEFT JOIN batsman b ON r.player_id = b.player_batting_id
+            LEFT JOIN bowler bo ON r.player_id = bo.player_bowlling_id 
+            LEFT JOIN wicketkeeper wk ON r.player_id = wk.player_keeping_id 
+            LEFT JOIN allrounder alr ON r.player_id = alr.player_al_id 
+            WHERE (b.sold IS NOT  NULL AND b.gotoauction = 1)
+            OR (bo.sold IS  NOT NULL AND bo.gotoauction = 1)
+            OR (wk.sold IS  NOT NULL AND wk.gotoauction = 1)
+            OR (alr.sold IS  NOT NULL AND alr.gotoauction = 1)";         
                         $result=$conn-> query($sql);
                         $count=0;
                     if ($result-> num_rows > 0){
@@ -207,11 +223,23 @@
 
 <div class="col-lg-3">
 
-<a href="Playerlist/rejectplayers.php"><button type="button" class="btn btn-primary size btn-margin">Reject Players<br>
+<a href="Playerlist/unsold.php"><button type="button" class="btn btn-danger size btn-margin">Unsold Players<br>
     <?php
+      
+      $sql = "SELECT r.*, b.sold AS batsman_sold, b.gotoauction AS batsman_gotoauction,
+      bo.sold AS bowler_sold, bo.gotoauction AS bowler_gotoauction,
+      wk.sold AS wicketkeeper_sold, wk.gotoauction AS wicketkeeper_gotoauction,
+      alr.sold AS allrounder_sold, alr.gotoauction AS allrounder_gotoauction
+      FROM register r
+      LEFT JOIN batsman b ON r.player_id = b.player_batting_id
+      LEFT JOIN bowler bo ON r.player_id = bo.player_bowlling_id 
+      LEFT JOIN wicketkeeper wk ON r.player_id = wk.player_keeping_id 
+      LEFT JOIN allrounder alr ON r.player_id = alr.player_al_id 
+      WHERE (b.sold IS NULL AND b.gotoauction = 1)
+      OR (bo.sold IS NULL AND bo.gotoauction = 1)
+      OR (wk.sold IS NULL AND wk.gotoauction = 1)
+      OR (alr.sold IS NULL AND alr.gotoauction = 1)";
 
-                       
-                        $sql="SELECT * from register WHERE approved='No'";
                         $result=$conn-> query($sql);
                         $count=0;
                     if ($result-> num_rows > 0){
@@ -230,7 +258,7 @@
 
 <div class="col-lg-3">
 
-    <a href="Playerlist/teamplayers.php"><button type="button" class="btn btn-primary size btn-margin">Team Players<br>
+    <a href="Playerlist/teamplayers.php"><button type="button" class="btn btn-warning size btn-margin">Team Players<br>
     <?php
                   /*     
                        $sql="SELECT * from register WHERE approved='Yes'";

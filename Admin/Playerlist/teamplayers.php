@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Team Players</title>
 </head>
 <body>
     <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
@@ -24,7 +25,7 @@
         ?>
         <form id="form">
             <select id="teamSelect" name="teamSelect" class='form-select' required>
-                <option value='' disabled selected hidden>Team Name</option>
+                <option value='' disabled selected hidden>Select the team</option>
                 <?php
                     // Create while loop
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -34,16 +35,17 @@
             </select>
             <button type="button" name="submit" id="submit">SEARCH</button>
         </form>
+        <div class="team"></div>
         <script>
             $(document).ready(function(){
                 $("#submit").click(function(){
-                    var teamId = $("#form").serialize();
+                    var teamId = $("#teamSelect").val();
                     $.ajax({
                         type: "POST",
                         url: "teammembers.php",
-                        data: teamId,
+                        data: { teamSelect: teamId },
                         success: function(data) {
-                            console.log(data);
+                            $(".team").html(data);
                         }
                     });
                 });
