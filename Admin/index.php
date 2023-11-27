@@ -17,6 +17,9 @@
               width: 200px;
               height: 200px;
           }
+          .btn-margin {
+            margin-bottom: 15px;
+        }
       </style>
    
   </head>
@@ -32,9 +35,10 @@
       mysqli_select_db($conn,"lplsystem");
   ?>
      
+     <div class="row">
+        <div class="col-lg-3">
 
-
-      <a href="Addmoderator/indexmodertor.php"><button type="button" class="btn btn-primary size">Moderator<br>
+      <a href="Addmoderator/indexmodertor.php"><button type="button" class="btn btn-primary size btn-margin">Moderator<br>
         <?php
                     
         $sql="SELECT * from moderators ";
@@ -48,9 +52,10 @@
         }
         echo $count;
     ?></button></a>
+     </div>
 
-
-    <a href="Addteam/indexteam.php"><button type="button" class="btn btn-primary size">Teams<br>
+     <div class="col-lg-3">
+    <a href="Addteam/indexteam.php"><button type="button" class="btn btn-primary size btn-margin">Teams<br>
     <?php
                        
                        $sql="SELECT * from team";
@@ -64,8 +69,9 @@
                        }
                        echo $count;
                    ?></button></a>
-
-    <a href="Playerlist/registered.php"><button type="button" class="btn btn-primary size">Registered Players<br>
+                   </div>
+    <div class="col-lg-3">
+    <a href="Playerlist/registered.php"><button type="button" class="btn btn-primary size btn-margin">Registered Players<br>
     <?php
                        
                        $sql="SELECT * from register";
@@ -79,10 +85,12 @@
                        }
                        echo $count;
                    ?></button></a>
+                   </div>
+                   
 
 
-
-    <a href="Rule/rule.php"><button type="button" class="btn btn-primary size">Rules<br>
+    <div class="col-lg-3">
+    <a href="Rule/rule.php"><button type="button" class="btn btn-primary size btn-margin">Rules<br>
     <?php
                        
                       /* $sql="SELECT * from register";
@@ -96,9 +104,14 @@
                        }
                        echo $count;
                   */ ?></button></a>
+                  </div>
+                  </div>
 
 
-    <a href="Playerlist/batsmanlist.php"><button type="button" class="btn btn-primary size">Batsmen<br>
+
+<div class="row">
+        <div class="col-lg-3">
+    <a href="Playerlist/batsmanlist.php"><button type="button" class="btn btn-primary size btn-margin">Batsmen<br>
 
     <?php
                        
@@ -113,10 +126,11 @@
                        }
                        echo $count;
                    ?></button></a>
+                   </div>
 
 
-
-    <a href="Playerlist/bowlerlist.php"><button type="button" class="btn btn-primary size">Bowlers<br>
+<div class="col-lg-3">
+    <a href="Playerlist/bowlerlist.php"><button type="button" class="btn btn-primary size btn-margin">Bowlers<br>
     <?php
                        
                        $sql="SELECT * from bowler where Sold IS NULL";
@@ -130,10 +144,11 @@
                        }
                        echo $count;
                    ?></button></a>
+                   </div>
 
 
-
-    <a href="Playerlist/allrounderlist.php"><button type="button" class="btn btn-primary size">Allrounder<br>
+<div class="col-lg-3">
+    <a href="Playerlist/allrounderlist.php"><button type="button" class="btn btn-primary size btn-margin">Allrounder<br>
     <?php
                        
                        $sql="SELECT * from allrounder where Sold IS NULL";
@@ -147,8 +162,9 @@
                        }
                        echo $count;
                    ?></button></a>
-
-      <a href="Playerlist/wicketkeeperlist.php"><button type="button" class="btn btn-primary size">WicketKeeper<br>
+                   </div>
+<div class="col-lg-3">
+      <a href="Playerlist/wicketkeeperlist.php"><button type="button" class="btn btn-primary size btn-margin">WicketKeeper<br>
       <?php
 
                        $sql="SELECT * from wicketkeeper where Sold IS NULL";
@@ -163,10 +179,13 @@
                        echo $count;
                        
                    ?></button></a>
+                   </div>
+                   </div>
 
 
-
-    <a href="Playerlist/acceptplayers.php"><button type="button" class="btn btn-primary size">Accept Players<br>
+                   <div class="row">
+        <div class="col-lg-3">
+    <a href="Playerlist/acceptplayers.php"><button type="button" class="btn btn-primary size btn-margin">Accept Players<br>
     <?php
 
                        
@@ -182,9 +201,13 @@
                         echo $count;
     
                     ?></button></a>
+                    </div>
 
 
-<a href="Playerlist/rejectplayers.php"><button type="button" class="btn btn-primary size">Reject Players<br>
+
+<div class="col-lg-3">
+
+<a href="Playerlist/rejectplayers.php"><button type="button" class="btn btn-primary size btn-margin">Reject Players<br>
     <?php
 
                        
@@ -200,11 +223,14 @@
                         echo $count;
     
                     ?></button></a>
+                    </div>
 
 
 
 
-    <a href="Playerlist/teamplayers.php"><button type="button" class="btn btn-primary size">Team Players<br>
+<div class="col-lg-3">
+
+    <a href="Playerlist/teamplayers.php"><button type="button" class="btn btn-primary size btn-margin">Team Players<br>
     <?php
                   /*     
                        $sql="SELECT * from register WHERE approved='Yes'";
@@ -219,6 +245,9 @@
                        echo $count;
                        
                  */  ?></button></a>
+                 </div>
+                 </div>
+
 
 
 
