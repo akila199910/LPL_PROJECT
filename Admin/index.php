@@ -3,53 +3,52 @@
 <head>
   <title>Admin</title>
   <head>
+  <style>
+          .size {
+              width: 200px;
+              height: 200px;
+          }
+      </style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-       <link rel="stylesheet" href="./assets/css/style.css"></link>
+    <!-- Bootstrap -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
 </head>
 <body >
     
-        <?php
-            include "./adminHeader.php";
-            include "./sidebar.php";
-           
-            include "conn.php";
-            mysqli_select_db($conn,"lplsystem");
-        ?>
+<nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
+    LPL - LANKA PREMIER LEAGUE
+</nav>
+    <div class="container">
+      <?php
+     
+      include "conn.php";
+      mysqli_select_db($conn,"lplsystem");
+  ?>
 
-    <div id="main-content" class="container allContent-section py-4">
-        <div class="row">
-            <div class="col-sm-4">
-                <a href="Addmoderator/indexmodertor.php">
-                <div class="card"  >
-                    <i class="fa fa-users  mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Moderators</h4>
-                    <h5 style="color:white;">
-                    <?php
+
+
+<a href="Addmoderator/indexmodertor.php"><button type="button" class="btn btn-primary size">Moderator<br>
+        <?php
                     
-                        $sql="SELECT * from moderators ";
-                        $result=$conn-> query($sql);
-                        $count=0;
-                        if ($result-> num_rows > 0){
-                            while ($row=$result-> fetch_assoc()) {
-                    
-                                $count=$count+1;
-                            }
-                        }
-                        echo $count;
-                    ?></h5>
-                </div>
-                </a>
-            </div>
-            <div class="col-sm-4">
-                <a href="Addteam/indexteam.php">
-                <div class="card">
-                    <i class="fa fa-th-large mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Teams</h4>
-                    <h5 style="color:white;">
-                    <?php
+        $sql="SELECT * from moderators ";
+        $result=$conn-> query($sql);
+        $count=0;
+        if ($result-> num_rows > 0){
+            while ($row=$result-> fetch_assoc()) {
+    
+                $count=$count+1;
+            }
+        }
+        echo $count;
+    ?></button></a>
+
+
+<a href="Addteam/indexteam.php"><button type="button" class="btn btn-primary size">Teams<br>
+<?php
                        
                        $sql="SELECT * from team";
                        $result=$conn-> query($sql);
@@ -61,21 +60,10 @@
                            }
                        }
                        echo $count;
-                   ?>
-                   </h5>
-                </div>
-                </a>
-            </div>
+                   ?></button></a>
 
-
-
-            <div class="col-sm-4">
-                <a href="Playerlist/registered.php">
-                <div class="card">
-                    <i class="fa fa-th-large mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Registered Players</h4>
-                    <h5 style="color:white;">
-                    <?php
+<a href="Playerlist/registered.php"><button type="button" class="btn btn-primary size">Registered Players<br>
+<?php
                        
                        $sql="SELECT * from register";
                        $result=$conn-> query($sql);
@@ -87,23 +75,14 @@
                            }
                        }
                        echo $count;
-                   ?>
-                   </h5>
-                </div>
-                </a>
-            </div>
+                   ?></button></a>
 
 
 
-            <div class="col-sm-4">
-                <a href="Rule/rule.php">
-                    <div class="card">
-                    <i class="fa fa-th-large mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Rules</h4>
-                    <h5 style="color:white;">
-                    <?php
+<a href="Rule/rule.php"><button type="button" class="btn btn-primary size">Rules<br>
+<?php
                        
-                       /*$sql="SELECT * from rule";
+                      /* $sql="SELECT * from register";
                        $result=$conn-> query($sql);
                        $count=0;
                        if ($result-> num_rows > 0){
@@ -113,19 +92,12 @@
                            }
                        }
                        echo $count;
-                  */ ?>
-                   </h5>
-                </div>
-                    </a>
-            </div>
+                  */ ?></button></a>
 
-            <div class="col-sm-3">
-            <a href="Playerlist/batsmanlist.php">
-                <div class="card">
-                    <i class="fa fa-th mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Batsmen</h4>
-                    <h5 style="color:white;">
-                    <?php
+
+
+<a href="Playerlist/batsmanlist.php"><button type="button" class="btn btn-primary size">Batsman<br>
+<?php
                        
                        $sql="SELECT * from batsman where Sold IS NULL";
                        $result=$conn-> query($sql);
@@ -137,20 +109,12 @@
                            }
                        }
                        echo $count;
-                   ?>
-                   </h5>
-                </div>
-                    </a>
-            </div>
+                   ?></button></a>
 
-            <div class="col-sm-3">
-            <a href="Playerlist/bowlerlist.php">
 
-            <div class="card" >
-                    <i class="fa fa-th mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Bowlers</h4>
-                    <h5 style="color:white;">
-                    <?php
+
+<a href="Playerlist/bowlerlist.php"><button type="button" class="btn btn-primary size">Bowlers<br>
+<?php
                        
                        $sql="SELECT * from bowler where Sold IS NULL";
                        $result=$conn-> query($sql);
@@ -162,20 +126,12 @@
                            }
                        }
                        echo $count;
-                   ?>
-                   </h5>
-                </div>
-                    </a>
-            </div>
+                   ?></button></a>
 
-            <div class="col-sm-3">
-            <a href="Playerlist/allrounderlist.php">
 
-            <div class="card" >
-                    <i class="fa fa-th mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Allrounder</h4>
-                    <h5 style="color:white;">
-                    <?php
+
+<a href="Playerlist/allrounderlist.php"><button type="button" class="btn btn-primary size">Allrounder<br>
+<?php
                        
                        $sql="SELECT * from allrounder where Sold IS NULL";
                        $result=$conn-> query($sql);
@@ -187,20 +143,11 @@
                            }
                        }
                        echo $count;
-                   ?>
-                   </h5>
-                </div>
-                    </a>
-            </div>
+                   ?></button></a>
 
-            <div class="col-sm-3">
-            <a href="Playerlist/wicketkeeperlist.php">
 
-                <div class="card">
-                    <i class="fa fa-th mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">WicketKeeper</h4>
-                    <h5 style="color:white;">
-                    <?php
+<a href="Playerlist/wicketkeeperlist.php"><button type="button" class="btn btn-primary size">WicketKeeper<br>
+<?php
                        
                        $sql="SELECT * from wicketkeeper where Sold IS NULL";
                        $result=$conn-> query($sql);
@@ -213,21 +160,12 @@
                        }
                        echo $count;
                        
-                   ?>
-                   </h5>
-                </div>
-                    </a>
-            </div>
+                   ?></button></a>
 
 
-            <div class="col-sm-3">
-            <a href="Playerlist/rejectplayers.php">
 
-                <div class="card">
-                    <i class="fa fa-th mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Reject Players</h4>
-                    <h5 style="color:white;">
-                    <?php
+<a href="Playerlist/rejectplayers.php"><button type="button" class="btn btn-primary size">Reject Players<br>
+<?php
                        
                        $sql="SELECT * from register WHERE approved='No'";
                        $result=$conn-> query($sql);
@@ -240,20 +178,13 @@
                        }
                        echo $count;
                        
-                   ?>
-                   </h5>
-                </div>
-                    </a>
-            </div>
+                   ?></button></a>
 
-            <div class="col-sm-3">
-            <a href="Playerlist/acceptplayers.php">
 
-                <div class="card">
-                    <i class="fa fa-th mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Accept Players</h4>
-                    <h5 style="color:white;">
-                    <?php
+
+
+<a href="Playerlist/acceptplayers.php"><button type="button" class="btn btn-primary size">Accept Players<br>
+<?php
                        
                        $sql="SELECT * from register WHERE approved='Yes'";
                        $result=$conn-> query($sql);
@@ -266,18 +197,30 @@
                        }
                        echo $count;
                        
-                   ?>
-                   </h5>
-                </div>
-                    </a>
-            </div>
+                   ?></button></a>
 
 
 
-        </div>
-        
-    </div>
-       
+<a href="Playerlist/teamplayers.php"><button type="button" class="btn btn-primary size">Team Players<br>
+<?php
+                  /*     
+                       $sql="SELECT * from register WHERE approved='Yes'";
+                       $result=$conn-> query($sql);
+                       $count=0;
+                       if ($result-> num_rows > 0){
+                           while ($row=$result-> fetch_assoc()) {
+                   
+                               $count=$count+1;
+                           }
+                       }
+                       echo $count;
+                       
+                 */  ?></button></a>
+
+
+
+            
+            
             
         
     
