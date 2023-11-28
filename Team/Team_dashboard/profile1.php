@@ -189,7 +189,7 @@ if (mysqli_num_rows($result2) > 0) {
         echo "Economy: " . $row2["economy"] . "<br>";
         echo "Best Bowling: " . $row2["best_bowl"] . "<br>";
         echo "5 - Wicket: " . $row2["w5"] . "<br>";
-        echo "Based Price: " . $row2["based_price"] . "<br>";
+        echo "Based Price: " . $row2["base_price"] . "<br>";
     }
 } else {
     echo "No matching data found for player ID: $player_id<br>";

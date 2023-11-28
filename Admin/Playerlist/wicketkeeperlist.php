@@ -2,8 +2,18 @@
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
-$sql5 = "SELECT * from wicketkeeper WHERE sold is NULL";
+$sql5 = "SELECT * FROM wicketkeeper 
+WHERE sold IS NULL AND gotoauction IS NULL";
+
 $result = mysqli_query($conn, $sql5);
+$sql6 = "SELECT * from rule";
+$resultTime = mysqli_query($conn, $sql6);
+
+while ($rowTime = mysqli_fetch_assoc($resultTime)) {
+
+  $periadTime=$rowTime['auction_duration_time'];
+
+}
 
 
 $sql2 = "CREATE TABLE IF NOT EXISTS auction (
@@ -19,10 +29,11 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
 
   if(isset($_POST['push'])){
     $player_id = $_POST['player_keeping_id'];
+    $sqlupdate="UPDATE wicketkeeper SET gotoauction=1 WHERE player_keeping_id=$player_id ";
+    mysqli_query($conn,$sqlupdate);
       
-    // Calculate the end time (5 minutes from the auction start time)
     $current_time = time();
-    $auction_end_time = $current_time + (1 * 60); // 5 minutes in seconds
+    $auction_end_time = $current_time + ($periadTime * 60); 
   
     // Convert the timestamps to formatted time strings
     $current_time_formatted = date("Y-m-d H:i:s", $current_time);

@@ -20,8 +20,8 @@ if (mysqli_num_rows($resultMaxBidID) > 0) {
     $maxBid = $rowMaxBidID["max_bid"];
 //$team_id = $rowMaxBidID["team_id"];
 } else {
-   
-    echo "No maximum bid found for player ID: $player_id<br>";
+    $maxBid=0;
+    
 }
 
 $sql2 = "SELECT register.player_id, register.first_name,
