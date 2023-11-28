@@ -11,7 +11,7 @@
 
 
     <section class="contact">
-        <div class="container2">
+<div class="container2">
             <h2>Contact Us</h2>
             <div class="contact-wrapper">
                 <div class="contact-form">
@@ -46,7 +46,7 @@
             </div>
         </div> 
     </section>
-
+</div>
     <?php include('footer.php'); ?>
 </body>
 

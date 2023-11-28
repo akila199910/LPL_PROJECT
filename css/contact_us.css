@@ -13,12 +13,12 @@
     text-align: center;
 }
 
-.container{
+.container2{
     max-width: 800px;
     margin: 0 auto;
 }
 
-.container h2{
+.container2 h2{
     font-size: 36px;
     margin-bottom: 40px;
     color: #333;
@@ -96,7 +96,7 @@ button:hover{
 
 
 @media screen and(max-width:768px){
-    .container{
+    .container2{
         padding: 20px;
     }
     .contact-wrapper{

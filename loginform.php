@@ -12,7 +12,7 @@
 <!-------------account page------------>
 
 
-    <div class="container">
+    
         <div class="row">
             <div class="col-2">
                 <img src="/LPL_PROJECT/LPL_PROJECT/images/acc.png" width="100%">
