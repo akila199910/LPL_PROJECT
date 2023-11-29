@@ -90,7 +90,7 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     }
 
     echo "<script>alert('Check your mail box');</script>";
-    echo '<script> window.location.href = "http://localhost/LPL_PROJECT/LPL_PROJECT/Login/loginform.php"</script>';
+    echo '<script> window.location.href = "http://localhost/LPL_PROJECT/LPL_PROJECT/loginform.php"</script>';
    
     
 }
