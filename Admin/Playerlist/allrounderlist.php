@@ -64,9 +64,15 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
   <title>Batsman Page</title>
 </head>
 <body>
+<?php
+
+include('../sidebar.php');
+?>
   <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
     LPL - LANKA PREMIER LEAGUE
   </nav>
+  <div class="content">
+
 
   <div class="container">
     <table class="table table-hover text-center">
@@ -103,6 +109,7 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
       </tbody>
     </table>
   </div>
+        </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -12,9 +12,14 @@
     <title>Team Players</title>
 </head>
 <body>
-    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
-        LPL - LANKA PREMIER LEAGUE
-    </nav>
+<?php
+
+include('../sidebar.php');
+?>
+  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
+    LPL - LANKA PREMIER LEAGUE
+  </nav>
+  <div class="content">
     <div class="container">
         <?php
             include("conn.php");
@@ -51,6 +56,7 @@
                 });
             });
         </script>
-    </div>
+    </div>    </div>
+
 </body>
 </html>

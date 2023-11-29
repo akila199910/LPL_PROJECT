@@ -40,10 +40,14 @@ $result = mysqli_query($conn, $sql);
 </head>
 
 <body>
-  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue; width:100%;">
+<?php
+
+include('../sidebar.php');
+?>
+  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
     LPL - LANKA PREMIER LEAGUE
   </nav>
-
+  <div class="content">
   <div class="container">
   <table class="table table-hover text-center">
       <thead>
@@ -74,7 +78,7 @@ $result = mysqli_query($conn, $sql);
        }?>
     </tbody>
     </table>
-    </div>
+    </div></div>
     </body>
     </html>
 
