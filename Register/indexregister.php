@@ -139,8 +139,8 @@ mysqli_close($conn);
 
 
 
-
     <div class="container mt-4">
+        <h1>Player Registration Form</h1>
         <div class="row justify-content-center">
             <form action="" class="form-box" method="POST" enctype="multipart/form-data">
 
