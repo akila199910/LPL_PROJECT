@@ -37,9 +37,14 @@ $sql = "SELECT r.*, b.sold AS batsman_sold, b.gotoauction AS batsman_gotoauction
 </head>
 
 <body>
-  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue; width:100%;">
+<?php
+
+include('../sidebar.php');
+?>
+  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
     LPL - LANKA PREMIER LEAGUE
   </nav>
+  <div class="content">
 
   <div class="container">
   <table class="table table-hover text-center">
@@ -71,6 +76,7 @@ $sql = "SELECT r.*, b.sold AS batsman_sold, b.gotoauction AS batsman_gotoauction
        }?>
     </tbody>
     </table>
+    </div>
     </div>
     </body>
     </html>

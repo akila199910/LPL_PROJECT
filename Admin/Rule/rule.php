@@ -29,7 +29,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Reles and Regulation</title>
+    <title>Rules and Regulation</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -46,6 +46,14 @@
 </head>
 
 <body>
+<?php
+
+//include('/LPL_PROJECT/LPL_PROJECT/Admin/sidebar.php');
+include('../sidebar.php');
+
+?>
+  <div class="content">
+
     <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
@@ -130,8 +138,9 @@
 
     <!-- Main JS-->
     <script src="js/global.js"></script>
-
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+    </div>
+</body>
+<!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>
 <!-- end document-->
