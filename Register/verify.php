@@ -23,7 +23,7 @@ if (isset($_GET['code'])) {
         echo "<script>alert('Invalid verification code.');</script>";
     }
 
-    echo '<script> window.location.href = "http://localhost/LPL_PROJECT/LPL_PROJECT/home.html"</script>';
+    echo '<script> window.location.href = "http://localhost/LPL_PROJECT/LPL_PROJECT/home.php"</script>';
 } 
 
 mysqli_close($conn);
