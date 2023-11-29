@@ -1,44 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-
-    <title>About Us</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Poppins:wght@200;300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
-    <script src="https://kit.fontawesome.com/17d9527542.js" crossorigin="anonymous"></script>
-</head>
-
-<body  style="background: radial-gradient(#fff,#5960de);">
-   
-
-    <div class="container">
-
-
-        <div class="navbar">
-            <div class="logo">
-                <img src="images/lpllogo.png" width="125px">
-            </div>
-            <nav>
-                <ul>
-                    <li><i class="fa-solid fa-house"></i><a href="home.html">Home</a></li>
-                <li><i class="fa-brands fa-unity"></i><a href="about.html">About</a></li>
-                <li><i class="fa-solid fa-briefcase"></i><a href="contact us page/index.php">Contact</a></li>
-                <li><i class="fa-solid fa-comment"></i><a href="Login/loginform.php">Account</a></li>
-                </ul>
-            </nav>
-            
-        </div>
-
-    </div>
-    </div>
-    </div>
-
+<?php 
+    $pageTitle = "About Us"; 
+    include('header.php'); ?>
+    
+  
+    
+    <body  style="background: radial-gradient(#fff,#5960de);">
 
     <div class="abouts">
         <div class="container">
@@ -77,6 +44,8 @@
         </div>
     </div>
 
+    </div>
+    </body>
 
 
 
