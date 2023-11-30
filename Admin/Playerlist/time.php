@@ -2,7 +2,9 @@
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
-$sql = "SELECT auction_start_time, auction_end_time,player_id FROM auction WHERE active=0";
+$sql = "SELECT auction_start_time, auction_end_time,player_id FROM auction ORDER BY auction_id DESC LIMIT 1";
+
+
 $result = mysqli_query($conn, $sql);
 
 if ($result && mysqli_num_rows($result) > 0) {
@@ -10,17 +12,23 @@ if ($result && mysqli_num_rows($result) > 0) {
     $auctionStartTime = $row["auction_start_time"];
     $auctionEndTime = $row["auction_end_time"];
     $player_id=$row["player_id"];
+    $current_time = time();
+    $current_time_formatted = date("Y-m-d H:i:s", $current_time);
     
-} else {
-      echo "No auction data found : ";
-}
-$current_time = time();
-$current_time_formatted = date("Y-m-d H:i:s", $current_time);
+    $timeDifference = strtotime($auctionEndTime) - strtotime($current_time_formatted);
+    
+    
 
-$timeDifference = strtotime($auctionEndTime) - strtotime($current_time_formatted);
-//echo $timeDifference;//this is the time time in minit for player
+    
+} 
+
+if (isset($timeDifference)) {
+
 if($timeDifference==0 || $timeDifference<0)
 {
+
+    $UpdateActive = "SELECT active FROM auction WHERE player_id = $player_id";
+     mysqli_query($conn, $UpdateActive);
   
     $sqlMaxBidID = "SELECT MAX(bid_price) AS max_bid FROM bid WHERE player_id = $player_id";
     $resultMaxBidID = mysqli_query($conn, $sqlMaxBidID);
@@ -50,51 +58,54 @@ if($timeDifference==0 || $timeDifference<0)
                         // Update batsman's sold column
                         $updatePrice = "UPDATE batsman SET sold = $maxBid, team_id = $team_id WHERE player_batting_id = $player_id";
                         $resultUpdate = mysqli_query($conn, $updatePrice);
-                        $updateActive = "UPDATE auction SET active = 1 WHERE player_id = $player_id";
-                        $resultActive = mysqli_query($conn, $updateActive);
-
-                        echo "සුබ පැතුම් ඔබව සෙල් උනා ";
+                        $updateActive = "UPDATE auction SET active = 1 WHERE player_id =  $player_id";
+                         mysqli_query($conn, $updateActive);
+                        echo "ඔයා සෙල් උනා";
+                       
                         break;
             
                     case 'bol':
                         $updatePrice = "UPDATE bowler SET sold = $maxBid, team_id = $team_id WHERE player_bowlling_id = $player_id";
                         $resultUpdate = mysqli_query($conn, $updatePrice);
-                        $updateActive = "UPDATE auction SET active = 1 WHERE player_id = $player_id";
-                        $resultActive = mysqli_query($conn, $updateActive);
-
-                        echo "සුබ පැතුම් ඔබව සෙල් උනා ";
+                        $updateActive = "UPDATE auction SET active = 1 WHERE player_id =  $player_id";
+                         mysqli_query($conn, $updateActive);
+                        echo "ඔයා සෙල් උනා";
                         break;
             
                     case 'wk':
                         $updatePrice = "UPDATE wicketkeeper SET sold = $maxBid, team_id = $team_id WHERE player_keeping_id = $player_id";
                         $resultUpdate = mysqli_query($conn, $updatePrice);
-                        $updateActive = "UPDATE auction SET active = 1 WHERE player_id = $player_id";
-                        $resultActive = mysqli_query($conn, $updateActive);
-                        echo "සුබ පැතුම් ඔබව සෙල් උනා ";
+                        $updateActive = "UPDATE auction SET active = 1 WHERE player_id =  $player_id";
+                         mysqli_query($conn, $updateActive);
+                        echo "ඔයා සෙල් උනා";
                         break;
             
                     case 'alr':
                         $updatePrice = "UPDATE allrounder SET sold = $maxBid, team_id = $team_id WHERE player_al_id = $player_id";
                         $resultUpdate = mysqli_query($conn, $updatePrice);
-                        $updateActive = "UPDATE auction SET active = 1 WHERE player_id = $player_id";
-                        $resultActive = mysqli_query($conn, $updateActive);
-                        echo "සුබ පැතුම් ඔබව සෙල් උනා ";
+                        $updateActive = "UPDATE auction SET active = 1 WHERE player_id =  $player_id";
+                         mysqli_query($conn, $updateActive);
+                        echo "ඔයා සෙල් උනා";
                         break;
             
                     default:
                         // Handle other cases if needed
                         break;
                 }
+
+
         }       
     } else{
         //echo $maxBid = 0;
         echo "සෙට් නෑ සෙල් උනේ නෑ";
-        $updateActive = "UPDATE auction SET active = 1 WHERE player_id = $player_id";
-        $resultActive = mysqli_query($conn, $updateActive);
+        $updateActive = "UPDATE auction SET active = 1 WHERE player_id =  $player_id";
+                         mysqli_query($conn, $updateActive);
+        
     }
 }
         
 }  else{
         echo $timeDifference;
-        }          
+        }    
+}
 ?> 
