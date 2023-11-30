@@ -5,11 +5,9 @@ mysqli_select_db($conn, "lplsystem");
 if (isset($_GET['player_id'])) {
     $player_id = $_GET['player_id'];
 } 
-//$sqlMaxBidID = "SELECT MAX(bid_price) AS max_bid,team_id FROM bid WHERE player_id = $player_id";
 $sqlMaxBidID = "SELECT MAX(bid_price) AS max_bid FROM bid WHERE player_id = $player_id";
 
-// මෙතන කේස් එකක් තියේ මැක්ස් බිඩ් එකට අදාල ටීම් අයි ඩී එක සිලෙක්ට් කර ගෙන ඉන්න ඕන.
-//ඒක ඒම කරල නැති නිසා තමා හැම වෙලේම එකම ටීම් අයි ඩී එකක් සෙට් වෙන්නෙ
+
 $resultMaxBidID = mysqli_query($conn, $sqlMaxBidID);
 
 if (!$resultMaxBidID) {
@@ -22,7 +20,8 @@ if (mysqli_num_rows($resultMaxBidID) > 0) {
     $maxBid = $rowMaxBidID["max_bid"];
 //$team_id = $rowMaxBidID["team_id"];
 } else {
-    echo "No maximum bid found for player ID: $player_id<br>";
+    $maxBid=0;
+    
 }
 
 // Now, you can fetch additional information from the 'register' and 'batsman' tables
@@ -64,26 +63,7 @@ if (mysqli_num_rows($result2) > 0) {
     echo "No matching data found for player ID: $player_id<br>";
 }
 
-$sql = "SELECT auction_start_time, auction_end_time FROM auction WHERE player_id = $player_id";
-$result = mysqli_query($conn, $sql);
 
-if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    $auctionStartTime = $row["auction_start_time"];
-    $auctionEndTime = $row["auction_end_time"];
-
-} else {
-      echo "No auction data found for player ID: $player_id";
-}
-
-//$timeDifference = strtotime($auctionEndTime) - strtotime($auctionStartTime);
-echo $auctionEndTime."<br>";
-
-// time 1 button eka ebuwama ganna balana tena patan gatta code eka
-$current_time = time();
-$current_time_formatted = date("Y-m-d H:i:s", $current_time);
-echo $current_time_formatted;
-$timeDifference = strtotime($auctionEndTime) - strtotime($current_time_formatted);
 ?>
 
 
@@ -91,65 +71,31 @@ $timeDifference = strtotime($auctionEndTime) - strtotime($current_time_formatted
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Player Details</title>
-</head>
+    </head>
 <body>
-    
-    <br> <button id="startAuction" name="start">Start Auction</button>
+    <br> 
+   
     <p id="countdown"></p>
+    <p id="bid"></p>
+    <p id="contain"></p>
 
     <script>
-// Countdown timer
-
-let countdown = <?php echo $timeDifference; ?>;
-let maxBid = <?php echo isset($maxBid) ? $maxBid : 0; ?>;
-
-function updateCountdown() {
-    const countdownElement = document.getElementById("countdown");
-    countdownElement.textContent = `Time Left: ${countdown} seconds`;
-
-    if (countdown <= 0) {
-        countdownElement.textContent = "Auction Ended";
-        
-        // AJAX request to update the active status
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "update_active.php", true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // You can handle the response if needed
-
-                // AJAX request to update the batsman's sold column
-                const xhrSold = new XMLHttpRequest();
-                xhrSold.open("POST", "update_sold.php", true);
-                xhrSold.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhrSold.onreadystatechange = function () {
-                    if (xhrSold.readyState == 4 && xhrSold.status == 200) {
-                        // You can handle the response if needed
-                    }
-                };
-                xhrSold.send(`player_id=<?php echo $player_id; ?>&max_bid=${maxBid}`);
-            }
-        }; 
-        xhr.send(`player_id=<?php echo $player_id; ?>`);
-    } else {
-        countdown--;
-        setTimeout(updateCountdown, 1000); // Update the countdown every 1 second
-    }
-}
-
-
-// Add an event listener to the Start Auction button
-const startAuctionButton = document.getElementById("startAuction");
-startAuctionButton.addEventListener("click", () => {
-    startAuctionButton.disabled = true; // Disable the button once the auction starts
-    updateCountdown();});
-
-
+        $(document).ready(function () {
+            
+                setInterval(function () {
+                    $("#countdown").load("time.php");
+                }, 1000);
+           
+        });
     </script>
 </body>
 </html>
