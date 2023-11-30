@@ -6,7 +6,7 @@ session_start();
 if (isset($_SESSION['team_id'])) {
     echo $_SESSION['team_id'];
 } else {
-    header("Location: logout.php");
+    header("Location: /LPL_PROJECT/LPL_PROJECT/Team/Team_dashboard/logout.php");
     exit; // Make sure to exit after redirect
 }
 ?>

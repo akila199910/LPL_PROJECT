@@ -1,18 +1,9 @@
 <?php
 
 session_start();
-$servername = "localhost"; 
-$username = "root";
-$password = "";
-$dbname = "lplsystem";
+include "conn.php";
+mysqli_select_db($conn,"lplsystem");
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 if (!isset($_SESSION['moderators_id'])) {
     header("Location: logout.php");
     exit(); // It's recommended to stop script execution after redirection
@@ -42,92 +33,94 @@ if ($result->num_rows > 0) {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
-
-.topnav {
-  overflow: hidden;
-  background-color:#f1f1f1 ;
-  height:75px;
-}
-
-.topnav a {
-  float: right;
-  color: light-blue;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  height:75px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-  width:100px;
-}
-
-.topnav a.active {
-  background-color: blue;
-  color: white;
-  width:100px;
-}
-.text-center h4 {
+  .topnav {
+    overflow: hidden;
+    background-color:lightblue ;
+    height:75px;
+  }
+  
+  .topnav a {
+    float: right;
+    color: light-blue;
     text-align: center;
-    background-color:light-blue;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    height:75px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+    width:100px;
+  }
+  
+  .topnav a.active {
+    background-color: darkblue;
+    color: white;
     
-    
-}
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 100%}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      background-color: #f1f1f1;
-      min-height: calc(100vh - 75px);
-      width:300px;
-    }
-        
-    /* On small screens, set height to 'auto' for the grid */
-    @media screen and (max-width: 767px) {
-      .row.content {height: auto;} 
-    }
-    .well.pending-card {
-    /* Add desired background color */
-    background-color: #f7f7f7;
-
-    /* Add padding and border radius for styling */
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer; /* Optional: Add a cursor change on hover */
-
-    /* Add animation styles */
-    animation-name: colorChange;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-/* Define the animation keyframes */
-@keyframes colorChange {
-    0% {
-        background-color: #f7f7f7; /* Initial background color */
-    }
-    50% {
-        background-color: #ffcc00; /* First color change */
-    }
-    100% {
-        background-color: #f7f7f7; /* Back to initial color */
-    }
-}
-  </style>
+  }
+  .text-center {
+      text-align: center;
+      background-color:#fceaa4;
+      
+      
+  }
+      /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+      .row.content {height: 100%}
+      
+      /* Set gray background color and 100% height */
+      .sidenav {
+        background-color:lightblue;
+        min-height: calc(100vh - 75px);
+        width:300px;
+      }
+          
+      /* On small screens, set height to 'auto' for the grid */
+      @media screen and (max-width: 767px) {
+        .row.content {height: auto;} 
+      }
+      .well.modname{
+        background-color:lightblue;
+      }
+      .well.pending-card {
+      /* Add desired background color */
+      background-color: #f7f7f7;
+  
+      /* Add padding and border radius for styling */
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer; /* Optional: Add a cursor change on hover */
+  
+      /* Add animation styles */
+      animation-name: colorChange;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+  }
+  
+  /* Define the animation keyframes */
+  @keyframes colorChange {
+      0% {
+          background-color: #f7f7f7; /* Initial background color */
+      }
+      50% {
+          background-color: #ffcc00; /* First color change */
+      }
+      100% {
+          background-color: #f7f7f7; /* Back to initial color */
+      }
+  }
+</style>
 </head>
 <body>
 
 <div class="topnav">
-  <a class="active" href="/LPL_PROJECT/LPL_PROJECT/home.html">Home</a>
+  <a class="active" href="/LPL_PROJECT/LPL_PROJECT/home.php">Home</a>
   <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/logout.php">Log Out</a>
-  <a href="/LPL_PROJECT/LPL_PROJECT/contact us page/index.php">Contact</a>
-  <a href="/LPL_PROJECT/LPL_PROJECT/about.html">About</a>
+  <a href="/LPL_PROJECT/LPL_PROJECT/contact_us.php">Contact</a>
+  <a href="/LPL_PROJECT/LPL_PROJECT/about.php">About</a>
   <div class="img">
     <img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="300px" height="75px">
 </div>
@@ -138,7 +131,7 @@ if ($result->num_rows > 0) {
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav hidden-xs">
-    <div class="well">
+    <div class="well modname">
     
     <?php
         //echo "<p>Moderator Id:{$_SESSION['moderators_id']}</p>";

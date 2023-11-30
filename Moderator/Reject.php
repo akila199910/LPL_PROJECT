@@ -20,12 +20,44 @@ $result=mysqli_query($conn,$sql);
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <title>Reject List</title>
+  <style>
+  .topnav {
+    overflow: hidden;
+    background-color:lightblue ;
+    height:75px;
+  }
+  
+  .topnav a {
+    float: right;
+    color: light-blue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    height:75px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+    
+  }
+  
+  
+  </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue; width:100%;">
-    LPL - LANKA PREMIER LEAGUE
-  </nav>
+<div class="topnav">
+  
+  <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/logout.php">Log Out</a>
+  <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/moderator_dashboard.php">Dashboard</a>
+  <div class="img">
+    <img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="300px" height="75px">
+</div>
+</div>
+
+<h4 style="text-align: center; color: #2980b9; font-weight: bold; text-decoration: underline;">REJECTED PLAYER LIST</h4>
 
   <div class="container">
   <table class="table table-hover text-center">
