@@ -2,29 +2,46 @@
 include "conn.php";
 mysqli_select_db($conn,"lplsystem");
 
-$id = $_GET["id"];
 
-if (isset($_POST["submit"])) {
-  $team_name = $_POST['team_name'];
-  $owner_name = $_POST['owner_name'];
-  $email = $_POST['email'];
-  $password=$_POST['password'];
-  $filename1 = $_FILES['icon']['name'];
-$tempname1 = $_FILES['icon']['tmp_name'];
-$folder1 = "teamicon/" . $filename1;
-move_uploaded_file($tempname1,$folder1);
- 
 
-  $sql = "UPDATE team SET team_name='$team_name',owner_name='$owner_name',email='$email',password='$password',icon='$filename1' WHERE id = $id";
+//Auto logout without session
+session_start();
 
-  $result = mysqli_query($conn, $sql);
+if (isset($_SESSION['admin_id'])) {
 
-  if ($result) {
-    header("Location: indexteam.php?msg=Team updated successfully");
-  } else {
-    echo "Failed: " . mysqli_error($conn);
+  
+  
+  //edit team code
+  $id = $_GET["id"];
+  if (isset($_POST["submit"])) {
+    $team_name = $_POST['team_name'];
+    $owner_name = $_POST['owner_name'];
+    $email = $_POST['email'];
+    $password=$_POST['password'];
+    $filename1 = $_FILES['icon']['name'];
+  $tempname1 = $_FILES['icon']['tmp_name'];
+  $folder1 = "teamicon/" . $filename1;
+  move_uploaded_file($tempname1,$folder1);
+   
+  
+    $sql = "UPDATE team SET team_name='$team_name',owner_name='$owner_name',email='$email',password='$password',icon='$filename1' WHERE id = $id";
+  
+    $result = mysqli_query($conn, $sql);
+  
+    if ($result) {
+      header("Location: indexteam.php?msg=Team updated successfully");
+    } else {
+      echo "Failed: " . mysqli_error($conn);
+    }
   }
+
+
+
+} else {
+    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
 }
+
+
 
 ?>
 

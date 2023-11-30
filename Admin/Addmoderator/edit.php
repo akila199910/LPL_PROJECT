@@ -6,23 +6,39 @@ mysqli_select_db($conn,"lplsystem");
 $id = $_GET["id"];
 
 
-if (isset($_POST["submit"])) {
-  $first_name = $_POST['first_name'];
-  $last_name = $_POST['last_name'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $gender = $_POST['gender'];
 
-  $sql = "UPDATE moderators SET first_name='$first_name',last_name='$last_name',email='$email',password='$password',gender='$gender' WHERE id = $id";
+//Auto logout without session
+session_start();
 
-  $result = mysqli_query($conn, $sql);
-
-  if ($result) {
-    header("Location: indexmodertor.php?msg=Moderator updated successfully");
-  } else {
-    echo "Failed: " . mysqli_error($conn);
+if (isset($_SESSION['admin_id'])) {
+  
+  
+  if (isset($_POST["submit"])) {
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $gender = $_POST['gender'];
+  
+    $sql = "UPDATE moderators SET first_name='$first_name',last_name='$last_name',email='$email',password='$password',gender='$gender' WHERE id = $id";
+  
+    $result = mysqli_query($conn, $sql);
+  
+    if ($result) {
+      header("Location: indexmodertor.php?msg=Moderator updated successfully");
+    } else {
+      echo "Failed: " . mysqli_error($conn);
+    }
   }
+
+} else {
+    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
 }
+
+
+
+
+
 
 ?>
 

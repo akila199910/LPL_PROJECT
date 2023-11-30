@@ -2,38 +2,55 @@
 include "conn.php";
 mysqli_select_db($conn,"lplsystem");
 
-$sql2 = "CREATE TABLE IF NOT EXISTS moderators (
-   id INT PRIMARY KEY AUTO_INCREMENT,
-   first_name VARCHAR(100) NOT NULL,
-   last_name VARCHAR(100) NOT NULL,
-   email VARCHAR(100) NOT NULL,
-   password VARCHAR(100) NOT NULL,
-   gender VARCHAR(255)  NULL)";
 
-   mysqli_query($conn, $sql2);
-if (isset($_POST["submit"])) {
-   $first_name = $_POST['first_name'];
-   $last_name = $_POST['last_name'];
-   $email = $_POST['email'];
-   $password = $_POST['password'];
-   $gender = $_POST['gender'];
+//Auto logout without session
+session_start();
+
+if (isset($_SESSION['admin_id'])) {
    
-
-   // Encrypt the password using password_hash() function
-   $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-
-   $sql = "INSERT INTO moderators (first_name, last_name, email, password, gender) VALUES ('$first_name', '$last_name', '$email', '$hashed_password', '$gender')";
-
-
-   $result = mysqli_query($conn, $sql);
-
-   if ($result) {
-      header("Location: indexmodertor.php?msg=New moderator created successfully");
-   } else {
-      echo "Failed: " . mysqli_error($conn);
+   
+   //add moderator code
+   $sql2 = "CREATE TABLE IF NOT EXISTS moderators (
+      id INT PRIMARY KEY AUTO_INCREMENT,
+      first_name VARCHAR(100) NOT NULL,
+      last_name VARCHAR(100) NOT NULL,
+      email VARCHAR(100) NOT NULL,
+      password VARCHAR(100) NOT NULL,
+      gender VARCHAR(255)  NULL)";
+   
+      mysqli_query($conn, $sql2);
+   if (isset($_POST["submit"])) {
+      $first_name = $_POST['first_name'];
+      $last_name = $_POST['last_name'];
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+      $gender = $_POST['gender'];
+      
+   
+      // Encrypt the password using password_hash() function
+      $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+   
+   
+      $sql = "INSERT INTO moderators (first_name, last_name, email, password, gender) VALUES ('$first_name', '$last_name', '$email', '$hashed_password', '$gender')";
+   
+   
+      $result = mysqli_query($conn, $sql);
+   
+      if ($result) {
+         header("Location: indexmodertor.php?msg=New moderator created successfully");
+      } else {
+         echo "Failed: " . mysqli_error($conn);
+      }
    }
+
+
+
+} else {
+    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
 }
+
+
+
 
 ?>
 

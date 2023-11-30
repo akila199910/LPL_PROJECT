@@ -2,21 +2,35 @@
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
-// Select records where sold is NULL in batsman and active is 1 in auction
+
+//Auto logout without session
+session_start();
+
+if (isset($_SESSION['admin_id'])) {
+
+  // Select records where sold is NULL in batsman and active is 1 in auction
 $sql = "SELECT r.*, b.sold AS batsman_sold, b.gotoauction AS batsman_gotoauction,
-      bo.sold AS bowler_sold, bo.gotoauction AS bowler_gotoauction,
-      wk.sold AS wicketkeeper_sold, wk.gotoauction AS wicketkeeper_gotoauction,
-      alr.sold AS allrounder_sold, alr.gotoauction AS allrounder_gotoauction
-      FROM register r
-      LEFT JOIN batsman b ON r.player_id = b.player_batting_id
-      LEFT JOIN bowler bo ON r.player_id = bo.player_bowlling_id 
-      LEFT JOIN wicketkeeper wk ON r.player_id = wk.player_keeping_id 
-      LEFT JOIN allrounder alr ON r.player_id = alr.player_al_id 
-      WHERE (b.sold IS NOT NULL AND b.gotoauction = 1)
-      OR (bo.sold IS NOT NULL AND bo.gotoauction = 1)
-      OR (wk.sold IS NOT NULL AND wk.gotoauction = 1)
-      OR (alr.sold IS NOT NULL AND alr.gotoauction = 1)";
-      $result = mysqli_query($conn, $sql);
+bo.sold AS bowler_sold, bo.gotoauction AS bowler_gotoauction,
+wk.sold AS wicketkeeper_sold, wk.gotoauction AS wicketkeeper_gotoauction,
+alr.sold AS allrounder_sold, alr.gotoauction AS allrounder_gotoauction
+FROM register r
+LEFT JOIN batsman b ON r.player_id = b.player_batting_id
+LEFT JOIN bowler bo ON r.player_id = bo.player_bowlling_id 
+LEFT JOIN wicketkeeper wk ON r.player_id = wk.player_keeping_id 
+LEFT JOIN allrounder alr ON r.player_id = alr.player_al_id 
+WHERE (b.sold IS NOT NULL AND b.gotoauction = 1)
+OR (bo.sold IS NOT NULL AND bo.gotoauction = 1)
+OR (wk.sold IS NOT NULL AND wk.gotoauction = 1)
+OR (alr.sold IS NOT NULL AND alr.gotoauction = 1)";
+$result = mysqli_query($conn, $sql);
+
+
+
+} else {
+    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
+}
+
+
 
 ?>
  

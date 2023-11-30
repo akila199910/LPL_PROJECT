@@ -2,6 +2,13 @@
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
+//Auto logout without session
+session_start();
+
+if (isset($_SESSION['admin_id'])) {
+
+
+
 $sql5 = "SELECT * FROM allrounder 
 WHERE sold IS NULL AND gotoauction IS NULL";
 $result = mysqli_query($conn, $sql5);
@@ -66,6 +73,25 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
   
     
   }
+
+
+
+
+
+
+
+
+
+
+
+} else {
+    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
+}
+
+
+
+
+
   
   
   

@@ -3,46 +3,60 @@ include "conn.php";
 mysqli_select_db($conn,"lplsystem");
 
 
-$sql2 = "CREATE TABLE IF NOT EXISTS team (
-   id INT PRIMARY KEY AUTO_INCREMENT,
-   team_name VARCHAR(100) NOT NULL,
-   owner_name VARCHAR(100) NOT NULL,
-   email VARCHAR(100) NOT NULL,
-   password VARCHAR(100) NOT NULL,
-   icon VARCHAR(255)  NULL)";
+//Auto logout without session
+session_start();
 
-   mysqli_query($conn, $sql2);
+if (isset($_SESSION['admin_id'])) {
+   
+   
+   
+   $sql2 = "CREATE TABLE IF NOT EXISTS team (
+      id INT PRIMARY KEY AUTO_INCREMENT,
+      team_name VARCHAR(100) NOT NULL,
+      owner_name VARCHAR(100) NOT NULL,
+      email VARCHAR(100) NOT NULL,
+      password VARCHAR(100) NOT NULL,
+      icon VARCHAR(255)  NULL)";
+   
+      mysqli_query($conn, $sql2);
+   
+   if (isset($_POST["submit"])) {
+   
+   $team_name = $_POST['team_name'];
+   $owner_name = $_POST['owner_name'];
+   $email = $_POST['email'];
+   $password = $_POST['password'];
+   
+   $filename1 = $_FILES['icon']['name'];
+   $tempname1 = $_FILES['icon']['tmp_name'];
+   $folder1 = "teamicon/" . $filename1;
+   move_uploaded_file($tempname1,$folder1);
+   
+   
+   // Encrypt the password using password_hash() function
+   $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+   
+   
+   $sql = "INSERT INTO team (team_name, owner_name, email, password, icon) VALUES ('$team_name', '$owner_name', '$email', '$hashed_password', '$filename1')";
+   
+   
+   $result = mysqli_query($conn, $sql);
+   move_uploaded_file($tempname1,$folder1);
+   
+   if ($result) {
+      header("Location: indexteam.php?msg=New team added successfully");
+   } else {
+      echo "Failed: " . mysqli_error($conn);
+   }
+   }
 
-if (isset($_POST["submit"])) {
-
-$team_name = $_POST['team_name'];
-$owner_name = $_POST['owner_name'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-
-$filename1 = $_FILES['icon']['name'];
-$tempname1 = $_FILES['icon']['tmp_name'];
-$folder1 = "teamicon/" . $filename1;
-move_uploaded_file($tempname1,$folder1);
-
-
-// Encrypt the password using password_hash() function
-$hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-
-$sql = "INSERT INTO team (team_name, owner_name, email, password, icon) VALUES ('$team_name', '$owner_name', '$email', '$hashed_password', '$filename1')";
 
 
 
-$result = mysqli_query($conn, $sql);
-move_uploaded_file($tempname1,$folder1);
-
-if ($result) {
-   header("Location: indexteam.php?msg=New team added successfully");
 } else {
-   echo "Failed: " . mysqli_error($conn);
+    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
 }
-}
+
 
 ?>
 
