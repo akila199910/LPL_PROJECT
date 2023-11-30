@@ -2,6 +2,9 @@
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
+
+
+
 $sql = "SELECT auction_start_time, auction_end_time,player_id FROM auction ORDER BY auction_id DESC LIMIT 1";
 
 
