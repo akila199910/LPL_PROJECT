@@ -54,37 +54,49 @@ if($timeDifference==0 || $timeDifference<0)
               
             
                 switch ($catogaryValue) {
-                    case 'bat':
+                    case 'BATSMAN':
                         // Update batsman's sold column
                         $updatePrice = "UPDATE batsman SET sold = $maxBid, team_id = $team_id WHERE player_batting_id = $player_id";
                         $resultUpdate = mysqli_query($conn, $updatePrice);
                         $updateActive = "UPDATE auction SET active = 1 WHERE player_id =  $player_id";
                          mysqli_query($conn, $updateActive);
+                         //$player_id = $_POST['player_batting_id'];
+                        $sqlupdate="UPDATE batsman SET gotoauction=1 WHERE player_batting_id=$player_id";
+                        mysqli_query($conn,$sqlupdate);
                         echo "ඔයා සෙල් උනා";
                        
                         break;
             
-                    case 'bol':
+                    case 'BOWLER':
                         $updatePrice = "UPDATE bowler SET sold = $maxBid, team_id = $team_id WHERE player_bowlling_id = $player_id";
                         $resultUpdate = mysqli_query($conn, $updatePrice);
                         $updateActive = "UPDATE auction SET active = 1 WHERE player_id =  $player_id";
                          mysqli_query($conn, $updateActive);
+                         //$player_id = $_POST['player_bowling_id'];
+                        $sqlupdate="UPDATE bowler SET gotoauction=1 WHERE player_bowlling_id=$player_id";
+                        mysqli_query($conn,$sqlupdate);
                         echo "ඔයා සෙල් උනා";
                         break;
             
-                    case 'wk':
+                    case 'WICKETKEEPER':
                         $updatePrice = "UPDATE wicketkeeper SET sold = $maxBid, team_id = $team_id WHERE player_keeping_id = $player_id";
                         $resultUpdate = mysqli_query($conn, $updatePrice);
                         $updateActive = "UPDATE auction SET active = 1 WHERE player_id =  $player_id";
                          mysqli_query($conn, $updateActive);
+                         //$player_id = $_POST['player_keeping_id'];
+                        $sqlupdate="UPDATE wicketkeeper SET gotoauction=1 WHERE player_keeping_id=$player_id";
+                        mysqli_query($conn,$sqlupdate);
                         echo "ඔයා සෙල් උනා";
                         break;
             
-                    case 'alr':
+                    case 'ALLROUNDER':
                         $updatePrice = "UPDATE allrounder SET sold = $maxBid, team_id = $team_id WHERE player_al_id = $player_id";
                         $resultUpdate = mysqli_query($conn, $updatePrice);
                         $updateActive = "UPDATE auction SET active = 1 WHERE player_id =  $player_id";
                          mysqli_query($conn, $updateActive);
+                         //$player_id = $_POST['player_al_id'];
+                        $sqlupdate="UPDATE allrounder SET gotoauction=1 WHERE player_al_id=$player_id";
+                        mysqli_query($conn,$sqlupdate);
                         echo "ඔයා සෙල් උනා";
                         break;
             
