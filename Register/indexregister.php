@@ -199,10 +199,10 @@ mysqli_close($conn);
                     <div class="form-group col-6 mt-3">
                         <select name="catogary" class="form-select" required>
                             <option value="" disabled selected hidden>Catogary</option>
-                            <option value="bat">Batsman</option>
-                            <option value="bol">Bowler</option>
-                            <option value="wk">Wicket-Keeper</option>
-                            <option value="alr">All-Rounder</option>
+                            <option value="BATSMAN">Batsman</option>
+                            <option value="BOWLER">Bowler</option>
+                            <option value="WICKETKEEPER">Wicket-Keeper</option>
+                            <option value="ALLROUNDER">All-Rounder</option>
                         </select>
                     </div>
 
