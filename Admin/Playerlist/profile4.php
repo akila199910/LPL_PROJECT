@@ -91,18 +91,18 @@ if (mysqli_num_rows($result2) > 0) {
     </head>
 <body>
     <br> 
-    <button id="startAuction" name="start">Start Auction</button>
+    
     <p id="countdown"></p>
     <p id="bid"></p>
     <p id="contain"></p>
 
     <script>
         $(document).ready(function () {
-            $("#startAuction").click(function () {
+           
                 setInterval(function () {
                     $("#countdown").load("time.php");
                 }, 1000);
-            });
+            
         });
     </script>
 </body>
