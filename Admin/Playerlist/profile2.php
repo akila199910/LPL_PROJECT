@@ -48,21 +48,20 @@ if (isset($_SESSION['admin_id'])) {
     // Check if any rows were returned
     if (mysqli_num_rows($result2) > 0) {
         while ($row2 = mysqli_fetch_assoc($result2)) {
-            echo $row2["profile_photo"] . "<br>";
-            echo "First Name: " . $row2["first_name"] . "<br>";
-            echo "Last Name: " . $row2["last_name"] . "<br>";
-            echo "Country: " . $row2["country"] . "<br>";
-            echo "Age: " . $row2["dob"] . "<br>";
-            echo "Catogary: " . $row2["catogary"] . "<br>";
-            echo "Bowling Style: " . $row2["bowl_style"] . "<br>";
-            echo "LPL Matches: " . $row2["lpl_nom"] . "<br>";
-            echo "T20 Matches: " . $row2["t20_nom"] . "<br>";
-            echo "Wickets: " . $row2["wickets"] . "<br>";
-            echo "Bowling Average: " . $row2["bowl_average"] . "<br>";
-            echo "Economy: " . $row2["economy"] . "<br>";
-            echo "Best Bowling: " . $row2["best_bowl"] . "<br>";
-            echo "5 - Wicket: " . $row2["w5"] . "<br>";
-            echo "Based Price: " . $row2["besed_price"] . "<br>";
+            $playerPhoto =$row2["profile_photo"];
+            $playerName = $row2["first_name"]." ".$row2["last_name"];
+            $playerCountry =  $row2["country"];
+            $playerdob =$row2["dob"];
+            $playercatogary =  $row2["catogary"];
+            $playerbowlstyle=$row2["bowl_style"];
+            $playerlpl_nom =$row2["lpl_nom"];
+            $playert20_nom =  $row2["t20_nom"];
+            $playerWicket=$row2["wickets"] ;
+            $playerBowlavg=$row2["bowl_average"] ; 
+            $playerEco=$row2["economy"];
+            $playerBesstBowl=$row2["best_bowl"] ;
+            $fiveWicket=$row2["w5"];
+            $playerBase= $row2["besed_price"];
         }
     } else {
         echo "No matching data found for player ID: $player_id<br>";
@@ -73,12 +72,6 @@ if (isset($_SESSION['admin_id'])) {
 } else {
     header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
 }
-
-
-
-
-
-
 
 
 ?>
@@ -96,23 +89,162 @@ if (isset($_SESSION['admin_id'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <title>Player Details</title>
-    </head>
-<body>
-    <br> 
-   
-    <p id="countdown"></p>
-    <p id="bid"></p>
-    <p id="contain"></p>
 
+    <style>
+    
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+   
+    .ntext1 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #c87a7a;
+    }
+    .ntext2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ce4a4a;
+    }
+    .ntext3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ce5b;
+    }
+
+    .profile-pic {
+      width: 200px; 
+      height: 200px; 
+      border-radius: 10%; 
+      margin-right: 10px;
+    }
+    tr{
+        margin-bottom:50px;
+    }
+
+
+
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <span class="ntext3"><?php echo strtoupper($playerName) ?></span>
+  </div>
+</nav>
+<div class="container">
+
+
+  <div class="row mt-5" >
+    <div class="col-2 mt-5">
+         <img class="profile-pic" src="/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/<?php echo $playerPhoto?>" alt="Profile Picture">
+    </div>
+       
+        <div class="col-5 mb-3  mt-5">
+            <br>
+            <table border="0"  style="width: 50%;" >
+                <tr>
+                    <th><h3><?php echo strtoupper($playerName) ?></h3></th>
+                </tr>
+                <tr>
+                    <th><h4><?php echo strtoupper($playercatogary) ?></h4></th>
+                </tr> 
+                <tr>
+                <th><h5><?php echo strtoupper($playerCountry) ?></h5></th>
+                </tr> 
+                <tr>
+                <th><?php 
+                    $birthdayDate = new DateTime($playerdob);
+                    $currentDate = new DateTime();
+          
+                    // Calculate the difference between the current date and the birthday
+                    $age = $currentDate->diff($birthdayDate)->y;
+                    echo "<h4>".strtoupper($age)." YEARS</h4>"?></th>
+                </tr> 
+            </table>
+    </div>
+    <div class="col-5 mb-3  mt-5">
+    <div id="countdown"></div>
+    </div>
+</div>
+
+
+    <div class="row">
+        <div class="col-6 mt-5">
+            <table border="0"  style="width: 100%;" >
+        <tr>
+          <th>Bowlling Style :</th>
+          <th><?php echo  $playerbowlstyle;?></th>
+        </tr>
+
+      <tr>
+          <th>LPL Matches :</th>
+          <th><?php echo  $playerlpl_nom;?></th>
+      </tr>
+
+      <tr>
+          <th>T - 20 Matches :</th>
+          <th><?php echo  $playert20_nom;?></th>
+      </tr>
+
+      <tr>
+          <th>Wickets :</th>
+          <th><?php echo  $playerWicket;?></th>
+      </tr>
+      <tr>
+          <th>Bowlling Average :</th>
+          <th><?php echo  $playerBowlavg;?></th>
+      </tr>
+      <tr>
+          <th>Economy :</th>
+          <th><?php echo  $playerEco;?></th>
+      </tr>
+      <tr>
+          <th>Best Bowlling :</th>
+          <th><?php echo    $playerBesstBowl;?></th>
+      </tr>
+      <tr>
+          <th>Five Wickets :</th>
+          <th><?php echo  $fiveWicket;?></th>
+      </tr> 
+      
+      <tr>
+          <th>Based Price :</th>
+          <th><?php echo   $playerBase;?></th>
+      </tr>
+
+  </table>
+  </div>
+  <div class="col-6 mt-5 ">
+         <div id="bid"></div>
+   </div>
+  </div>
+  </div>
+
+
+    <p id="countdown"></p>
+    
+  
+    
     <script>
         $(document).ready(function () {
             
                 setInterval(function () {
                     $("#countdown").load("time.php");
+                    $("#bid").load("bid.php");
                 }, 1000);
+
+
+                //setInterval(function () {
+                   // $("#bid").load("bid.php");
+               // }, 1000);
            
         });
     </script>
+    </div>
 </body>
 </html>

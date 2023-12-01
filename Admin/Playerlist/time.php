@@ -66,7 +66,7 @@ if($timeDifference==0 || $timeDifference<0)
                          //$player_id = $_POST['player_batting_id'];
                         $sqlupdate="UPDATE batsman SET gotoauction=1 WHERE player_batting_id=$player_id";
                         mysqli_query($conn,$sqlupdate);
-                        echo "ඔයා සෙල් උනා";
+                        echo "<h1>ඔයා සෙල් උනා $maxBid </h1>"; 
                        
                         break;
             
@@ -78,7 +78,7 @@ if($timeDifference==0 || $timeDifference<0)
                          //$player_id = $_POST['player_bowling_id'];
                         $sqlupdate="UPDATE bowler SET gotoauction=1 WHERE player_bowlling_id=$player_id";
                         mysqli_query($conn,$sqlupdate);
-                        echo "ඔයා සෙල් උනා";
+                        echo "<h1>ඔයා සෙල් උනා $maxBid </h1>"; 
                         break;
             
                     case 'WICKETKEEPER':
@@ -89,7 +89,7 @@ if($timeDifference==0 || $timeDifference<0)
                          //$player_id = $_POST['player_keeping_id'];
                         $sqlupdate="UPDATE wicketkeeper SET gotoauction=1 WHERE player_keeping_id=$player_id";
                         mysqli_query($conn,$sqlupdate);
-                        echo "ඔයා සෙල් උනා";
+                        echo "<h1>ඔයා සෙල් උනා $maxBid </h1>"; 
                         break;
             
                     case 'ALLROUNDER':
@@ -100,7 +100,7 @@ if($timeDifference==0 || $timeDifference<0)
                          //$player_id = $_POST['player_al_id'];
                         $sqlupdate="UPDATE allrounder SET gotoauction=1 WHERE player_al_id=$player_id";
                         mysqli_query($conn,$sqlupdate);
-                        echo "ඔයා සෙල් උනා";
+                        echo "<h1>ඔයා සෙල් උනා $maxBid </h1>"; 
                         break;
             
                     default:
@@ -112,15 +112,75 @@ if($timeDifference==0 || $timeDifference<0)
         }       
     } else{
         //echo $maxBid = 0;
-        echo "සෙට් නෑ සෙල් උනේ නෑ";
+        echo "<h1>ඔයා සෙල් උනේ නෑ </h1>";
+       // echo "සෙට් නෑ සෙල් උනේ නෑ";
         $updateActive = "UPDATE auction SET active = 1 WHERE player_id =  $player_id";
                          mysqli_query($conn, $updateActive);
+                         $catogary = "SELECT catogary FROM register WHERE player_id = $player_id";
+                $catogaryResult = mysqli_query($conn, $catogary);
+            
+                if ($catogaryResult && mysqli_num_rows($catogaryResult) > 0) {
+                    $row = mysqli_fetch_assoc($catogaryResult);
+                    $catogaryValue = $row['catogary'];
+              
+            
+                switch ($catogaryValue) {
+                    case 'BATSMAN':
+                       
+                        $updateActive = "UPDATE auction SET active = 1 WHERE player_id =  $player_id";
+                         mysqli_query($conn, $updateActive);
+                       
+                        $sqlupdate="UPDATE batsman SET gotoauction=1 WHERE player_batting_id=$player_id";
+                        mysqli_query($conn,$sqlupdate);
+                       
+                       
+                        break;
+            
+                    case 'BOWLER':
+                       
+                        $updateActive = "UPDATE auction SET active = 1 WHERE player_id =  $player_id";
+                         mysqli_query($conn, $updateActive);
+                       
+                        $sqlupdate="UPDATE bowler SET gotoauction=1 WHERE player_bowlling_id=$player_id";
+                        mysqli_query($conn,$sqlupdate);
+                      
+                        break;
+            
+                    case 'WICKETKEEPER':
+                       
+                        $updateActive = "UPDATE auction SET active = 1 WHERE player_id =  $player_id";
+                         mysqli_query($conn, $updateActive);
+                       
+                        $sqlupdate="UPDATE wicketkeeper SET gotoauction=1 WHERE player_keeping_id=$player_id";
+                        mysqli_query($conn,$sqlupdate);
+                       
+                        break;
+            
+                    case 'ALLROUNDER':
+                      
+                        $updateActive = "UPDATE auction SET active = 1 WHERE player_id =  $player_id";
+                         mysqli_query($conn, $updateActive);
+                         
+                        $sqlupdate="UPDATE allrounder SET gotoauction=1 WHERE player_al_id=$player_id";
+                        mysqli_query($conn,$sqlupdate);
+                       
+                        break;
+            
+                    default:
+                        // Handle other cases if needed
+                        break;
+                }
+
+
+        }      
+
+
         
     }
 }
         
 }  else{
-        echo $timeDifference;
+        echo "<h1>".$timeDifference."</h1>";
         }    
 }
 ?> 
