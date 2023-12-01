@@ -21,7 +21,7 @@ if (mysqli_num_rows($CatogaryRsult) > 0) {
         $PlayerCatogary= $row4["catogary"];
     }
 }
-if($PlayerCatogary=='BATSMAN'){
+if($PlayerCatogary=='bat'){
 // Now, you can fetch additional information from the 'register' and 'batsman' tables
 $sql2 = "SELECT register.player_id, register.first_name,
 register.last_name,register.country,register.dob,register.profile_photo,
@@ -64,7 +64,7 @@ if (mysqli_num_rows($result2) > 0) {
 }
 }
 //එල්ස් එක මෙතනින් පටං ගන්න කැටගරි එක තෝරන එකේ.....
-elseif($PlayerCatogary=='BOWLER'){
+elseif($PlayerCatogary=='bol'){
     $sql2 = "SELECT register.player_id, register.first_name,
 register.last_name,register.country,register.dob,register.profile_photo,
 register.catogary,bowler.bowl_style,bowler.lpl_nom,bowler.t20_nom,bowler.wickets,
@@ -105,7 +105,7 @@ if (mysqli_num_rows($result2) > 0) {
 }
 
 
-elseif($PlayerCatogary=='WICKETKEEPER'){
+elseif($PlayerCatogary=='wk'){
     $sql2 = "SELECT register.player_id, register.first_name,
 register.last_name,register.country,register.dob,register.profile_photo,
 register.catogary,wicketkeeper.b_style,wicketkeeper.lpl_nom,wicketkeeper.t20_nom,wicketkeeper.runs,
@@ -147,7 +147,7 @@ if (mysqli_num_rows($result2) > 0) {
 }
 
 }
-elseif($PlayerCatogary=='ALLROUNDER'){
+elseif($PlayerCatogary=='alr'){
     $sql2 = "SELECT register.player_id, register.first_name,
     register.last_name,register.country,register.dob,register.profile_photo,
     register.catogary,allrounder.b_style,allrounder.lpl_nom,allrounder.t20_nom,allrounder.runs,
