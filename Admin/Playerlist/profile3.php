@@ -2,68 +2,83 @@
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
-if (isset($_GET['player_id'])) {
-    $player_id = $_GET['player_id'];
-} 
-$sqlMaxBidID = "SELECT MAX(bid_price) AS max_bid FROM bid WHERE player_id = $player_id";
+//Auto logout without session
+session_start();
 
-
-$resultMaxBidID = mysqli_query($conn, $sqlMaxBidID);
-
-if (!$resultMaxBidID) {
-    die("Error in SQLMaxBid: " . mysqli_error($conn));
-}
-
-// Check if any rows were returned
-if (mysqli_num_rows($resultMaxBidID) > 0) {
-    $rowMaxBidID = mysqli_fetch_assoc($resultMaxBidID);
-    $maxBid = $rowMaxBidID["max_bid"];
-//$team_id = $rowMaxBidID["team_id"];
-} else {
-    $maxBid=0;
+if (isset($_SESSION['admin_id'])) {
     
-}
-
-// Now, you can fetch additional information from the 'register' and 'batsman' tables
-$sql2 = "SELECT register.player_id, register.first_name,
-register.last_name,register.country,register.dob,register.profile_photo,
-register.catogary,wicketkeeper.b_style,wicketkeeper.lpl_nom,wicketkeeper.t20_nom,wicketkeeper.runs,
-wicketkeeper.b_average,wicketkeeper.strike_rate,wicketkeeper.high_score,wicketkeeper.not_out,
-wicketkeeper.stumps,wicketkeeper.catch,wicketkeeper.based_price
-         FROM register
-         INNER JOIN wicketkeeper ON register.player_id = wicketkeeper.player_keeping_id
-         WHERE register.player_id = $player_id";
-
-$result2 = mysqli_query($conn, $sql2);
-
-if (!$result2) {
-    die("Error in SQL2: " . mysqli_error($conn));
-}
-
-// Check if any rows were returned
-if (mysqli_num_rows($result2) > 0) {
-    while ($row2 = mysqli_fetch_assoc($result2)) {
-        echo $row2["profile_photo"] . "<br>";
-        echo "First Name: " . $row2["first_name"] . "<br>";
-        echo "Last Name: " . $row2["last_name"] . "<br>";
-        echo "Country: " . $row2["country"] . "<br>";
-        echo "Age: " . $row2["dob"] . "<br>";
-        echo "Catogary: " . $row2["catogary"] . "<br>";
-        echo "Batting Style: " . $row2["b_style"] . "<br>";
-        echo "LPL Matches: " . $row2["lpl_nom"] . "<br>";
-        echo "T20 Matches: " . $row2["t20_nom"] . "<br>";
-        echo "Runs: " . $row2["runs"] . "<br>";
-        echo "Batting Average: " . $row2["b_average"] . "<br>";
-        echo "Strike Rate: " . $row2["strike_rate"] . "<br>";
-        echo "High Score: " . $row2["high_score"] . "<br>";
-        echo "Not Out: " . $row2["not_out"] . "<br>";
-        echo "Stumps: " . $row2["stumps"] . "<br>";
-        echo "Catch: " . $row2["catch"] . "<br>";
-        echo "Based Price: " . $row2["based_price"] . "<br>";
+    if (isset($_GET['player_id'])) {
+        $player_id = $_GET['player_id'];
+    } 
+    $sqlMaxBidID = "SELECT MAX(bid_price) AS max_bid FROM bid WHERE player_id = $player_id";
+    
+    
+    $resultMaxBidID = mysqli_query($conn, $sqlMaxBidID);
+    
+    if (!$resultMaxBidID) {
+        die("Error in SQLMaxBid: " . mysqli_error($conn));
     }
+    
+    // Check if any rows were returned
+    if (mysqli_num_rows($resultMaxBidID) > 0) {
+        $rowMaxBidID = mysqli_fetch_assoc($resultMaxBidID);
+        $maxBid = $rowMaxBidID["max_bid"];
+    //$team_id = $rowMaxBidID["team_id"];
+    } else {
+        $maxBid=0;
+        
+    }
+    
+    // Now, you can fetch additional information from the 'register' and 'batsman' tables
+    $sql2 = "SELECT register.player_id, register.first_name,
+    register.last_name,register.country,register.dob,register.profile_photo,
+    register.catogary,wicketkeeper.b_style,wicketkeeper.lpl_nom,wicketkeeper.t20_nom,wicketkeeper.runs,
+    wicketkeeper.b_average,wicketkeeper.strike_rate,wicketkeeper.high_score,wicketkeeper.not_out,
+    wicketkeeper.stumps,wicketkeeper.catch,wicketkeeper.based_price
+             FROM register
+             INNER JOIN wicketkeeper ON register.player_id = wicketkeeper.player_keeping_id
+             WHERE register.player_id = $player_id";
+    
+    $result2 = mysqli_query($conn, $sql2);
+    
+    if (!$result2) {
+        die("Error in SQL2: " . mysqli_error($conn));
+    }
+    
+    // Check if any rows were returned
+    if (mysqli_num_rows($result2) > 0) {
+        while ($row2 = mysqli_fetch_assoc($result2)) {
+            echo $row2["profile_photo"] . "<br>";
+            echo "First Name: " . $row2["first_name"] . "<br>";
+            echo "Last Name: " . $row2["last_name"] . "<br>";
+            echo "Country: " . $row2["country"] . "<br>";
+            echo "Age: " . $row2["dob"] . "<br>";
+            echo "Catogary: " . $row2["catogary"] . "<br>";
+            echo "Batting Style: " . $row2["b_style"] . "<br>";
+            echo "LPL Matches: " . $row2["lpl_nom"] . "<br>";
+            echo "T20 Matches: " . $row2["t20_nom"] . "<br>";
+            echo "Runs: " . $row2["runs"] . "<br>";
+            echo "Batting Average: " . $row2["b_average"] . "<br>";
+            echo "Strike Rate: " . $row2["strike_rate"] . "<br>";
+            echo "High Score: " . $row2["high_score"] . "<br>";
+            echo "Not Out: " . $row2["not_out"] . "<br>";
+            echo "Stumps: " . $row2["stumps"] . "<br>";
+            echo "Catch: " . $row2["catch"] . "<br>";
+            echo "Based Price: " . $row2["based_price"] . "<br>";
+        }
+    } else {
+        echo "No matching data found for player ID: $player_id<br>";
+    }
+
+
+
 } else {
-    echo "No matching data found for player ID: $player_id<br>";
+    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
 }
+
+
+
+
 
 
 ?>

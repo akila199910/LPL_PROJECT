@@ -1,8 +1,14 @@
 <?php
         include "conn.php";
         mysqli_select_db($conn,"lplsystem");
+    
+//Auto logout without session
+session_start();
 
-        if(isset($_POST['sub']))
+if (isset($_SESSION['admin_id'])) {
+    
+
+    if(isset($_POST['sub']))
         {
             $auction_year=$_POST['auction_year'];
             $no_local_players=$_POST['no_local_players'];
@@ -24,6 +30,18 @@
     
     
     }
+
+
+
+
+
+
+} else {
+    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
+}
+
+
+        
 
 ?>
 

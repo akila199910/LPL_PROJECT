@@ -2,7 +2,15 @@
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
-$sql5 = "SELECT * FROM batsman 
+//Auto logout without session
+session_start();
+
+if (isset($_SESSION['admin_id'])) {
+
+
+
+  //batsmanlistcode
+  $sql5 = "SELECT * FROM batsman 
 WHERE sold IS NULL AND gotoauction IS NULL";
 $result = mysqli_query($conn, $sql5);
 $sql6 = "SELECT * from rule";
@@ -76,6 +84,18 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
   
     
   }
+
+
+
+
+
+} else {
+    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
+}
+
+
+
+
   
   
   
