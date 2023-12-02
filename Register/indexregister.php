@@ -102,9 +102,11 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
       $headers = "From: premierleaguesrilanka@gmail.com";
       
       mail($email, $subject, $message, $headers);
+      echo "<script>alert('Check your mail box');</script>";
+
     }
 
-    echo "<script>alert('Check your mail box');</script>";
+    
     echo '<script> window.location.href = "http://localhost/LPL_PROJECT/LPL_PROJECT/loginform.php"</script>';
    
     
