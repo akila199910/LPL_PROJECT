@@ -63,7 +63,7 @@ if (isset($_SESSION['team_id'])) {
            <div class="row">
               <div class="col-lg-3">
       
-            <a href="profile1.php"><button type="button" class="btn btn-dark size btn-margin">LIVE AUCTION !!<br>
+            <a href="auction.php"><button type="button" class="btn btn-dark size btn-margin">LIVE AUCTION !!<br>
               <?php
                           
               $sql="SELECT * from moderators ";
@@ -80,7 +80,7 @@ if (isset($_SESSION['team_id'])) {
            </div>
       
            <div class="col-lg-3">
-          <a href="../../Admin/Playerlist/teammembers.php"><button type="button" class="btn btn-info size btn-margin">OUR TEAM MEMBERS<br>
+          <a href="#"><button type="button" class="btn btn-info size btn-margin">OUR TEAM MEMBERS<br>
           <?php
                              
                              $sql="SELECT * from team";
@@ -96,7 +96,7 @@ if (isset($_SESSION['team_id'])) {
                          ?></button></a>
                          </div>
           <div class="col-lg-3">
-          <a href="../../Admin/Playerlist/registered.php"><button type="button" class="btn btn-success size btn-margin">Registered Players<br>
+          <a href="#"><button type="button" class="btn btn-success size btn-margin">Registered Players<br>
           <?php
                              
                              $sql="SELECT * from register";
@@ -115,7 +115,7 @@ if (isset($_SESSION['team_id'])) {
       
       
           <div class="col-lg-3">
-          <a href="Rule/rule.php"><button type="button" class="btn btn-primary size btn-margin">Rules<br>
+          <a href="#"><button type="button" class="btn btn-primary size btn-margin">Rules<br>
           <?php
                              
                             /* $sql="SELECT * from register";
@@ -136,7 +136,7 @@ if (isset($_SESSION['team_id'])) {
       
       <div class="row">
               <div class="col-lg-3">
-          <a href="../../Admin/Playerlist/batsmanlist.php"><button type="button" class="btn btn-secondary size btn-margin">Batsman<br>
+          <a href="#"><button type="button" class="btn btn-secondary size btn-margin">Batsman<br>
       
           <?php
                              
@@ -156,7 +156,7 @@ if (isset($_SESSION['team_id'])) {
       
       
       <div class="col-lg-3">
-          <a href="../../Admin/Playerlist/bowlerlist.php"><button type="button" class="btn btn-secondary size btn-margin">Bowlers<br>
+          <a href="#"><button type="button" class="btn btn-secondary size btn-margin">Bowlers<br>
           <?php
                              $sql5 = "SELECT * FROM bowler 
                              WHERE sold IS NULL AND gotoauction IS NULL";
@@ -174,7 +174,7 @@ if (isset($_SESSION['team_id'])) {
       
       
       <div class="col-lg-3">
-          <a href="../../Admin/Playerlist/allrounderlist.php"><button type="button" class="btn btn-secondary size btn-margin">Allrounder<br>
+          <a href="#"><button type="button" class="btn btn-secondary size btn-margin">Allrounder<br>
           <?php
                              $sql5 = "SELECT * FROM allrounder 
                              WHERE sold IS NULL AND gotoauction IS NULL";
@@ -191,7 +191,7 @@ if (isset($_SESSION['team_id'])) {
                          ?></button></a>
                          </div>
       <div class="col-lg-3">
-            <a href="../../Admin/Playerlist/wicketkeeperlist.php"><button type="button" class="btn btn-secondary size btn-margin">WicketKeeper<br>
+            <a href="#"><button type="button" class="btn btn-secondary size btn-margin">WicketKeeper<br>
             <?php
       
       $sql5 = "SELECT * FROM wicketkeeper 
@@ -214,7 +214,7 @@ if (isset($_SESSION['team_id'])) {
       
                          <div class="row">
               <div class="col-lg-3">
-          <a href="../../Admin/Playerlist/sold.php"><button type="button" class="btn btn-success size btn-margin">Sold Players<br>
+          <a href="#"><button type="button" class="btn btn-success size btn-margin">Sold Players<br>
           <?php
       
                              
@@ -248,7 +248,7 @@ if (isset($_SESSION['team_id'])) {
       
       <div class="col-lg-3">
       
-      <a href="../../Admin/Playerlist/unsold.php"><button type="button" class="btn btn-danger size btn-margin">Unsold Players<br>
+      <a href="#"><button type="button" class="btn btn-danger size btn-margin">Unsold Players<br>
           <?php
             
             $sql = "SELECT r.*, b.sold AS batsman_sold, b.gotoauction AS batsman_gotoauction,
@@ -283,7 +283,7 @@ if (isset($_SESSION['team_id'])) {
       
       <div class="col-lg-3">
       
-          <a href="../../Admin/Playerlist/teamplayers.php"><button type="button" class="btn btn-warning size btn-margin">Team Players<br>
+          <a href="#"><button type="button" class="btn btn-warning size btn-margin">Team Players<br>
           <?php
                         /*     
                              $sql="SELECT * from register WHERE approved='Yes'";
