@@ -31,6 +31,21 @@ mysqli_query($conn, $sql);
 
 
 if (isset($_POST['submit'])) {
+    
+    
+    $email = $_POST['email'];
+    $check_email_query = "SELECT * FROM register WHERE email = '$email'";
+    $result = mysqli_query($conn, $check_email_query);
+
+    if (mysqli_num_rows($result) > 0) {
+        // Email already exists, show an error message or redirect to a registration page
+        echo "<script>alert('Email already exists. Please use a different email.');</script>";
+    } else {
+
+
+
+
+
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $email = $_POST['email'];
@@ -93,6 +108,7 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     echo '<script> window.location.href = "http://localhost/LPL_PROJECT/LPL_PROJECT/loginform.php"</script>';
    
     
+}
 }
 
 mysqli_close($conn);
