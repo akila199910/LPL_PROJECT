@@ -56,7 +56,7 @@ if (mysqli_num_rows($idResult) > 0) {
 
     }
 } else {
-    echo "First if";
+    echo "Please wait ";
 }
 
 ?>

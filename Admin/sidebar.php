@@ -26,9 +26,6 @@
     <title>Document</title>
 </head>
 <body>
-    
-</body>
-</html>
 <div class="sidebar">
     <img src="/LPL_PROJECT/LPL_PROJECT/Admin/2023_10_07_10_29_IMG_5477.JPG" alt="Profile Picture" class="profile-img">
     <div class="name">
@@ -36,6 +33,9 @@
         echo $name;
     ?>
     </div>
+</body>
+</html>
+
     <a href="/LPL_PROJECT/LPL_PROJECT/Admin/index.php" class="btn btn-primary btn-block">HOME</a>
     <a href="#" class="btn btn-primary btn-block"> 2</a>
     <a href="/LPL_PROJECT/LPL_PROJECT/Admin/logout.php" class="btn btn-primary btn-block"> LOG OUT</a>
