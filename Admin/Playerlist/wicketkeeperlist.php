@@ -8,8 +8,10 @@ session_start();
 
 if (isset($_SESSION['admin_id'])) {
 
-  $sql5 = "SELECT * FROM wicketkeeper 
-WHERE sold IS NULL AND gotoauction IS NULL";
+  $sql5 = "SELECT b.*, r.profile_photo, r.first_name,r.last_name,r.country
+  FROM wicketkeeper b
+  JOIN register r ON b.player_keeping_id = r.player_id
+  WHERE b.gotoauction IS NULL AND b.sold IS NULL; ";
 
 $result = mysqli_query($conn, $sql5);
 $sql6 = "SELECT * from rule";
@@ -102,7 +104,7 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <title>Batsman Page</title>
+  <title>Wicketkeeper Page</title>
 </head>
 <body>
 <?php
@@ -112,14 +114,13 @@ include('../sidebar.php');
   <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
     LPL - LANKA PREMIER LEAGUE
   </nav>
-  <div class="content">
   <div class="container">
-    <table class="table table-hover text-center">
+  <table class="table table-hover text-center">
       <thead>
         <tr>
-        <th>#ID</th>
-          <th>Bat Style</th>
-          <th>No Of LPL Match</th>
+        <th>Profile</th>
+          <th>Name</th>
+          <th>Country</th>
           <th>Auction</th>
         </tr>
       
@@ -132,11 +133,16 @@ include('../sidebar.php');
 
         
         while ($row = mysqli_fetch_assoc($result)) { ?>
-        <tr>
-        <td><?php echo $row['player_keeping_id']; ?></td>
-        <td> <?php echo $row['b_style'];?></td>
-        <td> <?php echo $row['lpl_nom'];?></td>
-            <td>
+        <tr><td>
+                            <?php
+                            $photoPath = "../../Register/Img/proimg/" . $row['profile_photo'];
+                            ?>
+                            <img  class="profile-img" src=<?php echo $photoPath?> style='width: 100px; height: 100px;'alt='Profile'>
+
+                        </td>
+        <td class="text"> <?php echo $row['first_name']." ".$row['last_name'] ;?></td>
+        <td class="text"> <?php echo $row['country'];?></td>
+        <td>
               <form action="" method="POST">
                 <input type="hidden" name="player_keeping_id" value="<?php echo $row['player_keeping_id']; ?>">
                 <button type="submit" name="push">Push</button>
