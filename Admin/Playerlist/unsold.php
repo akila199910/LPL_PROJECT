@@ -70,7 +70,6 @@ include('../sidebar.php');
   <table class="table table-hover text-center">
       <thead>
         <tr>
-        <th>#ID</th>
           <th>Profile Photo</th>
           <th>Name</th>
           <th>Catogary</th>
@@ -81,12 +80,11 @@ include('../sidebar.php');
       <?php
       while($row=mysqli_fetch_assoc($result)){
       ?>
-      <td> <?php echo $row['player_id'];?></td>
       <td> 
-                            <?php
-                            $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/" . $row['profile_photo'];
-                            echo "<img src='$photoPath' alt='Profile Photo' style='width: 70px; height: 70px;'>";
-                            ?>
+                        
+                           <?php $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/" . $row['profile_photo'];?>
+                            <img class="profile-img"src=<?php echo $photoPath?> alt='Profile Photo' style='width: 70px; height: 70px;'>;
+                         
                         </td>
        <td> <?php echo $row['first_name']." ".$row['last_name'];?></td>
        <td> <?php echo $row['catogary'];?></td>

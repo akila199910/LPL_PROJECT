@@ -54,9 +54,9 @@ include('../sidebar.php');
     <table class="table table-hover text-center">
       <thead>
         <tr>
-        <th>#ID</th>
-          <th>First Name</th>
-          <th>Last Name</th>
+       
+          <th>Photo</th>
+          <th>Name</th>
           <th>Catogary</th>
           <th>Capped</th>
           <th>Country</th>
@@ -72,9 +72,16 @@ include('../sidebar.php');
         
         while ($row = mysqli_fetch_assoc($result)) { ?>
         <tr>
-        <td><?php echo $row['player_id']; ?></td>
-        <td> <?php echo $row['first_name'];?></td>
-        <td> <?php echo $row['last_name'];?></td>
+        <td>
+                            <?php
+                            $photoPath = "../../Register/Img/proimg/" . $row['profile_photo'];
+                            ?>
+                            <img  class="profile-img" src=<?php echo $photoPath?> style='width: 100px; height: 100px;'alt='Profile'>
+
+                        </td>
+        
+        <td> <?php echo $row['first_name']." ". $row['last_name'];?></td>
+        
         <td> <?php echo $row['catogary'];?></td>
         <td> <?php echo $row['capped'];?></td>
         <td> <?php echo $row['country'];?></td>

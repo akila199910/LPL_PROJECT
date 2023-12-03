@@ -61,12 +61,11 @@ include('../sidebar.php');
 
     <table class="table table-hover text-center">
       <thead class="table-dark">
-        <tr>
-          <th scope="col">ID</th>
+        <tr> 
+          <th scope="col">Icon</th>
           <th scope="col">Team Name</th>
           <th scope="col">Owner Name</th>
           <th scope="col">Email</th>
-          <th scope="col">Icon Photo</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -77,16 +76,17 @@ include('../sidebar.php');
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
           <tr>
-            <td><?php echo $row["id"] ?></td>
-            <td><?php echo $row["team_name"] ?></td>
-            <td><?php echo $row["owner_name"] ?></td>
-            <td><?php echo $row["email"] ?></td>
-            <td>
+          <td>
                             <?php
                             $photoPath = "teamicon/" . $row['icon'];
                             echo "<img src='$photoPath' alt='icon' style='width: 70px; height: 70px;'>";
                             ?>
                         </td>
+            
+            <td><?php echo $row["team_name"] ?></td>
+            <td><?php echo $row["owner_name"] ?></td>
+            <td><?php echo $row["email"] ?></td>
+            
             <td>
               <a href="editteam.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
               <a href="deleteteam.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
