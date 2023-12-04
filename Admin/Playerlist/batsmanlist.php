@@ -161,10 +161,11 @@ include('../sidebar.php');
         
         while ($row = mysqli_fetch_assoc($result)) { ?>
         <tr><td>
-                            <?php
-                            $photoPath = "../../Register/Img/proimg/" . $row['profile_photo'];
-                            ?>
-                            <img  class="profile-img" src=<?php echo $photoPath?> style='width: 100px; height: 100px;'alt='Profile'>
+        <?php
+              $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/" . $row['profile_photo'];
+              echo "<img src='$photoPath' alt='Profile' style='width: 60px; height: 60px;'>";
+                         ?>
+
 
                         </td>
         <td class="text"> <?php echo $row['first_name']." ".$row['last_name'] ;?></td>
