@@ -1,3 +1,4 @@
+
 <?php
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
@@ -41,10 +42,6 @@ if (isset($_POST['submit'])) {
         // Email already exists, show an error message or redirect to a registration page
         echo "<script>alert('Email already exists. Please use a different email.');</script>";
     } else {
-
-
-
-
 
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
@@ -123,8 +120,9 @@ mysqli_close($conn);
 <head>
     <link href="bootstrap.min.css" rel="stylesheet">
     <link href="reg.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
-</head>
+
 
 <body>
 
@@ -312,3 +310,45 @@ mysqli_close($conn);
 
 
 </html>
+
+
+<?php
+
+if($query){
+    ?>
+  <script>
+swal({
+    title: "SUCCESS..!!",
+    text: "Verify Your Email Now..!!",
+    icon: "success",
+    buttons: {
+        goodJob: {
+            text: "GOOD JOB",
+            value: "goodJob",
+        },
+    },
+}).then((value) => {
+    if (value === "goodJob") {
+        // Add your web address here
+        window.location.href = "http://localhost/LPL_PROJECT/LPL_PROJECT/loginform.php";
+    }
+});
+</script>
+<?php
+}
+
+if ($query) {
+
+  // Send a verification email
+ $subject = "Verify Your Email Address";
+  $message = "Click the following link to verify your email address: http://localhost/LPL_PROJECT/LPL_PROJECT/Register/verify.php?code=$verif_code";
+  $headers = "From: premierleaguesrilanka@gmail.com";
+  
+  mail($email, $subject, $message, $headers);
+  }
+
+// echo "<script>alert('Check your mail box');</script>";
+//  echo '<script> window.location.href = "http://localhost/LPL_PROJECT/LPL_PROJECT/loginform.php"</script>';
+
+mysqli_close($conn);
+?>
