@@ -281,16 +281,6 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                             </textarea>
                     </div>
 
-
-
-
-
-
-
-
-
-
-
                     <div class="row row-margin justify-content-center mt-4">
 
                         <button type="submit" name="submit" id="submitButton" class="btn btn-primary btn-sm" disabled>SUBMIT</button>

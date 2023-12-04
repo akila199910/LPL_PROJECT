@@ -162,8 +162,8 @@ include('../sidebar.php');
         while ($row = mysqli_fetch_assoc($result)) { ?>
         <tr><td>
         <?php
-              $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/" . $row['profile_photo'];
-              echo "<img src='$photoPath' alt='Profile' style='width: 60px; height: 60px;'>";
+              $photoPath = "../../Register/Img/proimg/" . $row['profile_photo'];
+              echo "<img src='$photoPath' alt='Profile' style='width: 100px; height: 100px;border-radius: 50%;'>";
                          ?>
 
 
