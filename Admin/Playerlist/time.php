@@ -25,6 +25,14 @@ if ($result && mysqli_num_rows($result) > 0) {
     
 } 
 
+$sql3 = "SELECT * FROM rule";
+$RuleResult = mysqli_query($conn, $sql3);
+if(mysqli_num_rows($RuleResult) > 0 &&$RuleResult) {
+
+  $row = mysqli_fetch_assoc($RuleResult);
+  $year = $row['auction_year'];
+}
+
 if (isset($timeDifference)) {
 
 if($timeDifference==0 || $timeDifference<0)
@@ -47,6 +55,10 @@ if($timeDifference==0 || $timeDifference<0)
                     $rowMaxTeamID = mysqli_fetch_assoc($resultMaxTeamID);
                     $team_id = $rowMaxTeamID["team_id"];
                 }
+
+                $sqlupdate ="UPDATE `data` SET `sold_price`= $maxBid,`team_id`=$team_id WHERE player_id=$player_id AND year=$year";
+                mysqli_query($conn, $sqlupdate);
+
                 $catogary = "SELECT catogary FROM register WHERE player_id = $player_id";
                 $catogaryResult = mysqli_query($conn, $catogary);
             
