@@ -2,7 +2,12 @@
         include "conn.php";
         mysqli_select_db($conn,"lplsystem");
 
-        $sql="SELECT * from rule";
+    //Auto logout without session
+session_start();
+
+if (isset($_SESSION['admin_id'])) {
+        
+    $sql="SELECT * from rule";
         $resultRule = mysqli_query($conn,$sql);
         while ($row = mysqli_fetch_assoc($resultRule)){
             $auction_year=$row['auction_year'];
@@ -13,6 +18,16 @@
             $auction_duration_time=$row['auction_duration_time'];
             $register_period=$row['register_period'];
         }
+
+
+
+} else {
+    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
+}
+
+
+
+        
 ?>
 
 

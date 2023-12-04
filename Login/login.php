@@ -8,6 +8,8 @@ if (isset($_POST['login'])) {
 
     // Check if the user exists in the "register" table
     $sql_register = "SELECT * FROM register WHERE email = '$email'";
+    $sql_verification = "SELECT * FROM register WHERE verification = 'verification'";
+    $result_verification = mysqli_query($conn, $sql_verification);
     $result_register = mysqli_query($conn, $sql_register);
 
     // Check if the user exists in the "admin" table
@@ -29,17 +31,28 @@ if (isset($_POST['login'])) {
     if ($result_register && mysqli_num_rows($result_register) > 0) {
         $user = mysqli_fetch_assoc($result_register);
         $hashed_password = $user['password'];
+        $verification = $user['verification'];
 
         // Verify the provided password against the hashed password
         if (password_verify($password, $hashed_password)) {
-            // Password is correct, user is authenticated
-            session_start();
-            $_SESSION['user_id'] = $user['player_id'];
-            $_SESSION['user_email'] = $user['email'];
-            // ... other user data
 
-            header("Location: /LPL_PROJECT/LPL_PROJECT/Players/Player_dashboard/player_dashboard.php"); // Redirect to the player dashboard page
-            exit();
+            if ($verification == 1) {
+
+                // Password is correct, user is authenticated
+                session_start();
+                $_SESSION['user_id'] = $user['player_id'];
+                $_SESSION['user_email'] = $user['email'];
+                // ... other user data
+
+                header("Location: /LPL_PROJECT/LPL_PROJECT/Players/Player_dashboard/player_dashboard.php"); // Redirect to the player dashboard page
+                exit();
+
+            } else{
+                echo "<script>alert('Your Email not Verified. Please Check Your Email.');</script>";
+                
+            }
+
+
         } else {
             echo "Invalid password";
         }

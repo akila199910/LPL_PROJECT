@@ -3,6 +3,19 @@ include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 $sq4 = "select * from register";
 $result = mysqli_query($conn, $sq4);
+
+//Auto logout without session
+session_start();
+
+if (isset($_SESSION['admin_id'])) {
+    
+} else {
+    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
+}
+
+
+
+
 ?>
 
 
@@ -41,9 +54,9 @@ include('../sidebar.php');
     <table class="table table-hover text-center">
       <thead>
         <tr>
-        <th>#ID</th>
-          <th>First Name</th>
-          <th>Last Name</th>
+       
+          <th>Photo</th>
+          <th>Name</th>
           <th>Catogary</th>
           <th>Capped</th>
           <th>Country</th>
@@ -59,9 +72,22 @@ include('../sidebar.php');
         
         while ($row = mysqli_fetch_assoc($result)) { ?>
         <tr>
-        <td><?php echo $row['player_id']; ?></td>
-        <td> <?php echo $row['first_name'];?></td>
-        <td> <?php echo $row['last_name'];?></td>
+        <td>
+                           
+
+
+                            <?php
+            $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/" . $row['profile_photo'];
+              echo "<img src='$photoPath' alt='Profile' style='width: 60px; height: 60px;'>";
+                         ?>
+
+
+
+
+                        </td>
+        
+        <td> <?php echo $row['first_name']." ". $row['last_name'];?></td>
+        
         <td> <?php echo $row['catogary'];?></td>
         <td> <?php echo $row['capped'];?></td>
         <td> <?php echo $row['country'];?></td>

@@ -2,50 +2,22 @@
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
-//Auto logout without session
-session_start();
 
-if (isset($_SESSION['admin_id'])) {
-    
-    if (isset($_GET['player_id'])) {
-        $player_id = $_GET['player_id'];
-    } 
-    $sqlMaxBidID = "SELECT MAX(bid_price) AS max_bid FROM bid WHERE player_id = $player_id";
-    
-    
-    $resultMaxBidID = mysqli_query($conn, $sqlMaxBidID);
-    
-    if (!$resultMaxBidID) {
-        die("Error in SQLMaxBid: " . mysqli_error($conn));
-    }
-    
-    // Check if any rows were returned
-    if (mysqli_num_rows($resultMaxBidID) > 0) {
-        $rowMaxBidID = mysqli_fetch_assoc($resultMaxBidID);
-        $maxBid = $rowMaxBidID["max_bid"];
-    //$team_id = $rowMaxBidID["team_id"];
-    } else {
-        $maxBid=0;
-        
-    }
-    
-    // Now, you can fetch additional information from the 'register' and 'batsman' tables
+if (isset($_POST['player_id'])) {
+
+    $player_id=$_POST['player_id'];
+
+
     $sql2 = "SELECT register.player_id, register.first_name,
     register.last_name,register.country,register.dob,register.profile_photo,
-    register.catogary,wicketkeeper.b_style,wicketkeeper.lpl_nom,wicketkeeper.t20_nom,wicketkeeper.runs,
-    wicketkeeper.b_average,wicketkeeper.strike_rate,wicketkeeper.high_score,wicketkeeper.not_out,
-    wicketkeeper.stumps,wicketkeeper.catch,wicketkeeper.based_price
-             FROM register
-             INNER JOIN wicketkeeper ON register.player_id = wicketkeeper.player_keeping_id
-             WHERE register.player_id = $player_id";
-    
+    register.catogary,batsman.b_style,batsman.lpl_nom,batsman.t20_nom,batsman.runs,
+    batsman.b_average,batsman.strike_rate,batsman.high_score,batsman.not_out,
+    batsman.fifty,batsman.hundred,batsman.based_price
+    FROM register
+    INNER JOIN batsman ON register.player_id = batsman.player_batting_id
+    WHERE register.player_id = $player_id";
     $result2 = mysqli_query($conn, $sql2);
-    
-    if (!$result2) {
-        die("Error in SQL2: " . mysqli_error($conn));
-    }
-    
-    // Check if any rows were returned
+
     if (mysqli_num_rows($result2) > 0) {
         while ($row2 = mysqli_fetch_assoc($result2)) {
             $playerPhoto =$row2["profile_photo"];
@@ -61,34 +33,20 @@ if (isset($_SESSION['admin_id'])) {
             $playerstrike_rate =  $row2["strike_rate"];
             $playerhigh_score =  $row2["high_score"];
             $playernot_out =  $row2["not_out"];
-           
-            $playerStump= $row2["stumps"] . "<br>";
-            $playerCatch= $row2["catch"] . "<br>";
+            $playerfifty =  $row2["fifty"];
+            $playerhundred =  $row2["hundred"];
             $playerbased_price =  $row2["based_price"];
         }
-    } else {
-        echo "No matching data found for player ID: $player_id<br>";
+
     }
 
-
-
-} else {
-    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
 }
 
-
-
-
-
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Auction</title>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -100,30 +58,7 @@ if (isset($_SESSION['admin_id'])) {
 
     <style>
     
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-
-   
-    .ntext1 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #c87a7a;
-    }
-    .ntext2 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #ce4a4a;
-    }
-    .ntext3 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #ce5b;
-    }
-
+    
     .profile-pic {
       width: 200px; 
       height: 200px; 
@@ -139,11 +74,8 @@ if (isset($_SESSION['admin_id'])) {
   </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <span class="ntext3"><?php echo strtoupper($playerName) ?></span>
-  </div>
-</nav>
+
+
 <div class="container">
 
 
@@ -219,14 +151,13 @@ if (isset($_SESSION['admin_id'])) {
           <th>Not Out :</th>
           <th><?php echo  $playernot_out;?></th>
       </tr> 
-     
       <tr>
-          <th>Stumps :</th>
-          <th><?php echo  $playerStump;?></th>
+          <th>Half Centuries :</th>
+          <th><?php echo  $playerfifty;?></th>
       </tr>
       <tr>
-          <th>Catch :</th>
-          <th><?php echo   $playerCatch;?></th>
+          <th>Centuries :</th>
+          <th><?php echo  $playerhundred;?></th>
       </tr>
       <tr>
           <th>Based Price :</th>

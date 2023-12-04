@@ -35,7 +35,10 @@
     <title>Document</title>
 </head>
 <body>
-    
+
+
+
+
 </body>
 </html>
 <div class="sidebar">
@@ -76,15 +79,15 @@ $resultqry1 = mysqli_query($conn, $qry1);
     if (mysqli_num_rows($resultqry2) > 0) {
         while ($row12 = mysqli_fetch_assoc($resultqry2)) {
             $icon= $row12['icon']; 
-            echo "<img src='$icon' >";
+           
         }
     } else {
               echo "No matching data found for team Id:<br>";
             }
-        
-     
-   
+    
+    echo '<img src="../../Admin/Addteam/teamicon' . $icon . '" alt="">';
 
+echo $icon;
             
       /*  $sql1="select icon from team where id=$id";
         $results=mysqli_query($conn,$sql1);*/

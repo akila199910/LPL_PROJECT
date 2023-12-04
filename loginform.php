@@ -29,7 +29,7 @@
                         <input type="email" placeholder="email" name="email">
                         <input type="password" placeholder="password" name="password">
                         <button type="submit" name="login" class="btn">Login</button>
-                        <a href="">Forgot password</a>
+                        <a href="http://localhost/LPL_PROJECT/LPL_PROJECT/Login/forgot_password/forgot_password.php">Forgot password</a>
                     </form>
 
                     <form id="RegForm">
