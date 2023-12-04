@@ -79,7 +79,7 @@ include('../sidebar.php');
           <td>
                             <?php
                             $photoPath = "teamicon/" . $row['icon'];
-                            echo "<img src='$photoPath' alt='icon' style='width: 70px; height: 70px;'>";
+                            echo "<img src='$photoPath' alt='icon' style='width: 70px; height: 70px;border-radius: 50%;'>";
                             ?>
                         </td>
             

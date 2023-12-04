@@ -55,6 +55,15 @@ $result = mysqli_query($conn, $sql);
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <title>Unsold List</title>
+  <style>
+    td{
+      vertical-align: middle;
+    }
+    .text{
+      text-align: center;
+    }
+
+  </style>
 </head>
 
 <body>
@@ -82,8 +91,8 @@ include('../sidebar.php');
       ?>
       <td> 
                         
-                           <?php $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/" . $row['profile_photo'];?>
-                            <img class="profile-img"src=<?php echo $photoPath?> alt='Profile Photo' style='width: 70px; height: 70px;'>;
+                           <?php $photoPath = "../../Register/Img/proimg/" . $row['profile_photo'];?>
+                            <img src=<?php echo $photoPath?> alt='Profile Photo' style='width: 100px; height: 100px;border-radius: 50%;'>;
                          
                         </td>
        <td> <?php echo $row['first_name']." ".$row['last_name'];?></td>
