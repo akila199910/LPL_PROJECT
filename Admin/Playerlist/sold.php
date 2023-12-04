@@ -74,13 +74,14 @@ include('../sidebar.php');
       <tbody class="table table-hover text-center">
       <?php
       while($row=mysqli_fetch_assoc($result)){
-      ?>
+        $photoPath = $row['profile_photo'];?>
+  
       <td> 
                           
-                            <?php $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/" . $row['profile_photo'];?>
-                            <img class="profile-img"src=<?php echo $photoPath?> alt='Profile Photo' style='width: 70px; height: 70px;'>;
+      
+    <img   src="../../Register/Img/proimg/<?php echo $photoPath?>" alt="Profile Picture" style="width: 100px; height: 100px; border-radius: 50%;">
                             
-                        </td>
+         </td>
        <td> <?php echo $row['first_name']." ".$row['last_name'];?></td>
        <td> <?php echo $row['catogary'];?></td>
        <td> <?php echo $row['country'];?></td>         
