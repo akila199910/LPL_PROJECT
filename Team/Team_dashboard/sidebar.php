@@ -83,11 +83,12 @@ $resultqry1 = mysqli_query($conn, $qry1);
         }
     } else {
               echo "No matching data found for team Id:<br>";
-            }
-    
-    echo '<img src="../../Admin/Addteam/teamicon' . $icon . '" alt="">';
+            }?>
+    <img src="../../Admin/Addteam/teamicon/<?php echo $icon; ?>" class="profile-img" style="width: 100px; height: 100px;">
 
-echo $icon;
+   <!-- <img src="../../Admin/Addteam/teamicon . <?php// echo $icon;?>"  alt="">-->
+<?php
+//echo $icon;
             
       /*  $sql1="select icon from team where id=$id";
         $results=mysqli_query($conn,$sql1);*/
