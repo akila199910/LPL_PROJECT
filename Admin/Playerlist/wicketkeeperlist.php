@@ -94,6 +94,15 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+    td{
+      vertical-align: middle;
+    }
+    .text{
+      text-align: center;
+    }
+
+  </style>
 <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -135,8 +144,8 @@ include('../sidebar.php');
         while ($row = mysqli_fetch_assoc($result)) { ?>
         <tr><td>
         <?php
-            $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/" . $row['profile_photo'];
-              echo "<img src='$photoPath' alt='Profile' style='width: 60px; height: 60px;'>";
+            $photoPath = "../../Register/Img/proimg/" . $row['profile_photo'];
+              echo "<img src='$photoPath' alt='Profile' style='width: 100px; height: 100px;border-radius: 50%;'>";
                          ?>
 
 
