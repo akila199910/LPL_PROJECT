@@ -303,6 +303,18 @@ if (isset($_SESSION['admin_id'])) {
                              
                        */  ?></button></a>
                        </div>
+
+
+
+                       <div class="col-lg-3">
+          <a href="Report/report.php"><button type="button" class="btn btn-success size btn-margin">Report<br>
+          <?php
+      
+                             
+                  
+          
+                          ?></button></a>
+                          </div>
                        </div>
       
       
