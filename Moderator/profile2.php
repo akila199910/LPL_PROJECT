@@ -44,6 +44,20 @@ if (isset($_POST['approve'])) {
   $sql2 = "UPDATE register SET moderators_id = '$modaretor_id' WHERE player_id = $player_id";
   mysqli_query($conn, $sql2);
 
+//Try to get old data for data table.
+
+$sql3 = "SELECT * FROM rule";
+$RuleResult = mysqli_query($conn, $sql3);
+if(mysqli_num_rows($RuleResult) > 0 &&$RuleResult) {
+
+  $row = mysqli_fetch_assoc($RuleResult);
+  $year = $row['auction_year'];
+}
+
+$sqlInsert="INSERT INTO `data`( `player_id`, `year`) VALUES ($player_id,$year)";
+mysqli_query($conn, $sqlInsert);
+
+
   $catogary = "SELECT catogary FROM register WHERE player_id = $player_id";
   $catogaryResult = mysqli_query($conn, $catogary);
 
@@ -55,22 +69,22 @@ if (isset($_POST['approve'])) {
           case 'BATSMAN':
               header("Location: /LPL_PROJECT/LPL_PROJECT/Players/Batsman/Batsman.php?player_id=$player_id"); // Include player_id as a query parameter
               exit;
-              break;
+              
 
           case 'BOWLER':
               header("Location: /LPL_PROJECT/LPL_PROJECT/Players/Bowler/Bowler.php?player_id=$player_id"); // Include player_id as a query parameter
               exit;
-              break;
+              
 
           case 'WICKETKEEPER':
               header("Location: /LPL_PROJECT/LPL_PROJECT/Players/Wicketkeeper/Wicketkeeper.php?player_id=$player_id"); // Include player_id as a query parameter
               exit;
-              break;
+            
 
           case 'ALLROUNDER':
               header("Location: /LPL_PROJECT/LPL_PROJECT/Players/Allrounder/Allrounder.php?player_id=$player_id"); // Include player_id as a query parameter
               exit;
-              break;
+              
       }
   }
 }
