@@ -31,6 +31,9 @@ if ($result->num_rows > 0) {
 } else {
     $player_name = "Unknown";
 }
+
+  $team_query = "SELECT * FROM team";
+    $result = mysqli_query($conn, $team_query);
 ?>
 
 <!DOCTYPE html>
@@ -52,6 +55,18 @@ if ($result->num_rows > 0) {
           .btn-margin {
             margin-bottom: 15px;
           }
+          
+          .form-box {
+            border: 2px solid #ccc; 
+            border-radius: 10px; 
+            padding: 20px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+          }
+
+          #submit {
+            margin-top: 10px;
+          }
+
         </style>
 </head>
 <body>
@@ -78,23 +93,25 @@ if ($result->num_rows > 0) {
     <div class="row">
     <div class="row justify-content-center">
       <div class="col-lg-6">
-      <form action="" class="form-box" method="POST" enctype="multipart/form-data">
+      <form action="update_batsman.php" class="form-box" method="POST" enctype="multipart/form-data">
+        <p>If you already contracted with any team please fill this.</p>
         <div class="form-group col-6">
           <select name="identity" class="form-select" required>
             <option value="" disabled selected hidden>Select your team here</option>
-            <option value="team1">Team1</option>
-            <option value="team2">Team2</option>
-            <option value="team3">Team3</option>
-            <option value="team4">Team4</option>
-            <option value="team5">Team5</option>
+            <?php
+                    // Create while loop
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<option value='" . $row['id'] . "'>" . $row['team_name'] . "</option>";
+                    }
+                ?>
           </select>
         </div><br>
         <div class="form-group col-md-6 mb-2">
-          <input type="int" id="co" name="price" placeholder="Price" class="form-control" required>
+          <input type="int" id="price" name="price" placeholder="Price" class="form-control" required>
         </div>
         <div class="col-lg-6 justify-content-center">
-        <input type="hidden" name="delete_id" value="<?php echo $row['player_batting_id']; ?>">
-          <button type="submit" name="delete" id="delete" class="btn btn-primary btn-sm" >SUBMIT</button>
+        
+          <button type="submit" name="submit" id="submit" class="btn btn-primary btn-sm" >SUBMIT</button>
         </div>
         </form>
       </div>
