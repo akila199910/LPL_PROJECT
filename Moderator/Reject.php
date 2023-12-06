@@ -68,7 +68,6 @@ $result=mysqli_query($conn,$sql);
           <th>Name</th>
           <th>Catogary</th>
           <th>Country</th>
-          <th>Update</th>
         </tr>
       </thead>
       <tbody class="table table-hover text-center">
@@ -76,21 +75,15 @@ $result=mysqli_query($conn,$sql);
       while($row=mysqli_fetch_assoc($result)){
       ?>
       <td> <?php echo $row['player_id'];?></td>
-      <td>
+      <td>  <td>
                             <?php
                             $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/" . $row['profile_photo'];
                             echo "<img src='$photoPath' alt='Profile Photo' style='width: 70px; height: 70px;'>";
                             ?>
-                        </td>
+                        </td></td>
        <td> <?php echo $row['first_name']." ".$row['last_name'];?></td>
        <td> <?php echo $row['catogary'];?></td>
-       <td> <?php echo $row['country'];?></td>
-       <td>
-              <form action="profile2.php" method="POST">
-                <input type="hidden" name="player_id" value="<?php echo $row['player_id']; ?>">
-                <button type="submit" name="view">UPDATE</button>
-              </form>
-            </td>       
+       <td> <?php echo $row['country'];?></td>       
        </tr>
       <?php
        }?>

@@ -56,7 +56,10 @@ $result=mysqli_query($conn,$sql);
     <img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="300px" height="75px">
 </div>
 </div>
-
+<!--<nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color:white;width:115%; ">
+   ACCEPTED PLAYER LIST
+  </nav>
+-->
 <h4 style="text-align: center; color: #2980b9; font-weight: bold; text-decoration: underline;">ACCEPTED PLAYER LIST</h4>
    <div class="container">
   <table class="table table-hover text-center">
