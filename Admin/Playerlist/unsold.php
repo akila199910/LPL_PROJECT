@@ -55,6 +55,15 @@ $result = mysqli_query($conn, $sql);
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <title>Unsold List</title>
+  <style>
+    td{
+      vertical-align: middle;
+    }
+    .text{
+      text-align: center;
+    }
+
+  </style>
 </head>
 
 <body>
@@ -70,29 +79,151 @@ include('../sidebar.php');
   <table class="table table-hover text-center">
       <thead>
         <tr>
-        <th>#ID</th>
           <th>Profile Photo</th>
           <th>Name</th>
           <th>Catogary</th>
           <th>Country</th>
+          <th>Back To Auction</th>
+
         </tr>
       </thead>
       <tbody class="table table-hover text-center">
       <?php
       while($row=mysqli_fetch_assoc($result)){
+        $first_name=$row['first_name'];
+        $last_name=$row['last_name'];
+        $catogary=$row['catogary'];
+        $country=$row['country'];
       ?>
-      <td> <?php echo $row['player_id'];?></td>
       <td> 
-                            <?php
-                            $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/" . $row['profile_photo'];
-                            echo "<img src='$photoPath' alt='Profile Photo' style='width: 70px; height: 70px;'>";
-                            ?>
+                        
+                           <?php $photoPath = "../../Register/Img/proimg/" . $row['profile_photo'];?>
+                            <img src=<?php echo $photoPath?> alt='Profile Photo' style='width: 100px; height: 100px;border-radius: 50%;'>;
+                         
                         </td>
        <td> <?php echo $row['first_name']." ".$row['last_name'];?></td>
        <td> <?php echo $row['catogary'];?></td>
-       <td> <?php echo $row['country'];?></td>         
+       <td> <?php echo $row['country'];?></td>
+       <td>
+              <form  method="POST">
+                <input type="hidden" name="player_id" value="<?php echo $row['player_id']; ?>">
+                <button type="submit" name="view">Push</button>
+              </form>
+            </td> 
        </tr>
       <?php
+
+        if(isset($_POST['view'])){
+          $player_id =  $_POST['player_id'];
+          if($catogary=="BATSMAN"){
+            $sql = "UPDATE batsman SET gotoauction=NULL";
+            mysqli_query($conn, $sql);
+            $current_time = time();
+
+            $sql6 = "SELECT * from rule";
+$resultTime = mysqli_query($conn, $sql6);
+
+while ($rowTime = mysqli_fetch_assoc($resultTime)) {
+
+  $periadTime=$rowTime['auction_duration_time'];
+  
+      
+ }
+    $auction_end_time = $current_time + ($periadTime * 60); 
+  
+    // Convert the timestamps to formatted time strings
+    $current_time_formatted = date("Y-m-d H:i:s", $current_time);
+    $auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
+    $sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
+    mysqli_query($conn, $sql6);
+    header("Location: profile1.php?player_id=$player_id");
+    exit;
+          }
+
+          if($catogary=="BOWLER"){
+            $sql = "UPDATE bowler SET gotoauction=NULL";
+            mysqli_query($conn, $sql);
+
+            $current_time = time();
+
+            $sql6 = "SELECT * from rule";
+$resultTime = mysqli_query($conn, $sql6);
+
+while ($rowTime = mysqli_fetch_assoc($resultTime)) {
+
+  $periadTime=$rowTime['auction_duration_time'];
+  
+      
+ }
+    $auction_end_time = $current_time + ($periadTime * 60); 
+  
+    // Convert the timestamps to formatted time strings
+    $current_time_formatted = date("Y-m-d H:i:s", $current_time);
+    $auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
+    $sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
+    mysqli_query($conn, $sql6);
+
+    header("Location: profile2.php?player_id=$player_id");
+    exit;
+    
+          }
+
+          if($catogary=="WICKETKEEPER"){
+            $sql = "UPDATE wicketkeeper SET gotoauction=NULL";
+            mysqli_query($conn, $sql);
+
+
+            $current_time = time();
+
+            $sql6 = "SELECT * from rule";
+$resultTime = mysqli_query($conn, $sql6);
+
+while ($rowTime = mysqli_fetch_assoc($resultTime)) {
+
+  $periadTime=$rowTime['auction_duration_time'];
+  
+      
+ }
+    $auction_end_time = $current_time + ($periadTime * 60); 
+  
+    // Convert the timestamps to formatted time strings
+    $current_time_formatted = date("Y-m-d H:i:s", $current_time);
+    $auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
+    $sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
+    mysqli_query($conn, $sql6);
+    header("Location: profile3.php?player_id=$player_id");
+    exit;
+          }
+
+          if($catogary=="ALLROUNDER"){
+            $sql = "UPDATE allrounder SET gotoauction=NULL";
+            mysqli_query($conn, $sql);
+
+
+            $current_time = time();
+
+            $sql6 = "SELECT * from rule";
+$resultTime = mysqli_query($conn, $sql6);
+
+while ($rowTime = mysqli_fetch_assoc($resultTime)) {
+
+  $periadTime=$rowTime['auction_duration_time'];
+  
+      
+ }
+    $auction_end_time = $current_time + ($periadTime * 60); 
+  
+    // Convert the timestamps to formatted time strings
+    $current_time_formatted = date("Y-m-d H:i:s", $current_time);
+    $auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
+    $sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
+    mysqli_query($conn, $sql6);
+    header("Location: profile4.php?player_id=$player_id");
+    exit;
+          }
+        }
+         
+
        }?>
     </tbody>
     </table>

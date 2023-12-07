@@ -57,30 +57,7 @@ if (isset($_POST['player_id'])) {
 
     <style>
     
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-
-   
-    .ntext1 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #c87a7a;
-    }
-    .ntext2 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #ce4a4a;
-    }
-    .ntext3 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #ce5b;
-    }
-
+    
     .profile-pic {
       width: 200px; 
       height: 200px; 
@@ -96,11 +73,7 @@ if (isset($_POST['player_id'])) {
   </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <span class="ntext3"><?php echo strtoupper($playerName) ?></span>
-  </div>
-</nav>
+
 <div class="container">
 
 

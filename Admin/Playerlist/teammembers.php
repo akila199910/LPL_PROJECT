@@ -43,13 +43,13 @@ if (isset($_SESSION['admin_id'])) {
             $resultId = mysqli_query($conn, $sql1);
     
             while ($row1 = mysqli_fetch_assoc($resultId)) {
-                // Use Bootstrap grid classes to organize players into rows of 4
+                
                 if ($counter % 4 == 0) {
                     echo '<div class="row">';
                 }
     
-                echo '<div class="col-md-3">'; // Assuming you want 4 players in one row for medium-sized screens
-                echo '<img src="/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/' . $row1['profile_photo'] . '" alt="Profile Picture" class="profile-img"><br>';
+                echo '<div class="col-md-3">'; 
+                echo '<img src="../../Register/Img/proimg/' . $row1['profile_photo'] . '" alt="Profile Picture" class="profile-img"><br>';
                 echo $row1['catogary'] . "<br>";
                 echo $row1['first_name'] . " " . $row1['last_name'];
                 echo "</div>";

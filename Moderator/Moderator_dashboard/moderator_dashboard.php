@@ -10,13 +10,13 @@ if (!isset($_SESSION['moderators_id'])) {
 }
 $moderator_id = $_SESSION['moderators_id'];
 // Fetch moderator's name based on the ID
-$sql = "SELECT first_name FROM moderators WHERE id = $moderator_id";
+$sql = "SELECT first_name,last_name FROM moderators WHERE id = $moderator_id";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // Output data of each row
     while ($row = $result->fetch_assoc()) {
-        $moderator_name = $row['first_name'];
+        $moderator_name = $row['first_name']." ".$row['last_name'];
     }
 } else {
     $moderator_name = "Unknown";
@@ -26,213 +26,183 @@ if ($result->num_rows > 0) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Moderator Dashboard</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
-  .topnav {
-    overflow: hidden;
-    background-color:lightblue ;
-    height:75px;
-  }
-  
-  .topnav a {
-    float: right;
-    color: light-blue;
-    text-align: center;
-    padding: 14px 16px;
+    
+  <title>Moderator</title>
+  <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/sidebarstyle.css">
+        <style>
+          .size {
+            width: 200px;
+            height: 200px;
+          }
+          .btn-margin {
+            margin-bottom: 15px;
+          }
+
+
+          .navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
     text-decoration: none;
-    font-size: 20px;
-    height:75px;
-  }
-  
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-    width:100px;
-  }
-  
-  .topnav a.active {
-    background-color: darkblue;
-    color: white;
-    
-  }
-  .text-center {
-      text-align: center;
-      background-color:#fceaa4;
-      
-      
-  }
-      /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-      .row.content {height: 100%}
-      
-      /* Set gray background color and 100% height */
-      .sidenav {
-        background-color:lightblue;
-        min-height: calc(100vh - 75px);
-        width:300px;
-      }
-          
-      /* On small screens, set height to 'auto' for the grid */
-      @media screen and (max-width: 767px) {
-        .row.content {height: auto;} 
-      }
-      .well.modname{
-        background-color:lightblue;
-      }
-      .well.pending-card {
-      /* Add desired background color */
-      background-color: #f7f7f7;
-  
-      /* Add padding and border radius for styling */
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      cursor: pointer; /* Optional: Add a cursor change on hover */
-  
-      /* Add animation styles */
-      animation-name: colorChange;
-      animation-duration: 2s;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-  }
-  
-  /* Define the animation keyframes */
-  @keyframes colorChange {
-      0% {
-          background-color: #f7f7f7; /* Initial background color */
-      }
-      50% {
-          background-color: #ffcc00; /* First color change */
-      }
-      100% {
-          background-color: #f7f7f7; /* Back to initial color */
-      }
-  }
-</style>
+    color: #555;
+}
+
+.header{
+    background: radial-gradient(#fff,#5960de);
+    height:100vh;
+}
+
+        </style>
 </head>
+
+
 <body>
-
-<div class="topnav">
-  <a class="active" href="/LPL_PROJECT/LPL_PROJECT/home.php">Home</a>
-  <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/logout.php">Log Out</a>
-  <a href="/LPL_PROJECT/LPL_PROJECT/contact_us.php">Contact</a>
-  <a href="/LPL_PROJECT/LPL_PROJECT/about.php">About</a>
-  <div class="img">
-    <img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="300px" height="75px">
-</div>
-</div>
+<div class="header">
 
 
+<div class="navbar">
+<img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="125px" >
 
-<div class="container-fluid">
-  <div class="row content">
-    <div class="col-sm-3 sidenav hidden-xs">
-    <div class="well modname">
+  <nav>
+<ul>
+    <li><i class="fa-solid fa-house"></i><a class="active" href="/LPL_PROJECT/LPL_PROJECT/home.php">Home</a></li>
     
+    <li><i class="fa-solid fa-briefcase"></i><a href="/LPL_PROJECT/LPL_PROJECT/contact_us.php">Contact</a></li>
+    <li><i class="fa-brands fa-unity"></i><a href="/LPL_PROJECT/LPL_PROJECT/about.php">About</a></li>
+    <li><i class="fa-solid fa-right-from-bracket"></i><a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/logout.php">Log Out</a></li>
+</ul>
+</nav>
+
+<br><br><br>
+
+</div>
+<div class="sidebar">
+  <div class="toggle-btn" onclick="show()">      
+  <div class="name">
     <?php
-        //echo "<p>Moderator Id:{$_SESSION['moderators_id']}</p>";
-        echo "<p>Moderator ID: $moderator_id</p>";
-        echo "<p>Moderator Name: $moderator_name</p>";
+        echo $moderator_name;
     ?>
   </div>
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/moderator_dashboard.php">Dashboard</a></li>
-        <li><a href="/LPL_PROJECT/LPL_PROJECT/Moderator/ReviewPage.php">Pending List</a></li>
-        <li><a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Accept.php">Accept List</a></li>
-        <li><a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Reject.php">Reject List</a></li>
-        <li><a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/logout.php">Log Out</a></li>
-      </ul><br>
-    </div>
-    <br>
-    
-    <div class="col-sm-9">
-      <div class="well text-center">
-        <h4>LANKA PREMIER LEAGUE-MODERATOR DASHBOARD</h4>
-        <p>This is the Moderator dashboard.<br>Moderator should review new players and accept or reject them.</p>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-            <h4>Registered Players</h4>
-            <p><?php
-              $sql="SELECT * from register";
-              $result=$conn-> query($sql);
-              $count=0;
-              if ($result-> num_rows > 0){
-                  while ($row=$result-> fetch_assoc()) {
-          
-                      $count=$count+1;
-                  }
-              }
-              echo $count;         
-                      
-            ?></p> 
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="well">
-            <h4>Approved Players</h4>
-            <p><?php
-              $sql="SELECT * from register where approved='Yes'";
-              $result=$conn-> query($sql);
-              $count=0;
-              if ($result-> num_rows > 0){
-                  while ($row=$result-> fetch_assoc()) {
-          
-                      $count=$count+1;
-                  }
-              }
-              echo $count;         
-                      
-            ?></p> 
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="well">
-            <h4>Rejected Players</h4>
-            <p><?php
-              $sql="SELECT * from register where approved='No'";
-              $result=$conn-> query($sql);
-              $count=0;
-              if ($result-> num_rows > 0){
-                  while ($row=$result-> fetch_assoc()) {
-          
-                      $count=$count+1;
-                  }
-              }
-              echo $count;         
-                      
-            ?></p> 
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="well pending-card">
-            <h4>Pending...</h4>
-            <p><?php
-              $sql="SELECT * from register where approved is NULL";
-              $result=$conn-> query($sql);
-              $count=0;
-              if ($result-> num_rows > 0){
-                  while ($row=$result-> fetch_assoc()) {
-          
-                      $count=$count+1;
-                  }
-              }
-              echo $count;
-                      
-            ?></p> 
-          </div>
-        </div>
-      </div>
+
+  <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/moderator_dashboard.php" class="btn btn-primary btn-block">Dashboard</a>
+    <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/ReviewPage.php" class="btn btn-primary btn-block"> Pending List</a>
+    <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Accept.php" class="btn btn-primary btn-block"> Accept list</a>
+    <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Reject.php" class="btn btn-primary btn-block"> Reject List</a>
+    <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/logout.php" class="btn btn-primary btn-block">Log Out</a>
       
+</div>
+</div>
+
+
+
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/registered.php"><button type="button" class="btn btn-dark size btn-margin">Registered Players<br>
+        <?php
+                    
+        $sql="SELECT * from register";
+        $result=$conn-> query($sql);
+        $count=0;
+        if ($result-> num_rows > 0){
+            while ($row=$result-> fetch_assoc()) {
+    
+                $count=$count+1;
+            }
+        }
+        echo $count;
+        ?>
+        </button></a>
+      </div>
+    
+      <div class="col-lg-3">
+        <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Accept.php"><button type="button" class="btn btn-info size btn-margin">Approved Players<br>
+          <?php
+            $sql="SELECT * from register where approved='Yes'";
+            $result=$conn-> query($sql);
+            $count=0;
+            if ($result-> num_rows > 0){
+              while ($row=$result-> fetch_assoc()) {
+                $count=$count+1;
+              }
+            }
+            echo $count;
+          ?>
+          </button></a>
+      </div>
+
+      <div class="col-lg-3">
+        <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Reject.php"><button type="button" class="btn btn-success size btn-margin">Rejected Players<br>
+        <?php
+          $sql="SELECT * from register where approved='No'";
+          $result=$conn-> query($sql);
+          $count=0;
+          if ($result-> num_rows > 0){
+            while ($row=$result-> fetch_assoc()) {
+              $count=$count+1;
+            }
+          }
+          echo $count;
+        ?>
+        </button></a>
+      </div>
+
+      <div class="col-lg-3">
+        <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/ReviewPage.php"><button type="button" class="btn btn-primary size btn-margin">Pending...<br>
+        <?php
+          $sql="SELECT * from register where approved is NULL";
+          $result=$conn-> query($sql);
+          $count=0;
+          if ($result-> num_rows > 0){
+            while ($row=$result-> fetch_assoc()) {
+              $count=$count+1;
+            }
+          }
+          echo $count;
+        ?>
+        </button></a>
+      </div>
+      <?php
+        $conn->close();
+      ?>
+    </div>
   </div>
 </div>
-<?php
-$conn->close();
-?>
+        </div>
+
+        <script>
+          function show() {
+            document.getElementById('slidebar').classList.toggle('active');
+          }
+          </script>
 </body>
 </html>

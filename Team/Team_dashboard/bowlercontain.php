@@ -1,4 +1,6 @@
 <?php
+
+
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
@@ -6,6 +8,7 @@ mysqli_select_db($conn, "lplsystem");
 if (isset($_POST['player_id'])) {
 
     $player_id=$_POST['player_id'];
+    //$team_id=$_POST['team_id'];
 
     $sql2 = "SELECT register.player_id, register.first_name,
     register.last_name,register.country,register.dob,register.profile_photo,
@@ -35,8 +38,10 @@ if (isset($_POST['player_id'])) {
         $playerBase= $row2["besed_price"];
         }
     } 
- }
+   
 
+ }
+ 
 
 
 ?>
@@ -46,6 +51,7 @@ if (isset($_POST['player_id'])) {
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -55,30 +61,7 @@ if (isset($_POST['player_id'])) {
 
     <style>
     
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-
-   
-    .ntext1 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #c87a7a;
-    }
-    .ntext2 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #ce4a4a;
-    }
-    .ntext3 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #ce5b;
-    }
-
+    
     .profile-pic {
       width: 200px; 
       height: 200px; 
@@ -94,11 +77,9 @@ if (isset($_POST['player_id'])) {
   </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <span class="ntext3"><?php echo strtoupper($playerName) ?></span>
-  </div>
-</nav>
+
+
+
 <div class="container">
 
 
@@ -179,7 +160,7 @@ if (isset($_POST['player_id'])) {
           <th>Based Price :</th>
           <th><?php echo   $playerBase;?></th>
       </tr>
-
+      
   </table>
   </div>
   <div class="col-6 mt-5 ">

@@ -49,9 +49,16 @@ if (isset($_SESSION['admin_id'])) {
 
         include("sidebar.php");
 ?>
-<nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
+<nav class="navbar navbar-light justify-content-between fs-3 mb-5" style="background-color: lightblue; width: 100%;">
+    <div class="text-center" style="width: 50%;">
         LPL - LANKA PREMIER LEAGUE
-        </nav>
+    </div>
+    <span class="notification-icon">
+        <!-- Replace the content inside this span with your notification icon -->
+       <a href="message.php"> <i class="fas fa-bell"></i> </a><!-- Example: using Font Awesome for a bell icon -->
+    </span>
+</nav>
+
 
 <div class="content">
    
@@ -303,6 +310,18 @@ if (isset($_SESSION['admin_id'])) {
                              
                        */  ?></button></a>
                        </div>
+
+
+
+                       <div class="col-lg-3">
+          <a href="Report/report.php"><button type="button" class="btn btn-success size btn-margin">Report<br>
+          <?php
+      
+                             
+                  
+          
+                          ?></button></a>
+                          </div>
                        </div>
       
       

@@ -51,20 +51,81 @@ if(isset($_POST['view'])){
     color: black;
     
   }
+
+
+
+
+  .navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+.header{
+    background: radial-gradient(#fff,#5960de);
+}
+
+
+.card{
+    width: 95%;
+    max-width: 3000px;
+    color: #fff;
+    text-align: center;
+    padding: 50px 35px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    margin-left: auto;
+    margin-right: auto;
+
+}
   
   
   </style>
 </head>
 <body>
-<div class="topnav">
-  
-  <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/logout.php">Log Out</a>
-  <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/moderator_dashboard.php">Dashboard</a>
-  <div class="img">
-    <img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="300px" height="75px">
-</div>
+<div class="header">
+<div class="navbar">
+<img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="125px" >
+
+  <nav>
+<ul>
+    <li><i class="fa-solid fa-laptop"></i><a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/moderator_dashboard.php">Dashboard</a></li>
+    <li><i class="fa-solid fa-right-from-bracket"></i><a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/logout.php">Log Out</a></li>
+</ul>
+</nav>
+
 </div>
 
+
+<div class="card" data-tilt>
 <h4 style="text-align: center; color: #2980b9; font-weight: bold; text-decoration: underline;">PENDING PLAYER LIST</h4>
 
   <div class="container">
@@ -108,8 +169,10 @@ if(isset($_POST['view'])){
       </tbody>
     </table>
   </div>
+        </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
+
 </html>
 
 

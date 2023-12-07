@@ -17,14 +17,13 @@ if (isset($_SESSION['admin_id'])) {
     $team_name = $_POST['team_name'];
     $owner_name = $_POST['owner_name'];
     $email = $_POST['email'];
-    $password=$_POST['password'];
     $filename1 = $_FILES['icon']['name'];
   $tempname1 = $_FILES['icon']['tmp_name'];
   $folder1 = "teamicon/" . $filename1;
   move_uploaded_file($tempname1,$folder1);
    
   
-    $sql = "UPDATE team SET team_name='$team_name',owner_name='$owner_name',email='$email',password='$password',icon='$filename1' WHERE id = $id";
+    $sql = "UPDATE team SET team_name='$team_name',owner_name='$owner_name',email='$email',icon='$filename1' WHERE id = $id";
   
     $result = mysqli_query($conn, $sql);
   

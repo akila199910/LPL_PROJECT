@@ -17,10 +17,10 @@ if (isset($_SESSION['admin_id'])) {
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+  
     $gender = $_POST['gender'];
   
-    $sql = "UPDATE moderators SET first_name='$first_name',last_name='$last_name',email='$email',password='$password',gender='$gender' WHERE id = $id";
+    $sql = "UPDATE moderators SET first_name='$first_name',last_name='$last_name',email='$email',gender='$gender' WHERE id = $id";
   
     $result = mysqli_query($conn, $sql);
   

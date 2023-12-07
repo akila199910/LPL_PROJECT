@@ -9,10 +9,10 @@ session_start();
 if (isset($_SESSION['admin_id'])) {
 
   // Select records where sold is NULL in batsman and active is 1 in auction
-$sql = "SELECT r.*, b.sold AS batsman_sold, b.gotoauction AS batsman_gotoauction,
-bo.sold AS bowler_sold, bo.gotoauction AS bowler_gotoauction,
-wk.sold AS wicketkeeper_sold, wk.gotoauction AS wicketkeeper_gotoauction,
-alr.sold AS allrounder_sold, alr.gotoauction AS allrounder_gotoauction
+$sql = "SELECT r.*, b.sold AS batsman_sold, b.gotoauction AS batsman_gotoauction, b.team_id AS batsman_team_id,
+bo.sold AS bowler_sold, bo.gotoauction AS bowler_gotoauction, bo.team_id AS bowler_team_id,
+wk.sold AS wicketkeeper_sold, wk.gotoauction AS wicketkeeper_gotoauction, wk.team_id AS wicketkeeper_team_id,
+alr.sold AS allrounder_sold, alr.gotoauction AS allrounder_gotoauction, alr.team_id AS allrounder_team_id
 FROM register r
 LEFT JOIN batsman b ON r.player_id = b.player_batting_id
 LEFT JOIN bowler bo ON r.player_id = bo.player_bowlling_id 
@@ -21,7 +21,8 @@ LEFT JOIN allrounder alr ON r.player_id = alr.player_al_id
 WHERE (b.sold IS NOT NULL AND b.gotoauction = 1)
 OR (bo.sold IS NOT NULL AND bo.gotoauction = 1)
 OR (wk.sold IS NOT NULL AND wk.gotoauction = 1)
-OR (alr.sold IS NOT NULL AND alr.gotoauction = 1)";
+OR (alr.sold IS NOT NULL AND alr.gotoauction = 1);
+";
 $result = mysqli_query($conn, $sql);
 
 
@@ -37,6 +38,15 @@ $result = mysqli_query($conn, $sql);
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+    td{
+      vertical-align: middle;
+    }
+    .text{
+      text-align: center;
+    }
+
+  </style>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,7 +74,6 @@ include('../sidebar.php');
   <table class="table table-hover text-center">
       <thead>
         <tr>
-        <th>#ID</th>
           <th>Profile Photo</th>
           <th>Name</th>
           <th>Catogary</th>
@@ -74,14 +83,14 @@ include('../sidebar.php');
       <tbody class="table table-hover text-center">
       <?php
       while($row=mysqli_fetch_assoc($result)){
-      ?>
-      <td> <?php echo $row['player_id'];?></td>
+        $photoPath = $row['profile_photo'];?>
+  
       <td> 
-                            <?php
-                            $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/" . $row['profile_photo'];
-                            echo "<img src='$photoPath' alt='Profile Photo' style='width: 70px; height: 70px;'>";
-                            ?>
-                        </td>
+                          
+      
+    <img   src="../../Register/Img/proimg/<?php echo $photoPath?>" alt="Profile Picture" style="width: 100px; height: 100px; border-radius: 50%;">
+                            
+         </td>
        <td> <?php echo $row['first_name']." ".$row['last_name'];?></td>
        <td> <?php echo $row['catogary'];?></td>
        <td> <?php echo $row['country'];?></td>         

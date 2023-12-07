@@ -10,8 +10,10 @@ session_start();
 if (isset($_SESSION['admin_id'])) {
 
   
-  $sql5 = "SELECT * FROM bowler 
-WHERE sold IS NULL AND gotoauction IS NULL";
+  $sql5 = "SELECT b.*, r.profile_photo, r.first_name,r.last_name,r.country
+  FROM bowler b
+  JOIN register r ON b.player_bowlling_id = r.player_id
+  WHERE b.gotoauction IS NULL AND b.sold IS NULL;";
 $result = mysqli_query($conn, $sql5);
 $sql6 = "SELECT * from rule";
 $resultTime = mysqli_query($conn, $sql6);
@@ -92,6 +94,15 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+    td{
+      vertical-align: middle;
+    }
+    .text{
+      text-align: center;
+    }
+
+  </style>
 <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -116,12 +127,12 @@ include('../sidebar.php');
 
 
   <div class="container">
-    <table class="table table-hover text-center">
+  <table class="table table-hover text-center">
       <thead>
         <tr>
-        <th>#ID</th>
-          <th>Bowling Style</th>
-          <th>No Of LPL Match</th>
+        <th>Profile</th>
+          <th>Name</th>
+          <th>Country</th>
           <th>Auction</th>
         </tr>
       
@@ -134,16 +145,24 @@ include('../sidebar.php');
 
         
         while ($row = mysqli_fetch_assoc($result)) { ?>
-        <tr>
-        <td><?php echo $row['player_bowlling_id']; ?></td>
-        <td> <?php echo $row['bowl_style'];?></td>
-        <td> <?php echo $row['lpl_nom'];?></td>
+        <tr><td>
+
+        <?php
+            $photoPath = "../../Register/Img/proimg/" . $row['profile_photo'];
+              echo "<img src='$photoPath' alt='Profile' style='width: 100px; height: 100px;border-radius: 50%;'>";
+                         ?>
+
+                            
+                        </td>
+        <td class="text"> <?php echo $row['first_name']." ".$row['last_name'] ;?></td>
+        <td class="text"> <?php echo $row['country'];?></td>
             <td>
               <form action="" method="POST">
                 <input type="hidden" name="player_bowlling_id" value="<?php echo $row['player_bowlling_id']; ?>">
                 <button type="submit" name="push">Push</button>
               </form>
             </td>
+          
           </tr>
         <?php }
 ?>

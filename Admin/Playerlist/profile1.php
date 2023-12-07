@@ -20,11 +20,9 @@ if (isset($_SESSION['admin_id'])) {
         die("Error in SQLMaxBid: " . mysqli_error($conn));
     }
     
-    // Check if any rows were returned
     if (mysqli_num_rows($resultMaxBidID) > 0) {
         $rowMaxBidID = mysqli_fetch_assoc($resultMaxBidID);
         $maxBid = $rowMaxBidID["max_bid"];
-    //$team_id = $rowMaxBidID["team_id"];
     } else {
         $maxBid=0;
         
@@ -88,6 +86,7 @@ if (isset($_SESSION['admin_id'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title>Auction</title>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -148,7 +147,7 @@ if (isset($_SESSION['admin_id'])) {
 
   <div class="row mt-5" >
     <div class="col-2 mt-5">
-         <img class="profile-pic" src="/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/<?php echo $playerPhoto?>" alt="Profile Picture">
+         <img class="profile-pic" src="../../Register/Img/proimg/<?php echo $playerPhoto?>" alt="Profile Picture">
     </div>
        
         <div class="col-5 mb-3  mt-5">
