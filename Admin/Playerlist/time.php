@@ -40,7 +40,7 @@ if($timeDifference==0 || $timeDifference<0)
 
    
   
-    $sqlMaxBidID = "SELECT MAX(bid_price) AS max_bid FROM bid WHERE player_id = $player_id";
+    $sqlMaxBidID = "SELECT MAX(bid_price) AS max_bid FROM bid WHERE player_id = $player_id ORDER BY bid_id DESC LIMIT 1";
     $resultMaxBidID = mysqli_query($conn, $sqlMaxBidID);
     
     while($row = mysqli_fetch_assoc($resultMaxBidID)){
