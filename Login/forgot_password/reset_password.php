@@ -18,7 +18,7 @@ if(isset($_GET['token'])){
             <style>
             body {
                 font-family: Arial, sans-serif;
-                background-color: #f4f4f4;
+                background: radial-gradient(#fff,#5960de);
                 margin: 0;
                 padding: 0;
             }
