@@ -136,6 +136,8 @@ while ($rowTime = mysqli_fetch_assoc($resultTime)) {
     $auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
     $sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
     mysqli_query($conn, $sql6);
+    header("Location: profile1.php?player_id=$player_id");
+    exit;
           }
 
           if($catogary=="BOWLER"){
@@ -160,6 +162,10 @@ while ($rowTime = mysqli_fetch_assoc($resultTime)) {
     $auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
     $sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
     mysqli_query($conn, $sql6);
+
+    header("Location: profile2.php?player_id=$player_id");
+    exit;
+    
           }
 
           if($catogary=="WICKETKEEPER"){
@@ -185,6 +191,8 @@ while ($rowTime = mysqli_fetch_assoc($resultTime)) {
     $auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
     $sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
     mysqli_query($conn, $sql6);
+    header("Location: profile3.php?player_id=$player_id");
+    exit;
           }
 
           if($catogary=="ALLROUNDER"){
@@ -210,6 +218,8 @@ while ($rowTime = mysqli_fetch_assoc($resultTime)) {
     $auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
     $sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
     mysqli_query($conn, $sql6);
+    header("Location: profile4.php?player_id=$player_id");
+    exit;
           }
         }
          
