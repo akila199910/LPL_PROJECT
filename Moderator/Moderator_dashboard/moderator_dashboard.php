@@ -42,10 +42,70 @@ if ($result->num_rows > 0) {
           .btn-margin {
             margin-bottom: 15px;
           }
+
+
+          .navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+.header{
+    background: radial-gradient(#fff,#5960de);
+    height:100vh;
+}
+
         </style>
 </head>
+
+
 <body>
-<div class="sidebar">      
+<div class="header">
+
+
+<div class="navbar">
+<img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="125px" >
+
+  <nav>
+<ul>
+    <li><i class="fa-solid fa-house"></i><a class="active" href="/LPL_PROJECT/LPL_PROJECT/home.php">Home</a></li>
+    
+    <li><i class="fa-solid fa-briefcase"></i><a href="/LPL_PROJECT/LPL_PROJECT/contact_us.php">Contact</a></li>
+    <li><i class="fa-brands fa-unity"></i><a href="/LPL_PROJECT/LPL_PROJECT/about.php">About</a></li>
+    <li><i class="fa-solid fa-right-from-bracket"></i><a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/logout.php">Log Out</a></li>
+</ul>
+</nav>
+
+<br><br><br>
+
+</div>
+<div class="sidebar">
+  <div class="toggle-btn" onclick="show()">      
   <div class="name">
     <?php
         echo $moderator_name;
@@ -59,10 +119,9 @@ if ($result->num_rows > 0) {
     <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/logout.php" class="btn btn-primary btn-block">Log Out</a>
       
 </div>
+</div>
 
-<nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
-  LPL - LANKA PREMIER LEAGUE
-</nav>
+
 
 <div class="content">
   <div class="container">
@@ -138,5 +197,12 @@ if ($result->num_rows > 0) {
     </div>
   </div>
 </div>
+        </div>
+
+        <script>
+          function show() {
+            document.getElementById('slidebar').classList.toggle('active');
+          }
+          </script>
 </body>
 </html>
