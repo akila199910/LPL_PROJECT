@@ -78,13 +78,90 @@ if (isset($_SESSION['admin_id'])) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <title>ADD TEAMS</title>
+<style>
+
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+.header{
+    background: radial-gradient(#fff,#5960de);
+    height: 500vh;
+}
+
+.card{
+    width: 95%;
+    max-width: 3000px;
+    color: #000;
+    text-align: center;
+    padding: 50px 35px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.btn{
+    display: inline-block;
+    background: #ff523b;
+    
+    padding: 8px 30px;
+    margin: -40px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+
+.btn:hover{
+    background: #5960de;
+}
+   </style>
 </head>
 
 <body>
-<nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;">
-LPL - LANKA PREMIER LEAGUE  
+<div class="header">
+<div class="navbar">
+<img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="125px" >
+
+  <nav>
+<ul>
+    <li><i class="fa-solid fa-laptop"></i><a href="">Dashboard</a></li>
+    <li><i class="fa-solid fa-right-from-bracket"></i><a href="">Log Out</a></li>
+</ul>
 </nav>
 
+</div>
+<div class="card" data-tilt>
 <div class="container">
    <div class="text-center mb-4">
       <h3>Add New TEAM</h3>
@@ -120,10 +197,11 @@ LPL - LANKA PREMIER LEAGUE
 
 
          <div>
-            <button type="submit" class="btn btn-success" name="submit">Save</button>
+            <button type="submit" class="btn" name="submit">Save</button>
             <a href="indexteam.php" class="btn btn-danger">Cancel</a>
          </div>
       </form>
+</div>
    </div>
 </div>
 
