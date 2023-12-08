@@ -7,18 +7,16 @@ mysqli_select_db($conn, "lplsystem");
 $sql = "SELECT player_id FROM auction ORDER BY auction_id DESC LIMIT 1";
 
 
+
 $result = mysqli_query($conn, $sql);
 if ($result && mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
 
     $player_id= $row["player_id"];
-    echo $player_id;
+    echo $player_id."<br>";
 
     
 }
-
-
-
         $Catogary= "SELECT catogary,first_name,last_name,profile_photo FROM register WHERE player_id=$player_id";
         $CatogaryRsult=mysqli_query($conn, $Catogary);
         
@@ -33,77 +31,73 @@ if ($result && mysqli_num_rows($result) > 0) {
 
             }
 
-            if($PlayerCatogary=="BATSMAN"){
-                $TeamId="SELECT team_id,sold FROM batsman WHERE player_batting_id=$player_id";
-                $TeamIdResult=mysqli_query($conn,$TeamId);
-                if (mysqli_num_rows($TeamIdResult) > 0) {
-                    while ($row1 = mysqli_fetch_assoc($TeamIdResult)) {
-                        $team_id= $row1['team_id'];
-                        $soldPrice = $row1['sold'];
-                    }
-                }
-                if(!isset($team_id)){
-                    $team_id= 'NO TEAM ID';
-                    $soldPrice='UNSOLD';
-                }
-            }
-        
-            if($PlayerCatogary=="BOWLER"){
-                $TeamId="SELECT team_id,sold FROM bowler WHERE player_bowlling_id=$player_id";
-                $TeamIdResult=mysqli_query($conn,$TeamId);
-                if (mysqli_num_rows($TeamIdResult) > 0) {
-                    while ($row1 = mysqli_fetch_assoc($TeamIdResult)) {
-                        $team_id= $row1['team_id'];
-                        $soldPrice = $row1['sold'];
-                    }
-                }
-                if(!isset($team_id)){
-                    $team_id= 'NO TEAM ID';
-                    $soldPrice='UNSOLD';
-                }
-            }
-            if($PlayerCatogary=="ALLROUNDER"){
-                $TeamId="SELECT team_id,sold FROM allrounder WHERE player_al_id=$player_id";
-                $TeamIdResult=mysqli_query($conn,$TeamId);
-                if (mysqli_num_rows($TeamIdResult) > 0) {
-                    while ($row1 = mysqli_fetch_assoc($TeamIdResult)) {
-                        $team_id= $row1['team_id'];
-                        $soldPrice = $row1['sold'];
-                    }
-                }
-                if(!isset($team_id)){
-                    $team_id= 'NO TEAM ID';
-                    $soldPrice='UNSOLD';
-                }
-            }
-            if($PlayerCatogary=="WICKETKEEPER"){
-                $TeamId="SELECT team_id,sold FROM wicketkeeper WHERE player_keeping_id=$player_id";
-                $TeamIdResult=mysqli_query($conn,$TeamId);
-                if (mysqli_num_rows($TeamIdResult) > 0) {
-                    while ($row1 = mysqli_fetch_assoc($TeamIdResult)) {
-                        $team_id= $row1['team_id'];
-                        $soldPrice = $row1['sold'];
-                    }
-                }
-                if(!isset($team_id)){
-                    $team_id= 'NO TEAM ID';
-                    $soldPrice='UNSOLD';
-                }
-            }
+            
     }
 
+    $bidDetails = "SELECT team_id, bid_price FROM bid WHERE player_id = $player_id ORDER BY bid_id DESC LIMIT 1";
 
+    $BidRsult=mysqli_query($conn, $bidDetails);
+    
+    
+    if (mysqli_num_rows($BidRsult) > 0) {
+        while ($row4 = mysqli_fetch_assoc($BidRsult)) {
+            
+            $team_id= $row4["team_id"];
+            $bid_price= $row4["bid_price"];
+            }
+    }
+    else{
+        $bid_price=0;
+        $team_id="No bid for You";
+    }
 
     
-
-    
-echo "$team_id";
-echo $soldPrice;
-echo"$PlayerCatogary";
-echo $first_name." ".$last_name;
-echo "$profile_photo";
+echo "$team_id"."<br>";
+echo"$PlayerCatogary"."<br>";
+echo $first_name." ".$last_name."<br>";
+echo "$profile_photo"."<br>";
+echo $bid_price."<br>";
     
 
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>After Auction</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  
 
+<script>
+    $(document).ready(function() {
+        function checkForNewRecords() {
+            $.ajax({
+                url: 'newrecord.php', // Replace with the actual path to your PHP script
+                method: 'GET',
+                dataType: 'json', // Specify the expected data type
+                success: function(response) {
+                    if (response.player_id) {
+                        alert('New record inserted! Player ID: ' + response.player_id);
+                        window.location.href = 'auction.php'; 
+
+                    }
+                },
+                error: function(error) {
+                    console.log('Error:', error);
+                }
+            });
+        }
+
+        // Call the function at regular intervals
+        setInterval(checkForNewRecords, 5000); // Check every 5 seconds
+    });
+</script>
+
+
+</head>
+<body>
+    <!-- Your page content goes here -->
+</body>
+</html>
