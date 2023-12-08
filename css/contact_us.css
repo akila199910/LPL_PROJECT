@@ -11,7 +11,6 @@
     background-color: #e8f0fe;
     padding: 50px;
     text-align: center;
-    
 }
 
 .container2{
@@ -33,7 +32,6 @@
 
 .contact-form{
     text-align: left;
-    
 }
 
 .contact-form h3{
@@ -64,7 +62,7 @@ textarea:focus{
 button{
     display: inline-block;
     padding: 10px 24px;
-    background-color: #f20404;
+    background-color: #4caf50;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -72,7 +70,7 @@ button{
 }
 
 button:hover{
-    background-color: #5960de;
+    background-color: #45a049;
 }
 
 .contact-info{
@@ -91,7 +89,7 @@ button:hover{
 }
 
 .contact-info i{
-    color: #f20404;
+    color: #4caf50;
     margin-right:10px;
 }
 
@@ -107,10 +105,10 @@ button:hover{
 } 
 
 .success {
-    background-color: #f20404;
+    background-color: #9fd2a1;
     padding: 5px 10px;
     text-align: center;
-    color: #f20404;
+    color: #326b07;
     border-radius: 3px;
     font-size: 14px; 
     margin-top: 10px;
