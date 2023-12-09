@@ -66,10 +66,7 @@ if (isset($_SESSION['admin_id'])) {
     } else {
         echo "No matching data found for player ID: $player_id<br>";
     }
-
-
-
-    
+   
 } else {
     header("Location: ../Admin/logout.php");
 }
