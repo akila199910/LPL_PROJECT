@@ -77,7 +77,7 @@ if (mysqli_num_rows($idResult) > 0) {
                     type: 'GET',
                     dataType: 'json',
                     success: function(response) {
-                        if (response.timeDifference <= -2) {
+                        if (response.timeDifference <= 0) {
                             
                             window.location.href = 'afterauction.php'; 
                         }
