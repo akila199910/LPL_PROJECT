@@ -91,7 +91,7 @@ echo $bid_price."<br>";
         }
 
         // Call the function at regular intervals
-        setInterval(checkForNewRecords, 5000); // Check every 5 seconds
+       setInterval(checkForNewRecords, 5000); // Check every 5 seconds
     });
 </script>
 

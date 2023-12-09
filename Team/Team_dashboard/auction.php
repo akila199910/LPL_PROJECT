@@ -67,10 +67,9 @@ if (mysqli_num_rows($idResult) > 0) {
 <head>
 
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> 
     <script>
         $(document).ready(function() {
-            // Function to check time difference
             function checkTimeDifference() {
                 $.ajax({
                     url: 'check_auction.php',
