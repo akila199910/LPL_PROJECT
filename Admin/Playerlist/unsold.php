@@ -115,9 +115,10 @@ include('../sidebar.php');
 
         if(isset($_POST['view'])){
           $player_id =  $_POST['player_id'];
-          if($catogary=="BATSMAN"){
-            $sql = "UPDATE batsman SET gotoauction=NULL";
-            mysqli_query($conn, $sql);
+          
+         /* if($catogary=="BATSMAN"){
+           // $sql = "UPDATE batsman SET gotoauction=NULL";
+           // mysqli_query($conn, $sql);
             $current_time = time();
 
             $sql6 = "SELECT * from rule";
@@ -130,8 +131,23 @@ while ($rowTime = mysqli_fetch_assoc($resultTime)) {
       
  }
     $auction_end_time = $current_time + ($periadTime * 60); 
+    $sql5 = "SELECT player_id FROM auction WHERE active=0 ORDER BY auction_id DESC LIMIT 1";
+    $result = mysqli_query($conn, $sql5);
+
+    while ($rowID = mysqli_fetch_assoc($result)) {
+
+      $rowIDPlayer=$rowID['player_id'];
+
+    }
+    if($rowIDPlayer==$player_id){
+
+      header("Location: profile1.php?player_id=$player_id");
+      exit; 
   
-    // Convert the timestamps to formatted time strings
+  
+     }else{
+
+       // Convert the timestamps to formatted time strings
     $current_time_formatted = date("Y-m-d H:i:s", $current_time);
     $auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
     $sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
@@ -139,87 +155,135 @@ while ($rowTime = mysqli_fetch_assoc($resultTime)) {
     header("Location: profile1.php?player_id=$player_id");
     exit;
           }
+        }*/
+  
+   
 
           if($catogary=="BOWLER"){
-            $sql = "UPDATE bowler SET gotoauction=NULL";
-            mysqli_query($conn, $sql);
+            $player_id =  $_POST['player_id'];
+           // $sql = "UPDATE bowler SET gotoauction=NULL";
+           // mysqli_query($conn, $sql);
+           $current_time = time();
 
-            $current_time = time();
-
-            $sql6 = "SELECT * from rule";
+           $sql6 = "SELECT * from rule";
 $resultTime = mysqli_query($conn, $sql6);
 
 while ($rowTime = mysqli_fetch_assoc($resultTime)) {
 
-  $periadTime=$rowTime['auction_duration_time'];
-  
-      
- }
-    $auction_end_time = $current_time + ($periadTime * 60); 
-  
-    // Convert the timestamps to formatted time strings
-    $current_time_formatted = date("Y-m-d H:i:s", $current_time);
-    $auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
-    $sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
-    mysqli_query($conn, $sql6);
+ $periadTime=$rowTime['auction_duration_time'];
+ 
+     
+}
+   $auction_end_time = $current_time + ($periadTime * 60); 
+   $sql5 = "SELECT player_id FROM auction WHERE active=0 ORDER BY auction_id DESC LIMIT 1";
+   $result = mysqli_query($conn, $sql5);
 
-    header("Location: profile2.php?player_id=$player_id");
-    exit;
+   while ($rowID = mysqli_fetch_assoc($result)) {
+
+     $rowIDPlayer=$rowID['player_id'];
+
+   }
+   if($rowIDPlayer==$player_id){
+
+     header("Location: profile2.php?player_id=$player_id");
+     exit; 
+ 
+ 
+    }else{
+
+      // Convert the timestamps to formatted time strings
+   $current_time_formatted = date("Y-m-d H:i:s", $current_time);
+   $auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
+   $sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
+   mysqli_query($conn, $sql6);
+   header("Location: profile2.php?player_id=$player_id");
+   exit;
+         }
     
           }
 
           if($catogary=="WICKETKEEPER"){
-            $sql = "UPDATE wicketkeeper SET gotoauction=NULL";
-            mysqli_query($conn, $sql);
+            $player_id =  $_POST['player_id'];
+           // $sql = "UPDATE wicketkeeper SET gotoauction=NULL";
+           // mysqli_query($conn, $sql);
+           $current_time = time();
 
-
-            $current_time = time();
-
-            $sql6 = "SELECT * from rule";
+           $sql6 = "SELECT * from rule";
 $resultTime = mysqli_query($conn, $sql6);
 
 while ($rowTime = mysqli_fetch_assoc($resultTime)) {
 
-  $periadTime=$rowTime['auction_duration_time'];
-  
-      
- }
-    $auction_end_time = $current_time + ($periadTime * 60); 
-  
-    // Convert the timestamps to formatted time strings
-    $current_time_formatted = date("Y-m-d H:i:s", $current_time);
-    $auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
-    $sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
-    mysqli_query($conn, $sql6);
-    header("Location: profile3.php?player_id=$player_id");
-    exit;
+ $periadTime=$rowTime['auction_duration_time'];
+ 
+     
+}
+   $auction_end_time = $current_time + ($periadTime * 60); 
+   $sql5 = "SELECT player_id FROM auction WHERE active=0 ORDER BY auction_id DESC LIMIT 1";
+   $result = mysqli_query($conn, $sql5);
+
+   while ($rowID = mysqli_fetch_assoc($result)) {
+
+     $rowIDPlayer=$rowID['player_id'];
+
+   }
+   if($rowIDPlayer==$player_id){
+
+     header("Location: profile3.php?player_id=$player_id");
+     exit; 
+ 
+ 
+    }else{
+
+      // Convert the timestamps to formatted time strings
+   $current_time_formatted = date("Y-m-d H:i:s", $current_time);
+   $auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
+   $sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
+   mysqli_query($conn, $sql6);
+   header("Location: profile3.php?player_id=$player_id");
+   exit;
+         }
           }
 
           if($catogary=="ALLROUNDER"){
-            $sql = "UPDATE allrounder SET gotoauction=NULL";
-            mysqli_query($conn, $sql);
+            $player_id =  $_POST['player_id'];
+           // $sql = "UPDATE allrounder SET gotoauction=NULL";
+           // mysqli_query($conn, $sql);
+           $current_time = time();
 
-
-            $current_time = time();
-
-            $sql6 = "SELECT * from rule";
+           $sql6 = "SELECT * from rule";
 $resultTime = mysqli_query($conn, $sql6);
 
 while ($rowTime = mysqli_fetch_assoc($resultTime)) {
 
-  $periadTime=$rowTime['auction_duration_time'];
-  
-      
- }
-    $auction_end_time = $current_time + ($periadTime * 60); 
-  
-    // Convert the timestamps to formatted time strings
-    $current_time_formatted = date("Y-m-d H:i:s", $current_time);
-    $auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
-    $sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
-    mysqli_query($conn, $sql6);
-    header("Location: profile4.php?player_id=$player_id");
-    exit;
+ $periadTime=$rowTime['auction_duration_time'];
+ 
+     
+}
+   $auction_end_time = $current_time + ($periadTime * 60); 
+   $sql5 = "SELECT player_id FROM auction WHERE active=0 ORDER BY auction_id DESC LIMIT 1";
+   $result = mysqli_query($conn, $sql5);
+
+   while ($rowID = mysqli_fetch_assoc($result)) {
+
+     $rowIDPlayer=$rowID['player_id'];
+
+   }
+   if($rowIDPlayer==$player_id){
+
+     header("Location: profile4.php?player_id=$player_id");
+     exit; 
+ 
+ 
+    }else{
+
+      // Convert the timestamps to formatted time strings
+   $current_time_formatted = date("Y-m-d H:i:s", $current_time);
+   $auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
+   $sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
+   mysqli_query($conn, $sql6);
+   header("Location: profile4.php?player_id=$player_id");
+   exit;
+         }
           }
         }
          
