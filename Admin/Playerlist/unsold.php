@@ -273,7 +273,7 @@ include('../sidebar.php');
       <td> 
                         
                            <?php $photoPath = "../../Register/Img/proimg/" . $row['profile_photo'];?>
-                            <img src=<?php echo $photoPath?> alt='Profile Photo' style='width: 100px; height: 100px;border-radius: 50%;'>;
+                            <img src=<?php echo $photoPath?> alt='Profile Photo' style='width: 100px; height: 100px;border-radius: 50%;'>
                          
                         </td>
        <td> <?php echo $row['first_name']." ".$row['last_name'];?></td>

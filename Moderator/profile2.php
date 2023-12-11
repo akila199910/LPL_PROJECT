@@ -67,22 +67,22 @@ mysqli_query($conn, $sqlInsert);
 
       switch ($catogaryValue) {
           case 'BATSMAN':
-              header("Location: ../Players/Batsman/Batsman.php?player_id=$player_id"); // Include player_id as a query parameter
+              header("Location: Batsman/Batsman.php?player_id=$player_id"); // Include player_id as a query parameter
               exit;
               
 
           case 'BOWLER':
-              header("Location: ../Players/Bowler/Bowler.php?player_id=$player_id"); // Include player_id as a query parameter
+              header("Location: Bowler/Bowler.php?player_id=$player_id"); // Include player_id as a query parameter
               exit;
               
 
           case 'WICKETKEEPER':
-              header("Location: ../Players/Wicketkeeper/Wicketkeeper.php?player_id=$player_id"); // Include player_id as a query parameter
+              header("Location: Wicketkeeper/Wicketkeeper.php?player_id=$player_id"); // Include player_id as a query parameter
               exit;
             
 
           case 'ALLROUNDER':
-              header("Location: ../Players/Allrounder/Allrounder.php?player_id=$player_id"); // Include player_id as a query parameter
+              header("Location: Allrounder/Allrounder.php?player_id=$player_id"); // Include player_id as a query parameter
               exit;
               
       }
