@@ -106,6 +106,20 @@ a{
     margin-right: auto;
 
 }
+
+.btn{
+    display: inline-block;
+    background: #ff523b;
+    
+    padding: 8px 30px;
+    margin: -40px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+
+.btn:hover{
+    background: #5960de;
+}
   
   
   </style>
