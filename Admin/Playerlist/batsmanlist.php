@@ -30,17 +30,6 @@ while ($rowTime = mysqli_fetch_assoc($resultTime)) {
       
  }
 
- $startDate="SELECT start FROM rule";
- $resultDate=mysqli_query($conn,$startDate);
- if(mysqli_num_rows($resultDate) >0) {
-     while($rowDate = mysqli_fetch_array($resultDate)) {
-         $start_date = $rowDate['start'];
- 
- }
- }
-
- $currentDate = date('Y-m-d');
-
 
 
 
@@ -151,7 +140,6 @@ include('../sidebar.php');
     LPL - LANKA PREMIER LEAGUE
   </nav>
   <div class="content">
-    <?php echo $start_date; ?>
 
   <div class="container">
     <table class="table table-hover text-center">
@@ -185,7 +173,7 @@ include('../sidebar.php');
             <td>
               <form action="" method="POST">
                 <input type="hidden" name="player_batting_id" value="<?php echo $row['player_batting_id']; ?>">
-                <button type="submit" class="btn" name="push">Push</button>
+                <button type="submit" name="push">Push</button>
               </form>
             </td>
           </tr>
@@ -196,18 +184,5 @@ include('../sidebar.php');
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         </div>
-        <script>
-              var btndate = <?php echo json_encode($start_date); ?>;
-              console.log(btndate);
-              var currentdate = <?php echo json_encode($currentDate); ?>;
-              console.log(currentdate);
-              if(btndate>currentdate){
-                var btns = document.getElementsByClassName("btn");
-                for (var i = 0; i < btns.length; i++) {
-        btns[i].disabled = true;
-    }
-              }
-
-        </script>
 </body>
 </html>

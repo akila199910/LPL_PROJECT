@@ -123,9 +123,9 @@ if($timeDifference==0 || $timeDifference<0)
         }
         echo "<h3>Player Is Sold </h3>";
         
-    } else{//bid ekak nettan wenna ona de methna harinan hedenna ona
+    } else{
         //echo $maxBid = 0;
-        echo "<h1>Auction Time Out !!! <br> Push The New Player bid ekK NE</h1>";
+        echo "<h1>Auction Time Out !!! <br> Push The New Player </h1>";
        
 
       

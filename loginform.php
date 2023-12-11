@@ -15,7 +15,7 @@
     
         <div class="row">
             <div class="col-2">
-                <img src="images/acc.png" width="100%">
+                <img src="/LPL_PROJECT/LPL_PROJECT/images/acc.png" width="100%">
             </div>
             <div class="col-2">
                 <div class="form-container">
@@ -25,17 +25,17 @@
                         <hr id="Indicator">
                     </div>
 
-                    <form id="LoginForm" method="POST" action="Login/login.php">
+                    <form id="LoginForm" method="POST" action="http://localhost/LPL_PROJECT/LPL_PROJECT/Login/login.php">
                         <input type="email" placeholder="email" name="email">
                         <input type="password" placeholder="password" name="password">
                         <button type="submit" name="login" class="btn">Login</button>
-                        <a href="Login/forgot_password/forgot_password.php">Forgot password</a>
+                        <a href="http://localhost/LPL_PROJECT/LPL_PROJECT/Login/forgot_password/forgot_password.php">Forgot password</a>
                     </form>
 
                     <form id="RegForm">
                         <P>If you don't have a account press Next</P>
                         <br>
-                        <a href="Register/indexregister.php" class="btn">Next &#8594;</a>
+                        <a href="/LPL_PROJECT/LPL_PROJECT/Register/indexregister.php" class="btn">Next &#8594;</a>
                         
                         
                     </form>

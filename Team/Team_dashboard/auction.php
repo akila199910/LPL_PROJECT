@@ -67,16 +67,17 @@ if (mysqli_num_rows($idResult) > 0) {
 <head>
 
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!-- Include jQuery -->
     <script>
         $(document).ready(function() {
+            // Function to check time difference
             function checkTimeDifference() {
                 $.ajax({
                     url: 'check_auction.php',
                     type: 'GET',
                     dataType: 'json',
                     success: function(response) {
-                        if (response.timeDifference <= 0) {
+                        if (response.timeDifference <= -2) {
                             
                             window.location.href = 'afterauction.php'; 
                         }
