@@ -137,7 +137,7 @@ include('../sidebar.php');
   <div class="container">
     <table class="table table-hover text-center">
       
-      <thead>
+      <thead class="table-dark">
         <tr>
        
           <th>Photo</th>

@@ -45,6 +45,43 @@ if (isset($_SESSION['admin_id'])) {
 
     <!-- Title Page-->
     <title>Rules and Regulation</title>
+    <style>
+        .navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+.header{
+    background: radial-gradient(#fff,#5960de);
+    height: 200vh;
+}
+        </style>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -61,6 +98,14 @@ if (isset($_SESSION['admin_id'])) {
 </head>
 
 <body>
+
+<div class="header">
+<div class="navbar">
+<img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="125px" >
+
+  
+
+</div>
 <?php
 
 //include('/LPL_PROJECT/LPL_PROJECT/Admin/sidebar.php');

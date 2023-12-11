@@ -110,7 +110,7 @@ a{
 
 .btn{
     display: inline-block;
-    background: #ff523b;
+    background: #7befbe;
     
     padding: 8px 30px;
     margin: -40px 0;
