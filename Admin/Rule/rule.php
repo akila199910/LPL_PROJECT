@@ -17,6 +17,7 @@ if (isset($_SESSION['admin_id'])) {
             $total_amount_of_contract=$row['total_amount_of_contract'];
             $auction_duration_time=$row['auction_duration_time'];
             $register_period=$row['register_period'];
+            $start=$row['start'];
         }
 
 
@@ -176,6 +177,16 @@ include('../sidebar.php');
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="number" name="register_period" value="<?php echo $register_period?>">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                        <div class="form-row">
+                            <div class="name">Auction Start Date</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="date" name="start" value="<?php echo $start?>">
                                 </div>
                             </div>
                         </div>
