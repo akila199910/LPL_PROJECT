@@ -79,6 +79,7 @@ a{
 
 .header{
     background: radial-gradient(#fff,#5960de);
+    height: 100vh;
 }
 
 
