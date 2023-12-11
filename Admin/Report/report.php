@@ -20,13 +20,75 @@
                             
                     </script>
   <title>Report</title>
+  <style>
+ .navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+.header{
+    background: radial-gradient(#fff,#5960de);
+    height: 170vh;
+}
+
+.btn{
+    display: block;
+    background: #ff523b;
+    
+    padding: 8px 30px;
+    margin: auto;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+
+.btn:hover{
+    background: #5960de;
+}
+
+    
+    </style>
 
 </head>
 
 <body>
-                    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;">
-                        LPL - LANKA PREMIER LEAGUE
-                    </nav>
+ <div class="header">
+<div class="navbar">
+<img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="125px" >
+
+  <nav>
+<ul>
+    <li><i class="fa-solid fa-laptop"></i><a href="">Dashboard</a></li>
+    <li><i class="fa-solid fa-right-from-bracket"></i><a href="">Log Out</a></li>
+</ul>
+</nav>
+
+</div>
         <div class="container">
                 <div id= player>
                             <h3>Number of Players of each Country</h3>
@@ -249,7 +311,8 @@ LEFT JOIN allrounder ON register.player_id = allrounder.player_al_id WHERE sold 
         </div>
 
         </div>
-        <button onclick="getPrint()" class="btn btn-success btn-lg">Download</button>
+        <br><br>
+        <button onclick="getPrint()" class="btn">Download</button>
 
     </body>
 
