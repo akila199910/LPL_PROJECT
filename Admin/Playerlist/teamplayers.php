@@ -48,45 +48,6 @@ if (isset($_SESSION['admin_id'])) {
             crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Team Players</title>
-    <style>
-
-.navbar{
-    display: flex;
-    align-items: center;
-    padding: 20px;
-}
-
-nav{
-    flex: 1;
-    text-align: right;
-}
-
-nav ul{
-    display: inline-block;
-    list-style-type: none;
-}
-
-nav ul li{
-    display: inline-block;
-    margin-right: 20px;
-}
-
-nav ul li i{
-    margin-right: 15px;
-
-}
-
-a{
-    text-decoration: none;
-    color: #555;
-}
-
-.header{
-    background: radial-gradient(#fff,#5960de);
-    height: 500vh;
-}
-
-        </style>
 </head>
 
 <body>
@@ -94,18 +55,10 @@ a{
 <?php
 include('../sidebar.php');
 ?></div>
-<div class="header">
-<div class="navbar">
-<img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="125px" >
-
-  <nav>
-<ul>
-    <li><i class="fa-solid fa-laptop"></i><a href="">Dashboard</a></li>
-    <li><i class="fa-solid fa-right-from-bracket"></i><a href="">Log Out</a></li>
-</ul>
+<nav class="navbar navbar-light justify-content-center fs-3 mb-5"
+     style="background-color: lightblue;width:100%;">
+    LPL - LANKA PREMIER LEAGUE
 </nav>
-
-</div>
 <div class="content">
     <div class="container">
         <?php
@@ -125,8 +78,7 @@ include('../sidebar.php');
                 }
                 ?>
             </select>
-            <br><br>
-            <button type="button" name="submit" id="submit" class="btn btn-danger">SEARCH</button>
+            <button type="button" name="submit" id="submit">SEARCH</button>
         </form>
         <div id="team" class="team"></div>
         <script>
@@ -145,8 +97,7 @@ include('../sidebar.php');
             });
         </script>
     </div>
-    <br><br>
-    <button onclick="getPrint()" class="btn btn-outline-dark">Download</button>
+    <button onclick="getPrint()" class="btn btn-success btn-lg">Download</button>
 </div>
 
 </body>

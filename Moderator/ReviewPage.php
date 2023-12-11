@@ -106,21 +106,6 @@ a{
     margin-right: auto;
 
 }
-
-
-.btn{
-    display: inline-block;
-    background: #7befbe;
-    
-    padding: 8px 30px;
-    margin: -40px 0;
-    border-radius: 30px;
-    transition: background 0.5s;
-}
-
-.btn:hover{
-    background: #5960de;
-}
   
   
   </style>
@@ -175,7 +160,7 @@ a{
             <td>
               <form action="profile2.php" method="POST">
                 <input type="hidden" name="player_id" value="<?php echo $row['player_id']; ?>">
-                <button type="submit" name="view" class="btn">Profile</button>
+                <button type="submit" name="view">Profile</button>
               </form>
             </td>
           </tr>

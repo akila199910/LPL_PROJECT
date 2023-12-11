@@ -5,7 +5,7 @@ mysqli_select_db($conn, "lplsystem");
 
 
 
-$sql = "SELECT auction_start_time, auction_end_time,player_id FROM auction WHERE active=0 ORDER BY auction_id DESC LIMIT 1";
+$sql = "SELECT auction_start_time, auction_end_time,player_id FROM auction ORDER BY auction_id DESC LIMIT 1";
 
 
 $result = mysqli_query($conn, $sql);
@@ -125,7 +125,7 @@ if($timeDifference==0 || $timeDifference<0)
         
     } else{//bid ekak nettan wenna ona de methna harinan hedenna ona
         //echo $maxBid = 0;
-        echo "<h1>Auction Time Out !!! <br> Push The New Player bid ekK NE</h1>";
+        echo "<h1>Auction Time Out !!! <br> Push The New Player</h1>";
        
 
       

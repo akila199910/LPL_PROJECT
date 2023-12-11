@@ -43,8 +43,8 @@ if (isset($_POST['login'])) {
                 $_SESSION['user_id'] = $user['player_id'];
                 $_SESSION['user_email'] = $user['email'];
                 // ... other user data
-//ප්ලේයර්ව කැටගරි එකට තෝරල උගෙ ඩෑශ් බොර්ඩ් එකට රී ඩිරෙක්ට් කරන්න
-                header("Location: ../Players/player_dashboard.php"); // Redirect to the player dashboard page
+
+                header("Location: /LPL_PROJECT/LPL_PROJECT/Players/Player_dashboard/player_dashboard.php"); // Redirect to the player dashboard page
                 exit();
 
             } else{
@@ -68,7 +68,7 @@ if (isset($_POST['login'])) {
             $_SESSION['admin_email'] = $admin['email'];
             // ... other admin data
 
-            header("Location: ../Admin/index.php"); // Redirect to the admin dashboard page
+            header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/index.php"); // Redirect to the admin dashboard page
             exit();
         } else {
             echo "Invalid password";
@@ -85,7 +85,7 @@ if (isset($_POST['login'])) {
             $_SESSION['moderators_email'] = $moderators['email'];
             // ... other moderators data
 
-            header("Location: ../Moderator/Moderator_dashboard/moderator_dashboard.php"); // Redirect to the moderators dashboard page
+            header("Location: /LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/moderator_dashboard.php"); // Redirect to the moderators dashboard page
             exit();
         } else {
             echo "Invalid password";
@@ -102,7 +102,7 @@ if (isset($_POST['login'])) {
             $_SESSION['team_email'] = $team['email'];
             // ... other team data
 
-            header("Location: ../Team/Team_dashboard/team_dashboard.php"); // Redirect to the team dashboard page
+            header("Location: /LPL_PROJECT/LPL_PROJECT/Team/Team_dashboard/team_dashboard.php"); // Redirect to the team dashboard page
             exit();
         } else {
             echo "Invalid password";
@@ -119,7 +119,7 @@ if (isset($_POST['login'])) {
             $_SESSION['guest_email'] = $guest['email'];
             // ... other guest data
 
-            header("Location: ../Guest/Guest_dashboard/guest_dashboard.php"); // Redirect to the guest dashboard page
+            header("Location: /LPL_PROJECT/LPL_PROJECT/Guest/Guest_dashboard/guest_dashboard.php"); // Redirect to the guest dashboard page
             exit();
         }  else {
             echo "Invalid password";
