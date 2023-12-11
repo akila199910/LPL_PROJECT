@@ -84,6 +84,36 @@ if (isset($_POST['submit'])) {
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <title>Allrounder</title>
+    <style>
+        body {
+            background: radial-gradient(#fff,#5960de);
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background: #b3b4cd;
+        }
+        .form-control {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+
+
 </head>
 
 <body>
@@ -91,7 +121,7 @@ if (isset($_POST['submit'])) {
         LPL - LANKA PREMIER LEAGUE
     </nav>
 
-    <div class="container mt-4">
+    
         <div class="container mt-4">
             <h2>Add Allrounder Information</h2>
             <form method="POST" action="">
@@ -190,7 +220,7 @@ if (isset($_POST['submit'])) {
                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
-    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>

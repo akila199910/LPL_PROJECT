@@ -56,10 +56,7 @@ if (mysqli_num_rows($idResult) > 0) {
 
 
     }
-} else {
-
 }
-
 
 
 ?>
@@ -68,6 +65,36 @@ if (mysqli_num_rows($idResult) > 0) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!-- Include jQuery -->
+    <script>
+        $(document).ready(function() {
+            // Function to check time difference
+            function checkTimeDifference() {
+                $.ajax({
+                    url: 'check_auction.php',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.timeDifference <= -2) {
+                            
+                            window.location.href = 'afterauction.php'; 
+                        }
+                    },
+                    error: function(error) {
+                        console.log('Error:', error);
+                    }
+                });
+            }
+
+            checkTimeDifference();
+
+           
+            setInterval(checkTimeDifference, 1000);
+            
+        });
+    </script>
     <style>
         .navbar {
       position: fixed;
