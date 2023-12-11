@@ -43,7 +43,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['user_id'] = $user['player_id'];
                 $_SESSION['user_email'] = $user['email'];
                 // ... other user data
-
+//ප්ලේයර්ව කැටගරි එකට තෝරල උගෙ ඩෑශ් බොර්ඩ් එකට රී ඩිරෙක්ට් කරන්න
                 header("Location: ../Players/player_dashboard.php"); // Redirect to the player dashboard page
                 exit();
 
