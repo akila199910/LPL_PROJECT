@@ -40,47 +40,6 @@ if (isset($_SESSION['admin_id'])) {
           .btn-margin {
             margin-bottom: 15px;
         }
-
-
-        .navbar{
-    display: flex;
-    align-items: center;
-    padding: 20px;
-}
-
-nav{
-    flex: 1;
-    text-align: right;
-}
-
-nav ul{
-    display: inline-block;
-    list-style-type: none;
-}
-
-nav ul li{
-    display: inline-block;
-    margin-right: 20px;
-}
-
-nav ul li i{
-    margin-right: 15px;
-
-}
-
-a{
-    text-decoration: none;
-    color: #555;
-}
-
-.header{
-    background: radial-gradient(#fff,#5960de);
-    height: 125vh;
-}
-
-
-
-
         
     </style>
 </head>
@@ -90,19 +49,10 @@ a{
 
         include("sidebar.php");
 ?>
-<div class="header">
-<div class="navbar">
-<img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="125px" >
-
-  <nav>
-<ul>
-    <li><i class="fa-solid fa-laptop"></i><a href="">Dashboard</a></li>
-    <li><i class="fa-solid fa-right-from-bracket"></i><a href="">Log Out</a></li>
-    <li><i class="fas fa-bell"></i><a href="message.php">Notification</a></li>
-</ul>
-</nav>
-
-</div>
+<nav class="navbar navbar-light justify-content-between fs-3 mb-5" style="background-color: lightblue; width: 100%;">
+    <div class="text-center" style="width: 50%;">
+        LPL - LANKA PREMIER LEAGUE
+    </div>
     <span class="notification-icon">
         <!-- Replace the content inside this span with your notification icon -->
        <a href="message.php"> <i class="fas fa-bell"></i> </a><!-- Example: using Font Awesome for a bell icon -->

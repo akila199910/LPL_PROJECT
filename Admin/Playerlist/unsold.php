@@ -238,60 +238,6 @@ exit;
       text-align: center;
     }
 
-
-    .navbar{
-    display: flex;
-    align-items: center;
-    padding: 20px;
-}
-
-nav{
-    flex: 1;
-    text-align: right;
-}
-
-nav ul{
-    display: inline-block;
-    list-style-type: none;
-}
-
-nav ul li{
-    display: inline-block;
-    margin-right: 20px;
-}
-
-nav ul li i{
-    margin-right: 15px;
-
-}
-
-a{
-    text-decoration: none;
-    color: #555;
-}
-
-.header{
-    background: radial-gradient(#fff,#5960de);
-    height: 500vh;
-}
-
-
-.card{
-    width: 75%;
-    max-width: 3000px;
-    color: #000;
-    text-align: center;
-    padding: 50px 35px;
-    border: 1px solid rgba(255,255,255,0.3);
-    background: rgba(255,255,255,0.2);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
-    backdrop-filter: blur(5px);
-    margin-left: auto;
-    margin-right: 75px;
-
-}
-
   </style>
 </head>
 
@@ -300,24 +246,13 @@ a{
 
 include('../sidebar.php');
 ?>
- <div class="header">
-<div class="navbar">
-<img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="125px" >
-
-  <nav>
-<ul>
-    <li><i class="fa-solid fa-laptop"></i><a href="">Dashboard</a></li>
-    <li><i class="fa-solid fa-right-from-bracket"></i><a href="">Log Out</a></li>
-</ul>
-</nav>
-
-</div>
-
-<div class="card" data-tilt>
+  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
+    LPL - LANKA PREMIER LEAGUE
+  </nav>
   <div class="content">
   <div class="container">
   <table class="table table-hover text-center">
-      <thead class="table-dark">
+      <thead>
         <tr>
           <th>Profile Photo</th>
           <th>Name</th>
