@@ -62,8 +62,8 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
 
   if(isset($_POST['push'])){
     $player_id = $_POST['player_batting_id'];
-    //$sqlupdate="UPDATE batsman SET gotoauction=1 WHERE player_batting_id=$player_id";
-    //mysqli_query($conn,$sqlupdate);
+    $sqlupdate="UPDATE batsman SET gotoauction=1 WHERE player_batting_id=$player_id";
+    mysqli_query($conn,$sqlupdate);
 
     $current_time = time();
     $auction_end_time = $current_time + ($periadTime * 60); 
