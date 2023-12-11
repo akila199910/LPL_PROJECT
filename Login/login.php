@@ -41,22 +41,49 @@ if (isset($_POST['login'])) {
                 // Password is correct, user is authenticated
                 session_start();
                 $_SESSION['user_id'] = $user['player_id'];
+                $player_id = $_SESSION['user_id'];
                 $_SESSION['user_email'] = $user['email'];
-                // ... other user data
-//ප්ලේයර්ව කැටගරි එකට තෝරල උගෙ ඩෑශ් බොර්ඩ් එකට රී ඩිරෙක්ට් කරන්න
-                header("Location: ../Players/player_dashboard.php"); // Redirect to the player dashboard page
-                exit();
 
-            } else{
-                echo "<script>alert('Your Email not Verified. Please Check Your Email.');</script>";
+                $Catogary= "SELECT catogary FROM register WHERE player_id=$player_id";
+                $CatogaryRsult=mysqli_query($conn, $Catogary);
+if (mysqli_num_rows($CatogaryRsult) > 0) {
+    while ($row4 = mysqli_fetch_assoc($CatogaryRsult)) {
+        $PlayerCatogary= $row4["catogary"];
+    }
+
+    switch ($PlayerCatogary) {
+        case 'BATSMAN':
+            header("Location: ../Players/Batsman/batsmandashboard.php"); // Redirect to the player dashboard page
+            break;
+
+            case 'BOWLER':
+           
+            header("Location: ../Players/Bowler/bowllerdashboard.php"); // Redirect to the player dashboard page
+                break;
+    
+            case 'WICKETKEEPER':
                 
-            }
-
-
-        } else {
-            echo "Invalid password";
+                header("Location: ../Players/Wicketkeeper/wicketkeeperdashboard.php"); // Redirect to the player dashboard page
+               
+                break;
+    
+            case 'ALLROUNDER':
+              
+                
+                header("Location: ../Players/Allrounder/Allrounderdashboard.php"); // Redirect to the player dashboard page
+                
+                break;
+    
+            default:
+             break;
         }
-    } elseif ($result_admin && mysqli_num_rows($result_admin) > 0) {
+    }
+        }else{
+            echo "<script>alert('Your Email not Verified. Please Check Your Email.');</script>"; 
+        }
+    } 
+    
+    elseif ($result_admin && mysqli_num_rows($result_admin) > 0) {
         $admin = mysqli_fetch_assoc($result_admin);
         $hashed_password = $admin['password'];
 
@@ -128,6 +155,6 @@ if (isset($_POST['login'])) {
         echo "Invalid email";
     }
 }
-
+}
 mysqli_close($conn);
 ?>
