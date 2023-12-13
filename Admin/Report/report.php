@@ -20,8 +20,32 @@
                             
                     </script>
   <title>Report</title>
+  <style>
+ 
+.header{
+    background: radial-gradient(#fff,#5960de);
+    height: 200vh;
+}
+
+.btn{
+    display: block;
+    background: #ff523b;
+    
+    padding: 8px 30px;
+    margin: auto;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+
+.btn:hover{
+    background: #5960de;
+}
+
+    
+    </style>
 
 </head>
+<div class="header">
 
 <body>
                     <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;">
@@ -249,6 +273,7 @@ LEFT JOIN allrounder ON register.player_id = allrounder.player_al_id WHERE sold 
         </div>
 
         </div>
+        <br><br>
         <button onclick="getPrint()" class="btn btn-success btn-lg">Download</button>
 
     </body>

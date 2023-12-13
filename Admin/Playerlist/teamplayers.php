@@ -48,7 +48,31 @@ if (isset($_SESSION['admin_id'])) {
             crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Team Players</title>
+    <style>
+
+
+.header{
+    background: radial-gradient(#fff,#5960de);
+    height: 100vh;
+}
+
+.bt{
+    display: inline-block;
+    background: #ff523b;
+    
+    padding: 8px 30px;
+    margin: -40px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+
+.bt:hover{
+    background: #5960de;
+}
+
+        </style>
 </head>
+<div class="header">
 
 <body>
     <div id="sidebar"> 
@@ -78,7 +102,8 @@ include('sidebar.php');
                 }
                 ?>
             </select>
-            <button type="button" name="submit" id="submit">SEARCH</button>
+            <br>
+            <button type="button" name="submit" id="submit" class="bt">SEARCH</button> <button onclick="getPrint()" class="bt">Download</button>
         </form>
         <div id="team" class="team"></div>
         <script>
@@ -97,7 +122,8 @@ include('sidebar.php');
             });
         </script>
     </div>
-    <button onclick="getPrint()" class="btn btn-success btn-lg">Download</button>
+    <br>
+    
 </div>
 
 </body>

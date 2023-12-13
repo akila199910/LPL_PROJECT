@@ -40,11 +40,16 @@ if (isset($_SESSION['admin_id'])) {
           .btn-margin {
             margin-bottom: 15px;
         }
+
+        .header{
+    background: radial-gradient(#fff,#5960de);
+    height: 100%;
+}
         
     </style>
 </head>
 <body>
-    
+<div class="header">
 <?php
 
         include("sidebar.php");
@@ -343,5 +348,7 @@ if (isset($_SESSION['admin_id'])) {
       
           </div>
           </div>
+                            </div>
+
 </body>
 </html>
