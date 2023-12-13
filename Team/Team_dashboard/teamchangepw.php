@@ -1,9 +1,14 @@
+
+
 <?php
+include("navbar.php");
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Connect to your MySQL database (replace with your database credentials).
     include("conn.php");
+
 mysqli_select_db($conn, "lplsystem");
+
     // Get user inputs
     $oldPassword = $_POST['oldPassword'];
     $newPassword = $_POST['newPassword'];
@@ -16,7 +21,7 @@ mysqli_select_db($conn, "lplsystem");
     $sql = "SELECT password FROM team WHERE id = $Team_Id";
     $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
+    if ($result->num_rows > 0 && $newPassword==$confirmPassword) {
         $row = $result->fetch_assoc();
         if (password_verify($oldPassword, $row['password'])) {
             // Hash the new password
@@ -25,15 +30,19 @@ mysqli_select_db($conn, "lplsystem");
             // Update the user's password
             $updateSql = "UPDATE team SET password = '$hashedPassword' WHERE id = $Team_Id";
             if ($conn->query($updateSql) === TRUE) {
-                echo "Password changed successfully!";
+                echo '<script>alert("Password changed successfully!");'; 
+                echo 'window.location.href="logout.php";</script>';
+                
             } else {
                 echo "Error updating password: " . $conn->error;
             }
         } else {
-            echo "Invalid old password.";
+            echo '<script>alert("Invalid old password.");';
+            echo 'window.location.href="teamchangepwform.php";</script>';
         }
     } else {
-        echo "User not found.";
+        echo '<script>alert("New and Confirm password not match!!");';
+        echo 'window.location.href="teamchangepwform.php";</script>';
     }
 
 
@@ -41,9 +50,5 @@ mysqli_select_db($conn, "lplsystem");
     $conn->close();
 }
 ?>
-<html><head>
-    <body>
-    <p>    
-    <a href="team_dashboard.php"><button>PROFILE</button></a>
-    <a href="teamchangepwform.php"><button>BACK</button></a></p></body>
-</head></html>
+
+   

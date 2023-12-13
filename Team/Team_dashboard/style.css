@@ -1,18 +1,14 @@
-body {
-	background: #1690A7;
+.bg {
+	
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
 	flex-direction: column;
+    margin: -50px 20px 10px 20px;
 }
 
-*{
-	font-family: sans-serif;
-	box-sizing: border-box;
-}
-
-form {
+#passwordForm {
 	width: 500px;
 	border: 2px solid #ccc;
 	padding: 30px;
@@ -23,71 +19,31 @@ form {
 h2 {
 	text-align: center;
 	margin-bottom: 40px;
-}
+    color: #000;}
 
 input {
-	display: block;
-	border: 2px solid #ccc;
-	width: 95%;
-	padding: 10px;
-	margin: 10px auto;
-	border-radius: 5px;
-}
-label {
-	color: #888;
-	font-size: 18px;
-	padding: 10px;
-}
+        display: block;
+        border: 2px solid #ccc;
+        width: 95%;
+        padding: 10px;
+        margin: 10px auto;
+        border-radius: 5px;}
 
-button {
-	float: right;
-	background: #555;
-	padding: 10px 15px;
-	color: #fff;
-	border-radius: 5px;
-	margin-right: 10px;
-	border: none;
-}
-button:hover{
-	opacity: .7;
-}
-.error {
-   background: #F2DEDE;
-   color: #A94442;
-   padding: 10px;
-   width: 95%;
-   border-radius: 5px;
-   margin: 20px auto;
-}
+ label {
+         color: #000;
+         font-size: 18px;
+          padding: 10px;
+        }
 
-.success {
-   background: #D4EDDA;
-   color: #40754C;
-   padding: 10px;
-   width: 95%;
-   border-radius: 5px;
-   margin: 20px auto;
-}
-
-h1 {
-	text-align: center;
-	color: #fff;
-}
-
-.ca {
-	font-size: 14px;
-	display: inline-block;
-	padding: 10px;
-	text-decoration: none;
-	color: #444;
-}
-.ca:hover {
-	text-decoration: underline;
-} 
-
-.home-nav a {
-	padding: 10px;
-	color: #f7bd65;
-	text-transform: uppercase;
-	text-decoration: none;
-}
+ button {
+            float: right;
+            background: #555;
+            padding: 10px 15px;
+            color: #fff;
+            border-radius: 5px;
+            margin-right: 10px;
+            border: none;
+                  }
+ button:hover{
+            opacity: .7;
+        }

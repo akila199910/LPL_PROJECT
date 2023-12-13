@@ -1,10 +1,15 @@
+<?php
+include("navbar.php");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Change Password</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+   <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
+    <div class=bg>
 
     <h2>Change Password</h2>
     <form id="passwordForm" action="teamchangepw.php" method="post">
@@ -20,12 +25,13 @@
         
         <span id="error" style="color: red;"></span><br><br>
         
-        <tr><td><input type="submit" value="Change Password"></td>
+        <tr><td><button type="submit" value="Change Password">Change Password</button></td>
             </tr>
         
         </table>
     </form>
-   <a href="settings.php" >cancel</a>
+   <a href="settings.php" >Cancel</a>
+</div>
 
     <script>
         document.getElementById("passwordForm").addEventListener("submit", function (e) {
