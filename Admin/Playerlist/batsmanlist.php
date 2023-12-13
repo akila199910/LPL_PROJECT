@@ -142,8 +142,47 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
       text-align: center;
     }
 
-  </style>
+
+    
+
+.header{
+    background: radial-gradient(#fff,#5960de);
+    height: 500vh;
+}
+
+
+.card{
+    width: 75%;
+    max-width: 3000px;
+    color: #000;
+    text-align: center;
+    padding: 50px 35px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.bt{
+    display: inline-block;
+    background: #ff523b;
+    
+    padding: 8px 30px;
+    margin: -40px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+
+.bt:hover{
+    background: #5960de;
+}
+</style>
 </head>
+<div class="header">
 <body>
 <?php
 
@@ -154,10 +193,10 @@ include('sidebar.php');
   </nav>
   <div class="content">
     <?php echo $start_date; ?>
-
+    <div class="card" data-tilt>
   <div class="container">
     <table class="table table-hover text-center">
-      <thead>
+      <thead class="table-dark">
         <tr>
         <th>Profile</th>
           <th>Name</th>
@@ -187,7 +226,7 @@ include('sidebar.php');
             <td>
               <form action="" method="POST">
                 <input type="hidden" name="player_batting_id" value="<?php echo $row['player_batting_id']; ?>">
-                <button type="submit" class="btn" name="push">Push</button>
+                <button type="submit" class="bt" name="push">Push</button>
               </form>
             </td>
           </tr>

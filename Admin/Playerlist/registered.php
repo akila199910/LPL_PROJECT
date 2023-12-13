@@ -46,8 +46,49 @@ if (isset($_SESSION['admin_id'])) {
       text-align: center;
     }
 
+
+    .size {
+              width: 200px;
+              height: 200px;
+          }
+          .btn-margin {
+            margin-bottom: 15px;
+        }
+
+
+        .navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+
+
+.header{
+    background: radial-gradient(#fff,#5960de);
+    height: 400vh;
+}
+
+
+.card{
+    width: 80%;
+    max-width: 3000px;
+    color: #fff;
+    text-align: center;
+    padding: 50px -100px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    margin-left: auto;
+    margin-right: 30px;
+
+}
+
   </style>
 </head>
+<div class="header">
 <body>
 <?php
 
@@ -56,12 +97,13 @@ include('sidebar.php');
   <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
     LPL - LANKA PREMIER LEAGUE
   </nav>
-  <div class="content">
+  <div class="card" data-tilt>
+  <br>
 
 
   <div class="container">
     <table class="table table-hover text-center">
-      <thead>
+      <thead class="table-dark">
         <tr>
        
           <th>Photo</th>
