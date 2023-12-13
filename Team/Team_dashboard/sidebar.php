@@ -98,7 +98,7 @@ $resultqry1 = mysqli_query($conn, $qry1);
     ?>
     </div>
     <a href="/Team/Team_dashboard/team_dashboard.php" class="btn btn-primary btn-block">HOME</a>
-    <a href="#" class="btn btn-primary btn-block"> 2</a>
-    <a href="/LPL_PROJECT/LPL_PROJECT/Admin/logout.php" class="btn btn-primary btn-block"> LOG OUT</a>
+    <!-- <a href="#" class="btn btn-primary btn-block"> 2</a>-->
     <a href="settings.php" class="btn btn-primary btn-block">SETTINGS</a>
+    <a href="/LPL_PROJECT/LPL_PROJECT/Admin/logout.php" class="btn btn-primary btn-block"> LOG OUT</a>
 </div>
