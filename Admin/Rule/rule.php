@@ -65,7 +65,7 @@ if (isset($_SESSION['admin_id'])) {
 <?php
 
 //include('/LPL_PROJECT/LPL_PROJECT/Admin/sidebar.php');
-include('../sidebar.php');
+include('sidebar.php');
 
 ?>
   <div class="content">

@@ -53,7 +53,7 @@ if (isset($_SESSION['admin_id'])) {
 <body>
     <div id="sidebar"> 
 <?php
-include('../sidebar.php');
+include('sidebar.php');
 ?></div>
 <nav class="navbar navbar-light justify-content-center fs-3 mb-5"
      style="background-color: lightblue;width:100%;">

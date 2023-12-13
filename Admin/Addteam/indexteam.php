@@ -37,7 +37,7 @@ if (isset($_SESSION['admin_id'])) {
 <body>
 <?php
 
-include('../sidebar.php');
+include('sidebar.php');
 ?>
 
 

@@ -63,7 +63,7 @@ $result = mysqli_query($conn, $sql);
 <body>
 <?php
 
-include('../sidebar.php');
+include('sidebar.php');
 ?>
   <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
     LPL - LANKA PREMIER LEAGUE
