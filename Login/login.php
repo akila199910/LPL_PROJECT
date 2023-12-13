@@ -6,17 +6,27 @@ if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Check if the user exists in the "register" table
-    $sql_register = "SELECT * FROM register WHERE email = '$email'";
+    //Check if the user exists in "register" table
+    $sql_register = "SELECT * FROM register WHERE email = ?";
+
+    //preventing SQL injection attack
+    $stmt_register = mysqli_prepare($conn, $sql_register);
+    mysqli_stmt_bind_param($stmt_register, "s", $email);
+    mysqli_stmt_execute($stmt_register);
+    $result_register = mysqli_stmt_get_result($stmt_register);
+
     $sql_verification = "SELECT * FROM register WHERE verification = 'verification'";
     $result_verification = mysqli_query($conn, $sql_verification);
-    $result_register = mysqli_query($conn, $sql_register);
 
-    // Check if the user exists in the "admin" table
+    $sql_catogary = "SELECT * FROM register WHERE catogary = 'catogary'";
+    $result_catogary = mysqli_query($conn, $sql_catogary);
+
+
+    // Check if the user exists in "admin" table
     $sql_admin = "SELECT * FROM admin WHERE email = '$email'";
     $result_admin = mysqli_query($conn, $sql_admin);
 
-    // Check if the user exists in the "moderators" table
+    // Check if the user exists in "moderators" table
     $sql_moderators = "SELECT * FROM moderators WHERE email = '$email'";
     $result_moderators = mysqli_query($conn, $sql_moderators);
 
@@ -32,20 +42,38 @@ if (isset($_POST['login'])) {
         $user = mysqli_fetch_assoc($result_register);
         $hashed_password = $user['password'];
         $verification = $user['verification'];
+        $player_catogary= $user["catogary"];
 
         // Verify the provided password against the hashed password
         if (password_verify($password, $hashed_password)) {
 
             if ($verification == 1) {
-
+                
                 // Password is correct, user is authenticated
                 session_start();
                 $_SESSION['user_id'] = $user['player_id'];
                 $_SESSION['user_email'] = $user['email'];
-                // ... other user data
-
-                header("Location: /LPL_PROJECT/LPL_PROJECT/Players/Player_dashboard/player_dashboard.php"); // Redirect to the player dashboard page
+                
+                if($player_catogary == 'BATSMAN') {
+                    header("Location: ../Players/Batsman/batsmandashboard.php"); // Redirect to the player dashboard page
                 exit();
+                }
+                
+                elseif($player_catogary == 'ALLROUNDER') {
+                    header("Location: ../Players/Allrounder/Allrounderdashboard.php"); // Redirect to the player dashboard page
+                exit();
+                }
+
+                elseif($player_catogary == 'WICKETKEEPER') {
+                    header("Location: ../Players/Wicketkeeper/wicketkeeperdashboard.php"); // Redirect to the player dashboard page
+                exit();
+                }
+
+                elseif($player_catogary == 'BOWLER') {
+                    header("Location: ../Players/Bowler/bowllerdashboard.php"); // Redirect to the player dashboard page
+                exit();
+                }
+
 
             } else{
                 echo "<script>alert('Your Email not Verified. Please Check Your Email.');</script>";
