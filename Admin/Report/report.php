@@ -282,7 +282,7 @@ LEFT JOIN allrounder ON register.player_id = allrounder.player_al_id WHERE sold 
 
 
         } else {
-            header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
+            header("Location: ../logout.php");
         }
 
 

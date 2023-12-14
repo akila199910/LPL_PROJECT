@@ -81,7 +81,7 @@
 </head>
 <body>
 <div class="sidebar">
-    <img src="2023_10_07_10_29_IMG_5477.JPG" alt="Profile Picture" class="profile-img">
+    <img src="../2023_10_07_10_29_IMG_5477.JPG" alt="Profile Picture" class="profile-img">
     <div class="name">
     <?php
         echo $name;
@@ -90,8 +90,8 @@
 </body>
 </html>
 
-    <a href="index.php" class="btn btn-primary btn-block">HOME</a>
-    <a href="Message/message.php" class="btn btn-primary btn-block">CHAT</a>
-    <a href="Settings/settings.php" class="btn btn-primary btn-block">SETTINGS</a>
-    <a href="logout.php" class="btn btn-primary btn-block"> LOG OUT</a>
+    <a href="../index.php" class="btn btn-primary btn-block">HOME</a>
+    <a href="message.php" class="btn btn-primary btn-block">CHAT</a>
+    <a href="../Settings/settings.php" class="btn btn-primary btn-block">SETTINGS</a>
+    <a href="../logout.php" class="btn btn-primary btn-block"> LOG OUT</a>
 </div>
