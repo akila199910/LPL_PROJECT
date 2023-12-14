@@ -48,6 +48,8 @@ if ($result->num_rows > 0) {
     display: flex;
     align-items: center;
     padding: 20px;
+    background-color: #4169E1;
+    z-index:1000;
 }
 
 nav{
@@ -84,26 +86,23 @@ a{
 </head>
 
 
-<body>
 <div class="header">
-
-
+<body>
 <div class="navbar">
-<img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="125px" >
-
-  <nav>
-<ul>
-    <li><i class="fa-solid fa-house"></i><a class="active" href="/LPL_PROJECT/LPL_PROJECT/home.php">Home</a></li>
-    
-    <li><i class="fa-solid fa-briefcase"></i><a href="/LPL_PROJECT/LPL_PROJECT/contact_us.php">Contact</a></li>
-    <li><i class="fa-brands fa-unity"></i><a href="/LPL_PROJECT/LPL_PROJECT/about.php">About</a></li>
-    <li><i class="fa-solid fa-right-from-bracket"></i><a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/logout.php">Log Out</a></li>
-</ul>
-</nav>
-
-<br><br><br>
-
-</div>
+        <div class="logo">
+           <a href="home.php"><img src="../../images/lpllogo.png" width="125px"></a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><i class="fa-solid fa-laptop"></i><a href="">Dashboard</a></li>
+                <li><i class="fa-solid fa-right-from-bracket"></i><a href="about.php">Log Out</a></li>
+                
+            </ul>
+        </nav>
+       
+    </div>
+    <br>
 <div class="sidebar">
   <div class="toggle-btn" onclick="show()">      
   <div class="name">

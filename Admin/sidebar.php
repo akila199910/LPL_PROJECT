@@ -30,7 +30,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: lightblue;
+    background-color: #4169E1;
     padding-top: 90px;
     padding-left: 20px;
     padding-right: 20px;

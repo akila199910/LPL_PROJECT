@@ -59,6 +59,7 @@ if(isset($_POST['view'])){
     display: flex;
     align-items: center;
     padding: 20px;
+    background-color: #4169E1;
 }
 
 nav{
@@ -107,22 +108,40 @@ a{
 
 }
   
+.bt{
+    display: inline-block;
+    background: #0096FF;
+    
+    padding: 8px 30px;
+    margin: -40px 0;
+    border-radius: 30px;
+    border:none;
+    transition: background 0.5s;
+}
+
+.bt:hover{
+    background: #5960de;
+}
   
   </style>
 </head>
-<body>
 <div class="header">
+<body>
 <div class="navbar">
-<img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="125px" >
-
-  <nav>
-<ul>
-    <li><i class="fa-solid fa-laptop"></i><a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/moderator_dashboard.php">Dashboard</a></li>
-    <li><i class="fa-solid fa-right-from-bracket"></i><a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/logout.php">Log Out</a></li>
-</ul>
-</nav>
-
-</div>
+        <div class="logo">
+           <a href="home.php"><img src="../images/lpllogo.png" width="125px"></a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><i class="fa-solid fa-laptop"></i><a href="">Dashboard</a></li>
+                <li><i class="fa-solid fa-right-from-bracket"></i><a href="about.php">Log Out</a></li>
+                
+            </ul>
+        </nav>
+       
+    </div>
+    <br>
 
 
 <div class="card" data-tilt>
@@ -160,7 +179,7 @@ a{
             <td>
               <form action="profile2.php" method="POST">
                 <input type="hidden" name="player_id" value="<?php echo $row['player_id']; ?>">
-                <button type="submit" name="view">Profile</button>
+                <button type="submit" name="view" class="bt">Profile</button>
               </form>
             </td>
           </tr>

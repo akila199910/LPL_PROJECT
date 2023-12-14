@@ -48,6 +48,7 @@ $result=mysqli_query($conn,$sql);
     display: flex;
     align-items: center;
     padding: 20px;
+    background-color: #4169E1;
 }
 
 nav{
@@ -77,6 +78,7 @@ a{
 
 .header{
     background: radial-gradient(#fff,#5960de);
+    height:100vh;
 }
 
 
@@ -101,22 +103,28 @@ a{
   </style>
 </head>
 
-<body>
-
-
 
 <div class="header">
+<body>
 <div class="navbar">
-<img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="125px" >
+        <div class="logo">
+           <a href="home.php"><img src="../images/lpllogo.png" width="125px"></a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><i class="fa-solid fa-laptop"></i><a href="">Dashboard</a></li>
+                <li><i class="fa-solid fa-right-from-bracket"></i><a href="about.php">Log Out</a></li>
+                
+            </ul>
+        </nav>
+       
+    </div>
+    <br>
 
-  <nav>
-<ul>
-    <li><i class="fa-solid fa-laptop"></i><a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/moderator_dashboard.php">Dashboard</a></li>
-    <li><i class="fa-solid fa-right-from-bracket"></i><a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/logout.php">Log Out</a></li>
-</ul>
-</nav>
 
-</div>
+
+
 
 <div class="card" data-tilt>
 
