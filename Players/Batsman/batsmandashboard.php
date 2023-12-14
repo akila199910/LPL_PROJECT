@@ -4,7 +4,7 @@ session_start();
 include "conn.php";
 mysqli_select_db($conn,"lplsystem");
 
- (if!isset($_SESSION['user_id'])) {
+ if(!isset($_SESSION['user_id'])) {
     header("Location: logout.php");
     exit(); // It's recommended to stop script execution after redirection
 }
@@ -139,7 +139,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   <!-- Header/Home -->
   <header class="w3-container w3-padding-32 w3-center w3-text-black">
     <h1 class="w3-xxxlarge" id="batsmandashboard.php">LPL-Lanka Premier League</h1>
-    <img src="Josh.png" width="300" height="300">
+    <img src="" alt="profilephoto" width="300" height="300">
   </header>
 
   <!--Player Informations Section -->

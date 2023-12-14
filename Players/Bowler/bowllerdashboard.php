@@ -176,6 +176,10 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
         <tr><td>Role</td><td><?php
         echo $playercatogary;
         ?></td></tr>
+        <tr><td>Bowling Style</td><td><?php
+        echo $playerbowlstyle;
+        ?>
+        </td></tr>
     </table>
     
     <div class="w3-row w3-center w3-padding-16 w3-section w3-text-black">
@@ -191,12 +195,12 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
         ?></span><br>
         T-20 Matches
       </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-large"><?php
+      <!--div class="w3-quarter w3-section">
+        <span class="w3-large"><!?php
         echo $playerbowlstyle;
         ?></span><br>
         Bowling Style
-      </div>
+      </div-->
       <div class="w3-quarter w3-section">
         <span class="w3-xlarge"><?php
         echo $playerBesstBowl;
