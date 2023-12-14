@@ -70,7 +70,7 @@ if (isset($_SESSION['admin_id'])) {
 
     
 } else {
-    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
+    header("Location: ../logout.php");
 }
 
 
@@ -142,7 +142,7 @@ if (isset($_SESSION['admin_id'])) {
 
   <div class="row mt-5" >
     <div class="col-2 mt-5">
-         <img class="profile-pic" src="/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/<?php echo $playerPhoto?>" alt="Profile Picture">
+         <img class="profile-pic" src="../../Register/Img/proimg/<?php echo $playerPhoto?>" alt="Profile Picture">
     </div>
        
         <div class="col-5 mb-3  mt-5">
