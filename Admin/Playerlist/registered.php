@@ -86,12 +86,18 @@ if (isset($_SESSION['admin_id'])) {
 
 }
 
-.navbar{
+.navbar {
     display: flex;
     align-items: center;
     padding: 20px;
     background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
 }
+
 
 nav{
     flex: 1;
@@ -141,6 +147,7 @@ include('sidebar.php');
         </nav>
        
     </div>
+    <br><br><br><br><br><br>
   <div class="card" data-tilt>
   <br>
 

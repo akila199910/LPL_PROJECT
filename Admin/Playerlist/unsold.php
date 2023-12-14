@@ -239,36 +239,7 @@ exit;
     }
 
 
-    .navbar{
-    display: flex;
-    align-items: center;
-    padding: 20px;
-}
-
-nav{
-    flex: 1;
-    text-align: right;
-}
-
-nav ul{
-    display: inline-block;
-    list-style-type: none;
-}
-
-nav ul li{
-    display: inline-block;
-    margin-right: 20px;
-}
-
-nav ul li i{
-    margin-right: 15px;
-
-}
-
-a{
-    text-decoration: none;
-    color: #555;
-}
+    
 
 .header{
     background: radial-gradient(#fff,#5960de);
@@ -307,12 +278,18 @@ a{
     background: #5960de;
 }
 
-.navbar{
+.navbar {
     display: flex;
     align-items: center;
     padding: 20px;
     background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
 }
+
 
 nav{
     flex: 1;
@@ -363,7 +340,7 @@ include('sidebar.php');
         </nav>
        
     </div>
-    <br>
+    <br><br><br><br>
   <div class="card" data-tilt>
   <br>
   <div class="container">
