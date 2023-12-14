@@ -52,6 +52,8 @@ mysqli_close($conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <title>Bowler</title>
     <style>
@@ -81,13 +83,101 @@ mysqli_close($conn);
             background-color: #0056b3;
             border-color: #0056b3;
         }
+
+        .navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+}
+
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+.header{
+    background: radial-gradient(#fff,#5960de);
+}
+
+
+.card{
+    width: 95%;
+    max-width: 3000px;
+    color: #fff;
+    text-align: center;
+    padding: 50px 35px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    margin-left: auto;
+    margin-right: auto;
+
+}
+  
+.bt{
+    display: inline-block;
+    background: #0096FF;
+    
+    padding: 8px 30px;
+    margin: -40px 0;
+    border-radius: 30px;
+    border:none;
+    transition: background 0.5s;
+}
+
+.bt:hover{
+    background: #5960de;
+}
     </style>
 </head>
 
+<div class="header">
 <body>
-    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
-        LPL - LANKA PREMIER LEAGUE
-    </nav>
+<div class="navbar">
+        <div class="logo">
+           <a href="home.php"><img src="../../images/lpllogo.png" width="125px"></a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><i class="fa-solid fa-laptop"></i><a href="">Dashboard</a></li>
+                <li><i class="fa-solid fa-right-from-bracket"></i><a href="about.php">Log Out</a></li>
+                
+            </ul>
+        </nav>
+       
+    </div>
+    <br><br><br><br>
+    <div class="card" data-tilt>
 
     <div class="container mt-4">
         <h2>Add Bowler Information</h2>
@@ -144,7 +234,8 @@ mysqli_close($conn);
             <label for="besed_price" class="form-label">Base Price</label>
             <input type="number" class="form-control" id="besed_price" name="besed_price" required>
         </div>
-        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        <br><br>
+        <button type="submit" name="submit" class="bt">Submit</button>
     </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

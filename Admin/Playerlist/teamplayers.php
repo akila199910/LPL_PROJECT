@@ -58,11 +58,12 @@ if (isset($_SESSION['admin_id'])) {
 
 .bt{
     display: inline-block;
-    background: #ff523b;
+    background: #0096FF;
     
     padding: 8px 30px;
     margin: -40px 0;
     border-radius: 30px;
+    border:none;
     transition: background 0.5s;
 }
 

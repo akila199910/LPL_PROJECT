@@ -46,12 +46,18 @@ $result=mysqli_query($conn,$sql);
 
 
 
-  .navbar{
+  .navbar {
     display: flex;
     align-items: center;
     padding: 20px;
     background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
 }
+
 
 nav{
     flex: 1;
@@ -122,7 +128,7 @@ a{
         </nav>
        
     </div>
-    <br>
+    <br><br><br><br>
 <!--<nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color:white;width:115%; ">
    ACCEPTED PLAYER LIST
   </nav>

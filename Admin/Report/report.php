@@ -29,7 +29,7 @@
 
 .btn{
     display: block;
-    background: #ff523b;
+    background: #0096FF;
     
     padding: 8px 30px;
     margin: auto;
