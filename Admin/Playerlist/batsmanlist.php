@@ -30,6 +30,17 @@ while ($rowTime = mysqli_fetch_assoc($resultTime)) {
       
  }
 
+ $startDate="SELECT start FROM rule";
+ $resultDate=mysqli_query($conn,$startDate);
+ if(mysqli_num_rows($resultDate) >0) {
+     while($rowDate = mysqli_fetch_array($resultDate)) {
+         $start_date = $rowDate['start'];
+ 
+ }
+ }
+
+ $currentDate = date('Y-m-d');
+
 
 
 
@@ -51,8 +62,10 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
 
   if(isset($_POST['push'])){
     $player_id = $_POST['player_batting_id'];
-    //$sqlupdate="UPDATE batsman SET gotoauction=1 WHERE player_batting_id=$player_id";
-    //mysqli_query($conn,$sqlupdate);
+
+    /*$sqlupdate="UPDATE batsman SET gotoauction=1 WHERE player_batting_id=$player_id";
+    mysqli_query($conn,$sqlupdate);*/
+
 
     $current_time = time();
     $auction_end_time = $current_time + ($periadTime * 60); 
@@ -97,7 +110,7 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
 
 
 } else {
-    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
+  header("Location: ../logout.php");
 }
 
 
@@ -129,21 +142,105 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
       text-align: center;
     }
 
-  </style>
+
+    
+
+.header{
+    background: radial-gradient(#fff,#5960de);
+    height: 500vh;
+}
+
+
+.card{
+    width: 75%;
+    max-width: 3000px;
+    color: #000;
+    text-align: center;
+    padding: 50px 35px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.bt{
+    display: inline-block;
+    background: #ff523b;
+    
+    padding: 8px 30px;
+    margin: -40px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+
+.bt:hover{
+    background: #5960de;
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #4169E1;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+p{
+    color: #fff;
+    text-align:center;
+}
+
+
+</style>
 </head>
+<div class="header">
 <body>
 <?php
 
-include('../sidebar.php');
+include('sidebar.php');
 ?>
-  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
-    LPL - LANKA PREMIER LEAGUE
-  </nav>
-  <div class="content">
+ <div class="navbar row">
+        <div class="logo col-4" >
+           <img src="../../images/lpllogo.png" width="125px"> 
+        </div>
 
+        <div class="col-8" style="color: #fff; font-size:20px;">   LPL - LANKA PREMIER LEAGUE</div>
+        </nav>
+       
+    </div>
+  <div class="content">
+    <?php echo $start_date; ?>
+    <div class="card" data-tilt>
   <div class="container">
     <table class="table table-hover text-center">
-      <thead>
+      <thead class="table-dark">
         <tr>
         <th>Profile</th>
           <th>Name</th>
@@ -173,7 +270,7 @@ include('../sidebar.php');
             <td>
               <form action="" method="POST">
                 <input type="hidden" name="player_batting_id" value="<?php echo $row['player_batting_id']; ?>">
-                <button type="submit" name="push">Push</button>
+                <button type="submit" class="bt" name="push">Push</button>
               </form>
             </td>
           </tr>
@@ -184,5 +281,18 @@ include('../sidebar.php');
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         </div>
+        <script>
+              var btndate = <?php echo json_encode($start_date); ?>;
+              console.log(btndate);
+              var currentdate = <?php echo json_encode($currentDate); ?>;
+              console.log(currentdate);
+              if(btndate>currentdate){
+                var btns = document.getElementsByClassName("btn");
+                for (var i = 0; i < btns.length; i++) {
+        btns[i].disabled = true;
+    }
+              }
+
+        </script>
 </body>
 </html>

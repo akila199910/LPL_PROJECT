@@ -29,18 +29,193 @@ OR (alr.sold IS NULL AND alr.gotoauction = 1);
 $result = mysqli_query($conn, $sql);
 
 
-} else {
-    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
+if(isset($_POST['view'])){
+  $player_id =  $_POST['player_id'];
+  $catogary = "SELECT catogary FROM register WHERE player_id = $player_id";
+  $catogaryResult = mysqli_query($conn, $catogary);
+
+  if ($catogaryResult && mysqli_num_rows($catogaryResult) > 0) {
+      $row = mysqli_fetch_assoc($catogaryResult);
+      $catogaryValue = $row['catogary'];
+    }
+  
+  if($catogaryValue=="BATSMAN"){
+   // $sql = "UPDATE batsman SET gotoauction=NULL";
+   // mysqli_query($conn, $sql);
+    $current_time = time();
+
+    $sql6 = "SELECT * from rule";
+$resultTime = mysqli_query($conn, $sql6);
+
+while ($rowTime = mysqli_fetch_assoc($resultTime)) {
+
+$periadTime=$rowTime['auction_duration_time'];
+
+
+}
+$auction_end_time = $current_time + ($periadTime * 60); 
+$sql5 = "SELECT player_id FROM auction ORDER BY auction_id DESC LIMIT 1";
+$result = mysqli_query($conn, $sql5);
+
+while ($rowID = mysqli_fetch_assoc($result)) {
+
+$rowIDPlayer=$rowID['player_id'];
+
+}
+if($rowIDPlayer==$player_id){
+
+header("Location: profile1.php?player_id=$player_id");
+exit; 
+
+
+}else{
+
+// Convert the timestamps to formatted time strings
+$current_time_formatted = date("Y-m-d H:i:s", $current_time);
+$auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
+$sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
+mysqli_query($conn, $sql6);
+header("Location: profile1.php?player_id=$player_id");
+exit;
+  }
 }
 
 
 
+  if($catogaryValue=="BOWLER"){
+    $player_id =  $_POST['player_id'];
+   // $sql = "UPDATE bowler SET gotoauction=NULL";
+   // mysqli_query($conn, $sql);
+   $current_time = time();
+
+   $sql6 = "SELECT * from rule";
+$resultTime = mysqli_query($conn, $sql6);
+
+while ($rowTime = mysqli_fetch_assoc($resultTime)) {
+
+$periadTime=$rowTime['auction_duration_time'];
 
 
+}
+$auction_end_time = $current_time + ($periadTime * 60); 
+$sql5 = "SELECT player_id FROM auction  ORDER BY auction_id DESC LIMIT 1";
+$result = mysqli_query($conn, $sql5);
+
+while ($rowID = mysqli_fetch_assoc($result)) {
+
+$rowIDPlayer=$rowID['player_id'];
+
+}
+if($rowIDPlayer==$player_id){
+
+header("Location: profile2.php?player_id=$player_id");
+exit; 
+
+
+}else{
+
+// Convert the timestamps to formatted time strings
+$current_time_formatted = date("Y-m-d H:i:s", $current_time);
+$auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
+$sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
+mysqli_query($conn, $sql6);
+header("Location: profile2.php?player_id=$player_id");
+exit;
+ }
+
+  }
+
+  if($catogaryValue=="WICKETKEEPER"){
+    $player_id =  $_POST['player_id'];
+   // $sql = "UPDATE wicketkeeper SET gotoauction=NULL";
+   // mysqli_query($conn, $sql);
+   $current_time = time();
+
+   $sql6 = "SELECT * from rule";
+$resultTime = mysqli_query($conn, $sql6);
+
+while ($rowTime = mysqli_fetch_assoc($resultTime)) {
+
+$periadTime=$rowTime['auction_duration_time'];
+
+
+}
+$auction_end_time = $current_time + ($periadTime * 60); 
+$sql5 = "SELECT player_id FROM auction ORDER BY auction_id DESC LIMIT 1";
+$result = mysqli_query($conn, $sql5);
+
+while ($rowID = mysqli_fetch_assoc($result)) {
+
+$rowIDPlayer=$rowID['player_id'];
+
+}
+if($rowIDPlayer==$player_id){
+
+header("Location: profile3.php?player_id=$player_id");
+exit; 
+
+
+}else{
+
+// Convert the timestamps to formatted time strings
+$current_time_formatted = date("Y-m-d H:i:s", $current_time);
+$auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
+$sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
+mysqli_query($conn, $sql6);
+header("Location: profile3.php?player_id=$player_id");
+exit;
+ }
+  }
+
+  if($catogaryValue=="ALLROUNDER"){
+    $player_id =  $_POST['player_id'];
+   // $sql = "UPDATE allrounder SET gotoauction=NULL";
+   // mysqli_query($conn, $sql);
+   $current_time = time();
+
+   $sql6 = "SELECT * from rule";
+$resultTime = mysqli_query($conn, $sql6);
+
+while ($rowTime = mysqli_fetch_assoc($resultTime)) {
+
+$periadTime=$rowTime['auction_duration_time'];
+
+
+}
+$auction_end_time = $current_time + ($periadTime * 60); 
+$sql5 = "SELECT player_id FROM auction ORDER BY auction_id DESC LIMIT 1";
+$result = mysqli_query($conn, $sql5);
+
+while ($rowID = mysqli_fetch_assoc($result)) {
+
+$rowIDPlayer=$rowID['player_id'];
+
+}
+if($rowIDPlayer==$player_id){
+
+header("Location: profile4.php?player_id=$player_id");
+exit; 
+
+
+}else{
+
+// Convert the timestamps to formatted time strings
+$current_time_formatted = date("Y-m-d H:i:s", $current_time);
+$auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
+$sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
+mysqli_query($conn, $sql6);
+header("Location: profile4.php?player_id=$player_id");
+exit;
+ }
+  }
+}
+
+
+} else {
+    header("Location: ../Admin/logout.php");
+}
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,31 +238,151 @@ $result = mysqli_query($conn, $sql);
       text-align: center;
     }
 
+
+    .navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+.header{
+    background: radial-gradient(#fff,#5960de);
+    height: 500vh;
+}
+
+
+.card{
+    width: 75%;
+    max-width: 3000px;
+    color: #000;
+    text-align: center;
+    padding: 50px 35px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    margin-left: auto;
+    margin-right: 75px;
+
+}
+
+.bt{
+    display: inline-block;
+    background: #ff523b;
+    
+    padding: 8px 30px;
+    margin: -40px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+
+.bt:hover{
+    background: #5960de;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #4169E1;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+p{
+    color: #fff;
+    text-align:center;
+}
+
   </style>
 </head>
+<div class="header">
 
 <body>
 <?php
 
-include('../sidebar.php');
+include('sidebar.php');
 ?>
-  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
-    LPL - LANKA PREMIER LEAGUE
-  </nav>
-  <div class="content">
+ <div class="navbar row">
+        <div class="logo col-4" >
+           <img src="../../images/lpllogo.png" width="125px"> 
+        </div>
+
+        <div class="col-8" style="color: #fff; font-size:20px;">   LPL - LANKA PREMIER LEAGUE</div>
+        </nav>
+       
+    </div>
+    <br>
+  <div class="card" data-tilt>
+  <br>
   <div class="container">
   <table class="table table-hover text-center">
-      <thead>
+      <thead class="table-dark">
         <tr>
           <th>Profile Photo</th>
           <th>Name</th>
           <th>Catogary</th>
           <th>Country</th>
+          <th>Back To Auction</th>
+
         </tr>
       </thead>
       <tbody class="table table-hover text-center">
       <?php
       while($row=mysqli_fetch_assoc($result)){
+        $first_name=$row['first_name'];
+        $last_name=$row['last_name'];
+        $catogary=$row['catogary'];
+        $country=$row['country'];
       ?>
       <td> 
                         
@@ -97,13 +392,20 @@ include('../sidebar.php');
                         </td>
        <td> <?php echo $row['first_name']." ".$row['last_name'];?></td>
        <td> <?php echo $row['catogary'];?></td>
-       <td> <?php echo $row['country'];?></td>         
+       <td> <?php echo $row['country'];?></td>
+       <td>
+              <form  method="POST">
+                <input type="hidden" name="player_id" value="<?php echo $row['player_id']; ?>">
+                <button type="submit" name="view" class="bt">Push</button>
+              </form>
+            </td> 
        </tr>
       <?php
+
        }?>
     </tbody>
     </table>
-    </div></div>
+    </div>
+  </div>
     </body>
     </html>
-

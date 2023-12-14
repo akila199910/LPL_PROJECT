@@ -62,6 +62,37 @@ mysqli_close($conn);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <title>Batsman</title>
+    <style>
+        body {
+            background: radial-gradient(#fff,#5960de);
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background: #b3b4cd;
+        }
+        .form-control {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+
+
+
 </head>
 
 <body>
@@ -128,10 +159,7 @@ mysqli_close($conn);
                 <label for="based_price" class="form-label">Base Price</label>
                 <input type="number" class="form-control" id="based_price" name="based_price" required>
             </div>
-            <div class="mb-3">
-                <label for="strike_rate" class="form-label">Strike Rate</label>
-                <input type="number" step="0.01" class="form-control" id="strike_rate" name="strike_rate" required>
-            </div>
+           
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

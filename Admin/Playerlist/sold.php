@@ -28,7 +28,7 @@ $result = mysqli_query($conn, $sql);
 
 
 } else {
-    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
+  header("Location: ../logout.php");
 }
 
 
@@ -58,21 +58,92 @@ $result = mysqli_query($conn, $sql);
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <title>Sold List</title>
+  <style>
+
+.header{
+    background: radial-gradient(#fff,#5960de);
+    height: 500vh;
+}
+
+
+.card{
+    width: 75%;
+    max-width: 3000px;
+    color: #000;
+    text-align: center;
+    padding: 50px 35px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    margin-left: auto;
+    margin-right: 75px;
+
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #4169E1;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+p{
+    color: #fff;
+    text-align:center;
+}
+
+</style>
 </head>
+<div class="header">
 
 <body>
 <?php
 
-include('../sidebar.php');
+include('sidebar.php');
 ?>
-  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
-    LPL - LANKA PREMIER LEAGUE
-  </nav>
-  <div class="content">
+  <div class="navbar row">
+        <div class="logo col-4" >
+           <img src="../../images/lpllogo.png" width="125px"> 
+        </div>
+
+        <div class="col-8" style="color: #fff; font-size:20px;">   LPL - LANKA PREMIER LEAGUE</div>
+        </nav>
+       
+    </div>
+    <br>
+  <div class="card" data-tilt>
+  <br>
 
   <div class="container">
   <table class="table table-hover text-center">
-      <thead>
+      <thead class="table-dark">
         <tr>
           <th>Profile Photo</th>
           <th>Name</th>

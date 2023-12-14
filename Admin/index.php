@@ -7,7 +7,7 @@ session_start();
 if (isset($_SESSION['admin_id'])) {
 
 } else {
-    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
+    header("Location: ../logout.php");
 }
 
 
@@ -40,18 +40,69 @@ if (isset($_SESSION['admin_id'])) {
           .btn-margin {
             margin-bottom: 15px;
         }
+
+        .header{
+    background: radial-gradient(#fff,#5960de);
+    height: 100%;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #4169E1;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+p{
+    color: #fff;
+    text-align:center;
+}
+
         
     </style>
 </head>
 <body>
-    
+<div class="header">
 <?php
 
         include("sidebar.php");
 ?>
-<nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
-        LPL - LANKA PREMIER LEAGUE
+<div class="navbar row">
+        <div class="logo col-4" >
+           <img src="../images/lpllogo.png" width="125px"> 
+        </div>
+
+        <div class="col-8" style="color: #fff; font-size:20px;">   LPL - LANKA PREMIER LEAGUE</div>
         </nav>
+       
+    </div>
+    
+
 
 <div class="content">
    
@@ -336,5 +387,7 @@ if (isset($_SESSION['admin_id'])) {
       
           </div>
           </div>
+                            </div>
+
 </body>
 </html>

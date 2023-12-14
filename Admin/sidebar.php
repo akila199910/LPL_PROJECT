@@ -19,7 +19,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="/LPL_PROJECT/LPL_PROJECT/Admin/sidebarstyle.css">
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+}
+
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #4169E1;
+    padding-top: 90px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    margin-left: 25px;
+    margin-top: 30px;
+
+  
+}
+
+.name{
+    font-size: 20px;
+    margin-bottom: 50px;
+   -webkit-text-fill-color: black;
+    text-align: center;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    display: block;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #555;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+}
+    </style>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +81,7 @@
 </head>
 <body>
 <div class="sidebar">
-    <img src="/LPL_PROJECT/LPL_PROJECT/Admin/2023_10_07_10_29_IMG_5477.JPG" alt="Profile Picture" class="profile-img">
+    <img src="2023_10_07_10_29_IMG_5477.JPG" alt="Profile Picture" class="profile-img">
     <div class="name">
     <?php
         echo $name;
@@ -36,7 +90,8 @@
 </body>
 </html>
 
-    <a href="/LPL_PROJECT/LPL_PROJECT/Admin/index.php" class="btn btn-primary btn-block">HOME</a>
-    <a href="#" class="btn btn-primary btn-block"> 2</a>
-    <a href="/LPL_PROJECT/LPL_PROJECT/Admin/logout.php" class="btn btn-primary btn-block"> LOG OUT</a>
+    <a href="index.php" class="btn btn-primary btn-block">HOME</a>
+    <a href="Message/message.php" class="btn btn-primary btn-block">CHAT</a>
+    <a href="Settings/settings.php" class="btn btn-primary btn-block">SETTINGS</a>
+    <a href="logout.php" class="btn btn-primary btn-block"> LOG OUT</a>
 </div>

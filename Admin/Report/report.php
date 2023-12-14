@@ -20,13 +20,81 @@
                             
                     </script>
   <title>Report</title>
+  <style>
+ 
+.header{
+    background: radial-gradient(#fff,#5960de);
+    height: 250vh;
+}
+
+.btn{
+    display: block;
+    background: #ff523b;
+    
+    padding: 8px 30px;
+    margin: auto;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+
+.btn:hover{
+    background: #5960de;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #4169E1;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+p{
+    color: #fff;
+    text-align:center;
+}
+
+    
+    </style>
 
 </head>
+<div class="header">
 
 <body>
-                    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;">
-                        LPL - LANKA PREMIER LEAGUE
-                    </nav>
+<div class="navbar row">
+        <div class="logo col-4" >
+           <img src="../../images/lpllogo.png" width="125px"> 
+        </div>
+
+        <div class="col-8" style="color: #fff; font-size:20px;">   LPL - LANKA PREMIER LEAGUE</div>
+        </nav>
+       
+    </div>
+    <br>
         <div class="container">
                 <div id= player>
                             <h3>Number of Players of each Country</h3>
@@ -249,6 +317,7 @@ LEFT JOIN allrounder ON register.player_id = allrounder.player_al_id WHERE sold 
         </div>
 
         </div>
+        <br><br>
         <button onclick="getPrint()" class="btn btn-success btn-lg">Download</button>
 
     </body>
@@ -257,7 +326,7 @@ LEFT JOIN allrounder ON register.player_id = allrounder.player_al_id WHERE sold 
 
 
         } else {
-            header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
+            header("Location: ../logout.php");
         }
 
 

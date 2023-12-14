@@ -67,22 +67,22 @@ mysqli_query($conn, $sqlInsert);
 
       switch ($catogaryValue) {
           case 'BATSMAN':
-              header("Location: /LPL_PROJECT/LPL_PROJECT/Players/Batsman/Batsman.php?player_id=$player_id"); // Include player_id as a query parameter
+              header("Location: Batsman/Batsman.php?player_id=$player_id"); // Include player_id as a query parameter
               exit;
               
 
           case 'BOWLER':
-              header("Location: /LPL_PROJECT/LPL_PROJECT/Players/Bowler/Bowler.php?player_id=$player_id"); // Include player_id as a query parameter
+              header("Location: Bowler/Bowler.php?player_id=$player_id"); // Include player_id as a query parameter
               exit;
               
 
           case 'WICKETKEEPER':
-              header("Location: /LPL_PROJECT/LPL_PROJECT/Players/Wicketkeeper/Wicketkeeper.php?player_id=$player_id"); // Include player_id as a query parameter
+              header("Location: Wicketkeeper/Wicketkeeper.php?player_id=$player_id"); // Include player_id as a query parameter
               exit;
             
 
           case 'ALLROUNDER':
-              header("Location: /LPL_PROJECT/LPL_PROJECT/Players/Allrounder/Allrounder.php?player_id=$player_id"); // Include player_id as a query parameter
+              header("Location: Allrounder/Allrounder.php?player_id=$player_id"); // Include player_id as a query parameter
               exit;
               
       }
@@ -100,7 +100,7 @@ if (isset($_POST['reject'])) {
     mysqli_query($conn, $sq2);
     $sql3 = "UPDATE register SET moderators_id = '$modaretor_id' WHERE player_id = $player_id";
     mysqli_query($conn, $sql3);
-    header("Location: /LPL_PROJECT/LPL_PROJECT/Moderator/ReviewPage.php");
+    header("Location:/Moderator/ReviewPage.php");
 
 }
 
@@ -118,6 +118,7 @@ if (isset($_POST['reject'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         
     .profile {
@@ -125,14 +126,94 @@ if (isset($_POST['reject'])) {
       height: 300px;
       float: right  
             }
+
+
+   .header{
+    background: radial-gradient(#fff,#5960de);
+}
+
+
+
+.card{
+    width: 95%;
+    max-width: 3000px;
+    color: #fff;
+    text-align: center;
+    padding: 50px 35px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
     
+
+}
+   
+.btn{
+    display: inline-block;
+    background: #ff523b;
+    color: #fff;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+
+.btn:hover{
+    background: #5960de;
+}
+
+
+
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+
+
   </style>
     <title>Player Review</title>
 </head>
 <body>
-    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
-        LPL - LANKA PREMIER LEAGUE
-    </nav>
+<div class="header">
+<div class="navbar">
+<img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="125px" >
+
+  <nav>
+<ul>
+    <li><i class="fa-solid fa-hourglass-half"></i><a href="http://localhost/LPL_PROJECT/LPL_PROJECT/Moderator/ReviewPage.php">Pending_List</a></li>
+   
+</ul>
+</nav>
+
+</div>
 
     <div class="container mt-4">
 
@@ -149,10 +230,10 @@ if (isset($_POST['reject'])) {
 
     </div>
 
-
+    <div class="card" data-tilt>
       <table class="table tablefa-bordered table-striped table-hover" >
         <tr>
-          <th>Age:</th>
+          <th>Age</th>
           <td>
             <?php echo $dob; ?>
           </td>
@@ -209,7 +290,9 @@ if (isset($_POST['reject'])) {
           </td>
         </tr>
       </table>
+</div>
 
+<br><br>
     <div class="row">
       <div class="form-group col-12 col-xl-6">
         <label for=" NIC Photo"><h3>NIC Photo</h3></label>
@@ -231,13 +314,13 @@ if (isset($_POST['reject'])) {
 
         <form action="" method="POST">
                 <input type="hidden" name="player_id" value="<?php echo $row['player_id']; ?>">
-                <button type="submit" name="approve">Approve</button>
+                <button type="submit" name="approve" class="btn">Approve</button>
               </form>
         
         
               <form action="" method="POST">
                 <input type="hidden" name="player_id" value="<?php echo $row['player_id']; ?>">
-                <button type="submit" name="reject">Reject</button>
+                <button type="submit" name="reject" class="btn">Reject</button>
               </form>
 
               </div>
@@ -245,6 +328,7 @@ if (isset($_POST['reject'])) {
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+          </div>
 </body>
 </html>
 

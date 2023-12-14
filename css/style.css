@@ -13,6 +13,7 @@ body{
     display: flex;
     align-items: center;
     padding: 20px;
+    background-color: #4169E1;
 }
 
 nav{

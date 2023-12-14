@@ -5,7 +5,7 @@ mysqli_select_db($conn, "lplsystem");
 
 
 
-$sql = "SELECT auction_start_time, auction_end_time,player_id FROM auction WHERE active=0 ORDER BY auction_id DESC LIMIT 1";
+$sql = "SELECT auction_start_time, auction_end_time,player_id FROM auction ORDER BY auction_id DESC LIMIT 1";
 
 
 $result = mysqli_query($conn, $sql);
@@ -40,7 +40,7 @@ if($timeDifference==0 || $timeDifference<0)
 
    
   
-    $sqlMaxBidID = "SELECT MAX(bid_price) AS max_bid FROM bid WHERE player_id = $player_id";
+    $sqlMaxBidID = "SELECT MAX(bid_price) AS max_bid FROM bid WHERE player_id = $player_id ORDER BY bid_id DESC LIMIT 1";
     $resultMaxBidID = mysqli_query($conn, $sqlMaxBidID);
     
     while($row = mysqli_fetch_assoc($resultMaxBidID)){
@@ -123,9 +123,9 @@ if($timeDifference==0 || $timeDifference<0)
         }
         echo "<h3>Player Is Sold </h3>";
         
-    } else{
+    } else{//bid ekak nettan wenna ona de methna harinan hedenna ona
         //echo $maxBid = 0;
-        echo "<h1>Auction Time Out !!! <br> Push The New Player </h1>";
+        echo "<h1>Auction Time Out !!! <br> Push The New Player</h1>";
        
 
       
