@@ -142,6 +142,44 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
     margin-right: 75px;
 
 }
+
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #4169E1;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+p{
+    color: #fff;
+    text-align:center;
+}
+
     </style>
 </head>
 <div class="header">
@@ -150,9 +188,15 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
 
 include('sidebar.php');
 ?>
-  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
-    LPL - LANKA PREMIER LEAGUE
-  </nav>
+ <div class="navbar row">
+        <div class="logo col-4" >
+           <img src="../../images/lpllogo.png" width="125px"> 
+        </div>
+
+        <div class="col-8" style="color: #fff; font-size:20px;">   LPL - LANKA PREMIER LEAGUE</div>
+        </nav>
+       
+    </div>
   <div class="card" data-tilt>
   <br>
 
