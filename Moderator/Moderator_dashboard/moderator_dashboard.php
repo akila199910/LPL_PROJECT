@@ -116,11 +116,11 @@ a{
     ?>
   </div>
 
-  <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/moderator_dashboard.php" class="btn btn-primary btn-block">Dashboard</a>
-    <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/ReviewPage.php" class="btn btn-primary btn-block"> Pending List</a>
-    <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Accept.php" class="btn btn-primary btn-block"> Accept list</a>
-    <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Reject.php" class="btn btn-primary btn-block"> Reject List</a>
-    <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/logout.php" class="btn btn-primary btn-block">Log Out</a>
+  <a href="moderator_dashboard.php" class="btn btn-primary btn-block">Dashboard</a>
+    <a href="../ReviewPage.php" class="btn btn-primary btn-block"> Pending List</a>
+    <a href="../Accept.php" class="btn btn-primary btn-block"> Accept list</a>
+    <a href="../Reject.php" class="btn btn-primary btn-block"> Reject List</a>
+    <a href="logout.php" class="btn btn-primary btn-block">Log Out</a>
       
 </div>
 </div>
@@ -131,7 +131,7 @@ a{
   <div class="container">
     <div class="row">
       <div class="col-lg-3">
-        <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/registered.php"><button type="button" class="btn btn-dark size btn-margin">Registered Players<br>
+        <a href="../registered.php"><button type="button" class="btn btn-dark size btn-margin">Registered Players<br>
         <?php
                     
         $sql="SELECT * from register";
@@ -149,7 +149,7 @@ a{
       </div>
     
       <div class="col-lg-3">
-        <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Accept.php"><button type="button" class="btn btn-info size btn-margin">Approved Players<br>
+        <a href="../Accept.php"><button type="button" class="btn btn-info size btn-margin">Approved Players<br>
           <?php
             $sql="SELECT * from register where approved='Yes'";
             $result=$conn-> query($sql);
@@ -165,7 +165,7 @@ a{
       </div>
 
       <div class="col-lg-3">
-        <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Reject.php"><button type="button" class="btn btn-success size btn-margin">Rejected Players<br>
+        <a href="../Reject.php"><button type="button" class="btn btn-success size btn-margin">Rejected Players<br>
         <?php
           $sql="SELECT * from register where approved='No'";
           $result=$conn-> query($sql);
@@ -181,7 +181,7 @@ a{
       </div>
 
       <div class="col-lg-3">
-        <a href="/LPL_PROJECT/LPL_PROJECT/Moderator/ReviewPage.php"><button type="button" class="btn btn-primary size btn-margin">Pending...<br>
+        <a href="../ReviewPage.php"><button type="button" class="btn btn-primary size btn-margin">Pending...<br>
         <?php
           $sql="SELECT * from register where approved is NULL";
           $result=$conn-> query($sql);
