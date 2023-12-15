@@ -279,7 +279,7 @@ if (isset($_POST['submit'])) {
 
         // Insert the user data into the database with the verification code
         $sql3 = "INSERT INTO register (first_name, last_name, email, password, country, dob, identity, identity_number, catogary, capped, additional_details, profile_photo, identity_photo, certificate_photo,verification, verification_code)
-  VALUES ('$first_name','$last_name','$email','$hashed_password','$country','$dob','$identity','$identity_number','$catogary','$capped','$additional_details','$file_name3','$file_name1','$file_name2', 0, '$verif_code')";
+  VALUES ('$first_name','$last_name','$email','$hashed_password','$country','$dob','$identity','$identity_number','$catogary','$capped','$additional_details','$newFileName3','$newFileName1','$newFileName2', 0, '$verif_code')";
 
         $query = mysqli_query($conn, $sql3);
 
