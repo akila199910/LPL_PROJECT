@@ -96,7 +96,7 @@ if (isset($_POST['login'])) {
             $_SESSION['admin_email'] = $admin['email'];
             // ... other admin data
 
-            header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/index.php"); // Redirect to the admin dashboard page
+            header("Location: ../Admin/index.php"); // Redirect to the admin dashboard page
             exit();
         } else {
             echo "Invalid password";
@@ -113,7 +113,7 @@ if (isset($_POST['login'])) {
             $_SESSION['moderators_email'] = $moderators['email'];
             // ... other moderators data
 
-            header("Location: /LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/moderator_dashboard.php"); // Redirect to the moderators dashboard page
+            header("Location: ../Moderator/Moderator_dashboard/moderator_dashboard.php"); // Redirect to the moderators dashboard page
             exit();
         } else {
             echo "Invalid password";
@@ -130,7 +130,7 @@ if (isset($_POST['login'])) {
             $_SESSION['team_email'] = $team['email'];
             // ... other team data
 
-            header("Location: /LPL_PROJECT/LPL_PROJECT/Team/Team_dashboard/team_dashboard.php"); // Redirect to the team dashboard page
+            header("Location: ../Team/Team_dashboard/team_dashboard.php"); // Redirect to the team dashboard page
             exit();
         } else {
             echo "Invalid password";
