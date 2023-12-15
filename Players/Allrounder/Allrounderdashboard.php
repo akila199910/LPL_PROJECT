@@ -85,15 +85,67 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 #main {margin-left: 120px}
 /* Remove margins from "page content" on small screens */
 @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+}
+
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+
+.header{
+    background: radial-gradient(#fff,#5960de);
+    height: 500vh;
+}
 </style>
 </head>
-<body class="w3-light-blue">
+<div class="header">
+
+<div class="navbar row">
+        <div class="logo col-4" >
+           <img src="../../images/lpllogo.png" width="125px"> 
+        </div>
+
+        <div class="col-8" style="color: #fff; font-size:20px;">   LPL - LANKA PREMIER LEAGUE</div>
+        </nav>
+       
+    </div>
+    <br><br><br>
 
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
 <nav class="w3-sidebar w3-bar-block w3-tiny w3-hide-small w3-center">
   <!-- Avatar image in top left corner -->
-  <img src="/LPL_PROJECT/LPL_PROJECT/images/logo main2.png" style="width:100%">
-
+  
   <a href="../Blog Posts/Posts/blog.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
     <i class="fa fa-home w3-xlarge" style="color:white"></i>
     <p style="color:antiquewhite">Home</p>
@@ -156,7 +208,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 
   <!--Player Informations Section -->
   <div class="w3-content w3-justify w3-text-black w3-padding-64" id="playerprofile.php">
-    <h2 class="w3-text-black">Player Informations</h2>
+    
     <hr style="width:200px" class="w3-opacity">
     <!--p><strong>Nationality&nbsp:&nbsp</strong><span id="playerLevel">&nbspEngland</span></p-->
     <table class="w3-text-black w3-table">
