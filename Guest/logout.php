@@ -2,6 +2,6 @@
 
 session_start();
 session_destroy();
-header("Location: /Login/loginform.php");
+header("Location: ../loginform.php");
 
 ?>
