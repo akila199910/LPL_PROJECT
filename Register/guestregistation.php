@@ -274,7 +274,7 @@ move_uploaded_file($temp_name3,$upload_to.$file_name3);
     }).then((value) => {
         if (value === "goodJob") {
             // Add your web address here
-            window.location.href = "http://localhost/LPL_PROJECT/LPL_PROJECT/loginform.php";
+            window.location.href = "../loginform.php";
         }
     });
     </script>

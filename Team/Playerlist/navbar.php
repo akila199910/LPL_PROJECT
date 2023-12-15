@@ -66,15 +66,15 @@ a{
 
 
 <div class="navbar">
-<img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="125px" >
+<img src="../../images/lpllogo.png" width="125px" >
 
   <nav>
 <ul>
-    <li><i class="fa-solid fa-house"></i><a class="active" href="/LPL_PROJECT/LPL_PROJECT/home.php">Home</a></li>
+    <li><i class="fa-solid fa-house"></i><a class="active" href="../../home.php">Home</a></li>
     
-    <li><i class="fa-solid fa-briefcase"></i><a href="/LPL_PROJECT/LPL_PROJECT/contact_us.php">Contact</a></li>
-    <li><i class="fa-brands fa-unity"></i><a href="/LPL_PROJECT/LPL_PROJECT/about.php">About</a></li>
-    <li><i class="fa-solid fa-right-from-bracket"></i><a href="/LPL_PROJECT/LPL_PROJECT/Moderator/Moderator_dashboard/logout.php">Log Out</a></li>
+    <li><i class="fa-solid fa-briefcase"></i><a href="../../contact_us.php">Contact</a></li>
+    <li><i class="fa-brands fa-unity"></i><a href="../../about.php">About</a></li>
+    <li><i class="fa-solid fa-right-from-bracket"></i><a href="logout.php">Log Out</a></li>
 </ul>
 </nav>
 

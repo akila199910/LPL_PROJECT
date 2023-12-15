@@ -4,15 +4,6 @@ mysqli_select_db($conn, "lplsystem");
 $sq4 = "select * from register";
 $result = mysqli_query($conn, $sq4);
 
-//Auto logout without session
-session_start();
-
-if (isset($_SESSION['admin_id'])) {
-    
-} else {
-    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
-}
-
 
 
 

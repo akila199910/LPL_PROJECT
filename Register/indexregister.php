@@ -389,7 +389,7 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     }).then((value) => {
         if (value === "goodJob") {
             // Add your web address here
-            window.location.href = "http://localhost/LPL_PROJECT/LPL_PROJECT/loginform.php";
+            window.location.href = "../loginform.php";
         }
     });
     </script>

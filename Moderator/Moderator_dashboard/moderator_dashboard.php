@@ -95,13 +95,13 @@ a{
 <body>
 <div class="navbar">
         <div class="logo">
-           <a href="home.php"><img src="../../images/lpllogo.png" width="125px"></a>
+           <a href=""><img src="../../images/lpllogo.png" width="125px"></a>
         </div>
         
         <nav>
             <ul>
-                <li><i class="fa-solid fa-laptop"></i><a href="">Dashboard</a></li>
-                <li><i class="fa-solid fa-right-from-bracket"></i><a href="about.php">Log Out</a></li>
+                <li><i class="fa-solid fa-laptop"></i><a href="moderator_dashboard.php">Dashboard</a></li>
+                <li><i class="fa-solid fa-right-from-bracket"></i><a href="logout.php">Log Out</a></li>
                 
             </ul>
         </nav>
