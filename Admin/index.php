@@ -373,6 +373,64 @@ p{
                           ?></button></a>
                           </div>
                        </div>
+
+
+
+
+
+
+
+
+
+
+
+                       <div class="row">
+              <div class="col-lg-3">
+          <a href="Playerlist/contract.php"><button type="button" class="btn btn-success size btn-margin">Contract<br>
+          <?php
+      
+                             
+                  $sql = "SELECT r.*, b.sold AS batsman_sold, b.gotoauction AS batsman_gotoauction,
+                  bo.sold AS bowler_sold, bo.gotoauction AS bowler_gotoauction,
+                  wk.sold AS wicketkeeper_sold, wk.gotoauction AS wicketkeeper_gotoauction,
+                  alr.sold AS allrounder_sold, alr.gotoauction AS allrounder_gotoauction
+                  FROM register r
+                  LEFT JOIN batsman b ON r.player_id = b.player_batting_id
+                  LEFT JOIN bowler bo ON r.player_id = bo.player_bowlling_id 
+                  LEFT JOIN wicketkeeper wk ON r.player_id = wk.player_keeping_id 
+                  LEFT JOIN allrounder alr ON r.player_id = alr.player_al_id 
+                  WHERE (b.sold IS NOT NULL AND b.gotoauction = 0)
+                  OR (bo.sold IS NOT NULL AND bo.gotoauction = 0)
+                  OR (wk.sold IS NOT NULL AND wk.gotoauction = 0)
+                  OR (alr.sold IS NOT NULL AND alr.gotoauction = 0)";         
+                              $result=$conn-> query($sql);
+                              $count=0;
+                          if ($result-> num_rows > 0){
+                                  while ($row=$result-> fetch_assoc()) {
+      
+                              $count=$count+1;
+                              }
+                          }
+                              echo $count;
+          
+                          ?></button></a>
+                          </div>
+      
+      
+      
+      <div class="col-lg-3">
+      
+   
+                          </div>
+      
+      
+      
+      
+      <div class="col-lg-3">
+      
+          
+                          </div>
+                       </div>
       
       
       
@@ -393,7 +451,7 @@ p{
       
           </div>
           </div>
-                            </div>
+        </div>
 
 </body>
 </html>
