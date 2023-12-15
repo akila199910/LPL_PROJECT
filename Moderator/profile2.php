@@ -325,6 +325,7 @@ a{
     <div class="row">
       <div class="form-group col-12 col-xl-6">
         <label for=" NIC Photo"><h3>NIC Photo</h3></label>
+        <br>
         <?php
             $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/idimg/" . $row['identity_photo'];
               echo "<img src='$photoPath' alt='identity_photo' style='width: 400px; height: 300px;'>";
@@ -333,6 +334,7 @@ a{
 
       <div class="form-group col-12 col-xl-6">
         <label for=" Certificate photos"><h3>Certificate photos</h3></label>
+        <br>
         <?php
             $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/cetiimg/" . $row['certificate_photo'];
               echo "<img src='$photoPath' alt='certificate_photo' style='width: 400px; height: 300px;'>";
