@@ -46,12 +46,18 @@ if (isset($_SESSION['admin_id'])) {
     height: 100%;
 }
 
-.navbar{
+.navbar {
     display: flex;
     align-items: center;
     padding: 20px;
     background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
 }
+
 
 nav{
     flex: 1;
@@ -77,7 +83,6 @@ a{
     text-decoration: none;
     color: #555;
 }
-
 p{
     color: #fff;
     text-align:center;
@@ -101,6 +106,7 @@ p{
         </nav>
        
     </div>
+    <br><br><br>
     
 
 

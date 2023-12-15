@@ -170,12 +170,18 @@ a{
 
 }
 
-.navbar{
+.navbar {
     display: flex;
     align-items: center;
     padding: 20px;
     background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
 }
+
 
 nav{
     flex: 1;
@@ -207,6 +213,21 @@ p{
     text-align:center;
 }
 
+.bt{
+    display: inline-block;
+    background: #0096FF;
+    
+    padding: 8px 30px;
+    margin: -40px 0;
+    border-radius: 30px;
+    border:none;
+    transition: background 0.5s;
+}
+
+.bt:hover{
+    background: #5960de;
+}
+
     </style>
 </head>
 <div class="header">
@@ -224,7 +245,7 @@ include('sidebar.php');
         </nav>
        
     </div>
-    <br>
+    <br><br><br><br>
   
   <div class="card" data-tilt>
   <div class="container">
@@ -259,7 +280,7 @@ include('sidebar.php');
         <td>
               <form action="" method="POST">
                 <input type="hidden" name="player_keeping_id" value="<?php echo $row['player_keeping_id']; ?>">
-                <button type="submit" name="push">Push</button>
+                <button type="submit" name="push" class="bt">Push</button>
               </form>
             </td>
           </tr>
