@@ -33,6 +33,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+}
+
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #4169E1;
+    padding-top: 90px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    margin-left: 25px;
+    margin-top: 30px;
+
+  
+}
+
+.name{
+    font-size: 20px;
+    margin-bottom: 50px;
+   -webkit-text-fill-color: black;
+    text-align: center;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    display: block;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #555;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+
+        </style>
 </head>
 <body>
 
