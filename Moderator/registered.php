@@ -51,12 +51,18 @@ $result = mysqli_query($conn, $sq4);
     
   }
 
-  .navbar{
+  .navbar {
     display: flex;
     align-items: center;
     padding: 20px;
     background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
 }
+
 
 nav{
     flex: 1;
@@ -128,7 +134,7 @@ p{
     </div>
     <br>
   <div class="content">
-
+<br><br><br>
   <div class="card" data-tilt>
 
   <div class="container">

@@ -49,17 +49,11 @@ if (isset($_SESSION['admin_id'])) {
     }
 
 
-    .navbar {
-      display: flex;
-      align-items: center;
-      padding: 20px;
-    }
-
 
 
     .header {
       background: radial-gradient(#fff, #5960de);
-      height: 400vh;
+      height: 100%;
     }
 
 
@@ -79,6 +73,23 @@ if (isset($_SESSION['admin_id'])) {
 
     }
 
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+}
+
+
+nav{
+    flex: 1;
+    text-align: right;
+}
     .navbar {
       display: flex;
       align-items: center;
@@ -133,6 +144,8 @@ if (isset($_SESSION['admin_id'])) {
       </nav>
 
     </div>
+    <br><br><br><br><br><br>
+  
     <div class="card" data-tilt>
       <br>
 

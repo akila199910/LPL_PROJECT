@@ -31,23 +31,10 @@ if (isset($_POST['view'])) {
         $file_name2 = $row['certificate_photo'];
 
     }
-    
 }
 
 //Approve reject list
 if (isset($_POST['approve'])) {
-
-  $name = $_POST['name'];
-  $email=$_POST['email'];
-
-  $subject = "Approval Notification"; 
-  $message = "Dear $name, \n\nYour registration has been approved.";
-   $headers = "From: premierleaguesrilanka@gmail.com"; 
- 
-   
-   mail($email, $subject, $message, $headers);
- 
-
   session_start();
   $modaretor_id=$_SESSION['moderators_id'];
 
@@ -105,17 +92,6 @@ mysqli_query($conn, $sqlInsert);
     
 
 if (isset($_POST['reject'])) {
-
-  $name = $_POST['name'];
-  $email=$_POST['email'];
-
-  $subject = "Approval Notification"; 
-  $message = "Dear $name, \n\nYour registration has been rejected.";
-   $headers = "From: premierleaguesrilanka@gmail.com"; 
- 
-   
-   mail($email, $subject, $message, $headers);
- 
   session_start();
   $modaretor_id=$_SESSION['moderators_id'];
 
@@ -124,7 +100,7 @@ if (isset($_POST['reject'])) {
     mysqli_query($conn, $sq2);
     $sql3 = "UPDATE register SET moderators_id = '$modaretor_id' WHERE player_id = $player_id";
     mysqli_query($conn, $sql3);
-    header("Location:ReviewPage.php");
+    header("Location:/Moderator/ReviewPage.php");
 
 }
 
@@ -189,11 +165,18 @@ if (isset($_POST['reject'])) {
 
 
 
-.navbar{
+.navbar {
     display: flex;
     align-items: center;
     padding: 20px;
+    background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
 }
+
 
 nav{
     flex: 1;
@@ -220,24 +203,26 @@ a{
     color: #555;
 }
 
-
-
   </style>
     <title>Player Review</title>
 </head>
 <body>
 <div class="header">
 <div class="navbar">
-<img src="/LPL_PROJECT/LPL_PROJECT/images/lpllogo.png" width="125px" >
-
-  <nav>
-<ul>
-    <li><i class="fa-solid fa-hourglass-half"></i><a href="http://localhost/LPL_PROJECT/LPL_PROJECT/Moderator/ReviewPage.php">Pending_List</a></li>
-   
-</ul>
-</nav>
-
-</div>
+        <div class="logo">
+           <a href="home.php"><img src="../images/lpllogo.png" width="125px"></a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><i class="fa-solid fa-laptop"></i><a href="">Dashboard</a></li>
+                <li><i class="fa-solid fa-right-from-bracket"></i><a href="about.php">Log Out</a></li>
+                
+            </ul>
+        </nav>
+       
+    </div>
+    <br><br><br><br>
 
     <div class="container mt-4">
 
@@ -338,22 +323,18 @@ a{
 
         <form action="" method="POST">
                 <input type="hidden" name="player_id" value="<?php echo $row['player_id']; ?>">
-                <input type="hidden" name="name" value="<?php echo $first_name." ".$last_name; ?>">
-                <input type="hidden" name="email" value="<?php echo $email?>">
                 <button type="submit" name="approve" class="btn">Approve</button>
               </form>
         
         
               <form action="" method="POST">
                 <input type="hidden" name="player_id" value="<?php echo $row['player_id']; ?>">
-                <input type="hidden" name="name" value="<?php echo $first_name." ".$last_name; ?>">
-                <input type="hidden" name="email" value="<?php echo $email?>">
                 <button type="submit" name="reject" class="btn">Reject</button>
               </form>
 
               </div>
             
-              
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
           </div>

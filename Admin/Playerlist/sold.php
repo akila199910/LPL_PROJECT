@@ -82,12 +82,18 @@ $result = mysqli_query($conn, $sql);
 
 }
 
-.navbar{
+.navbar {
     display: flex;
     align-items: center;
     padding: 20px;
     background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
 }
+
 
 nav{
     flex: 1;
@@ -113,7 +119,6 @@ a{
     text-decoration: none;
     color: #555;
 }
-
 p{
     color: #fff;
     text-align:center;
@@ -137,7 +142,7 @@ include('sidebar.php');
         </nav>
        
     </div>
-    <br>
+    <br><br><br><br>
   <div class="card" data-tilt>
   <br>
 

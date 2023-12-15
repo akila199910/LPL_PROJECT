@@ -29,7 +29,7 @@
 
 .btn{
     display: block;
-    background: #ff523b;
+    background: #0096FF;
     
     padding: 8px 30px;
     margin: auto;
@@ -41,12 +41,18 @@
     background: #5960de;
 }
 
-.navbar{
+.navbar {
     display: flex;
     align-items: center;
     padding: 20px;
     background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
 }
+
 
 nav{
     flex: 1;
@@ -94,7 +100,7 @@ p{
         </nav>
        
     </div>
-    <br>
+    <br><br><br><br>
         <div class="container">
                 <div id= player>
                             <h3>Number of Players of each Country</h3>
