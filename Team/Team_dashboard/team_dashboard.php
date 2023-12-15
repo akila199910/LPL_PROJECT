@@ -34,13 +34,64 @@ if (isset($_SESSION['team_id'])) {
           .btn-margin {
             margin-bottom: 15px;
         }
+
+        .header{
+    background: radial-gradient(#fff,#5960de);
+    height: 100%;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+}
+
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
         
     </style>
 </head>
 <body>
-<nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
-        LPL - LANKA PREMIER LEAGUE
+<div class="header">
+<div class="navbar row">
+        <div class="logo col-4" >
+           <img src="../../images/lpllogo.png" width="125px"> 
+        </div>
+
+        <div class="col-8" style="color: #fff; font-size:20px;">   LPL - LANKA PREMIER LEAGUE</div>
         </nav>
+       
+    </div>
+    <br><br><br><br>
     <h1 style="text-align:center;">Team dashboard</h1>
 
     <?php
@@ -80,7 +131,7 @@ if (isset($_SESSION['team_id'])) {
            </div>
       
            <div class="col-lg-3">
-          <a href="#"><button type="button" class="btn btn-info size btn-margin">OUR TEAM MEMBERS<br>
+          <a href="../playerlist/teammember.php"><button type="button" class="btn btn-info size btn-margin">OUR TEAM MEMBERS<br>
           <?php
                              
                              $sql="SELECT * from team";
@@ -115,7 +166,7 @@ if (isset($_SESSION['team_id'])) {
       
       
           <div class="col-lg-3">
-          <a href="#"><button type="button" class="btn btn-primary size btn-margin">Rules<br>
+          <a href="../playerlist/teambidrules.php"><button type="button" class="btn btn-primary size btn-margin">Rules<br>
           <?php
                              
                             /* $sql="SELECT * from register";
@@ -136,7 +187,7 @@ if (isset($_SESSION['team_id'])) {
       
       <div class="row">
               <div class="col-lg-3">
-          <a href="#"><button type="button" class="btn btn-secondary size btn-margin">Batsman<br>
+          <a href="../playerlist/batsmanlist.php"><button type="button" class="btn btn-secondary size btn-margin">Batsman<br>
       
           <?php
                              
@@ -156,7 +207,7 @@ if (isset($_SESSION['team_id'])) {
       
       
       <div class="col-lg-3">
-          <a href="#"><button type="button" class="btn btn-secondary size btn-margin">Bowlers<br>
+          <a href="../playerlist/bowlerlist.php"><button type="button" class="btn btn-secondary size btn-margin">Bowlers<br>
           <?php
                              $sql5 = "SELECT * FROM bowler 
                              WHERE sold IS NULL AND gotoauction IS NULL";
@@ -174,7 +225,7 @@ if (isset($_SESSION['team_id'])) {
       
       
       <div class="col-lg-3">
-          <a href="#"><button type="button" class="btn btn-secondary size btn-margin">Allrounder<br>
+          <a href="../playerlist/allrounderlist.php"><button type="button" class="btn btn-secondary size btn-margin">Allrounder<br>
           <?php
                              $sql5 = "SELECT * FROM allrounder 
                              WHERE sold IS NULL AND gotoauction IS NULL";
@@ -191,7 +242,7 @@ if (isset($_SESSION['team_id'])) {
                          ?></button></a>
                          </div>
       <div class="col-lg-3">
-            <a href="#"><button type="button" class="btn btn-secondary size btn-margin">WicketKeeper<br>
+            <a href="../playerlist/wicketkeeperlist.php"><button type="button" class="btn btn-secondary size btn-margin" >WicketKeeper<br>
             <?php
       
       $sql5 = "SELECT * FROM wicketkeeper 
@@ -213,77 +264,13 @@ if (isset($_SESSION['team_id'])) {
       
       
                          <div class="row">
-              <div class="col-lg-3">
-          <a href="#"><button type="button" class="btn btn-success size btn-margin">Sold Players<br>
-          <?php
-      
-                             
-                  $sql = "SELECT r.*, b.sold AS batsman_sold, b.gotoauction AS batsman_gotoauction,
-                  bo.sold AS bowler_sold, bo.gotoauction AS bowler_gotoauction,
-                  wk.sold AS wicketkeeper_sold, wk.gotoauction AS wicketkeeper_gotoauction,
-                  alr.sold AS allrounder_sold, alr.gotoauction AS allrounder_gotoauction
-                  FROM register r
-                  LEFT JOIN batsman b ON r.player_id = b.player_batting_id
-                  LEFT JOIN bowler bo ON r.player_id = bo.player_bowlling_id 
-                  LEFT JOIN wicketkeeper wk ON r.player_id = wk.player_keeping_id 
-                  LEFT JOIN allrounder alr ON r.player_id = alr.player_al_id 
-                  WHERE (b.sold IS NOT  NULL AND b.gotoauction = 1)
-                  OR (bo.sold IS  NOT NULL AND bo.gotoauction = 1)
-                  OR (wk.sold IS  NOT NULL AND wk.gotoauction = 1)
-                  OR (alr.sold IS  NOT NULL AND alr.gotoauction = 1)";         
-                              $result=$conn-> query($sql);
-                              $count=0;
-                          if ($result-> num_rows > 0){
-                                  while ($row=$result-> fetch_assoc()) {
-      
-                              $count=$count+1;
-                              }
-                          }
-                              echo $count;
-          
-                          ?></button></a>
-                          </div>
+             
       
       
       
       <div class="col-lg-3">
       
-      <a href="#"><button type="button" class="btn btn-danger size btn-margin">Unsold Players<br>
-          <?php
-            
-            $sql = "SELECT r.*, b.sold AS batsman_sold, b.gotoauction AS batsman_gotoauction,
-            bo.sold AS bowler_sold, bo.gotoauction AS bowler_gotoauction,
-            wk.sold AS wicketkeeper_sold, wk.gotoauction AS wicketkeeper_gotoauction,
-            alr.sold AS allrounder_sold, alr.gotoauction AS allrounder_gotoauction
-            FROM register r
-            LEFT JOIN batsman b ON r.player_id = b.player_batting_id
-            LEFT JOIN bowler bo ON r.player_id = bo.player_bowlling_id 
-            LEFT JOIN wicketkeeper wk ON r.player_id = wk.player_keeping_id 
-            LEFT JOIN allrounder alr ON r.player_id = alr.player_al_id 
-            WHERE (b.sold IS NULL AND b.gotoauction = 1)
-            OR (bo.sold IS NULL AND bo.gotoauction = 1)
-            OR (wk.sold IS NULL AND wk.gotoauction = 1)
-            OR (alr.sold IS NULL AND alr.gotoauction = 1)";
-      
-                              $result=$conn-> query($sql);
-                              $count=0;
-                          if ($result-> num_rows > 0){
-                                  while ($row=$result-> fetch_assoc()) {
-      
-                              $count=$count+1;
-                              }
-                          }
-                              echo $count;
-          
-                          ?></button></a>
-                          </div>
-      
-      
-      
-      
-      <div class="col-lg-3">
-      
-          <a href="#"><button type="button" class="btn btn-warning size btn-margin">Team Players<br>
+          <a href="../Playerlist/teamplayers.php"><button type="button" class="btn btn-warning size btn-margin">Team Players<br>
           <?php
                         /*     
                              $sql="SELECT * from register WHERE approved='Yes'";

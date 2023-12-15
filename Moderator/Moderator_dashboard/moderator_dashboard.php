@@ -44,13 +44,18 @@ if ($result->num_rows > 0) {
           }
 
 
-          .navbar{
+          .navbar {
     display: flex;
     align-items: center;
     padding: 20px;
     background-color: #4169E1;
-    z-index:1000;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
 }
+
 
 nav{
     flex: 1;
@@ -102,7 +107,7 @@ a{
         </nav>
        
     </div>
-    <br>
+    <br><br><br><br>
 <div class="sidebar">
   <div class="toggle-btn" onclick="show()">      
   <div class="name">
@@ -190,6 +195,23 @@ a{
         ?>
         </button></a>
       </div>
+      <div class="col-lg-3">
+      
+            <a href="../Bid/auction.php"><button type="button" class="btn btn-dark size btn-margin">LIVE AUCTION !!<br>
+              <?php
+                          
+              $sql="SELECT * from moderators ";
+              $result=$conn-> query($sql);
+              $count=0;
+              if ($result-> num_rows > 0){
+                  while ($row=$result-> fetch_assoc()) {
+          
+                      $count=$count+1;
+                  }
+              }
+              echo $count;
+          ?></button></a>
+           </div>
       <?php
         $conn->close();
       ?>

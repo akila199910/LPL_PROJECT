@@ -35,7 +35,9 @@
                     <form id="RegForm">
                         <P>If you don't have a account press Next</P>
                         <br>
-                        <a href="Register/indexregister.php" class="btn">Next &#8594;</a>
+                        <a href="Register/indexregister.php" class="btn">Player &#8594;</a>
+                        <br>
+                        <a href="Register/guestregistation.php" class="btn">Guest &#8594;</a>
                         
                         
                     </form>
