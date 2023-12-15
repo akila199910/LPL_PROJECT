@@ -203,6 +203,21 @@ a{
     color: #555;
 }
 
+.card{
+    width: 95%;
+    max-width: 3000px;
+    color: #000;
+    text-align: center;
+    padding: 50px 35px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    margin-left: auto;
+    margin-right: auto;
+
+}
   </style>
     <title>Player Review</title>
 </head>
@@ -225,19 +240,24 @@ a{
     <br><br><br><br>
 
     <div class="container mt-4">
-
-    <div class="profile mb-4 col-12">
-    <?php
-            $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/" . $row['profile_photo'];
-              echo "<img src='$photoPath' alt='Profile Photo' style='width: 300px; height: 300px;'>";
-      ?>
-      
-    </div> 
-
+    <div class="card" data-tilt>
     <div class="form-group mt-4 ">
       <h3> <?php echo $first_name; ?>  <?php echo $last_name; ?></h3>
 
     </div>
+    <br><br>
+    
+    <?php
+    $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/proimg/" . $row['profile_photo'];
+    echo "<div style='text-align: center;'>";
+    echo "    <img src='$photoPath' alt='Profile Photo' style='width: 300px; height: 300px; display: inline-block; border-radius: 50%;'>";
+    echo "</div>";
+?>
+
+<br><br>
+    
+
+    
 
     <div class="card" data-tilt>
       <table class="table tablefa-bordered table-striped table-hover" >
@@ -301,10 +321,11 @@ a{
       </table>
 </div>
 
-<br><br>
+<br><br><br><br>
     <div class="row">
       <div class="form-group col-12 col-xl-6">
         <label for=" NIC Photo"><h3>NIC Photo</h3></label>
+        <br>
         <?php
             $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/idimg/" . $row['identity_photo'];
               echo "<img src='$photoPath' alt='identity_photo' style='width: 400px; height: 300px;'>";
@@ -313,12 +334,15 @@ a{
 
       <div class="form-group col-12 col-xl-6">
         <label for=" Certificate photos"><h3>Certificate photos</h3></label>
+        <br>
         <?php
             $photoPath = "/LPL_PROJECT/LPL_PROJECT/Register/Img/cetiimg/" . $row['certificate_photo'];
               echo "<img src='$photoPath' alt='certificate_photo' style='width: 400px; height: 300px;'>";
       ?>
       </div>
     </div>
+
+    <br><br><br>
         
 
         <form action="" method="POST">
