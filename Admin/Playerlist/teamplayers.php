@@ -58,11 +58,12 @@ if (isset($_SESSION['admin_id'])) {
 
 .bt{
     display: inline-block;
-    background: #ff523b;
+    background: #0096FF;
     
     padding: 8px 30px;
     margin: -40px 0;
     border-radius: 30px;
+    border:none;
     transition: background 0.5s;
 }
 
@@ -70,12 +71,18 @@ if (isset($_SESSION['admin_id'])) {
     background: #5960de;
 }
 
-.navbar{
+.navbar {
     display: flex;
     align-items: center;
     padding: 20px;
     background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
 }
+
 
 nav{
     flex: 1;
@@ -101,7 +108,6 @@ a{
     text-decoration: none;
     color: #555;
 }
-
 p{
     color: #fff;
     text-align:center;
@@ -126,7 +132,7 @@ include('sidebar.php');
         </nav>
        
     </div>
-    <br>
+    <br><br><br><br>
 <div class="content">
     <div class="container">
         <?php

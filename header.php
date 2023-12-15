@@ -8,6 +8,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
     <script src="https://kit.fontawesome.com/17d9527542.js" crossorigin="anonymous"></script>
+    <style>
+        .navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+}
+
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+        </style>
 </head>
 <body>
     
