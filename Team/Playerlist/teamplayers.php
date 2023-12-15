@@ -5,10 +5,10 @@ mysqli_select_db($conn, "lplsystem");
 // Auto logout without session
 session_start();
 
-if (isset($_SESSION['admin_id'])) {
+if (isset($_SESSION['team_id'])) {
 
 } else {
-    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
+  //  header("Location: /logout.php");
 }
 ?>
 

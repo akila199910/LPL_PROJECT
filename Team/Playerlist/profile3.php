@@ -73,9 +73,9 @@ if (isset($_SESSION['team_id'])) {
 
 
 
-} else {
-    header("Location:logout.php");
-}
+/*} else {
+    header("Location:/logout.php");
+}*/
 
 
 
@@ -236,8 +236,8 @@ if (isset($_SESSION['team_id'])) {
 
   </table>
   </div>
-  <div class="col-6 mt-5 ">
-         <div id="bid"></div>
+ /* <div class="col-6 mt-5 ">
+         <div id="bid"></div>*/
    </div>
   </div>
   </div>
