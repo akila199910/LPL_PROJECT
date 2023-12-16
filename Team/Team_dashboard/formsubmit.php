@@ -5,10 +5,11 @@ mysqli_select_db($conn, "lplsystem");
 
 $response = array(); // Create an array to store the response data
 
-if (isset($_POST['bid_price']) && isset($_POST['team_id']) && isset($_POST['player_id'])) {
+if (isset($_POST['bid_price']) && isset($_POST['team_id']) && isset($_POST['player_id']) && isset($_POST['dif'])) {
     $bid_price = $_POST['bid_price'];
     $team_id = $_POST['team_id'];
     $player_id = $_POST['player_id'];
+    $dif=$_POST['dif'];
 }
 
 $catogary = "SELECT catogary FROM register WHERE player_id = $player_id";
@@ -46,11 +47,14 @@ if ($catogaryResult && mysqli_num_rows($catogaryResult) > 0) {
         $rowb = mysqli_fetch_assoc($result);
         $baseValue = $rowb['BidVALUE'];
 
-        if ((float)$bid_price >= (float)$baseValue) {
+        if ((float)$bid_price >= (float)$baseValue && $dif>0) {
             $sqlBid = "INSERT INTO `bid` (`player_id`, `team_id`, `bid_price`) VALUES ('$player_id', '$team_id', '$bid_price')";
             mysqli_query($conn, $sqlBid);
             $response['success'] = true; // Indicate success
-        } else {
+        } elseif((float)$bid_price >= (float)$baseValue && $dif<0) {
+            $response['success'] = false; // Indicate failure
+            $response['message'] = 'Your Money is not sufficiency'; // Error message
+        }else{
             $response['success'] = false; // Indicate failure
             $response['message'] = 'Your bid price is less than based price'; // Error message
         }

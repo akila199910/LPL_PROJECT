@@ -4,6 +4,40 @@ $team_id=$_SESSION['team_id'];
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
+
+$sqlSold="SELECT SUM(sold) AS total_sold
+FROM (
+    SELECT sold FROM batsman WHERE team_id = $team_id
+    UNION ALL
+    SELECT sold FROM bowler WHERE team_id = $team_id
+    UNION ALL
+    SELECT sold FROM wicketkeeper WHERE team_id = $team_id
+    UNION ALL
+    SELECT sold FROM allrounder WHERE team_id = $team_id
+) AS combined_table";
+
+$ResultSold=mysqli_query($conn, $sqlSold);
+
+if (mysqli_num_rows($ResultSold) > 0) {
+    while ($rows = mysqli_fetch_assoc($ResultSold)) {
+        $total_sold= $rows["total_sold"];
+        //echo  $player_id."<br>";
+    }
+}
+//rule table
+$RuleSold="SELECT * FROM `rule`";
+
+$ResultRuleSold=mysqli_query($conn, $RuleSold);
+
+if (mysqli_num_rows($ResultRuleSold) > 0) {
+    while ($rowsrule = mysqli_fetch_assoc($ResultRuleSold)) {
+        $totalamount= $rowsrule["total_amount_of_bid"];
+        //echo  $player_id."<br>";
+    }
+}
+//end
+$dif=$totalamount-$total_sold;
+
 $playersql="SELECT player_id FROM auction WHERE active=0";
 $idResult=mysqli_query($conn, $playersql);
 
@@ -91,6 +125,8 @@ if (mysqli_num_rows($idResult) > 0) {
 
            
             setInterval(checkTimeDifference, 1000);
+
+            
             
         });
     </script>
@@ -136,7 +172,7 @@ if (mysqli_num_rows($idResult) > 0) {
   <div class="container-fluid">
     <div style="font-size: 15px; color: red;">
       Available Credit<br>
-      <span class="ntext1">3000</span>
+      <span class="ntext1"><?php echo $dif?></span>
     </div>
 
     <div class="d-flex align-items-center">
@@ -146,6 +182,8 @@ if (mysqli_num_rows($idResult) > 0) {
 
     <input class="form-control mr-sm-2" type="hidden" id="team_id" name="team_id" value="<?php echo $team_id?>">
     <input class="form-control mr-sm-2" type="hidden" id="player_id" name="player_id" value="<?php echo $player_id?>">
+    <input class="form-control mr-sm-2" type="hidden" id="dif" name="dif" value="<?php echo $dif?>">
+
     
 
     <button class="btn btn-primary my-2 my-sm-0" type="button" id="submitBid" name="submitBid">Submit</button>
@@ -189,6 +227,8 @@ if (mysqli_num_rows($idResult) > 0) {
     let bid_price = $("#bid_price").val();
     let team_id = $("#team_id").val();
     let player_id = $("#player_id").val();
+    let dif = $("#dif").val();
+
 
     $.ajax({
         type: "POST",
@@ -196,7 +236,8 @@ if (mysqli_num_rows($idResult) > 0) {
         data: {
             bid_price: bid_price,
             team_id: team_id,
-            player_id: player_id
+            player_id: player_id,
+            dif:dif
         },
         dataType: 'json', // Expect JSON response
         success: function (response) {
