@@ -84,7 +84,7 @@ a{
 
 .header{
     background: radial-gradient(#fff,#5960de);
-    height:100vh;
+    height:500vh;
 }
 
 
@@ -104,6 +104,20 @@ a{
 
 }
 
+.bt{
+    display: inline-block;
+    background: #0096FF;
+    
+    padding: 8px 30px;
+    margin: -40px 0;
+    border-radius: 30px;
+    border:none;
+    transition: background 0.5s;
+}
+
+.bt:hover{
+    background: #5960de;
+}
   
   
   </style>
@@ -165,7 +179,7 @@ a{
        <td>
           <form action="profile2.php" method="POST">
             <input type="hidden" name="player_id" value="<?php echo $row['player_id']; ?>">
-            <button type="submit" name="view">UPDATE</button>
+            <button type="submit" name="view" class="bt">UPDATE</button>
               </form>
         </td>
            

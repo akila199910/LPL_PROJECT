@@ -89,6 +89,75 @@ mysqli_close($conn);
             background-color: #0056b3;
             border-color: #0056b3;
         }
+
+        .card{
+    width: 95%;
+    max-width: 3000px;
+    color: #000;
+    text-align: center;
+    padding: 50px 35px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.btn{
+    display: inline-block;
+    background: #ff523b;
+    
+    padding: 8px 30px;
+    margin: -40px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+
+.btn:hover{
+    background: #5960de;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+}
+
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+
     </style>
 
 
@@ -96,10 +165,17 @@ mysqli_close($conn);
 </head>
 
 <body>
-    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: lightblue;width:100%;">
-        LPL - LANKA PREMIER LEAGUE
-    </nav>
-    
+<div class="navbar row">
+        <div class="logo col-4" >
+           <img src="../../images/lpllogo.png" width="125px"> 
+        </div>
+
+        <div class="col-8" style="color: #fff; font-size:20px;">   LPL - LANKA PREMIER LEAGUE</div>
+        </nav>
+       
+    </div>
+    <br><br><br><br><br><br>
+   <div class="card" data-tilt>
 
     <div class="container mt-4">
         <h2>Add Batsman Information</h2>
@@ -159,8 +235,8 @@ mysqli_close($conn);
                 <label for="based_price" class="form-label">Base Price</label>
                 <input type="number" class="form-control" id="based_price" name="based_price" required>
             </div>
-           
-            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+           <br><br>
+            <button type="submit" name="submit" class="btn">Submit</button>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
