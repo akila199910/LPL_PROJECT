@@ -136,7 +136,7 @@ if (mysqli_num_rows($idResult) > 0) {
   <div class="container-fluid">
     <div style="font-size: 15px; color: red;">
       Available Credit<br>
-      <span class="ntext1">$30000</span>
+      <span class="ntext1">3000</span>
     </div>
 
     <div class="d-flex align-items-center">
@@ -185,30 +185,35 @@ if (mysqli_num_rows($idResult) > 0) {
             $("#bid").load("bid.php");
         }, 1000);        
 
-    $("#submitBid").click(function () {
-        
+        $("#submitBid").click(function () {
+    let bid_price = $("#bid_price").val();
+    let team_id = $("#team_id").val();
+    let player_id = $("#player_id").val();
 
-        let bid_price =$("#bid_price").val();
-        let team_id =$("#team_id").val();
-        let player_id =$("#player_id").val();
-
-        $.ajax({
+    $.ajax({
         type: "POST",
         url: "formsubmit.php",
         data: {
-                bid_price:bid_price,
-              team_id:team_id,
-              player_id:player_id
+            bid_price: bid_price,
+            team_id: team_id,
+            player_id: player_id
         },
-        cache:false,
-        
-        error:function(xhr,status,error){
+        dataType: 'json', // Expect JSON response
+        success: function (response) {
+            if (response.success) {
+                // Bid was successful, handle accordingly
+                //alert('Bid placed successfully!');
+            } else {
+                // Bid failed, display error message
+                alert('Error: ' + response.message);
+            }
+        },
+        error: function (xhr, status, error) {
             console.error(xhr);
         }
-
     });
-        
 });
+
 });
 
  
