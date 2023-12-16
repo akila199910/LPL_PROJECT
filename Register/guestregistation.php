@@ -53,7 +53,7 @@ a{
 }
 
 h1 {
-    color: #fff; 
+    color: #000; 
    
     padding: 10px; 
     text-align: center; 
