@@ -5,6 +5,8 @@ session_start();
 
 if (isset($_SESSION['team_id'])) {
    // echo $_SESSION['team_id'];
+   $team_id =$_SESSION['team_id'];
+
 } else {
     header("Location:logout.php");
     exit; // Make sure to exit after redirect
@@ -263,10 +265,7 @@ a{
                          </div>
       
       
-                         <div class="row">
-             
-      
-      
+    <div class="row">
       
       <div class="col-lg-3">
       
@@ -286,6 +285,41 @@ a{
                              
                        */  ?></button></a>
                        </div>
+
+
+                        
+                       <div class="col-lg-3">
+      
+          <a href="../Playerlist/mycontract.php"><button type="button" class="btn btn-warning size btn-margin">Contract List<br>
+          <?php
+                           
+                             $sql= "SELECT r.*, b.sold AS batsman_sold, b.gotoauction AS batsman_gotoauction,
+                             bo.sold AS bowler_sold, bo.gotoauction AS bowler_gotoauction,
+                             wk.sold AS wicketkeeper_sold, wk.gotoauction AS wicketkeeper_gotoauction,
+                             alr.sold AS allrounder_sold, alr.gotoauction AS allrounder_gotoauction
+                             FROM register r
+                             LEFT JOIN batsman b ON r.player_id = b.player_batting_id
+                             LEFT JOIN bowler bo ON r.player_id = bo.player_bowlling_id 
+                             LEFT JOIN wicketkeeper wk ON r.player_id = wk.player_keeping_id 
+                             LEFT JOIN allrounder alr ON r.player_id = alr.player_al_id 
+                             WHERE (b.sold IS NOT  NULL AND b.gotoauction = 0 AND b.team_id=$team_id )
+                             OR (bo.sold IS  NOT NULL AND bo.gotoauction = 0 AND bo.team_id=$team_id)
+                             OR (wk.sold IS  NOT NULL AND wk.gotoauction = 0 AND wk.team_id=$team_id)
+                             OR (alr.sold IS  NOT NULL AND alr.gotoauction = 0 AND alr.team_id=$team_id)";         
+                                         
+                             $result=$conn-> query($sql);
+                             $count=0;
+                             if ($result-> num_rows > 0){
+                                 while ($row=$result-> fetch_assoc()) {
+                         
+                                     $count=$count+1;
+                                 }
+                             }
+                             echo $count;
+                             
+                         ?></button></a>
+                       </div>
+
                        </div>
       
       

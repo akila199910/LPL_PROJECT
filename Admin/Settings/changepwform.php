@@ -263,8 +263,6 @@ button:hover{
         
         <tr><td><button type="submit" value="Change Password" class="bt" >Change Password</button></td>
             </tr>
-            <tr><td><button type="cancel" value="Cancel" class="bt" >Change Password</button></td>
-            </tr>
         </table>
     </form>
     
