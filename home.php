@@ -8,7 +8,7 @@
             <h1>Make Your <br>Best Team!</h1>
             <h1><span class="auto-input">Galle Titans</span></h1>
             <p>The LPL is a professional esports league for the popular online multiplayer game "League of Legends." It is based in China and features top-tier teams competing in the game. The league is known for its high level of play, and it is one of the most prestigious competitions in the esports world.</p>
-                  <a href="" class="btn">Explore Now &#8594;</a>
+                  <a href="https://www.lankapremierleaguet20.com/" class="btn">Explore Now &#8594;</a>
 
                  
         </div>
@@ -44,7 +44,7 @@
                     <div class="layer">
                         <h3>Galle Titans</h3>
                         
-                        <a href="https://www.facebook.com/GalleTitansOfficial"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@GalletitansLPL"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="work">
@@ -52,7 +52,7 @@
                     <div class="layer">
                         <h3>Colombo Strikers</h3>
                         
-                        <a href="https://www.facebook.com/Colombostrikerss"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@Colombostrikersofficial"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="work">
@@ -60,7 +60,7 @@
                     <div class="layer">
                         <h3>B-Love Kandy</h3>
                         
-                        <a href="https://www.facebook.com/blovekandyLPL"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@BLoveKandy"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="work">
@@ -68,7 +68,7 @@
                     <div class="layer">
                         <h3>Jaffna Kings</h3>
                         
-                        <a href="https://www.facebook.com/JaffnaKingslk"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@JaffnaKingsSL"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
 
@@ -77,7 +77,7 @@
                     <div class="layer">
                         <h3>Dambulla Aura</h3>
                        
-                        <a href="https://www.facebook.com/DambullaAura.lk"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@dambullaauralpl"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
                 

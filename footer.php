@@ -5,8 +5,8 @@
                 <h3>Dowload Our App</h3>
                 <p>Dowload App for Android and ios mobile phone.</p>
                 <div class="app-logo">
-                    <img src="images/play-store.png">
-                    <img src="images/app-store.png">
+                    <a href="https://play.google.com/store/apps/details?id=com.cricheroes.scs"><img src="images/play-store.png"></a>
+                    <a href="https://apps.apple.com/lk/app/sri-lanka-cricket-scorers/id1494451331"><img src="images/app-store.png"></a>
                 </div>
             </div>
             <div class="footer-col-2">
@@ -25,15 +25,15 @@
             <div class="footer-col-4">
                 <h3>Follow us</h3>
                 <ul>
-                    <li>Facebook</li>
-                    <li>Linked In</li>
-                    <li>Instagram</li>
-                    <li>Youtube</li>
+                    <li><a href="https://srilankacricket.lk/">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/officialslc/">Linked In</a></li>
+                    <li><a href="https://www.instagram.com/officialslc/">Instagram</a></li>
+                    <li><a href="https://www.youtube.com/@srilankacricket">Youtube</a></li>
                 </ul>
             </div>
         </div>
         <hr>
-        <p class="copyright">Copyright -OM</p>
+        <p class="copyright">Sri-Lanka Premir League</p>
     </div>
 </div>
 
