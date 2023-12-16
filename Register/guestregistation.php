@@ -211,7 +211,6 @@ h1 {
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
-// Create playersregistation table if it doesn't exist
 
 
 
@@ -219,9 +218,8 @@ mysqli_select_db($conn, "lplsystem");
 
 if (isset($_POST['submit'])) {
     
-    
     $email = $_POST['email'];
-    $check_email_query = "SELECT * FROM register WHERE email = '$email'";
+    $check_email_query = "SELECT * FROM guest WHERE email = '$email'";
     $result = mysqli_query($conn, $check_email_query);
 
     if (mysqli_num_rows($result) > 0) {
@@ -257,6 +255,8 @@ move_uploaded_file($temp_name3,$upload_to.$file_name3);
   VALUES ('$first_name','$last_name','$email','$hashed_password','$dob','$file_name3', 0, '$verif_code')";
 
     $query=mysqli_query($conn, $sql3);
+    echo'Akila';
+
 
     if($query){
         ?>
@@ -294,5 +294,4 @@ move_uploaded_file($temp_name3,$upload_to.$file_name3);
     // echo "<script>alert('Check your mail box');</script>";
     //  echo '<script> window.location.href = "http://localhost/LPL_PROJECT/LPL_PROJECT/loginform.php"</script>';
     }}
-    mysqli_close($conn);
     ?>
