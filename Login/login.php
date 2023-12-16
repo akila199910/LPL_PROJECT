@@ -15,12 +15,6 @@ if (isset($_POST['login'])) {
     mysqli_stmt_execute($stmt_register);
     $result_register = mysqli_stmt_get_result($stmt_register);
 
-    $sql_verification = "SELECT * FROM register WHERE verification = 'verification'";
-    $result_verification = mysqli_query($conn, $sql_verification);
-
-    $sql_catogary = "SELECT * FROM register WHERE catogary = 'catogary'";
-    $result_catogary = mysqli_query($conn, $sql_catogary);
-
 
     // Check if the user exists in "admin" table
     $sql_admin = "SELECT * FROM admin WHERE email = '$email'";
@@ -42,13 +36,15 @@ if (isset($_POST['login'])) {
         $user = mysqli_fetch_assoc($result_register);
         $hashed_password = $user['password'];
         $verification = $user['verification'];
-        $player_catogary= $user["catogary"];
+        $approved = $user['approved'];
 
         // Verify the provided password against the hashed password
         if (password_verify($password, $hashed_password)) {
 
             if ($verification == 1) {
                 
+
+                if ($approved == 'Yes') {
                 // Password is correct, user is authenticated
                 session_start();
                 $_SESSION['user_id'] = $user['player_id'];
@@ -74,10 +70,22 @@ if (isset($_POST['login'])) {
                     header("Location: ../Players/Bowler/bowllerdashboard.php"); // Redirect to the player dashboard page
                 exit();
                 }*/
-
+            } 
+            
+            else if($approved == 'No') {
+                echo "<script>alert('Your account is rejected. If there is a problem in this regard, use contact us');</script>";
+                echo '<script> window.location.href = "../loginform.php"</script>';
+            }
+            
+            
+            else {
+                echo "<script>alert('Your account is under review. Please try again later.');</script>";
+                echo '<script> window.location.href = "../loginform.php"</script>';
+            }
 
             } else{
                 echo "<script>alert('Your Email not Verified. Please Check Your Email.');</script>";
+                echo '<script> window.location.href = "../loginform.php"</script>';
                 
             }
 
@@ -100,7 +108,8 @@ if (isset($_POST['login'])) {
             header("Location: ../Admin/index.php"); // Redirect to the admin dashboard page
             exit();
         } else {
-            echo "Invalid password";
+            echo "<script>alert('Invalid Password!');</script>";
+            echo '<script> window.location.href = "../loginform.php"</script>';
         }
     } elseif ($result_moderators && mysqli_num_rows($result_moderators) > 0) {
         $moderators = mysqli_fetch_assoc($result_moderators);
@@ -117,7 +126,8 @@ if (isset($_POST['login'])) {
             header("Location: ../Moderator/Moderator_dashboard/moderator_dashboard.php"); // Redirect to the moderators dashboard page
             exit();
         } else {
-            echo "Invalid password";
+            echo "<script>alert('Invalid Password!');</script>";
+            echo '<script> window.location.href = "../loginform.php"</script>';
         }
     } elseif ($result_team && mysqli_num_rows($result_team) > 0) {
         $team = mysqli_fetch_assoc($result_team);
@@ -151,10 +161,12 @@ if (isset($_POST['login'])) {
             header("Location: ../blog%20posts/guesthome.php"); // Redirect to the guest dashboard page
             exit();
         }  else {
-            echo "Invalid password";
+            echo "<script>alert('Invalid Password!');</script>";
+            echo '<script> window.location.href = "../loginform.php"</script>';
         }
     } else {
-        echo "Invalid email";
+        echo "<script>alert('Invalid Email!');</script>";
+        echo '<script> window.location.href = "../loginform.php"</script>';
     }
 }
 
