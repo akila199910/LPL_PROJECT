@@ -53,9 +53,10 @@ if (isset($_POST['login'])) {
                 session_start();
                 $_SESSION['user_id'] = $user['player_id'];
                 $_SESSION['user_email'] = $user['email'];
+                header("Location: ../blog%20posts/playerhome.php"); // Redirect to the player dashboard page
                 
-                if($player_catogary == 'BATSMAN') {
-                    header("Location: ../Players/Batsman/batsmandashboard.php"); // Redirect to the player dashboard page
+                /*if($player_catogary == 'BATSMAN') {
+                    header("Location: ../blog%20posts/playerhome.php"); // Redirect to the player dashboard page
                 exit();
                 }
                 
@@ -72,7 +73,7 @@ if (isset($_POST['login'])) {
                 elseif($player_catogary == 'BOWLER') {
                     header("Location: ../Players/Bowler/bowllerdashboard.php"); // Redirect to the player dashboard page
                 exit();
-                }
+                }*/
 
 
             } else{
