@@ -4,7 +4,6 @@ mysqli_select_db($conn, "lplsystem");
 session_start();
 $logged_player_id = $_SESSION['user_id'];
 
-$posts_visibility = isset($_POST['posts_visibility']) ? $_POST['posts_visibility'] : 'all'; // Set a default value if not provided
 
 ?>
 
@@ -121,38 +120,7 @@ $posts_visibility = isset($_POST['posts_visibility']) ? $_POST['posts_visibility
 		.post form .content .details {
 			margin: -3px 0 0 12px;
 		}
-		.postedit{
-			padding: 0px;
-			float: right;
-			margin-top: -45px;
-			
-		}
-
-		.editbtn {
-			border: none;
-			color: white;
-			padding: 0px 0px;
-			text-align: center;
-			text-decoration: none;
-			width: 45px;
-			height: 45px;
-			margin-right: px;
-			border-radius: 50px;
-			background-color: #c7c8c9;
-			color: black;
-			border: 3px solid #f2f2f2;
-		}
-
-		.editbtn img {
-    		width: 94%; 
-    		height: auto; 
-    		border-radius: 50%;
-		}
-
-		.editbtn:hover {
-			background-color: #d64747;
-			box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-		}
+		
 
 		.heartbtn {
 			border: none;
@@ -203,15 +171,7 @@ $posts_visibility = isset($_POST['posts_visibility']) ? $_POST['posts_visibility
 			
 		}
 
-		
-    
-
-		
-		
-
-		.post form .content .deletebtn {
-			margin: -3px 0 0 12px;
-		}
+	
 
 		form :where(p, button) {
 			width: 100%;
@@ -259,68 +219,6 @@ $posts_visibility = isset($_POST['posts_visibility']) ? $_POST['posts_visibility
 			/* Add cursor pointer */
 		}
 
-		/* Popup styling */
-		.popup {
-			display: none;
-			position: fixed;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			width: 500px;
-			/* Set the width of the popup */
-			height: auto;
-			/* Set the height of the popup */
-			padding: 20px;
-			background: #fff;
-			border-radius: 10px;
-			box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-			z-index: 1000;
-			overflow: auto;
-		}
-
-		.overlay {
-			display: none;
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: rgba(0, 0, 0, 0.5);
-			z-index: 999;
-		}
-
-		.btn-close {
-			position: absolute;
-			top: 10px;
-			right: 10px;
-			cursor: pointer;
-		}
-
-		.btn-upload {
-
-
-			border: none;
-			color: white;
-			padding: 0px 0px;
-			text-align: center;
-			text-decoration: none;
-			font-size: 16px;
-			min-width: 250px;
-			width: 70%;
-			height: 60px;
-			border-radius: 50px;
-			margin-bottom: 20px;
-			margin-top: 20px;
-			background-color: #f2f2f2;
-			color: black;
-			border: 3px solid #f2f2f2;
-		}
-
-		.btn-upload:hover {
-			background-color: #e0e0e0;
-			box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-		}
-
 		@keyframes likeAnimation {
 			0% {
 				transform: scale(1);
@@ -363,33 +261,7 @@ $posts_visibility = isset($_POST['posts_visibility']) ? $_POST['posts_visibility
 	</style>
 
 	<script>
-		async function togglePopup() {
-			var popup = document.getElementById('popup');
-			var overlay = document.getElementById('overlay');
-
-			// Fetch the content of the second HTML
-			try {
-				const response = await fetch('Create%20Post/Createpost.php');
-				const data = await response.text();
-				document.getElementById('popup-content').innerHTML = data;
-
-				// Show the popup and overlay
-				popup.style.display = 'block';
-				overlay.style.display = 'block';
-			} catch (error) {
-				console.error('Error:', error);
-			}
-		}
-
-
-		function closePopup() {
-			var popup = document.getElementById('popup');
-			var overlay = document.getElementById('overlay');
-			popup.style.display = 'none';
-			overlay.style.display = 'none';
-			location.reload();
-		}
-
+	
 		function likePost(postId) {
 			const likeBtn = document.getElementById('likeBtn_' + postId);
 			const likeCountElement = document.getElementById('likeCount_' + postId);
@@ -425,124 +297,18 @@ $posts_visibility = isset($_POST['posts_visibility']) ? $_POST['posts_visibility
 <body>
 
 	<div id="blog-container" class="container mt-5">
-		<div class="row mt-3">
-			<div class="col-8">
-				<center><button class="btn-upload" onclick="togglePopup(); event.stopPropagation(); return false;">
-						<div class="upload">
-							<h5>Create Your own post <img src="icons/gallery.svg" alt="gallery" width="30px"></h5>
-						</div>
-			</div>
-			<div class="col-4">
-				</button></center>
-				<form action="" method="POST" id="visibilityForm">
-					<label for="Showing">Showing</label>
-					<select name="posts_visibility" onchange="document.getElementById('visibilityForm').submit()">
-						<option value="all" <?php echo ($posts_visibility == 'all') ? 'selected' : ''; ?>>All</option>
-						<option value="team" <?php echo ($posts_visibility == 'team') ? 'selected' : ''; ?>>Team</option>
-						<option value="my" <?php echo ($posts_visibility == 'my') ? 'selected' : ''; ?>>My</option>
-					</select>
-					<label for="posts">Posts</label>
-					<noscript><input type="submit"></noscript>
-				</form>
-			</div>
-		</div>
-
-
-		<!-- Popup content -->
-		<div id="popup" class="popup">
-			<button onclick="closePopup()" class="btn-close"></button>
-			<div id="popup-content"></div>
-		</div>
-
-		<!-- Overlay to darken the background -->
-		<div id="overlay" class="overlay"></div>
-
-
+		
 		<?php
 
 		// Initial number of posts to load
 		$posts_per_page = 10;
 
-		if (isset($_POST['submit'])) {
-			$posts_visibility = $_POST['posts_visibility'];
-		}
-
-		if ($posts_visibility == 'my') {
-
-
-			$sql = "SELECT post_id, player_id, post_text, posted_date, post_img, likes_count 
-                  FROM posts 
-                  WHERE player_id = $logged_player_id 
-                  ORDER BY post_id DESC 
-                  LIMIT $posts_per_page";
-			$result = $conn->query($sql);
-
-			
-			//for Own post delete button
-			$own_post = true;
-
-
-		} else if ($posts_visibility == "team") {
-			$sql_team = "SELECT player_batting_id, team_id 
-                  FROM batsman 
-                  WHERE player_batting_id = $logged_player_id";
-			$result_team = $conn->query($sql_team);
-
-			$logged_player_team_id = 0; // Set a default value
 		
-			if ($result_team->num_rows > 0) {
-				// Output data of each row
-				while ($rowbatsman = $result_team->fetch_assoc()) {
-					$logged_player_team_id = $rowbatsman['team_id'];
-				}
-			}
-
-			$sql1 = "SELECT player_batting_id AS player_id FROM batsman WHERE team_id = $logged_player_team_id
-                  UNION
-                  SELECT player_bowlling_id AS player_id FROM bowler WHERE team_id = $logged_player_team_id
-                  UNION
-                  SELECT player_al_id AS player_id FROM allrounder WHERE team_id = $logged_player_team_id
-                  UNION
-                  SELECT player_keeping_id AS player_id FROM wicketkeeper WHERE team_id = $logged_player_team_id
-                  GROUP BY player_id;";
-
-			$result1 = $conn->query($sql1);
-
-
-			if ($result1->num_rows > 0) {
-				$team_player_ids = array(); // Initialize an array to store player IDs
-		
-				while ($row = $result1->fetch_assoc()) {
-					$team_player_ids[] = $row['player_id'];
-				}
-
-				$team_player_ids_str = implode(',', $team_player_ids);
-
-			} else {
-				$team_player_ids_str = 0; //null data error corrected using default variable
-			}
-
-
-
-			$sql = "SELECT post_id, player_id, post_text, posted_date, post_img, likes_count 
-                  FROM posts 
-                  WHERE player_id IN ($team_player_ids_str)
-                  ORDER BY post_id DESC 
-                  LIMIT $posts_per_page";
-			$result = $conn->query($sql);
-
-
-
-
-
-		} else {
 			$sql = "SELECT post_id,player_id, post_text, posted_date, post_img, likes_count 
                   FROM posts 
                   ORDER BY post_id DESC 
                   LIMIT $posts_per_page";
 			$result = $conn->query($sql);
-
-		}
 
 
 
@@ -562,21 +328,8 @@ $posts_visibility = isset($_POST['posts_visibility']) ? $_POST['posts_visibility
 
 
 				echo '<div class="post">
-                    <div class="container">';
-					
-					if ($player_id == $logged_player_id){
-					
-					echo '<div class="postedit">
-							
-							<form method="post" action="delete.php">
-							<!--<button type="submit" name="edit_button" class="editbtn">🖊️</button>-->
-							<button type="submit" name="delete_button" class="editbtn"><img src="icons/Deletebtn.png" alt="" width="60px" height="47px"></button>
-							<input type="hidden" name="post_id" value="' . $post_id . '">
-							</form>
-					</div>';
-
-					}	
-                    echo '<div class="wrapper">
+                    <div class="container">
+						<div class="wrapper">
                             <form>
                                 <div class="content">
                                     <div class="profile-picture">
@@ -632,7 +385,6 @@ $posts_visibility = isset($_POST['posts_visibility']) ? $_POST['posts_visibility
 		// Track the current page and posts per page
 		let currentPage = 1;
 		const postsPerPage = <?php echo $posts_per_page; ?>;
-		let visibility = '<?php echo $posts_visibility; ?>';
 
 		// Function to load more posts using AJAX
 		function loadMorePosts() {
@@ -643,7 +395,7 @@ $posts_visibility = isset($_POST['posts_visibility']) ? $_POST['posts_visibility
 
 			// Use AJAX to fetch more posts from the server
 			const xhr = new XMLHttpRequest();
-			xhr.open('GET', `load-more-posts.php?page=${currentPage}&visibility=${visibility}`, true);
+			xhr.open('GET', `guest-load-more-posts.php?page=${currentPage}`, true);
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState == 4 && xhr.status == 200) {
 					// Append the new posts to the container

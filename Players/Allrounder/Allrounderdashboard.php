@@ -127,6 +127,20 @@ a{
     background: radial-gradient(#fff,#5960de);
     height: 500vh;
 }
+/* Add a left margin to the "page content" that matches the width of the sidebar (130px) */
+#main {
+  margin-left: 130px;
+  transition: margin-left 0.5s;
+  overflow: hidden;
+  height: 91vh;
+}
+
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {
+  #main {
+    margin-left: 0;
+  }
+}
 </style>
 </head>
 <div class="header">
@@ -146,7 +160,7 @@ a{
 <nav class="w3-sidebar w3-bar-block w3-tiny w3-hide-small w3-center">
   <!-- Avatar image in top left corner -->
   
-  <a href="../Blog Posts/Posts/blog.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+  <a href="../../blog%20posts/playerhome.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
     <i class="fa fa-home w3-xlarge" style="color:white"></i>
     <p style="color:antiquewhite">Home</p>
   </a>
@@ -197,113 +211,10 @@ a{
 
   </div>
 </div>
+<div id="main">
 
-<!-- Page Content -->
-<div class="w3-padding-large" id="main">
-  <!-- Header/Home -->
-  <header class="w3-container w3-padding-32 w3-center w3-text-black">
-    <h1 class="w3-xxxlarge" id="Allrounderdashboard.php">LPL-Lanka Premier League</h1>
-    <img src="" alt="profilephoto" width="300" height="300">
-  </header>
+  <iframe src="allroundercontain.php" width="100%" height="100%" frameborder="0"></iframe>
 
-  <!--Player Informations Section -->
-  <div class="w3-content w3-justify w3-text-black w3-padding-64" id="playerprofile.php">
-    
-    <hr style="width:200px" class="w3-opacity">
-    <!--p><strong>Nationality&nbsp:&nbsp</strong><span id="playerLevel">&nbspEngland</span></p-->
-    <table class="w3-text-black w3-table">
-        <tr><td>Name</td><td><?php
-        echo $playerName;
-        ?></td></tr>
-        <tr><td>Country</td><td><?php
-        echo $playerCountry;
-        ?></td><tr>
-        <tr><td>Age</td><td><?php
-        // Date of birth
-        $playerdob;
-
-        // Create a DateTime object from the date of birth
-        $birthDate = new DateTime($playerdob);
-
-        // Get the current date
-        $currentDate = new DateTime();
-
-        // Calculate the difference between the two dates
-        $interval = $currentDate->diff($birthDate);
-
-        // Get the years from the interval
-        $age = $interval->y;
-
-        // Output the calculated age
-        echo  $age;
-        ?>
-        </td></tr>
-        <tr><td>Role</td><td><?php
-        echo $playercatogary;
-        ?></td></tr>
-    </table>
-    
-    <div class="w3-row w3-center w3-padding-16 w3-section w3-text-black">
-    <div class="w3-quarter w3-section">
-        <span class="w3-xlarge"><?php
-        echo $playerlpl_nom;
-        ?></span><br>
-        LPL Matches
-      </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge"><?php
-        echo $playert20_nom;
-        ?></span><br>
-        T-20 Matches
-      </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge"><?php
-        echo $playerruns;
-        ?></span><br>
-        Runs
-      </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge"><?php
-        echo $playerhigh_score;
-        ?></span><br>
-        Highest Score
-      </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge"><?php
-        echo $playernot_out;
-        ?></span><br>
-        Not Out
-      </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge"><?php
-        echo $playerfifty;
-        ?></span><br>
-        Half Centuries
-      </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge"><?php
-        echo $playerhundred;
-        ?></span><br>
-        Centuries
-      </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge"><?php
-        echo $playerb_average;
-        ?></span><br>
-        Average
-      </div>
-    </div>
-
-    <!-- Footer -->
-  <footer class="w3-content w3-padding-64 w3-text-dark-grey w3-xlarge">
-    <a href="https://www.facebook.com/srilankacricket?mibextid=ZbWKwL"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
-    <a href="https://instagram.com/officialslc?igshid=YTQwZjQ0NmI0OA=="><i class="fa fa-instagram w3-hover-opacity"></i></a>
-    <a href="https://www.youtube.com/@srilankacricket"><i class="fa fa-youtube w3-hover-opacity"></i></a>
-    <a href="http://www.srilankacricket.lk"><i class="fa fa-google w3-hover-opacity"></i></a>
-  <!-- End footer -->
-  </footer>
-
-<!-- END PAGE CONTENT -->
 </div>
 
 </body>
