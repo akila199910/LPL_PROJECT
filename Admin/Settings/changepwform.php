@@ -53,6 +53,148 @@ p{
     height: 500vh;
 }
 
+
+.container{
+
+    align-items: center;
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700&display=swap');
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.contact{
+    min-height: 100vh;
+    background-color: radial-gradient(#fff,#5960de);
+    text-align: center;
+}
+
+.container2{
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.container2 h2{
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.contact-wrapper{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+}
+
+.contact-form{
+    text-align: left;
+}
+
+.contact-form h3{
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+input,textarea{
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+input:focus,
+textarea:focus{
+    outline: none;
+    box-shadow: 0 0 8px #bbb;
+}
+
+button{
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover{
+    background-color: #45a049;
+}
+
+.contact-info{
+    text-align:left ;
+}
+
+.contact-info h3{
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-info p{
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.contact-info i{
+    color: #4caf50;
+    margin-right:10px;
+}
+
+
+
+@media screen and(max-width:768px){
+    .container2{
+        padding: 20px;
+    }
+    .contact-wrapper{
+        grid-template-columns: 1fr;
+    }
+} 
+
+.success {
+    background-color: #9fd2a1;
+    padding: 5px 10px;
+    text-align: center;
+    color: #326b07;
+    border-radius: 3px;
+    font-size: 14px; 
+    margin-top: 10px;
+}
+
+.bt{
+    display: inline-block;
+    background: #ff523b;
+    
+    padding: 8px 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 30px;
+    transition: background 0.5s;
+    margin-top: 30px;
+    
+    
+}
+
+.bt:hover{
+    background: #5960de;
+}
+
+
+
 .card {
     width: 50%;
     max-width: 3000px;
@@ -71,24 +213,12 @@ p{
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.container{
 
-    align-items: center;
-}
-
-
-.bt{
-    display: inline-block;
-    background: #ff523b;
-    
-    padding: 8px 30px;
-    margin: -40px 0;
-    border-radius: 30px;
-    transition: background 0.5s;
-}
-
-.bt:hover{
-    background: #5960de;
+.col-8 {
+    flex: 1;
+    text-align: center; /* Center the text */
+    color: #fff;
+    font-size: 20px;
 }
     </style>
 </head>
@@ -97,7 +227,8 @@ p{
 
 
 <body>
-
+<section class="contact">
+<div class="container2">
 <div class="navbar row">
         <div class="logo col-4" >
            <img src="../../images/lpllogo.png" width="125px"> 
@@ -130,12 +261,13 @@ p{
         <span id="error" style="color: red;"></span>
         
         
-        <tr><td><button type="submit" value="Change Password" class="bt">Change Password</button></td>
+        <tr><td><button type="submit" value="Change Password" class="bt" >Change Password</button></td>
             </tr>
-        
+            <tr><td><button type="cancel" value="Cancel" class="bt" >Change Password</button></td>
+            </tr>
         </table>
     </form>
-  <div class="bt"> <a href="settings.php" >Cancel</a></div>
+    
 </div>
 
     <script>
