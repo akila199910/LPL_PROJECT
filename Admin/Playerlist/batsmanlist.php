@@ -147,7 +147,8 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
 
 .header{
     background: radial-gradient(#fff,#5960de);
-    height: 500vh;
+    height:500vh;
+    
 }
 
 
@@ -223,6 +224,7 @@ p{
     color: #fff;
     text-align:center;
 }
+
 
 
 </style>

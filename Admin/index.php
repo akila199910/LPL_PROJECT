@@ -43,7 +43,7 @@ if (isset($_SESSION['admin_id'])) {
 
         .header{
     background: radial-gradient(#fff,#5960de);
-    height: 100%;
+    height: 500vh;
 }
 
 .navbar {
