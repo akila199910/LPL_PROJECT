@@ -212,7 +212,7 @@ h1 {
                             <label> Profile Photo</label>
                         </div>
                         <div class="form-group col-7">
-                            <input type="file" class="form-control" name="profile_photo">
+                            <input type="file" class="form-control" name="profile_photo" accept=".jpg, .jpeg, .png" required>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -237,7 +237,7 @@ h1 {
                             <label for="nicphoto"> Identity Photo</label>
                         </div>
                         <div class="form-group col-5">
-                            <input type="file" class="form-control" name="identity_photo" required>
+                            <input type="file" class="form-control" name="identity_photo" accept=".jpg, .jpeg, .png" required>
                         </div>
                     </div>
 
@@ -246,7 +246,7 @@ h1 {
                             <label for="nicphoto"> Certificate Photo</label>
                         </div>
                         <div class="form-group col-5">
-                            <input type="file" class="form-control" name="certificatephoto">
+                            <input type="file" class="form-control" name="certificatephoto" accept=".jpg, .jpeg, .png" >
                         </div>
                     </div>
 
@@ -337,39 +337,51 @@ if (isset($_POST['submit'])) {
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 
+$file_name1 = $_FILES['identity_photo']['name'];
+$file_type1 = $_FILES['identity_photo']['type'];
+$file_size1 = $_FILES['identity_photo']['size'];
+$temp_name1 = $_FILES['identity_photo']['tmp_name'];
+// Generate a unique filename
+$imageFileType1 = strtolower(pathinfo($file_name1, PATHINFO_EXTENSION));
+$newFileName1 = uniqid() . '_' . time() . '.' . $imageFileType1;
 
-    $file_name1=$_FILES['identity_photo']['name'];
-    $file_type1=$_FILES['identity_photo']['type'];
-    $file_size1=$_FILES['identity_photo']['size'];
-    $temp_name1=$_FILES['identity_photo']['tmp_name'];
-    $upload_to="Img/idimg/";
-    move_uploaded_file($temp_name1,$upload_to.$file_name1);
+$upload_to1 = "Img/idimg/";
+move_uploaded_file($temp_name1, $upload_to1 . $newFileName1);
+   
+   
+   
+  
+$file_name2 = $_FILES['certificatephoto']['name'];
+$file_type2 = $_FILES['certificatephoto']['type'];
+$file_size2 = $_FILES['certificatephoto']['size'];
+$temp_name2 = $_FILES['certificatephoto']['tmp_name'];
+// Generate a unique filename
+$imageFileType2 = strtolower(pathinfo($file_name2, PATHINFO_EXTENSION));
+$newFileName2 = uniqid() . '_' . time() . '.' . $imageFileType2;
 
-    $file_name2=$_FILES['certificatephoto']['name'];
-    $file_type2=$_FILES['certificatephoto']['type'];
-    $file_size2=$_FILES['certificatephoto']['size'];
-    $temp_name2=$_FILES['certificatephoto']['tmp_name'];
-    $upload_to="Img/cetiimg/";
-    move_uploaded_file($temp_name2,$upload_to.$file_name2);  
-    //$certificate_photo=$_POST['certificate_photo'];
+$upload_to2 = "Img/cetiimg/";
+move_uploaded_file($temp_name2, $upload_to2 .  $newFileName2);
 
+   
 
-    $file_name3=$_FILES['profile_photo']['name'];
-    $file_type3=$_FILES['profile_photo']['type'];
-    $file_size3=$_FILES['profile_photo']['size'];
-    $temp_name3=$_FILES['profile_photo']['tmp_name'];
-    $upload_to="Img/proimg/";
-    move_uploaded_file($temp_name3,$upload_to.$file_name3); 
-    //$identity_photo = $_POST['identity_photo'];
-    //$certificate_photo = $_POST['certificate_photo'];
-    //$profile_photo = $_POST['profile_photo'];
+$file_name3 = $_FILES['profile_photo']['name'];
+$file_type3 = $_FILES['profile_photo']['type'];
+$file_size3 = $_FILES['profile_photo']['size'];
+$temp_name3 = $_FILES['profile_photo']['tmp_name'];
+ // Generate a unique filename
+ $imageFileType3 = strtolower(pathinfo($file_name3, PATHINFO_EXTENSION));
+ $newFileName3 = uniqid() . '_' . time() . '.' . $imageFileType3;
+
+$upload_to3 = "Img/proimg/";
+move_uploaded_file($temp_name3, $upload_to3 .  $newFileName3);
+
     
   // Generate a verification code (you can use a stronger method if needed)
   $verif_code = bin2hex(random_bytes(16));
 
   // Insert the user data into the database with the verification code
   $sql3 = "INSERT INTO register (first_name, last_name, email, password, country, dob, identity, identity_number, catogary, capped, additional_details, profile_photo, identity_photo, certificate_photo,verification, verification_code)
-  VALUES ('$first_name','$last_name','$email','$hashed_password','$country','$dob','$identity','$identity_number','$catogary','$capped','$additional_details','$file_name3','$file_name1','$file_name2', 0, '$verif_code')";
+  VALUES ('$first_name','$last_name','$email','$hashed_password','$country','$dob','$identity','$identity_number','$catogary','$capped','$additional_details','$newFileName3','$newFileName1','$newFileName2', 0, '$verif_code')";
 
     $query=mysqli_query($conn, $sql3);
 

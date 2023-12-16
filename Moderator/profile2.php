@@ -35,6 +35,20 @@ if (isset($_POST['view'])) {
 
 //Approve reject list
 if (isset($_POST['approve'])) {
+
+  $name = $_POST['name'];
+  $email=$_POST['email'];
+
+  $subject = "Approval Notification"; 
+  $message = "Dear $name, \n\nYour registration has been approved.";
+   $headers = "From: premierleaguesrilanka@gmail.com"; 
+ 
+   
+   mail($email, $subject, $message, $headers);
+ 
+
+
+
   session_start();
   $modaretor_id=$_SESSION['moderators_id'];
 
@@ -92,6 +106,18 @@ mysqli_query($conn, $sqlInsert);
     
 
 if (isset($_POST['reject'])) {
+
+  $name = $_POST['name'];
+  $email=$_POST['email'];
+
+  $subject = "Approval Notification"; 
+  $message = "Dear $name, \n\nYour registration has been rejected.";
+   $headers = "From: premierleaguesrilanka@gmail.com"; 
+ 
+   
+   mail($email, $subject, $message, $headers);
+ 
+
   session_start();
   $modaretor_id=$_SESSION['moderators_id'];
 
@@ -100,7 +126,7 @@ if (isset($_POST['reject'])) {
     mysqli_query($conn, $sq2);
     $sql3 = "UPDATE register SET moderators_id = '$modaretor_id' WHERE player_id = $player_id";
     mysqli_query($conn, $sql3);
-    header("Location:/Moderator/ReviewPage.php");
+    header("Location:ReviewPage.php");
 
 }
 
@@ -347,12 +373,16 @@ a{
 
         <form action="" method="POST">
                 <input type="hidden" name="player_id" value="<?php echo $row['player_id']; ?>">
+                <input type="hidden" name="name" value="<?php echo $first_name." ".$last_name; ?>">
+                <input type="hidden" name="email" value="<?php echo $email?>">
                 <button type="submit" name="approve" class="btn">Approve</button>
               </form>
         
         
               <form action="" method="POST">
                 <input type="hidden" name="player_id" value="<?php echo $row['player_id']; ?>">
+                <input type="hidden" name="name" value="<?php echo $first_name." ".$last_name; ?>">
+                <input type="hidden" name="email" value="<?php echo $email?>">
                 <button type="submit" name="reject" class="btn">Reject</button>
               </form>
 

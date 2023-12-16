@@ -2,7 +2,7 @@
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
-if(isset($_GET['token'])){
+if (isset($_GET['token'])) {
     $token = $_GET['token'];
 
     $sql_check_token = "SELECT * FROM register WHERE verification_code = '$token'";
@@ -53,7 +53,8 @@ if(isset($_GET['token'])){
                 background-color: #0056b3;
             }
         </style>
-
+        
+   
 
 
         </head>
@@ -61,11 +62,33 @@ if(isset($_GET['token'])){
         <div class="container">
         <h1>Reset Password</h1>
             <form action="password_reset_handler.php" method="post">
-                <input type="hidden" name="token" value="'.$token.'">
-                <input type="password" name="password" placeholder="Enter new password" required>
-                <input type="password" name="confirm_password" placeholder="Confirm new password" required>
+                <input type="hidden" name="token" value="' . $token . '">
+                <input type="password" name="password"  id="password" placeholder="Enter new password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                <input type="password" name="confirm_password" id="confirmPassword" placeholder="Confirm new password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required onkeyup="checkPasswordMatch()">
+                <span id="passwordMatchError" style="color: red;"></span>
+                <br><br>
                 <button type="submit" name="reset_password">Reset Password</button>
             </form>
+            <script>
+            function checkPasswordMatch() {
+                var password = document.getElementById("password").value;
+                var confirmPassword = document.getElementById("confirmPassword").value;
+        
+                if (password !== confirmPassword) {
+                    document.getElementById("passwordMatchError").innerHTML = "Passwords do not match";
+                    submitButton.disabled = true;
+                } else {
+                    document.getElementById("passwordMatchError").innerHTML = "";
+                    submitButton.disabled = false;
+        
+                }
+            }
+        
+        
+        
+            
+        </script>
+        
             </div>
         </body>
         </html>
@@ -76,4 +99,3 @@ if(isset($_GET['token'])){
 }
 
 $conn->close();
-?>
