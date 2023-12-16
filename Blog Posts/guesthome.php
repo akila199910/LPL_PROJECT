@@ -45,10 +45,7 @@ $sql2 = "SELECT register.player_id, register.first_name,
             $playerhundred =  $row2["hundred"];
             $playerbased_price =  $row2["based_price"];
         }
-    } else {
-        echo "No matching data found for player ID: $player_id<br>";
-    }
-   
+    } 
 
   $team_query = "SELECT * FROM team";
     $result = mysqli_query($conn, $team_query);
@@ -57,7 +54,7 @@ $sql2 = "SELECT register.player_id, register.first_name,
 <!DOCTYPE html>
 <html>
 <head>
-<title>BatsmanDashboard</title>
+<title>Guest</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -215,7 +212,7 @@ a{
 <div id="main">
 
   
-  <iframe src="http://localhost/LPL_PROJECT/LPL_PROJECT/Blog%20Posts/blog.php" width="100%" height="100%" frameborder="0"></iframe>
+  <iframe src="guestblog.php" width="100%" height="100%" frameborder="0"></iframe>
 
 </div>
 

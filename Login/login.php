@@ -148,7 +148,7 @@ if (isset($_POST['login'])) {
             $_SESSION['guest_email'] = $guest['email'];
             // ... other guest data
 
-            header("Location: ../Guest/guest_dashboard.php"); // Redirect to the guest dashboard page
+            header("Location: ../blog%20posts/guesthome.php"); // Redirect to the guest dashboard page
             exit();
         }  else {
             echo "Invalid password";

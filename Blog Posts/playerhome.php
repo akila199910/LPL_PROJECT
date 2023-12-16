@@ -45,10 +45,7 @@ $sql2 = "SELECT register.player_id, register.first_name,
             $playerhundred =  $row2["hundred"];
             $playerbased_price =  $row2["based_price"];
         }
-    } else {
-        echo "No matching data found for player ID: $player_id<br>";
-    }
-//aluth code eka
+    } 
 $Catogary= "SELECT catogary FROM register WHERE player_id=$player_id";
         $CatogaryRsult=mysqli_query($conn, $Catogary);
         
