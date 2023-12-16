@@ -3,10 +3,6 @@ include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
 
-//Auto logout without session
-session_start();
-
-if (isset($_SESSION['admin_id'])) {
 
   // Select records where sold is NULL in batsman and active is 1 in auction
 $sql = "SELECT r.*, b.sold AS batsman_sold, b.gotoauction AS batsman_gotoauction, b.team_id AS batsman_team_id,
@@ -25,11 +21,6 @@ OR (alr.sold IS NOT NULL AND alr.gotoauction = 1);
 ";
 $result = mysqli_query($conn, $sql);
 
-
-
-} else {
-    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
-}
 
 
 

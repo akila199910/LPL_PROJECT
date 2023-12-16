@@ -120,7 +120,7 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
 
 
 } else {
-    header("Location: /LPL_PROJECT/LPL_PROJECT/Admin/logout.php");
+    header("Location: logout.php");
 }
 
 

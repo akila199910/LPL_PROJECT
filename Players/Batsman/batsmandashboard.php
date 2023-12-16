@@ -153,12 +153,12 @@ a{
     <p style="color:antiquewhite">Live Auction</p>
   </a>
 
-  <a href="/LPL_PROJECT/LPL_PROJECT/Players/contract.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+  <a href="../contract.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
     <i class="fa fa-handshake-o w3-xlarge" style="color:white"></i>
     <p style="color:antiquewhite">Contract</p>
   </a>
 
-  <a href="/LPL_PROJECT/LPL_PROJECT/contact_us.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+  <a href="../../contact_us.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
     <i class="fa fa-envelope w3-xlarge" style="color:white"></i>
     <p style="color:antiquewhite">Contact</p>
   </a>
@@ -168,7 +168,7 @@ a{
     <p style="color:antiquewhite">Account Settings</p>
   </a>
 
-  <a href="logout.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+  <a href="../logout.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
     <i class="fa fa-sign-out w3-xlarge" style="color:white"></i>
     <p style="color:antiquewhite">Logout</p>
   </a>
@@ -184,7 +184,7 @@ a{
     <a href="batsmandashboard.php" class="w3-bar-item w3-button" style="width:25% !important">Perfomance</a>
     <a href="#" class="w3-bar-item w3-button" style="width:25% !important">Live Auction</a>
     <a href="contract.php" class="w3-bar-item w3-button" style="width:25% !important">Contract</a>
-    <a href="/LPL_PROJECT/LPL_PROJECT/contact_us.php" class="w3-bar-item w3-button" style="width:25% !important">Contact</a>
+    <a href="../contact_us.php" class="w3-bar-item w3-button" style="width:25% !important">Contact</a>
     <a href="#" class="w3-bar-item w3-button" style="width:25% !important">Account Settings</a>
     <a href="logout.php" class="w3-bar-item w3-button" style="width:25% !important">Log Out</a>
 

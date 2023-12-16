@@ -125,8 +125,8 @@ p{
         
         <nav>
             <ul>
-                <li><i class="fa-solid fa-laptop"></i><a href="">Dashboard</a></li>
-                <li><i class="fa-solid fa-right-from-bracket"></i><a href="about.php">Log Out</a></li>
+                <li><i class="fa-solid fa-laptop"></i><a href="Moderator_dashboard/moderator_dashboard.php">Dashboard</a></li>
+                <li><i class="fa-solid fa-right-from-bracket"></i><a href="Moderator_dashboard/logout.php">Log Out</a></li>
                 
             </ul>
         </nav>

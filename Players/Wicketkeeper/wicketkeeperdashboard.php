@@ -152,12 +152,12 @@ a{
     <p style="color:antiquewhite">Live Auction</p>
   </a>
 
-  <a href="contract.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+  <a href="../contract.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
     <i class="fa fa-handshake-o w3-xlarge" style="color:white"></i>
     <p style="color:antiquewhite">Contract</p>
   </a>
 
-  <a href="../contact_us.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+  <a href="../../contact_us.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
     <i class="fa fa-envelope w3-xlarge" style="color:white"></i>
     <p style="color:antiquewhite">Contact</p>
   </a>
@@ -167,7 +167,7 @@ a{
     <p style="color:antiquewhite">Account Settings</p>
   </a>
 
-  <a href="logout.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+  <a href="../logout.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
     <i class="fa fa-sign-out w3-xlarge" style="color:white"></i>
     <p style="color:antiquewhite">Logout</p>
   </a>

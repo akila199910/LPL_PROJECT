@@ -18,7 +18,7 @@ if (isset($_SESSION['guest_id'])) {
 <body>
     <h1> Guest dashboard </h1>
 
-    <a href="auctionpage.php"><button>Live Auction</button></a>
+    <a href="Bid/auction.php"><button>Live Auction</button></a>
 
     <a href="logout.php"><input type="button" name="logout" value="logout"></a>
 
