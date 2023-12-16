@@ -2,7 +2,7 @@
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 session_start();
-$logged_player_id = $_SESSION['user_id'];
+//$logged_player_id = $_SESSION['guest_id'];
 
 
 ?>

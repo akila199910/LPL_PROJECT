@@ -4,11 +4,11 @@ session_start();
 include "conn.php";
 mysqli_select_db($conn,"lplsystem");
 
- if(!isset($_SESSION['user_id'])) {
+ if(!isset($_SESSION['guest_id'])) {
     header("Location: logout.php");
     exit(); // It's recommended to stop script execution after redirection
 }
-$player_id = $_SESSION['user_id'];
+/*$player_id = $_SESSION['user_id'];
 // Fetch player's name based on the ID
 $sql2 = "SELECT register.player_id, register.first_name,
     register.last_name,register.country,register.dob,register.profile_photo,
@@ -48,7 +48,7 @@ $sql2 = "SELECT register.player_id, register.first_name,
     } 
 
   $team_query = "SELECT * FROM team";
-    $result = mysqli_query($conn, $team_query);
+    $result = mysqli_query($conn, $team_query);*/
 ?>
 
 <!DOCTYPE html>
@@ -155,25 +155,19 @@ a{
   <!-- Avatar image in top left corner -->
   
 
-  <a href="playerhome.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+  <a href="guesthome.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
     <i class="fa fa-home w3-xlarge" style="color:white"></i>
     <p style="color:antiquewhite">Home</p>
   </a>
 
-  <a href="../Players/Batsman/batsmandashboard.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
-    <i class="fa fa-bar-chart w3-xlarge" style="color:white"></i>
-    <p style="color:antiquewhite">Performance</p>
-  </a>
+
   
   <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
     <i class="fa fa-gavel w3-xlarge" style="color:white"></i>
     <p style="color:antiquewhite">Live Auction</p>
   </a>
 
-  <a href="../Players/contract.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
-    <i class="fa fa-handshake-o w3-xlarge" style="color:white"></i>
-    <p style="color:antiquewhite">Contract</p>
-  </a>
+
 
   <a href="../contact_us.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
     <i class="fa fa-envelope w3-xlarge" style="color:white"></i>
