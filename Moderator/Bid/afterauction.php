@@ -177,7 +177,8 @@ h4 {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #c7e0de; 
+    background: radial-gradient(#fff,#5960de);
+    height: 100%; 
     background-size: cover; /* Ensuring the image covers the container */
     background-position: center; /* Centering the image */
 }
