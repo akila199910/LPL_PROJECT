@@ -1,23 +1,12 @@
-<?php
-include "conn.php";
-mysqli_select_db($conn,"lplsystem");
 
-?>
+
 <!DOCTYPE html>
-<html lang="en">
-<meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <title>Settings</title>
-    <style>
-     .navbar {
+<html>
+<head>
+    <title>Change Password</title>
+   <link rel="stylesheet" type="text/css" href="style.css" />
+   <style>
+    .navbar {
     display: flex;
     align-items: center;
     padding: 20px;
@@ -101,14 +90,14 @@ p{
 .bt:hover{
     background: #5960de;
 }
-
-      </style>
+    </style>
 </head>
+
 <div class="header">
+
+
 <body>
-<?php
-include('sidebar.php');
-?>
+
 <div class="navbar row">
         <div class="logo col-4" >
            <img src="../../images/lpllogo.png" width="125px"> 
@@ -120,20 +109,45 @@ include('sidebar.php');
     </div>
     
     <br><br><br><br>
+    <div class=bg>
     <div class="card" data-tilt>
-    
-                <h1 style="text-align=center color: #fff;"> Settings</h1>
-                 <br><br>
-            <ul>
-                <li class="bt"><a href="changepwform.php">Change Your Password</a></li>
-                <br><br><br>
-                <li class="bt"><a href="#">Edit Profile</a></li>
-                <br><br><br>
-                <li class="bt"><a href="#">Profile</a></li>
 
-            </ul>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  </div>
+    <h2>Change Password</h2>
+    <form id="passwordForm" action="changepw.php" method="post">
+        <table>
+        <tr><td><label for="oldPassword">Old Password:</label></td>
+        
+        <td><input type="password" name="oldPassword" placeholder="old Password" required></td></tr>
+        
+        <tr><td><label for="newPassword">New Password:</label></td>
+        
+        <td><input type="password" name="newPassword" placeholder="new Password" required></td></tr>
+        
+        <tr><td><label for="confirmPassword">Confirm Password:</label></td>
+        
+        <td><input type="password" name="confirmPassword" placeholder="confirm Password" required></td></tr>
+        
+        <span id="error" style="color: red;"></span>
+        
+        
+        <tr><td><button type="submit" value="Change Password" class="bt">Change Password</button></td>
+            </tr>
+        
+        </table>
+    </form>
+  <div class="bt"> <a href="settings.php" >Cancel</a></div>
+</div>
+
+    <script>
+        document.getElementById("passwordForm").addEventListener("submit", function (e) {
+            var newPassword = document.getElementById("newPassword").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (newPassword !== confirmPassword) {
+                e.preventDefault();
+                document.getElementById("error").innerText = "New password and confirm password do not match.";
+            }
+        });
+    </script>
 </body>
 </html>
