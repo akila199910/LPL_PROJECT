@@ -229,7 +229,6 @@ if (isset($_POST['submit'])) {
     }
     else {
         // Handle if the category retrieval fails
-        echo "Failed to retrieve category!";
         exit();
     }
 
