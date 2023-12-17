@@ -5,11 +5,6 @@ mysqli_select_db($conn, "lplsystem");
 // Auto logout without session
 session_start();
 
-if (isset($_SESSION['team_id'])) {
-
-} else {
-  //  header("Location: /logout.php");
-}
 ?>
 
 <!DOCTYPE html>
@@ -58,17 +53,61 @@ if (isset($_SESSION['team_id'])) {
 
 .bt{
     display: inline-block;
-    background: #ff523b;
+    background: #0096FF;
     
     padding: 8px 30px;
     margin: -40px 0;
     border-radius: 30px;
+    border:none;
     transition: background 0.5s;
 }
 
 .bt:hover{
     background: #5960de;
 }
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+}
+
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li i{
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none;
+    color: #555;
+}
+p{
+    color: #fff;
+    text-align:center;
+}
+
 
         </style>
 </head>
@@ -79,10 +118,16 @@ if (isset($_SESSION['team_id'])) {
 <?php
 include('sidebar.php');
 ?></div>
-<nav class="navbar navbar-light justify-content-center fs-3 mb-5"
-     style="background-color: lightblue;width:100%;">
-    LPL - LANKA PREMIER LEAGUE
-</nav>
+<div class="navbar row">
+        <div class="logo col-4" >
+           <img src="../../images/lpllogo.png" width="125px"> 
+        </div>
+
+        <div class="col-8" style="color: #fff; font-size:20px;">   LPL - LANKA PREMIER LEAGUE</div>
+        </nav>
+       
+    </div>
+    <br><br><br><br>
 <div class="content">
     <div class="container">
         <?php
