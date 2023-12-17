@@ -19,38 +19,43 @@
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
+// Query to get the latest player_id from the auction table
 $sql = "SELECT player_id FROM auction ORDER BY auction_id DESC LIMIT 1";
-
-
 $result = mysqli_query($conn, $sql);
 
 if ($result && mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
-    $player_id=$row["player_id"];
-    
-}
+    $player_id = $row["player_id"];
 
-// Query to get the maximum bid_price for each team_id
-$sql = "SELECT team_id, MAX(bid_price) AS max_bid_price FROM bid GROUP BY team_id";
-$result = $conn->query($sql);
+    // Query to get the maximum bid_price for each team_id
+    $sqlb = "SELECT team_id, MAX(bid_price) AS max_bid_price FROM bid WHERE player_id=$player_id GROUP BY team_id";
+    $resultb = $conn->query($sqlb);
 
-// Check if there are results
-if ($result->num_rows > 0) {
-    // Fetch data and format it for JavaScript
-    $data = [];
-    while ($row = $result->fetch_assoc()) {
-        $data[] = ['label' => $row['team_id'], 'value' => $row['max_bid_price']];
+    // Check for errors in the query
+    if (!$resultb) {
+        die("Query failed: " . $conn->error);
     }
 
-    // Encode data to JSON for JavaScript
-    $jsonData = json_encode($data);
+    // Check if there are results
+    if ($resultb->num_rows > 0) {
+        // Fetch data and format it for JavaScript
+        $data = [];
+        while ($rowb = $resultb->fetch_assoc()) {
+            $data[] = ['label' => $rowb['team_id'], 'value' => $rowb['max_bid_price']];
+        }
+
+        // Encode data to JSON for JavaScript
+        $jsonData = json_encode($data);
+    }
 } else {
-    echo "0 results";
+    // No player in the auction table, handle it accordingly
+    $jsonData = json_encode([]); // Empty data for the graph
 }
 
 // Close the connection
 $conn->close();
 ?>
+
 
 
 <!-- JavaScript to render the dynamic bar graph -->
@@ -77,7 +82,7 @@ $conn->close();
         data: {
             labels: labels,
             datasets: [{
-                label: 'Maximum Bid Price',
+                label: '',
                 data: data,
                 backgroundColor: barColors, // Use the predefined colors
                 borderColor: barColors.map(color => color + 'FF'), // Add alpha channel for border color
