@@ -104,6 +104,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>After Auction</title>
+    
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   
 
@@ -183,9 +184,11 @@ h4 {
 }
 
 .winer{
-    background-color: #c7e0de; 
+    background-color: #5960de; 
 
 }
+
+
 
 
 
@@ -193,5 +196,6 @@ h4 {
 
 
 </head>
+
 
 </html>
