@@ -224,6 +224,24 @@ if (isset($_POST['submit'])) {
        
         mysqli_query($conn, $update_query);
 
+        $team_query = "SELECT team_name, email FROM team WHERE id = $team_id";
+$team_result = mysqli_query($conn, $team_query);
+
+if (mysqli_num_rows($team_result) > 0) {
+  while ($row = mysqli_fetch_assoc($team_result)) {
+      $teamname = $row["team_name"];
+      $email = $row["email"];
+  }
+    }
+    
+    $to = $email;
+    $subject = "Team Information";
+    $message = "Hello $teamname,\n\n $player_name is a contract with your team for $price.";
+
+    // Additional headers
+    $headers = "From: premierleaguesrilanka@gmail.com"; 
+    mail($to, $subject, $message, $headers);
+
        /* header("Location: player_dashboard.php");
         exit();*/
     }
