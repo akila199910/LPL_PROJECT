@@ -1,7 +1,6 @@
 
 <?php
-include("navbar.php");
-include("home.php");
+
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
@@ -76,12 +75,77 @@ h1{
     text-align:center;
 }
 
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #4169E1;
+    z-index: 1000;
+    width: 100vw; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+}
+
+
+nav{
+    flex: 1;
+    text-align: right;
+}
+    .navbar {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background-color: #4169E1;
+    }
+
+    nav {
+      flex: 1;
+      text-align: right;
+    }
+
+    nav ul {
+      display: inline-block;
+      list-style-type: none;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    nav ul li i {
+      margin-right: 15px;
+
+    }
+
+    a {
+      text-decoration: none;
+      color: #555;
+    }
+
+    p {
+      color: #fff;
+      text-align: center;
+    }
+
+    
   </style>
 </head>
 <div class="header">
 <body>
 
+<div class="navbar row">
+      <div class="logo col-4">
+        <img src="../../images/lpllogo.png" width="125px">
+      </div>
 
+      <div class="col-8" style="color: #fff; font-size:20px;"> LPL - LANKA PREMIER LEAGUE</div>
+      </nav>
+
+    </div>
+
+    
 <div class="rules">
     <h1 >BID RULES</h1>
 
