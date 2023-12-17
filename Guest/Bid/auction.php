@@ -121,6 +121,11 @@ if (mysqli_num_rows($idResult) > 0) {
       font-weight: bold;
       color: #ce5b;
     }
+
+    .header{
+    background: radial-gradient(#fff,#5960de);
+    height: 500vh;
+}
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -133,6 +138,7 @@ if (mysqli_num_rows($idResult) > 0) {
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Auction</title>
 </head>
+<div class="header">
 <body>
   
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -141,7 +147,7 @@ if (mysqli_num_rows($idResult) > 0) {
       <span class="ntext1"> <?php echo strtoupper($first_name. " ".$last_name)?></span>
     </div>
 
-    <span class="ntext3"><?php/* echo strtoupper($playerName)*/ ?></span>
+    <span class="ntext3"></span>
 
     <div style="font-size: 15px; color: rgb(179, 255, 0);">
       Highest Bid<br>
