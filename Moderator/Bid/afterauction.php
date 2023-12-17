@@ -80,8 +80,7 @@ if ($bid_price > 0) {
                    <h3>' .
         $first_name . ' ' . $last_name . '</h3><br><br>' .
         '<img src="../../Register/Img/proimg/' . $profile_photo . '" alt="Profile Picture" width="150px" height="150px">
-                    <p style="font-size: 25px;">' . $PlayerCatogary . '</p>
-                    <img src="Sad.png" alt="sad" width="60" height="60"> <br>
+                    <p style="font-size: 25px;">' . $PlayerCatogary . '</p> <br>
                     <a href="../Moderator_dashboard/moderator_dashboard.php" class="btn btn-secondary btn-block mt-4">Exit</a>
                 </div>
             </div>';
@@ -164,7 +163,7 @@ if ($bid_price > 0) {
 
         .box {
             text-align: center;
-            padding: 20px;
+            padding: 60px;
             background-color: rgba(255, 255, 245, 0.8);
             /* Adding a semi-transparent background color */
             border-radius: 10px;
