@@ -83,7 +83,7 @@ if ($bid_price > 0) {
                     <p style="font-size: 25px;">' . $PlayerCatogary . '</p>
                     <img src="Sad.png" alt="Sad" width="60" height="60"> 
                     <p style="font-size: 30px;">Try again next round.</p>
-                    <a href="../../"blog posts/playerhome.php" class="btn btn-secondary btn-block mt-4">Exit</a>
+                    <a href="../../blog posts/playerhome.php" class="btn btn-secondary btn-block mt-4">Exit</a>
                 </div>
             </div>';
 }
