@@ -1004,6 +1004,25 @@ box-shadow: 10px 10px 27px 0px rgba(0,0,0,0.75);
 }
 
 
+.scroll-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.scrolling-text {
+    white-space: nowrap; 
+    animation: scroll 10s linear infinite; 
+}
+
 
 
 

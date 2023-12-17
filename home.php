@@ -13,8 +13,35 @@
         }
         ?>
         <br>
+        <style>
+            .scroll-container {
+    width: 100%;
+    overflow: hidden;
+    color: #FF0000;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.scrolling-text {
+    white-space: nowrap; 
+    animation: scroll 10s linear infinite; 
+}
+
+            </style>
+          
+        <div class="scroll-container">
+        <div class="scrolling-text">
             <div class="row">
                <h3> The auction is start <?php echo $start;?> please register</h3>
+    </div>
+    </div>
     </div>
 
     <div class="row">
