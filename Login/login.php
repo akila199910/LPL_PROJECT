@@ -91,7 +91,8 @@ if (isset($_POST['login'])) {
 
 
         } else {
-            echo "Invalid password";
+            echo "<script>alert('Invalid Password! Try again');</script>";
+                echo '<script> window.location.href = "../loginform.php"</script>';
         }
     } elseif ($result_admin && mysqli_num_rows($result_admin) > 0) {
         $admin = mysqli_fetch_assoc($result_admin);
