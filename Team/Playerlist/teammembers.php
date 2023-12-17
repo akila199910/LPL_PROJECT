@@ -5,7 +5,6 @@ mysqli_select_db($conn, "lplsystem");
 //Auto logout without session
 session_start();
 
-if (isset($_SESSION['admin_id'])) {
 
     if (isset($_POST['teamSelect'])) {
         $teamId = $_POST['teamSelect'];
@@ -74,9 +73,7 @@ if (isset($_SESSION['admin_id'])) {
 
 
 
-} else {
-    header("Location: logout.php");
-}
+
 
 
 ?>
