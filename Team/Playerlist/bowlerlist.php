@@ -138,6 +138,21 @@ nav{
       text-align: center;
     }
 
+    .bt{
+    display: inline-block;
+    background: #0096FF;
+    
+    padding: 8px 30px;
+    margin: -40px 0;
+    border-radius: 30px;
+    border:none;
+    transition: background 0.5s;
+   
+}
+
+.bt:hover{
+    background: #5960de;
+}
     </style>
 </head>
 <div class="header">
@@ -197,7 +212,7 @@ include('sidebar.php');
             <td>
               <form action="" method="POST">
                 <input type="hidden" name="player_bowlling_id" value="<?php echo $row['player_bowlling_id']; ?>">
-                <button type="submit" name="view">View Profile</button>
+                <button type="submit" name="view" class="bt">View Profile</button>
               </form>
             </td>
           
