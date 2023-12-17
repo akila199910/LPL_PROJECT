@@ -236,8 +236,8 @@ if (isset($_SESSION['team_id'])) {
 
   </table>
   </div>
- /* <div class="col-6 mt-5 ">
-         <div id="bid"></div>*/
+ <div class="col-6 mt-5 ">
+         <div id="bid"></div>
    </div>
   </div>
   </div>
