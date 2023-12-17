@@ -200,7 +200,7 @@ if (mysqli_num_rows($idResult) > 0) {
 
     <div style="font-size: 15px; color: rgb(179, 255, 0);">
       Highest Bid<br>
-      <span class="ntext2">3000</span>
+      <span class="ntext2"><div id="heigth"></div></span>
     </div>
   </div>
 </nav>
@@ -227,6 +227,8 @@ if (mysqli_num_rows($idResult) > 0) {
         setInterval(function () {
             $("#countdown").load("time.php");
             $("#bid").load("bid.php");
+            $("#heigth").load("heigth.php");
+
         }, 1000);        
 
         $("#submitBid").click(function () {
