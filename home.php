@@ -1,7 +1,21 @@
 <div class="header">
 <?php 
     $pageTitle = "LPL 2023"; 
-    include('header.php'); ?>
+    include('header.php'); 
+    include "conn.php";
+        mysqli_select_db($conn,"lplsystem");
+        $sql= "SELECT * FROM rule ";
+        $result=mysqli_query($conn, $sql);
+        while($row=mysqli_fetch_array($result)) {
+            $auction_year = $row["auction_year"];
+            $register_period = $row["register_period"];
+            $start	= $row["start"];
+        }
+        ?>
+        <br>
+            <div class="row">
+               <h3> The auction is start <?php echo $start;?> please register</h3>
+    </div>
 
     <div class="row">
         <div class="col-2">
@@ -19,11 +33,6 @@
 </div>
 </div>
 
-<!-------------------featured ctg---------->
-
-
-
-<!-------------------featured products---------->
 
 <div class="small-container">
     
@@ -148,6 +157,10 @@
 
 
 <?php 
+
+    
     $pageTitle = "LPL 2023"; 
-    include('footer.php'); ?>
+    include('footer.php'); 
+    
+    ?>
 
