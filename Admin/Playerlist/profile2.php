@@ -126,7 +126,10 @@ if (isset($_SESSION['admin_id'])) {
     tr{
         margin-bottom:50px;
     }
-
+    #graph{
+    width:20%;
+    height: 30%;
+}
 
 
   </style>
@@ -229,7 +232,14 @@ if (isset($_SESSION['admin_id'])) {
 
     <p id="countdown"></p>
     
-  
+    <div class="row">
+        
+        <div id="graph"> 
+
+         
+        </div>
+
+    </div>
     
     <script>
         $(document).ready(function () {
@@ -237,6 +247,7 @@ if (isset($_SESSION['admin_id'])) {
                 setInterval(function () {
                     $("#countdown").load("time.php");
                     $("#bid").load("bid.php");
+                    $("#graph").load("graph.php");
                 }, 1000);
 
 

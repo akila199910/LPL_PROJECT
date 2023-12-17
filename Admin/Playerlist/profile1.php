@@ -247,7 +247,7 @@ if (isset($_SESSION['admin_id'])) {
     <p id="countdown"></p>
     <div class="row">
         
-        <div id="graph">  <iframe src="graph.php" width="30px" height="50px" frameborder="0"></iframe>
+        <div id="graph"> 
 
          
         </div>
