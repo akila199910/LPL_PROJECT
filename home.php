@@ -31,7 +31,7 @@
 
 .scrolling-text {
     white-space: nowrap; 
-    animation: scroll 20s linear infinite; 
+    animation: scroll 30s linear infinite; 
 }
 
             </style>
