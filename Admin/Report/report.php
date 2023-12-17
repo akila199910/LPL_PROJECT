@@ -24,7 +24,7 @@
  
 .header{
     background: radial-gradient(#fff,#5960de);
-    height: 250vh;
+    height: 100%;
 }
 
 .btn{
