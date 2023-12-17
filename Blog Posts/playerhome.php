@@ -5,7 +5,7 @@ include "conn.php";
 mysqli_select_db($conn,"lplsystem");
 
  if(!isset($_SESSION['user_id'])) {
-    header("Location: logout.php");
+    header("Location: ../logout.php");
     exit(); // It's recommended to stop script execution after redirection
 }
 $player_id = $_SESSION['user_id'];
@@ -267,7 +267,7 @@ a{
 <div id="main">
 
   
-  <iframe src="http://localhost/LPL_PROJECT/LPL_PROJECT/Blog%20Posts/blog.php" width="100%" height="100%" frameborder="0"></iframe>
+  <iframe src="blog.php" width="100%" height="100%" frameborder="0"></iframe>
 
 </div>
 

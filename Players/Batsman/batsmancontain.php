@@ -171,16 +171,20 @@ $player_id = $_SESSION['user_id'];
           <th><?php echo  $playerbased_price;?></th>
       </tr>
 
+      
+
   </table>
+  
   </div>
-  <div class="col-6 mt-5 ">
-         <div id="bid"></div>
-   </div>
+
+  <div class="col-6">
+  <iframe src="../line graph.php" width="100%" height="500px" frameborder="0" ></iframe>
+  </div>
   </div>
   </div>
 
 
-    <p id="countdown"></p>
+    
     
   
     

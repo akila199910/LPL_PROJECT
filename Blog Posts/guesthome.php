@@ -5,8 +5,8 @@ include "conn.php";
 mysqli_select_db($conn,"lplsystem");
 
  if(!isset($_SESSION['guest_id'])) {
-    header("Location: logout.php");
-    exit(); // It's recommended to stop script execution after redirection
+    header("Location: ../logout.php");
+    exit();
 }
 /*$player_id = $_SESSION['user_id'];
 // Fetch player's name based on the ID
@@ -68,9 +68,9 @@ body, h1, h2, h3, h4, h5, h6 {
     overflow: hidden; /* Hide scrollbars */
 }
 .w3-row-padding img {margin-bottom: 12px}
-/* Set the width of the sidebar to 120px */
+
 .w3-sidebar {width: 130px;background: #01166f;}
-/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+
 #main {margin-left: 120px}
 /* Remove margins from "page content" on small screens */
 @media only screen and (max-width: 600px) {#main {margin-left: 0}}
@@ -119,7 +119,6 @@ a{
     
 }
 
-/* Add a left margin to the "page content" that matches the width of the sidebar (130px) */
 #main {
   margin-left: 130px;
   transition: margin-left 0.5s;
@@ -127,7 +126,6 @@ a{
   height: 91vh;
 }
 
-/* Remove margins from "page content" on small screens */
 @media only screen and (max-width: 600px) {
   #main {
     margin-left: 0;
