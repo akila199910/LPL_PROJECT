@@ -149,7 +149,7 @@ a{
                          ?></button></a>
                          </div>
           <div class="col-lg-3">
-          <a href="#"><button type="button" class="btn btn-success size btn-margin">Registered Players<br>
+          <a href="../Playerlist/registered.php"><button type="button" class="btn btn-success size btn-margin">Registered Players<br>
           <?php
                              
                              $sql="SELECT * from register";

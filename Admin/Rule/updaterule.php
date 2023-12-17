@@ -22,7 +22,7 @@ if (isset($_SESSION['admin_id'])) {
                         no_foering_players=$no_foering_players,
                         total_amount_of_bid=$total_amount_of_bid, total_amount_of_contract=$total_amount_of_contract, 
                         auction_duration_time=$auction_duration_time,
-                        register_period=$register_period";
+                        register_period=$register_period, start	=$start";
 
           
           mysqli_query($conn, $sqlupdate);

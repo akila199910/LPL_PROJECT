@@ -21,106 +21,15 @@ if (isset($_SESSION['team_id'])) {
 
 
 $result = mysqli_query($conn, $sql5);
-$sql6 = "SELECT * from rule";
-$resultTime = mysqli_query($conn, $sql6);
-
-while ($rowTime = mysqli_fetch_assoc($resultTime)) {
-
-  $periadTime=$rowTime['auction_duration_time'];
-  
-      
- }
-
- $sqlprice="SELECT based_price FROM batsman";
- $resultPrice=mysqli_query($conn,$sqlprice);
- if(mysqli_num_rows($resultPrice) >0) {
-     while($rowPrice = mysqli_fetch_array($resultPrice)) {
-         $price = $rowPrice['based_price'];
-     }
-     
-    }
-
- $startDate="SELECT start FROM rule";
- $resultDate=mysqli_query($conn,$startDate);
- if(mysqli_num_rows($resultDate) >0) {
-     while($rowDate = mysqli_fetch_array($resultDate)) {
-         $start_date = $rowDate['start'];
  
  }
- }
-
- $currentDate = date('Y-m-d');
-
-
-
-
-
-
-
-
-
-$sql2 = "CREATE TABLE IF NOT EXISTS auction (
-  auction_id INT PRIMARY KEY AUTO_INCREMENT,
-  player_id INT NOT NULL,
-  auction_start_time TIMESTAMP,
-  auction_end_time TIMESTAMP NULL,
-  active INT NULL,
-  FOREIGN KEY (player_id) REFERENCES register(player_id)
-  )";
-  mysqli_query($conn,$sql2);
 
 
   if(isset($_POST['view'])){
     $player_id = $_POST['player_batting_id'];
-
-    /*$sqlupdate="UPDATE batsman SET gotoauction=1 WHERE player_batting_id=$player_id";
-    mysqli_query($conn,$sqlupdate);*/
-
-
-   $current_time = time();
-    $auction_end_time = $current_time + ($periadTime * 60); 
-  
-    // Convert the timestamps to formatted time strings
-    $current_time_formatted = date("Y-m-d H:i:s", $current_time);
-    $auction_end_time_formatted = date("Y-m-d H:i:s", $auction_end_time);
-
-
-    $sql5 = "SELECT player_id FROM auction WHERE player_id=$player_id";
-    $result = mysqli_query($conn, $sql5);
-
-    while ($rowID = mysqli_fetch_assoc($result)) {
-
-      $rowIDPlayer=$rowID['player_id'];
-
-    }
-
-
-   if($rowIDPlayer==$player_id){
-
     header("Location: profile1.php?player_id=$player_id");
-    exit; 
 
 
-   }else{
-
-    $sql6 = "INSERT INTO auction (`player_id`, `active`, `auction_start_time`, `auction_end_time`) VALUES ('$player_id', 0, '$current_time_formatted', '$auction_end_time_formatted')";
-    mysqli_query($conn, $sql6);
-    header("Location: profile1.php?player_id=$player_id");
-    exit; // Make sure to exit after the redirect
-
-   }
-
-
-  
-    
-  }
-
-
-
-
-
-} else {
-    header("Location: logout.php");
 }
 
 
@@ -248,18 +157,6 @@ $sql2 = "CREATE TABLE IF NOT EXISTS auction (
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         </div>
-       <!-- <script>
-              var btndate = <?php// echo json_encode($start_date); ?>;
-              console.log(btndate);
-              var currentdate = <?php// echo json_encode($currentDate); ?>;
-              console.log(currentdate);
-              if(btndate>currentdate){
-                var btns = document.getElementsByClassName("btn");
-                for (var i = 0; i < btns.length; i++) {
-        btns[i].disabled = true;
-    }
-              }
-
-        </script>-->
+       
 </body>
 </html>
