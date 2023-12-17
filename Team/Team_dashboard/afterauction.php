@@ -166,7 +166,7 @@ if ($bid_price > 0) {
 
         .box {
             text-align: center;
-            padding: 20px;
+            padding: 60px;
             background-color: rgba(255, 255, 245, 0.8);
             /* Adding a semi-transparent background color */
             border-radius: 10px;
