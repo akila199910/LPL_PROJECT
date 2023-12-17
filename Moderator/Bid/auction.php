@@ -140,7 +140,7 @@ if (mysqli_num_rows($idResult) > 0) {
       <span class="ntext1"> <?php echo strtoupper($first_name. " ".$last_name)?></span>
     </div>
 
-    <span class="ntext3"><?php/* echo strtoupper($playerName)*/ ?></span>
+    <span class="ntext3"></span>
 
     <div style="font-size: 15px; color: rgb(179, 255, 0);">
       Highest Bid<br>

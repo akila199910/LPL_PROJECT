@@ -182,7 +182,7 @@ h4 {
 }
 
 .winer{
-    background-color: #c7e0de; 
+    background-color: #5960de; 
 
 }
 
