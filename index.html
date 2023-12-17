@@ -7,18 +7,28 @@
     <title>LPL</title>
     <link rel="stylesheet" href="css/stylenew.css">
     
-
+    <style>
+        /* Set the video to fill the entire screen */
+        .back-video {
+            width: 100%;
+            height: 100vh; /* Adjust as needed */
+            object-fit: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Place the video behind other content */
+        }
+    </style>
 
 </head>
 <body>
 
     <div class="container">
 
-        <video autoplay loop muted plays-inline class="back-video">
-            <source src="images/367497639_812979057027842_3783166227195970988_n.mp4" type="video/mp4" width="100px">
-
-
+        <video autoplay loop muted playsinline class="back-video">
+            <source src="images/367497639_812979057027842_3783166227195970988_n.mp4" type="video/mp4">
         </video>
+        
 
         <div class="card" data-tilt>
             <img src="images/logo main2.png" class="pic">

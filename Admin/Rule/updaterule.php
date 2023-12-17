@@ -8,28 +8,33 @@ session_start();
 if (isset($_SESSION['admin_id'])) {
     
 
-    if(isset($_POST['sub']))
-        {
-            $auction_year=$_POST['auction_year'];
-            $no_local_players=$_POST['no_local_players'];
-            $no_foering_players=$_POST['no_foering_players'];
-            $total_amount_of_bid=$_POST['total_amount_of_bid'];
-            $total_amount_of_contract=$_POST['total_amount_of_contract'];
-            $auction_duration_time=$_POST['auction_duration_time'];
-            $register_period=$_POST['register_period'];
+    if(isset($_POST['sub'])) {
+        $auction_year = $_POST['auction_year'];
+        $no_local_players = $_POST['no_local_players'];
+        $no_foreign_players = $_POST['no_foering_players'];
+        $total_amount_of_bid = $_POST['total_amount_of_bid'];
+        $total_amount_of_contract = $_POST['total_amount_of_contract'];
+        $auction_duration_time = $_POST['auction_duration_time'];
+        $register_period = $_POST['register_period'];
+        $start = $_POST['start'];
     
-            $sqlupdate="UPDATE rule SET auction_year=$auction_year, no_local_players=$no_local_players, 
-                        no_foering_players=$no_foering_players,
-                        total_amount_of_bid=$total_amount_of_bid, total_amount_of_contract=$total_amount_of_contract, 
-                        auction_duration_time=$auction_duration_time,
-                        register_period=$register_period, start	=$start";
-
-          
-          mysqli_query($conn, $sqlupdate);
-          header("Location: rule.php");
+        // Format the date to match the MySQL date format (Y-m-d)
+        $formattedStartDate = date('Y-m-d', strtotime($start));
     
+        $sqlupdate = "UPDATE rule SET 
+            auction_year = $auction_year, 
+            no_local_players = $no_local_players, 
+            no_foering_players = $no_foreign_players,
+            total_amount_of_bid = $total_amount_of_bid, 
+            total_amount_of_contract = $total_amount_of_contract, 
+            auction_duration_time = $auction_duration_time,
+            register_period = $register_period, 
+            `start` = '$formattedStartDate'";
     
+        mysqli_query($conn, $sqlupdate);
+        header("Location: rule.php");
     }
+    
 
 
 
@@ -271,7 +276,7 @@ include('sidebar.php');
                             <div class="name">Auction Start Date</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="date" name="start" value="<?php echo $start?>">
+                                <input class="input--style-5" type="date" name="start" value="<?php echo $start; ?>">
                                 </div>
                             </div>
                         </div>

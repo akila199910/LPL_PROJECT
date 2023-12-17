@@ -297,7 +297,7 @@ include('sidebar.php');
               var currentdate = <?php echo json_encode($currentDate); ?>;
               console.log(currentdate);
               if(btndate>currentdate){
-                var btns = document.getElementsByClassName("btn");
+                var btns = document.getElementsByClassName("bt");
                 for (var i = 0; i < btns.length; i++) {
         btns[i].disabled = true;
     }
