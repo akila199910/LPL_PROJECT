@@ -127,16 +127,10 @@ if (isset($_SESSION['admin_id'])) {
         margin-bottom:50px;
     }
 
-    .header{
-    background: radial-gradient(#fff,#5960de);
-    height: 500vh;
-}
-
 
 
   </style>
 </head>
-<div class="header">
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">

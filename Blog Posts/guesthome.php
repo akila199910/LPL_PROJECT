@@ -160,7 +160,7 @@ a{
 
 
   
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
+  <a href="../Guest/Bid/auction.php" class="w3-bar-item w3-button w3-padding-large w3-hover-grey">
     <i class="fa fa-gavel w3-xlarge" style="color:white"></i>
     <p style="color:antiquewhite">Live Auction</p>
   </a>

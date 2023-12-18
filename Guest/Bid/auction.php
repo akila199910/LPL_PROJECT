@@ -1,6 +1,5 @@
 <?php
 session_start();
-$team_id=$_SESSION['guest_id'];
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
@@ -187,5 +186,6 @@ if (mysqli_num_rows($idResult) > 0) {
  
 </script>
 </body>
+</div>
 </html>
 
