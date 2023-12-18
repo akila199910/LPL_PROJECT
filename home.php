@@ -187,4 +187,4 @@
 
     
     $pageTitle = "LPL 2023"; 
-    include('footer.php'); ?>
+    include('footer.php');?>
