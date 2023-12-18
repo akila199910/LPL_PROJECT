@@ -158,7 +158,7 @@ nav{
               <th>Photo</th>
               <th>Name</th>
               <th>Catogary</th>
-              <th>Capped</th>
+        
               <th>Country</th>
             </tr>
 
