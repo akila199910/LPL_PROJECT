@@ -1,7 +1,7 @@
 User
 <?php
 include("conn.php");
-mysqli_select_db($conn, "id21734038_lpl");
+mysqli_select_db($conn, "lplsystem");
 
 if(isset($_POST['reset_password'])){
     $token = $_POST['token'];
