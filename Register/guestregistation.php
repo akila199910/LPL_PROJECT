@@ -208,6 +208,13 @@ h1 {
 </html>
 
 <?php
+// Include PHPMailer autoloader or include the necessary files
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
@@ -288,7 +295,33 @@ move_uploaded_file($temp_name3,$upload_to.$file_name3);
       $message = "Click the following link to verify your email address: http://localhost/LPL_PROJECT/LPL_PROJECT/Register/verifyguest.php?code=$verif_code";
       $headers = "From: premierleaguesrilanka@gmail.com";
       
-      mail($email, $subject, $message, $headers);
+      $mail = new PHPMailer(true); // Passing `true` enables exceptions
+
+      try {
+          //Server settings
+          $mail->isSMTP(); // Set mailer to use SMTP
+          $mail->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers
+          $mail->SMTPAuth = true; // Enable SMTP authentication
+          $mail->Username = 'premierleaguesrilanka@gmail.com'; // SMTP username
+          $mail->Password = 'ttwqnjepczbyqzhw'; // SMTP password
+          $mail->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
+          $mail->Port = 587; // TCP port to connect to
+
+          //Recipients
+          $mail->setFrom('premierleaguesrilanka@gmail.com');
+          $mail->addAddress($email); // Add a recipient
+
+          // Content
+          $mail->isHTML(true); // Set email format to HTML
+          $mail->Subject = $subject;
+          $mail->Body = $message;
+
+          $mail->send();
+          
+      } 
+      catch (Exception $e) {
+          echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+      }
       }
     
     // echo "<script>alert('Check your mail box');</script>";

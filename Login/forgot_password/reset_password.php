@@ -5,10 +5,14 @@ mysqli_select_db($conn, "lplsystem");
 if (isset($_GET['token'])) {
     $token = $_GET['token'];
 
-    $sql_check_token = "SELECT * FROM register WHERE verification_code = '$token'";
-    $result = $conn->query($sql_check_token);
+    $sql_check_token_register = "SELECT * FROM register WHERE verification_code = '$token'";
+    $result_register = $conn->query($sql_check_token_register);
 
-    if ($result->num_rows > 0) {
+    $sql_check_token_guest = "SELECT * FROM guest WHERE verification_code = '$token'";
+    $result_guest = $conn->query($sql_check_token_guest);
+
+
+    if ($result_register->num_rows > 0 || $result_guest->num_rows > 0) {
         echo '
         <!DOCTYPE html>
         <html>

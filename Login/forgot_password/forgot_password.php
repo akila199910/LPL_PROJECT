@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,37 +57,73 @@
 </body>
 </html>
 
-
-
-
-
 <?php
+// Include PHPMailer autoloader or include the necessary files
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
+
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
 
 if(isset($_POST['submit'])){
     $email = $_POST['email'];
 
-    $sql = "SELECT * FROM register WHERE email = '$email'";
-    $result = $conn->query($sql);
+    $sql_register = "SELECT * FROM register WHERE email = '$email'";
+    $result_register = $conn->query($sql_register);
 
-    if ($result->num_rows > 0) {
+    $sql_guest = "SELECT * FROM guest WHERE email = '$email'";
+    $result_guest = $conn->query($sql_guest);
+
+    if ($result_register->num_rows > 0 || $result_guest->num_rows > 0) {
         $token = bin2hex(random_bytes(32));
+          // Update register table if email found there
+          if ($result_register->num_rows > 0) {
+            $sql_update = "UPDATE register SET verification_code = '$token' WHERE email = '$email'";
+            $update_result = $conn->query($sql_update);
+        }
+        // Update guest table if email found there
+        if ($result_guest->num_rows > 0) {
+            $sql_update_guest = "UPDATE guest SET verification_code = '$token' WHERE email = '$email'";
+            $update_guest_result = $conn->query($sql_update_guest);
+        }
 
-        $sql_update = "UPDATE register SET verification_code = '$token' WHERE email = '$email'";
-        if ($conn->query($sql_update) === TRUE) {
+        
             $reset_link = "http://localhost/LPL_PROJECT/LPL_PROJECT/Login/forgot_password/reset_password.php?token=$token";
             $subject = "Password Reset";
             $message = "Click the link below to reset your password: $reset_link";
-            $headers = "From: premierleaguesrilanka@gmail.com";
 
-            mail($email, $subject, $message, $headers);
-            echo "<script>alert('Check your mail box');</script>";
-           /* header("Location: reset_confirmation.php");
-            exit();*/
-        } else {
-            echo "Error updating record: " . $conn->error;
-        }
+            // Create a PHPMailer object
+            $mail = new PHPMailer(true); // Passing `true` enables exceptions
+
+            try {
+                //Server settings
+                $mail->isSMTP(); // Set mailer to use SMTP
+                $mail->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers
+                $mail->SMTPAuth = true; // Enable SMTP authentication
+                $mail->Username = 'premierleaguesrilanka@gmail.com'; // SMTP username
+                $mail->Password = 'ttwqnjepczbyqzhw'; // SMTP password
+                $mail->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
+                $mail->Port = 587; // TCP port to connect to
+
+                //Recipients
+                $mail->setFrom('premierleaguesrilanka@gmail.com');
+                $mail->addAddress($email); // Add a recipient
+
+                // Content
+                $mail->isHTML(true); // Set email format to HTML
+                $mail->Subject = $subject;
+                $mail->Body = $message;
+
+                $mail->send();
+                echo "<script>alert('Check your mailbox for password reset instructions.');</script>";
+            } catch (Exception $e) {
+                echo "Email could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            }
+        
     } else {
         echo "Email not found in the database!";
     }
