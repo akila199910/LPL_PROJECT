@@ -1,4 +1,3 @@
-User
 <?php
 include("conn.php");
 mysqli_select_db($conn, "lplsystem");
